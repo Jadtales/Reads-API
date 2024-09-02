@@ -1,0 +1,3 @@
+### GET request to the home page
+GET http://localhost:3002/
+
