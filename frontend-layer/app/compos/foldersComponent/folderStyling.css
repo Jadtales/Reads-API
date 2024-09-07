@@ -1,0 +1,32 @@
+div.folderContainer {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+div.folderContainer ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
+    margin-top: 3vh;
+    margin-left: 11vw;
+    cursor: pointer;
+
+    & a {
+        color: #ababab;
+    }
+
+    & a.active {
+        color: black;
+        text-decoration: underline solid black;
+
+    }
+}
+
+div.folderContainer ul li:last-child span {
+    background-color: black;
+    border: 2px solid black;
+    padding: 2px 5px;
+    color: white;
+    cursor: pointer;
+}

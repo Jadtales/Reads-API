@@ -1,0 +1,36 @@
+div.navigationButtons {
+    text-decoration: none;
+    list-style: none;
+
+
+    margin-top: 8vh;
+    margin-left: 10vw;
+
+    & a {
+        text-decoration-line: none;
+        color: black;
+        opacity: 40%;
+        font-family: "Oswald", sans-serif;
+        border: none;
+        outline: none;
+        font-size: 4rem;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    & a.active {
+        text-decoration-line: none;
+        color: #000000;
+        opacity: 100%;
+
+        font-family: "Oswald", sans-serif;
+        border: none;
+        outline: none;
+        font-size: 4rem;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+}
+
