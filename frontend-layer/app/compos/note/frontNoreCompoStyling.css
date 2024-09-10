@@ -1,0 +1,62 @@
+div.homeContainer {
+    background-color: white;
+    min-width: fit-content;
+    /*max-width: fit-content;*/
+    height: 185px;
+    padding: 15px;
+    border-radius: 20px;
+
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+div.homeContainer:hover {
+    transform: scale(1.02);
+    transition: .2s ease;
+    border: 1px solid black;
+}
+
+
+div.topLayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    height: 60px;
+
+    & div.flashcardInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 10px;
+
+        & img {
+            border-radius: 8px;
+            border: 2px solid black;
+        }
+
+
+        & div.bookInfos {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+
+
+            & p {
+                color: #ababab;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    & div.flashcardSettings {
+        display: flex;
+        align-items: center;
+        border: var(--border);
+        height: fit-content;
+        border-radius: 10px;
+        padding: 3px 5px;
+        cursor: pointer;
+    }
+}

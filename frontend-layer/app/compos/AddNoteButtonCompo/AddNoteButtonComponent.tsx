@@ -1,6 +1,5 @@
 import {ReactElement} from "react";
-import Image from "next/image";
-import './addNoteComponentStyling.css'
+import './addNoteButtonComponentStyling.css'
 
 export default function AddNoteComponentButton(): ReactElement {
     return (

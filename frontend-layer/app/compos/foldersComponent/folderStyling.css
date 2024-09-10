@@ -11,9 +11,11 @@ div.folderContainer ul {
     margin-top: 3vh;
     margin-left: 11vw;
     cursor: pointer;
+    font-size: 1rem;
 
     & a {
         color: #ababab;
+        text-decoration: none;
     }
 
     & a.active {
@@ -23,10 +25,26 @@ div.folderContainer ul {
     }
 }
 
+div.folderContainer ul{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    letter-spacing: 2px;
+}
+
 div.folderContainer ul li:last-child span {
-    background-color: black;
-    border: 2px solid black;
-    padding: 2px 5px;
-    color: white;
+    color: black;
     cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/*styling addFolderInputField*/
+input#addFolderInputField{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding-top: 3px;
+    width: auto;
+
 }

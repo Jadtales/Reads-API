@@ -3,7 +3,6 @@
 import React, {ReactElement, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import "./navbarStyling.css"
-import {stdIconStyling} from "@/app/globals.css"
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import SearchIcon from "@/public/icons/search-2-line.svg"
@@ -19,10 +18,6 @@ export default function Navbar(): ReactElement {
 
     const handleUserProfileClicked = (): void => {
         setIsUserProfileClicked(!isUserProfileClicked);
-    }
-
-    const handleSearchInputClicked = (): void => {
-        setIsSearchInputClicked(!isSearchInputClicked);
     }
 
     useEffect((): void => {
@@ -53,8 +48,8 @@ export default function Navbar(): ReactElement {
                         <Image src={RightArrowIcon} alt="expendUserSettings"/>
                     </div>
 
-                    <div className={isSearchInputClicked ? "searchButton-active" : 'searchButton'}>
-                        <Image src={SearchIcon} alt="expandProfileSettings" onClick={handleSearchInputClicked}/>
+                    <div className="searchButton-active">
+                        <Image src={SearchIcon} alt="expandProfileSettings"/>
                         <input type="search" placeholder="Search for highlights, poeple."
                                ref={searchInputFieldRef}/>
                     </div>
