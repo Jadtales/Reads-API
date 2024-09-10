@@ -106,8 +106,6 @@ div.userInteractionButtons button {
         align-items: center;
         transform: scale(1.2);
     }
-
-
 }
 
 
@@ -136,7 +134,7 @@ div.userProfile-active {
     }
 
     & div.userButtons-active button {
-        background-color: #e6e6e6;
+        background-color: white;
         color: black;
         border-radius: var(--borderRadius);
         padding: 4px 10px;
@@ -147,8 +145,7 @@ div.userProfile-active {
     }
 
     & div.userButtons-active button:hover {
-        background-color: var(--hoveredButtonColor);
-        color: var(--hoveredButtonTextColor);
+        background-color: #cbcbcb;
     }
 }
 
