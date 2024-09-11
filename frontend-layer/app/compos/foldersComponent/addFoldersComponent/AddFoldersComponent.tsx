@@ -2,30 +2,39 @@ import {ReactElement, useState, useRef} from "react";
 import {useRouter} from "next/navigation";
 
 interface AddFolderComponentProps {
-    userFolder: string[];
+    existedFolders: string[];
 }
 
+// imported modules
+import {FoldersErrorHandling} from "@/utils/ErrorHandling/foldersErrorHandling";
+
+
 export default function AddFolderComponent({
-                                               userFolder,
+                                               existedFolders,
                                            }: AddFolderComponentProps): ReactElement {
 
     const [newFolder, setNewFolder] = useState<string>('');
     const [isAddingNewFolder, setIsAddingNewFolder] = useState<boolean>(false);
+    const [folderErrorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter();
     const inputRef = useRef<HTMLInputElement>(null);
 
     // Function to handle adding a new folder
     const handleAddingNewFolder = (): void => {
-        if (newFolder.trim()) {
-            // Prevent duplicate folder names
-            if (!userFolder.includes(newFolder)) {
-                userFolder.push(newFolder);
-                setNewFolder('');
-                setIsAddingNewFolder(false);
-                // Navigate to the newly created folder
-                router.push(`/home/${newFolder.trim().replaceAll(' ', '_')}`);
-            }
+        const folderLongError = FoldersErrorHandling.isFolderLong(newFolder.trim())
+        if (folderLongError) {
+            setErrorMessage(folderLongError)
+            return
+        }
+
+        if (newFolder.trim() && !existedFolders.includes(newFolder)) {
+            existedFolders.push(newFolder);
+            setNewFolder('');
+            setIsAddingNewFolder(false);
+            // Navigate to the newly created folder
+            router.push(`/home/${newFolder.trim().replaceAll(' ', '_')}`);
+
         } else {
             setIsAddingNewFolder(false);
         }
@@ -63,6 +72,8 @@ export default function AddFolderComponent({
                         }}
                         placeholder="New folder name"
                     />
+
+                    {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
                 </>
             )}
         </>

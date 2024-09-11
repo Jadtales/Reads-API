@@ -1,10 +1,10 @@
 'use client';
-import {ReactElement, useState, useEffect} from 'react';
+import {ReactElement, useState} from 'react';
 import {usePathname} from 'next/navigation';
 import Link from 'next/link';
 import './browsingStyling.css';
 
-import {userFolder} from "@/app/compos/foldersComponent/FolderComponent";
+import {existedFolders} from "@/app/compos/foldersComponent/FolderComponent";
 
 export default function BrowsingComponent(): ReactElement {
     const pathname = usePathname().split('/').filter((url: string) => url !== '');
@@ -21,7 +21,7 @@ export default function BrowsingComponent(): ReactElement {
             {browsingPages.map((navi: string, index: number) => {
                 return (
                     <Link
-                        href={navi === 'home' ? `/home/${userFolder.at(0)}` : `/${navi}`}
+                        href={navi === 'home' ? `/home/${existedFolders.at(0)}` : `/${navi}`}
                         onClick={() => handleActiveLink(navi)}
                         className={isActiveLink === navi ? 'active' : ''}
                         key={index}

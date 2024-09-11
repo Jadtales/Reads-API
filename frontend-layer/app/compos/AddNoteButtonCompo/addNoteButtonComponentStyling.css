@@ -20,6 +20,6 @@ button.addNoteComponent {
 }
 
 .addNoteComponent:hover {
-    background-color: var(--hoveredButtonColor);
+    background-color: var(--hoveredButtonWithBlackBackGroundColor);
     transition: var(--hoverEffectTrasition);
 }
