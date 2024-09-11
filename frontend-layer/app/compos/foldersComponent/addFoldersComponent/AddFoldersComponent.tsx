@@ -73,9 +73,10 @@ export default function AddFolderComponent({
                         placeholder="New folder name"
                     />
 
-                    {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
                 </>
             )}
+            {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
+
         </>
     );
 }

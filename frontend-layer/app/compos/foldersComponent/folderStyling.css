@@ -1,6 +1,16 @@
 div.folderContainer {
+    position: sticky;
+    top: 10px;
+
     font-family: Arial, sans-serif;
-    font-weight: bold;
+    width: 77.5vw;
+    margin: 40px 11%;
+    z-index: 9999;
+    border-radius: 20px;
+    background-color: #4a6771;
+
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 div.folderContainer ul {
@@ -8,24 +18,30 @@ div.folderContainer ul {
     flex-direction: row;
     gap: 1rem;
     list-style: none;
-    margin-top: 3vh;
-    margin-left: 11vw;
+    padding: 10px 25px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: lighter;
 
     & a {
-        color: #ababab;
+        color: #ffffff;
+        padding: 3px 5px;
         text-decoration: none;
     }
 
     & a.active {
-        color: black;
-        text-decoration: underline solid black;
+        color: #4a6771;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.54);
+        font-weight: 900;
+        transition: .2s ease;
 
     }
 }
 
-div.folderContainer ul{
+div.folderContainer ul {
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -33,18 +49,28 @@ div.folderContainer ul{
 }
 
 div.folderContainer ul li:last-child span {
-    color: black;
+    color: white;
     cursor: pointer;
     font-size: 1.2rem;
 }
 
 /*styling addFolderInputField*/
-input#addFolderInputField{
-    border: none;
+input#addFolderInputField {
+    color: #4a6771;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.54);
+    font-weight: 900;
+    transition: .2s ease;
+
     outline: none;
-    background-color: transparent;
     font-size: 1rem;
-    padding-top: 3px;
+    /*padding-top: 3px;*/
     width: auto;
 
+}
+
+input#addFolderInputField::placeholder {
+    color: #4a6771
 }
