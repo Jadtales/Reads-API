@@ -1,8 +1,9 @@
 'use client'
 
-import React, {ReactElement, useEffect, useRef, useState} from "react";
+import React, {ReactElement, useState} from "react";
 import Image from "next/image";
 import "./navbarStyling.css"
+import {useRouter} from "next/navigation";
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import SearchIcon from "@/public/icons/search-2-line.svg"
@@ -12,22 +13,19 @@ import ReportBugsIcon from "@/public/icons/error-warning-line.svg"
 
 export default function Navbar(): ReactElement {
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false)
-    const [isSearchInputClicked, setIsSearchInputClicked] = useState<boolean>(false)
 
-    const searchInputFieldRef = useRef<HTMLInputElement>(null)
+    const router = useRouter()
+
+    // const searchInputFieldRef = useRef<HTMLInputElement>(null)
 
     const handleUserProfileClicked = (): void => {
         setIsUserProfileClicked(!isUserProfileClicked);
     }
 
-    useEffect((): void => {
-        // Focus the input when search button is active
-        if (isSearchInputClicked && searchInputFieldRef.current) {
-            searchInputFieldRef.current.focus();
-        }
 
-
-    }, [isSearchInputClicked]);
+    const handleOpenBrowsePage = (): void => {
+        router.push('/browse')
+    }
 
     return (
         <nav id="navbarContainer">
@@ -50,8 +48,7 @@ export default function Navbar(): ReactElement {
 
                     <div className="searchButton-active">
                         <Image src={SearchIcon} alt="expandProfileSettings"/>
-                        <input type="search" placeholder="Search for highlights, poeple."
-                               ref={searchInputFieldRef}/>
+                        <input type="search" placeholder="Search for highlights, poeple." onClick={() => handleOpenBrowsePage()}/>
                     </div>
                 </div>
             </div>

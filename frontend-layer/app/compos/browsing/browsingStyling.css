@@ -21,8 +21,11 @@ div.navigationButtons {
 
     & a.active {
         text-decoration-line: none;
-        color: #000000;
+        color: white;
+        padding: 0 10px;
+        border-radius: 10px;
         opacity: 100%;
+        background-color: black;
 
         font-family: "Oswald", sans-serif;
         border: none;
@@ -30,7 +33,8 @@ div.navigationButtons {
         font-size: 4rem;
         margin: 0 10px;
         cursor: pointer;
-        background-color: transparent;
+        /*background-color: transparent;*/
     }
 }
+
 

@@ -6,7 +6,7 @@ import './folderStyling.css';
 import AddNoteComponentButton from '@/app/compos/AddNoteButtonCompo/AddNoteButtonComponent';
 import AddFolderComponent from "@/app/compos/foldersComponent/addFoldersComponent/AddFoldersComponent";
 
-export const existedFolders: string[] = ['poetry', 'fiction'];
+export const existedFolders: string[] = ['unspecified','poetry', 'fiction'];
 
 export default function FolderComponent(): ReactElement {
     const pathname = usePathname();

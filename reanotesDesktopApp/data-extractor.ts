@@ -64,7 +64,7 @@ export default function arrangeKindleNotes(clippings: string): bookNotes_interfa
         // Extract the highlight text itself
         const highlight = lines.slice(2).join('\n').trim();
 
-        // Construct the note object
+        // Construct the front design notes object
         const note: highlights_interface = {
             highlight_location_page: highlightLocationPage,
             added_highlight_date: addedHighlightDate,
@@ -85,7 +85,7 @@ export default function arrangeKindleNotes(clippings: string): bookNotes_interfa
             notes.push(book);
         }
 
-        // adding the note to the book's notes array
+        // adding the front design notes to the book's notes array
         book.bookHighlights.push(note);
     }
 

@@ -1,6 +1,8 @@
 import {ReactElement} from "react";
 import './addNoteButtonComponentStyling.css'
 
+
+
 export default function AddNoteComponentButton(): ReactElement {
     return (
         <button className="addNoteComponent">

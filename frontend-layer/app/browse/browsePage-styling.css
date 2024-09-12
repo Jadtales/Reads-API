@@ -1,0 +1,22 @@
+div.browsePage{
+    margin: 4% 10.5%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+div.popularNotes,
+div.popularByGenre,
+div.recommendationsBasedOnFlavour{
+    display: flex;
+    flex-direction: row;
+    gap: var(--gapNotes);
+    width: 83vw;
+
+    /*box-shadow: inset -20px 0 50px 0 white;*/
+    overflow-x: scroll;
+    scrollbar-width: none;
+    border-radius: var(--borderRadiusNote);
+
+}

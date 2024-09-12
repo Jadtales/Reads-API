@@ -2,7 +2,7 @@ import {ReactElement} from "react";
 import './notesGrid.css'
 
 import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
-import FrontNoteComponent from "@/app/compos/note/FrontNoteComponent";
+import FrontNoteComponent from "@/app/compos/front design notes/FrontNoteComponent";
 
 
 export default function Folder(): ReactElement {
@@ -16,7 +16,7 @@ export default function Folder(): ReactElement {
                 <FrontNoteComponent/>
                 <FrontNoteComponent/>
                 <FrontNoteComponent/>
-                <FrontNoteComponent/>
+                <FrontNoteComponent/><FrontNoteComponent/><FrontNoteComponent/><FrontNoteComponent/>
                 <FrontNoteComponent/>
                 <FrontNoteComponent/>
                 <FrontNoteComponent/>

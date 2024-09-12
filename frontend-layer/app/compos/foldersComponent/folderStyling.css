@@ -6,8 +6,8 @@ div.folderContainer {
     width: 77.5vw;
     margin: 40px 11%;
     z-index: 9999;
-    border-radius: 20px;
-    background-color: #4a6771;
+    border-radius: 10px;
+    background-color: #000000;
 
     overflow-x: scroll;
     scrollbar-width: none;
@@ -30,12 +30,12 @@ div.folderContainer ul {
     }
 
     & a.active {
-        color: #4a6771;
+        color: white;
         padding: 5px 10px;
-        border-radius: 10px;
+        border-radius: 6px;
         border: 1px solid white;
-        background-color: rgba(255, 255, 255, 0.54);
-        font-weight: 900;
+        background-color: rgba(171, 171, 171, 0.54);
+        /*font-weight: 900;*/
         transition: .2s ease;
 
     }
@@ -56,7 +56,7 @@ div.folderContainer ul li:last-child span {
 
 /*styling addFolderInputField*/
 input#addFolderInputField {
-    color: #4a6771;
+    color: white;
     padding: 5px 10px;
     border-radius: 10px;
     border: 1px solid white;
@@ -72,5 +72,5 @@ input#addFolderInputField {
 }
 
 input#addFolderInputField::placeholder {
-    color: #4a6771
+    color: white
 }
