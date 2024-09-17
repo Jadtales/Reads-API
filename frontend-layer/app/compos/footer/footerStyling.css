@@ -1,0 +1,70 @@
+footer {
+    margin: 10% 10% 2% 10%;
+
+
+    & div.topLayer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        height: 20vh;
+    }
+}
+
+div.reanotesGeneralInfos-subscribed {
+    h1 {
+        font-size: 2rem;
+        /*width: 70%;*/
+        margin: 15px 0;
+    }
+
+    button.tryReanotesButton {
+        background-color: black;
+        color: white;
+        padding: 15px 30px;
+        border-radius: var(--borderRadius);
+        letter-spacing: 3px;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    button.tryReanotesButton:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+    }
+}
+
+
+div.bottomLayer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div.availableOnAllPlatforms-section,
+    div.availabilityPlatforms-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    div.availabilityPlatforms-section button{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        padding: 5px 20px;
+        border-radius: var(--borderRadius);
+        border: var(--border);
+        cursor: pointer;
+    }
+}
+
+
+img#reanotesIcon {
+    border-radius: var(--borderRadiusRNICON);
+}

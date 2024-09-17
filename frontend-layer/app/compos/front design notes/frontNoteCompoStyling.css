@@ -5,7 +5,6 @@ div.homeContainer {
     height: 185px;
     padding: var(--paddingNote);
     border-radius: var(--borderRadiusNote);
-
     transition: .2s ease;
     cursor: pointer;
 }

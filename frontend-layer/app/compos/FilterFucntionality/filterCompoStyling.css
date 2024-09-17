@@ -1,0 +1,89 @@
+div.filtering-section {
+    color: white;
+    margin: 1% 1.5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    h2 {
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+        font-weight: lighter;
+        margin: 15px 0;
+        color: #989898;
+
+    }
+}
+
+.filter-books-options select {
+    background-color: #6b6b6b;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    padding: 2px 5px;
+    scroll-behavior: smooth;
+
+
+    option {
+        background-color: #6b6b6b;
+        color: white;
+        outline: none;
+        scrollbar-width: none;
+
+    }
+}
+
+div.filter-typeOfContent,
+div.filter-typeOfContent-options {
+    display: flex;
+    flex-direction: column;
+
+    & label, input {
+        cursor: pointer;
+    }
+
+    & label input {
+        margin: 10px 0;
+        border: none;
+        background-color: #ffefef;
+    }
+}
+
+div.filtering-section div.filter-books div.filter-books-options,
+div.filter-notes div.filter-notes-options div.completionStatus,
+div.isWithNotes, div.filter-timing div.lastAccessedStatus,
+div.addedDate, div.filter-typeOfContent div.filter-typeOfContent-options{
+    display: flex;
+    flex-direction: column;
+
+}
+
+div.filtering-section span{
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 6px 5px;
+    font-weight: lighter;
+
+    color: #d4d4d4;
+}
+
+div.filtering-section input{
+    background-color: #3b3b3b;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+
+div.filtering-section input::placeholder{
+    color: white;
+}
+
+
+div.filtering-section span:hover{
+    background-color: var(--backGroundColorHoveredButton);
+    border-radius: 5px;
+    width: fit-content;
+}

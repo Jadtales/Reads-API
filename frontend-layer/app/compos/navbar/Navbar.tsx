@@ -11,6 +11,8 @@ import SettingsIcon from "@/public/icons/settings-4-line.svg"
 import NotificationsIcon from "@/public/icons/notification-line.svg"
 import ReportBugsIcon from "@/public/icons/error-warning-line.svg"
 
+import RNICON from "@/public/RN-icon.png"
+
 export default function Navbar(): ReactElement {
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false)
 
@@ -30,7 +32,7 @@ export default function Navbar(): ReactElement {
     return (
         <nav id="navbarContainer">
             <div className="iconContainer">
-                <span>RN</span>
+                <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={50}/>
 
                 <div className="user-search_buttons">
                     <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}

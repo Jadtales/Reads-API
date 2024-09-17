@@ -2,21 +2,43 @@ div.folderContainer {
     position: sticky;
     top: 10px;
 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+
     font-family: Arial, sans-serif;
-    width: 77.5vw;
+    width: 78vw;
     margin: 40px 11%;
     z-index: 9999;
     border-radius: 10px;
     background-color: #000000;
 
-    overflow-x: scroll;
-    scrollbar-width: none;
+    cursor: default;
+
+    div.folders-section{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
 }
 
+div.filtering-section{
+    color: white;
+}
+
+
+
 div.folderContainer ul {
+
+    overflow-x: scroll;
+    scrollbar-width: none;
+    width: 99.5vw;
+
     display: flex;
     flex-direction: row;
     gap: 1rem;
+
     list-style: none;
     padding: 10px 25px;
     cursor: pointer;
@@ -33,8 +55,8 @@ div.folderContainer ul {
         color: white;
         padding: 5px 10px;
         border-radius: 6px;
-        border: 1px solid white;
-        background-color: rgba(171, 171, 171, 0.54);
+        /*border: 1px solid white;*/
+        background-color: var(--backGroundColorHoveredButton);
         /*font-weight: 900;*/
         transition: .2s ease;
 
@@ -52,6 +74,15 @@ div.folderContainer ul li:last-child span {
     color: white;
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+/*---- filter icon styling */
+div.filterIcon {
+    cursor: pointer;
+
+    img {
+        margin: 14px 20px 0 0;
+    }
 }
 
 /*styling addFolderInputField*/
