@@ -8,7 +8,7 @@ import './folderStyling.css';
 import AddNoteComponentButton from '@/app/compos/AddNoteButtonCompo/AddNoteButtonComponent';
 import AddFolderComponent from "@/app/compos/foldersComponent/addFoldersComponent/AddFoldersComponent";
 import filterIcon from "@/public/icons/filter-3-line.svg"
-import FilterComponent from "@/app/compos/FilterFucntionality/FilterComponent";
+import FilterComponent from "@/app/compos/FilterFunctionality/FilterComponent";
 
 export const existedFolders: string[] = ['unspecified', 'poetry', 'fiction'
 ];

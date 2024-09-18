@@ -29,18 +29,6 @@ export default function BrowserPage(): ReactElement {
                     <FrontDesignNoteBrowse bookTitle={'There there'}
                                            bookAuthor={'Tommy Orange'}
                                            notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
                 </div>
             </div>
 
@@ -48,18 +36,6 @@ export default function BrowserPage(): ReactElement {
                 <h1>Weekly Popular notes.</h1>
 
                 <div className="popularNotes">
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
                     <FrontDesignNoteBrowse bookTitle={'There there'}
                                            bookAuthor={'Tommy Orange'}
                                            notedByUsername={'jadtales'}/>
@@ -104,18 +80,8 @@ export default function BrowserPage(): ReactElement {
                     <FrontDesignNoteBrowse bookTitle={'There there'}
                                            bookAuthor={'Tommy Orange'}
                                            notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
-                    <FrontDesignNoteBrowse bookTitle={'There there'}
-                                           bookAuthor={'Tommy Orange'}
-                                           notedByUsername={'jadtales'}/>
+
+
                 </div>
             </div>
 

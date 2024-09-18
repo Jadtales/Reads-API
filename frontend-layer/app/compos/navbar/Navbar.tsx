@@ -7,11 +7,11 @@ import {useRouter} from "next/navigation";
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import SearchIcon from "@/public/icons/search-2-line.svg"
-import SettingsIcon from "@/public/icons/settings-4-line.svg"
 import NotificationsIcon from "@/public/icons/notification-line.svg"
 import ReportBugsIcon from "@/public/icons/error-warning-line.svg"
 
 import RNICON from "@/public/RN-icon.png"
+import Link from "next/link";
 
 export default function Navbar(): ReactElement {
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false)
@@ -37,12 +37,14 @@ export default function Navbar(): ReactElement {
                 <div className="user-search_buttons">
                     <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
                          onClick={handleUserProfileClicked}>
-                        {/*<Image src={} alt={}/>*/}
+                        <Image src={RNICON} alt="userProfileImg" width={20} style={{
+                            borderRadius: '50%'
+                        }}/>
                         <h1 id="userUsername">Jadtales</h1>
 
                         <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
+                            <Link href={`/settings`}>Settings</Link>
                             <button>Log out</button>
-                            <button>Private</button>
                         </div>
 
                         <Image src={RightArrowIcon} alt="expendUserSettings"/>
@@ -50,16 +52,14 @@ export default function Navbar(): ReactElement {
 
                     <div className="searchButton-active">
                         <Image src={SearchIcon} alt="expandProfileSettings"/>
-                        <input type="search" placeholder="Search for highlights, poeple." onClick={() => handleOpenBrowsePage()}/>
+                        <input type="search" placeholder="Search for highlights, poeple."
+                               onClick={() => handleOpenBrowsePage()}/>
                     </div>
                 </div>
             </div>
 
 
             <div className="userInteractionButtons">
-                <button className="stdIconStyling">
-                    <Image src={SettingsIcon} alt="settingIcon"/>
-                </button>
                 <button className="stdIconStyling">
                     <Image src={NotificationsIcon} alt="settingIcon"/>
                 </button>

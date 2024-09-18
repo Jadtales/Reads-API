@@ -53,37 +53,46 @@ div.filter-typeOfContent-options {
 div.filtering-section div.filter-books div.filter-books-options,
 div.filter-notes div.filter-notes-options div.completionStatus,
 div.isWithNotes, div.filter-timing div.lastAccessedStatus,
-div.addedDate, div.filter-typeOfContent div.filter-typeOfContent-options{
+div.addedDate, div.filter-typeOfContent div.filter-typeOfContent-options {
     display: flex;
     flex-direction: column;
 
 }
 
-div.filtering-section span{
+div.filtering-section span {
     cursor: pointer;
-    letter-spacing: 1px;
-    padding: 6px 5px;
+    /*letter-spacing: 3px;*/
+    padding: 8px 6px;
     font-weight: lighter;
-
+    margin: 2px 0;
     color: #d4d4d4;
 }
 
-div.filtering-section input{
+div.filtering-section input {
     background-color: #3b3b3b;
     border: none;
     outline: none;
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px 0;
     color: white;
 }
 
-div.filtering-section input::placeholder{
+div.filtering-section input::placeholder {
     color: white;
 }
 
 
-div.filtering-section span:hover{
+div.filtering-section .span-active {
     background-color: var(--backGroundColorHoveredButton);
     border-radius: 5px;
     width: fit-content;
+}
+
+.filtering-section div.filter-books-options div.basedOnGenre {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 20vh;
+    width: fit-content;
+    scrollbar-width: none;
 }
