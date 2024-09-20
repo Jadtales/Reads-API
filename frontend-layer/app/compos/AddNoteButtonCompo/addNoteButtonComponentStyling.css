@@ -1,25 +1,62 @@
-button.addNoteComponent {
-
-    background-color: black;
-    border-radius: var(--borderRadius);
-    transition: var(--hoverEffectTrasition);
-
-    border: none;
-    color: white;
-    width: fit-content;
-    padding: 15px 20px;
-    cursor: pointer;
-
+.addNoteButtonWrapper {
     position: fixed;
     bottom: 30px;
     right: 30px;
+    text-align: center;
 }
 
-.addNoteComponent {
-    font-size: 1.2rem;
+.otherButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
 }
 
-.addNoteComponent:hover {
+button.addNoteButton{
+    padding: 20px;
+    font-size: 2rem;
+    background-color: black;
+    border-radius: var(--borderRadius);
+    border: none;
+    color: white;
+    width: 222px;
+    cursor: pointer;
+    transition: var(--hoverEffectTrasition);
+}
+
+
+button.addNoteButton,
+button.addNoteButton-twitter,
+button.addNoteButton-kindleFile{
+    background-color: black;
+    border-radius: var(--borderRadius);
+    border: none;
+    color: white;
+    padding: 20px;
+    font-size: .9rem;
+    width: 190px;
+    cursor: pointer;
+    transition: var(--hoverEffectTrasition);
+}
+
+button.addNoteButton-twitter,
+button.addNoteButton-kindleFile{
+    font-size: .8rem;
+}
+
+button.addNoteButton-kindleFile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+button.addNoteButton:hover,
+button.addNoteButton-twitter:hover,
+button.addNoteButton-kindleFile:hover {
     background-color: var(--hoveredButtonWithBlackBackGroundColor);
     transition: var(--hoverEffectTrasition);
 }
+

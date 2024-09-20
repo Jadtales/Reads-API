@@ -60,6 +60,14 @@ export default function SettingsPage(): ReactElement {
                             <option value="dark">Dark</option>
                         </select>
                     </div>
+
+                    <div className="languageAdjustment">
+                        <h3>Language</h3>
+                        <select name="language" id="languagesSelection">
+                            <option value="English">English</option>
+                            <option value="Polish">Polish</option>
+                        </select>
+                    </div>
                 </div>) : (<div className="userProfileAdjustments">
                     <div className="userCredentials">
                         <h3>User credentials</h3>

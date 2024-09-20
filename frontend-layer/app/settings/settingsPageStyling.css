@@ -4,7 +4,7 @@ div.settingsPageContainer{
 
     margin: 2% 10%;
     padding: 1rem;
-    height: 30vh;
+    height: 40vh;
 
     display: flex;
     flex-direction: row;
@@ -16,7 +16,7 @@ div.settingsPageContainer div.settingsTarget{
     min-width: 210px;
 }
 
-ul li{
+div.settingsPageContainer ul li{
     list-style: none;
     margin: 10px 0;
     padding: 6px;
@@ -34,13 +34,13 @@ ul li.li-active{
 }
 
 
-h3{
+div.settingsPageContainer h3{
     color: #ababab;
     margin-bottom: 10px;
     padding: 6px;
 }
 
-select#themeAppearance{
+select#themeAppearance, select#languagesSelection{
     padding: 6px 10px;
     border-radius: 8px;
     border: none;
@@ -68,17 +68,18 @@ div.settingsTarget{
 .settingsAdjustments-generalSettings,
 .userProfileAdjustments{
     padding: 1rem;
+    width: 100%;
 
     div{
         margin-bottom: 50px;
     }
 }
 
-div.appearanceAdjustments{
+div.appearanceAdjustments, div.languageAdjustment{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 65vw;
+    /*align-items: center;*/
 }
 
 div.userProfileAdjustments .userCredentials{

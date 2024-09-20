@@ -1,4 +1,5 @@
-div.browsePage{
+div.browsePage,
+div.browsePage-searching{
     margin: 4% 10.5%;
 
     display: flex;
@@ -8,7 +9,9 @@ div.browsePage{
 
 div.popularNotes,
 div.popularByGenre,
-div.recommendationsBasedOnFlavour{
+div.recommendationsBasedOnFlavour,
+div.searchedHighlights-components,
+div.searchedPeople-profiles{
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
