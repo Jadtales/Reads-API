@@ -60,7 +60,7 @@ div.topLayer {
 
             }
 
-            & & div.bookTags:hover{
+            & & div.bookTags:hover {
 
             }
         }
@@ -71,10 +71,16 @@ div.topLayer {
     & div.flashcardSettings {
         display: flex;
         align-items: center;
-        border: var(--border);
+        border: var(--borderFlashCardSettingsOption);
         height: fit-content;
         border-radius: 10px;
         padding: 3px 5px;
         cursor: pointer;
+        transition: .2s ease-out;
+    }
+
+    & div.flashcardSettings:hover {
+        background-color: var(--hoveredButtonTextColor);
+        transition: .2s ease-in;
     }
 }

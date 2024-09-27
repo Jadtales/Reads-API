@@ -1,31 +1,45 @@
 'use client';
 
-import {ReactElement, useState} from "react";
+import { ReactElement, useState, useRef } from 'react';
 import './addNoteButtonComponentStyling.css';
-import Image from "next/image";
-
 import UploadKindleHighlights from "@/app/compos/AddNoteButtonCompo/uploadKindleHighlights/UploadKindleHighlights";
-
-import importIcon from '@/public/icons/upload-cloud-line.svg'
+import {useRouter} from "next/navigation";
 
 export default function AddNoteComponentButton(): ReactElement {
     const [isAddNoteButtonClicked, setIsAddNoteButtonClicked] = useState<boolean>(false);
+    const buttonRef = useRef<HTMLDivElement>(null);
+
+    const router = useRouter()
 
     const handleAddNoteButtonClicked = (): void => {
-        setIsAddNoteButtonClicked(prevState => !prevState);
+        setIsAddNoteButtonClicked(!isAddNoteButtonClicked);
+
+        // Add document click listener when expanded
+        if (!isAddNoteButtonClicked) {
+            document.addEventListener('click', handleClickOutside, true);
+        }
+
+        if(isAddNoteButtonClicked){
+            router.push('')
+        }
     };
 
-    const handleUploadFiles = (): void => {
+    const handleClickOutside = (event: MouseEvent): void => {
+        // Check if the click is outside the buttonRef
+        if (buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
+            setIsAddNoteButtonClicked(false);
 
-    }
+            // Remove the event listener after collapsing
+            document.removeEventListener('click', handleClickOutside, true);
+        }
+    };
+
 
     return (
-        <div className="addNoteButtonWrapper">
+        <div className="addNoteButtonWrapper" ref={buttonRef}>
             {isAddNoteButtonClicked ? (
                 <div className="otherButtonsContainer">
-                    <button className="addNoteButton-twitter">
-                        Import Twitter savings
-                    </button>
+                    <button className="addNoteButton-twitter">Import Twitter savings</button>
 
                     <UploadKindleHighlights/>
 
