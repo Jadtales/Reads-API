@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, {ChangeEvent, ReactElement, useState} from "react";
+import React, {ChangeEvent, ReactElement, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
@@ -10,14 +10,18 @@ import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import SearchIcon from "@/public/icons/search-2-line.svg";
 import NotificationsIcon from "@/public/icons/notification-line.svg";
 import ReportBugsIcon from "@/public/icons/error-warning-line.svg";
+import CollapseArrow from '@/public/icons/collapseArrow.svg';
 import RNICON from "@/public/RN-icon.png";
+import NotificationsComponent from "@/app/compos/navbar/notificationsComponent/NotificationsComponent";
 
 export default function Navbar(): ReactElement {
-
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
     const [userSearchQuery, setUserSearchQuery] = useState<string>(''); // Initial value is an empty string
+    const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
+    const [clickedButton, setClickedButton] = useState<string>(''); // To track which button was clicked
 
     const router = useRouter();
+    const notisCenterRef = useRef<HTMLDivElement>(null);
 
     const handleUserProfileClicked = (): void => {
         setIsUserProfileClicked(!isUserProfileClicked);
@@ -31,6 +35,33 @@ export default function Navbar(): ReactElement {
         setUserSearchQuery(searchInputField.target.value); // Always keep this as a string
     };
 
+    const handleNotificationsToggles = (buttonName: string): void => {
+        setIsNotifications_reportActive(!isNotifications_reportActive);
+        setClickedButton(buttonName); // To track which button was clicked
+    };
+
+    // Close the notifications center when the user clicks or scrolls outside of it
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent): void => {
+            if (notisCenterRef.current && !notisCenterRef.current.contains(event.target as Node)) {
+                setIsNotifications_reportActive(false);
+            }
+        };
+
+        const handleScrollOutside = (): void => {
+            setIsNotifications_reportActive(false); // Close the notifications center when scrolling
+        };
+
+        // Add the event listeners
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('scroll', handleScrollOutside);
+
+        // Cleanup event listeners when component unmounts or updates
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('scroll', handleScrollOutside);
+        };
+    }, [isNotifications_reportActive]);
 
     return (
         <>
@@ -41,9 +72,7 @@ export default function Navbar(): ReactElement {
                     <div className="user-search_buttons">
                         <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
                              onClick={handleUserProfileClicked}>
-                            <Image src={RNICON} alt="userProfileImg" width={20} style={{
-                                borderRadius: '50%'
-                            }}/>
+                            <Image src={RNICON} alt="userProfileImg" width={20} style={{borderRadius: '50%'}}/>
                             <h1 id="userUsername">Jadtales</h1>
 
                             <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
@@ -67,17 +96,37 @@ export default function Navbar(): ReactElement {
                 </div>
 
                 <div className="userInteractionButtons">
-                    <button className="stdIconStyling">
+                    <button id="notificationsButton" className="stdIconStyling"
+                            onClick={() => handleNotificationsToggles('notifications')}>
                         <Image src={NotificationsIcon} alt="settingIcon"/>
                     </button>
-                    <button className="stdIconStyling">
-                        <Image src={ReportBugsIcon} alt="settingIcon"/>
+
+                    <button id="reportButton" className="stdIconStyling"
+                            onClick={() => handleNotificationsToggles('report')}>
+                        <Image src={ReportBugsIcon} alt="ReportIcon"/>
                     </button>
                 </div>
             </nav>
 
+            {/* Notifications/report center */}
+            <div
+                className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
+                ref={notisCenterRef}  // Use ref to reference the notifications center div
+            >
+                <div className="collapseNotificationsCenter" onClick={() => handleNotificationsToggles(clickedButton)}>
+                    <Image src={CollapseArrow} alt="collapseNotificationsCenter"/>
+                </div>
+                <p>{clickedButton === 'notifications' ? 'your notifications' : 'report bugs'}</p>
+                <hr style={{margin: "20px 10px"}}/>
+                {clickedButton === "notifications" ? (<div className="receivedNotifications-inactive">
+                    <NotificationsComponent username={"zuzanna"} purpose={"Updated"} targetChange={"Dark matter"}/>
+                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
+                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
+                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
+                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
+                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
+                </div>) : (<div></div>)}
+            </div>
         </>
     );
 }
-
-

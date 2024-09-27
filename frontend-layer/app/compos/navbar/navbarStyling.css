@@ -184,6 +184,44 @@ div.userProfile-active {
     }
 }
 
+/*--- styling the Notifications and Report bugs center*/
+div.notificationsCenter-inactive{
+    display: none;
+}
+
+div.notificationsCenter-active{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    padding: 0 10px;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    z-index: 99999;
+    background-color: white;
+
+    & div.collapseNotificationsCenter{
+        margin: 20px 0;
+        cursor: pointer;
+        width: fit-content;
+    }
+
+    p{
+        font-size: 1.4rem;
+        margin: 10px;
+    }
+}
+
+div.receivedNotifications-inactive{
+    height: 85vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+
 /*---- responsive design*/
 @media screen and (width <= 1200px){
     nav#navbarContainer{
