@@ -10,7 +10,7 @@ div.folderContainer {
     font-family: Arial, sans-serif;
     width: 78vw;
     margin: 40px 11%;
-    z-index: 9999;
+    z-index: 1;
     border-radius: 10px;
     background-color: #000000;
 

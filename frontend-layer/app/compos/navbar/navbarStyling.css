@@ -94,19 +94,30 @@ div.iconContainer {
     }
 }
 
-div.userInteractionButtons button {
-    display: inline;
-    flex-direction: row;
+div.userInteractionButtons {
+    display: flex;
     align-items: center;
 
-    & img {
-        display: flex;
-        align-items: center;
-        transform: scale(1.2);
+    button#getPremium {
+        font-size: 1.1rem;
+        background: black;
+        color: white;
+        padding: 6px 8px;
+        margin: 0 8px;
+        text-decoration: none;
+        border-radius: 11px;
+        border: none;
+        outline: none;
+        cursor: pointer;
     }
+
+    button#getPremium:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+    }
+
+
 }
-
-
 
 /*---- clicking events*/
 div.userProfile-active {
@@ -144,11 +155,11 @@ div.userProfile-active {
         cursor: pointer;
     }
 
-    & div.userButtons-active button:hover{
+    & div.userButtons-active button:hover {
         background-color: #cbcbcb;
     }
 
-    & div.userButtons-active a:hover{
+    & div.userButtons-active a:hover {
         background-color: #cbcbcb;
     }
 }
@@ -185,37 +196,57 @@ div.userProfile-active {
 }
 
 /*--- styling the Notifications and Report bugs center*/
-div.notificationsCenter-inactive{
+/* Notifications and Report Bugs Center */
+div.notificationsCenter-inactive {
     display: none;
 }
 
-div.notificationsCenter-active{
+div.notificationsCenter-active {
     position: absolute;
     right: 0;
     top: 0;
     width: 300px;
     height: 100vh;
     padding: 0 10px;
-
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-
-    z-index: 99999;
+    z-index: 2;
     background-color: white;
+    animation: comeOut 0.3s ease;
 
-    & div.collapseNotificationsCenter{
-        margin: 20px 0;
-        cursor: pointer;
-        width: fit-content;
+    div.collapseIcon_centerSwitchers_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+            cursor: pointer;
+        }
+
+        div.collapseNotificationsCenter {
+            margin: 20px 0;
+            cursor: pointer;
+            width: fit-content;
+        }
     }
 
-    p{
+    p {
         font-size: 1.4rem;
         margin: 10px;
     }
 }
 
-div.receivedNotifications-inactive{
+/* Fixed typo in keyframe name */
+@keyframes comeOut {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+div.receivedNotifications-inactive {
     height: 85vh;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -223,8 +254,8 @@ div.receivedNotifications-inactive{
 
 
 /*---- responsive design*/
-@media screen and (width <= 1200px){
-    nav#navbarContainer{
+@media screen and (width <= 1200px) {
+    nav#navbarContainer {
         background-color: white;
         border-bottom-right-radius: 30px;
         border-bottom-left-radius: 30px;
@@ -234,19 +265,31 @@ div.receivedNotifications-inactive{
         flex-direction: column;
         align-items: start;
 
-        & div.iconContainer{
+        & div.iconContainer {
             margin: 0 4%;
             display: flex;
             /*justify-content: space-between;*/
         }
 
-        & div.userInteractionButtons{
+        & div.userInteractionButtons {
+
+
             display: flex;
             margin: 10px 0 10px 43%;
 
-            & button{
+            & button {
                 background-color: #e6e6e6;
             }
         }
     }
+}
+
+div.switchNotiCenterToReportBugsCenter{
+    background-color: black;
+    border-radius: 50px;
+    padding: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

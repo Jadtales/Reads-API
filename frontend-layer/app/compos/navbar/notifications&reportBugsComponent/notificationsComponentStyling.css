@@ -1,0 +1,96 @@
+div.notificationsComponent {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: .9rem;
+
+    h1#NotifierUsername {
+        font-size: 1rem;
+        padding: 3px 6px;
+        background-color: black;
+        color: white;
+        width: fit-content;
+        cursor: pointer;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+
+    h1#NotifierUsername:hover {
+        text-decoration: underline white;
+    }
+
+    span.actionOfChange {
+        text-decoration: underline black;
+    }
+}
+
+/*---- report bugs component styling*/
+div.reportBugsContainer {
+    & h1 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    div.issuePriority {
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        button {
+            padding: 5px 10px;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button.basic:hover {
+            background-color: #eaf7ff;
+        }
+
+        button.important:hover {
+            background-color: #fff8ea;
+        }
+
+        button.urgent:hover {
+            background-color: #ffeaea;
+        }
+
+        button.basic:active {
+            background-color: #eaf7ff;
+        }
+
+        button.important:focus {
+            background-color: #fff8ea;
+        }
+
+        button.urgent:focus {
+            background-color: #ffeaea;
+        }
+    }
+
+    form#formElement {
+
+        textarea {
+            resize: none;
+            padding: 5px;
+            outline: none;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 8px 10px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}

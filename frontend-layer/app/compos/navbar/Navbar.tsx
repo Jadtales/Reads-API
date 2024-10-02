@@ -12,13 +12,16 @@ import NotificationsIcon from "@/public/icons/notification-line.svg";
 import ReportBugsIcon from "@/public/icons/error-warning-line.svg";
 import CollapseArrow from '@/public/icons/collapseArrow.svg';
 import RNICON from "@/public/RN-icon.png";
-import NotificationsComponent from "@/app/compos/navbar/notificationsComponent/NotificationsComponent";
+import NotificationsComponent from "@/app/compos/navbar/notifications&reportBugsComponent/NotificationsComponent";
+import ReportBugsComponent from "@/app/compos/navbar/notifications&reportBugsComponent/ReportBugsComponent";
+import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
 
 export default function Navbar(): ReactElement {
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
     const [userSearchQuery, setUserSearchQuery] = useState<string>(''); // Initial value is an empty string
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
     const [clickedButton, setClickedButton] = useState<string>(''); // To track which button was clicked
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     const router = useRouter();
     const notisCenterRef = useRef<HTMLDivElement>(null);
@@ -67,7 +70,8 @@ export default function Navbar(): ReactElement {
         <>
             <nav id="navbarContainer">
                 <div className="iconContainer">
-                    <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={50}/>
+                    <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={50} style={{cursor: 'pointer'}}
+                           onClick={() => router.push('/home/unspecified')}/>
 
                     <div className="user-search_buttons">
                         <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
@@ -95,7 +99,13 @@ export default function Navbar(): ReactElement {
                     </div>
                 </div>
 
+
                 <div className="userInteractionButtons">
+                    <button id="getPremium" onClick={() => setShowModal(!showModal)}>
+                        {showModal && <SubModalComponent/>}
+                        Get premium
+                    </button>
+
                     <button id="notificationsButton" className="stdIconStyling"
                             onClick={() => handleNotificationsToggles('notifications')}>
                         <Image src={NotificationsIcon} alt="settingIcon"/>
@@ -109,12 +119,22 @@ export default function Navbar(): ReactElement {
             </nav>
 
             {/* Notifications/report center */}
-            <div
-                className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
+            <div className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
                 ref={notisCenterRef}  // Use ref to reference the notifications center div
             >
-                <div className="collapseNotificationsCenter" onClick={() => handleNotificationsToggles(clickedButton)}>
-                    <Image src={CollapseArrow} alt="collapseNotificationsCenter"/>
+                <div className="collapseIcon_centerSwitchers_container">
+                    <div className="collapseNotificationsCenter"
+                         onClick={() => handleNotificationsToggles(clickedButton)}>
+                        <Image src={CollapseArrow} alt="collapseNotificationsCenter"/>
+                    </div>
+
+                    <div className="switchNotiCenterToReportBugsCenter"
+                         onClick={() => clickedButton === 'notifications' ?
+                             setClickedButton('report bugs') : setClickedButton('notifications')}>
+                        {clickedButton === "notifications" ?
+                            (<Image src={ReportBugsIcon} alt="ReportBugsIcon" width={19}/>)
+                            : <Image src={NotificationsIcon} alt="NotificationsIcon" width={19}/>}
+                    </div>
                 </div>
                 <p>{clickedButton === 'notifications' ? 'your notifications' : 'report bugs'}</p>
                 <hr style={{margin: "20px 10px"}}/>
@@ -125,7 +145,7 @@ export default function Navbar(): ReactElement {
                     <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
                     <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
                     <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                </div>) : (<div></div>)}
+                </div>) : (<div><ReportBugsComponent/></div>)}
             </div>
         </>
     );
