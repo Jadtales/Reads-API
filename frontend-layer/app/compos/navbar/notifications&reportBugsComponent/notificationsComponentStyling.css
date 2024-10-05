@@ -1,5 +1,6 @@
 div.notificationsComponent {
-    background-color: #f4f4f4;
+    background-color: var(--backgroundColor_notificationComponent);
+
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
@@ -8,7 +9,7 @@ div.notificationsComponent {
     h1#NotifierUsername {
         font-size: 1rem;
         padding: 3px 6px;
-        background-color: black;
+        background-color: var(--darkTheme_componentsBackgroundColor);
         color: white;
         width: fit-content;
         cursor: pointer;
@@ -20,8 +21,9 @@ div.notificationsComponent {
         text-decoration: underline white;
     }
 
-    span.actionOfChange {
+    A.actionOfChange {
         text-decoration: underline black;
+        color: var(--textColor);
     }
 }
 
@@ -30,6 +32,7 @@ div.reportBugsContainer {
     & h1 {
         margin-bottom: 10px;
         font-size: 1.5rem;
+        color: var(--textColor);
     }
 
     div.issuePriority {
@@ -44,6 +47,8 @@ div.reportBugsContainer {
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            color: var(--textColor);
+            background-color: var(--backgroundColor_notificationComponent);
         }
 
         button.basic:hover {
@@ -75,10 +80,12 @@ div.reportBugsContainer {
 
         textarea {
             resize: none;
-            padding: 5px;
+            padding: 15px;
             outline: none;
-            border: 1px solid black;
+            border: 1px solid var(--backgroundColor_componentsInsideComponent);
             border-radius: 10px;
+            background-color: var(--backgroundColor_notificationComponent);
+            color: var(--textColor);
         }
 
         button {
@@ -88,9 +95,14 @@ div.reportBugsContainer {
             outline: none;
             border: none;
             border-radius: 10px;
-            background-color: black;
+            background-color: var(--backgroundColor_componentsInsideComponent);
             color: white;
             cursor: pointer;
+        }
+
+        button:hover{
+            background-color: var(--hoveredButtonWithBlackBackGroundColor);
+            transition: .2s ease;
         }
     }
 }

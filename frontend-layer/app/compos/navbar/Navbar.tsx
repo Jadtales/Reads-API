@@ -21,7 +21,7 @@ export default function Navbar(): ReactElement {
     const [userSearchQuery, setUserSearchQuery] = useState<string>(''); // Initial value is an empty string
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
     const [clickedButton, setClickedButton] = useState<string>(''); // To track which button was clicked
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false); // to close or open SubModal
 
     const router = useRouter();
     const notisCenterRef = useRef<HTMLDivElement>(null);

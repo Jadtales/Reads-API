@@ -19,7 +19,7 @@ export default function ReportBugsComponent(): ReactElement {
 
             <h1>Issue description</h1>
             <form action="/toReportedIssuesStack" id="formElement">
-                <textarea name="textarea" id="issueDescription" cols="32"
+                <textarea name="textarea" id="issueDescription" cols="30"
                           rows="30">Write your issue description</textarea>
 
 
