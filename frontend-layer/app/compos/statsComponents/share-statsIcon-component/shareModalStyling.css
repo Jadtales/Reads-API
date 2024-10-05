@@ -1,0 +1,50 @@
+div.shareModalBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    backdrop-filter: blur(1px); /* Blurs the background */
+    z-index: 9999;
+
+
+    div.shareModalContainer{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        border-radius: 20px;
+        background-color: white;
+        color: black;
+
+
+        width: 40vw;
+        height: 40ch;
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        div.shareIcon_shareModalClosingIcon{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        div.copyLinkContainer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background-color: var(--darkThemeBody);
+            color: var(--textColor);
+
+            padding: 10px;
+            border-radius: 10px;
+        }
+    }
+}

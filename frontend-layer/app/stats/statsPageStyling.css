@@ -1,0 +1,19 @@
+div.statsPageContainer {
+    margin: 4% 10.5%;
+
+
+
+    div.userOverviewStats {
+        h1 {
+            margin: 15px 0;
+            color: var(--textColor_gray_dark);
+        }
+
+        div.statsResult {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: start;
+        }
+    }
+}

@@ -11,7 +11,7 @@ export default function (): ReactElement {
         <div style={{
             display: 'flex',
             alignItems: 'center',
-            backgroundColor: 'black',
+            backgroundColor: 'var(--darkTheme_componentsBackgroundColor)',
             width: 'fit-content',
             color: 'white',
             padding: '6px 15px',
