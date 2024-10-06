@@ -1,0 +1,339 @@
+div.createnotes-topLayer div.creationButton-layer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+    & div.creationButtons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        button.sharingOption {
+            display: flex;
+            flex-direction: row;
+            width: 115px;
+
+            & img {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    div.creationButtons button {
+        padding: 8px 12px;
+        border-radius: var(--borderRadius);
+        border: none;
+        outline: none;
+        margin-left: 10px;
+
+        color: white;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        background-color: black;
+
+        cursor: pointer;
+    }
+
+    div.creationButtons button:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+
+    }
+}
+
+div.notesCreationFromExternalSources-layer {
+    margin: 5% 0;
+
+    h1 {
+        letter-spacing: 1px;
+        margin: 1% 0;
+    }
+
+    button {
+        padding: 12px 20px;
+        border-radius: var(--borderRadius);
+        border: none;
+        outline: none;
+
+        margin-right: 20px;
+
+        color: white;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        background-color: black;
+
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+    }
+}
+
+/*--- styling notes description and tags*/
+div.NoteDescriptionAndTitleComponentContainer {
+    div.noteTitle, div.noteDescription {
+        background-color: white;
+        margin: 30px 0;
+        padding: 20px;
+        border-radius: var(--borderRadiusNote);
+
+        h1 {
+            margin: 15px 0;
+        }
+
+        input {
+            width: 100%;
+            font-size: 1.3rem;
+            padding: 15px;
+            background-color: #eaeaea;
+            outline: none;
+            border: none;
+            border-radius: var(--borderRadiusNote);
+            margin-bottom: 15px;
+        }
+
+        input::placeholder {
+            color: #8d8d8d;
+        }
+    }
+
+    div.noteDescription div.noteTags button {
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+        font-size: 1rem;
+        padding: 8px 10px;
+        border-radius: var(--borderRadius);
+    }
+
+}
+
+/*--- styling note card component*/
+div.noteCardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+
+    box-shadow: 1px 1px 0 2px black;
+
+    height: 20vh;
+
+    padding: 30px;
+
+    border-radius: var(--borderRadiusNote);
+
+    div.noteCardEditing {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        div.cardEditingTools {
+            margin-left: 150px;
+        }
+
+        div.cardEditingTools ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+
+            li {
+                cursor: pointer;
+                padding: 2px 4px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /*background-color: #efefef;*/
+                /*border-radius: 4px;*/
+            }
+
+            li:active {
+                cursor: pointer;
+                padding: 2px 4px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #efefef;
+                border-radius: 4px;
+            }
+
+        }
+
+        div.otherCardEditingOptions ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+
+            li {
+                cursor: pointer;
+                padding: 2px 4px;
+
+            }
+
+            li.deleteButton:hover img {
+                background-color: rgba(255, 0, 0, 0.11);
+                border-radius: 5px;
+
+            }
+        }
+    }
+
+    div.term_description_layer {
+        display: flex;
+        flex-direction: row;
+        /*justify-content: space-between;*/
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        div.term, div.description {
+            width: 50%;
+
+            div.termTextarea, div.definitionTextarea {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+                font-weight: lighter;
+
+                border: none;
+                border-bottom: 3px solid #989898;
+                outline: none;
+                cursor: text;
+
+                width: 100%;
+                margin: 15px 0;
+            }
+
+            /*---- when term is focused*/
+
+            div.termTextarea-active {
+
+                border-bottom: 3px solid black;
+                cursor: text;
+                margin: 15px 0;
+            }
+
+            input#termInputField, input#definitionInputField {
+                color: black;
+                font-weight: lighter;
+                letter-spacing: 1px;
+                width: 100%;
+                outline: none;
+                border: none;
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                font-size: 1rem;
+            }
+        }
+    }
+
+}
+
+/*---- styling card footer*/
+div.cardFooterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: white;
+    margin: 2% 0;
+    border-radius: var(--borderRadiusNote);
+    padding: 25px;
+    font-size: 1rem;
+
+    div.addNewCardButton {
+        background-color: black;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: .2s ease;
+
+    }
+
+    div.addNewCardButton:hover {
+        transition: .2s ease;
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+    }
+
+    input {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 0 10px;
+        outline: none;
+        width: 6%;
+        font-size: 1.6rem;
+    }
+}
+
+/*---- to display navbar when the user scroll way deep down*/
+div.createnotes-topLayer div.creationButton-layer-withNavbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 5px;
+    height: 50px;
+    width: 80vw;
+
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    padding: 0 10px;
+
+    & div.creationButtons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        button.sharingOption {
+            display: flex;
+            flex-direction: row;
+            width: 115px;
+
+            & img {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    div.creationButtons button {
+        padding: 8px 12px;
+        border-radius: var(--borderRadius);
+        border: none;
+        outline: none;
+        margin-left: 10px;
+
+        color: white;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        background-color: black;
+
+        cursor: pointer;
+    }
+
+    div.creationButtons button:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+
+    }
+}
