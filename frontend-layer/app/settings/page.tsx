@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactElement, useState} from "react";
+import {Fragment, ReactElement, useState} from "react";
 import './settingsPageStyling.css'
 import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
 import GeneralSettingPageComponents from "@/app/compos/settingPageComponents/GeneralSettings";
@@ -15,7 +15,7 @@ export default function SettingsPage(): ReactElement {
 
     return (
 
-        <>
+        <Fragment>
             <GoBackToComponent/>
             <div className="settingsPageContainer">
                 <div className="settingsTarget">
@@ -56,7 +56,7 @@ export default function SettingsPage(): ReactElement {
 
 
             </div>
-        </>
+        </Fragment>
 
     )
 }

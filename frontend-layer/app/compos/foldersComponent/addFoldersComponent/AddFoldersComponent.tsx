@@ -1,4 +1,4 @@
-import {ReactElement, useState, useRef} from "react";
+import {ReactElement, useState, useRef, Fragment} from "react";
 import {useRouter} from "next/navigation";
 
 interface AddFolderComponentProps {
@@ -50,11 +50,11 @@ export default function AddFolderComponent({
     };
 
     return (
-        <>
+        <Fragment>
             {!isAddingNewFolder ? (
                 <span onClick={() => setIsAddingNewFolder(true)}>+</span>
             ) : (
-                <>
+                <Fragment>
                     <input
                         id="addFolderInputField"
                         type="text"
@@ -73,10 +73,10 @@ export default function AddFolderComponent({
                         placeholder="New folder name"
                     />
 
-                </>
+                </Fragment>
             )}
             {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
 
-        </>
+        </Fragment>
     );
 }

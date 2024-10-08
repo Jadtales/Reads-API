@@ -1,6 +1,6 @@
 'use client';
 
-import {ReactElement, useState} from "react";
+import {Fragment, ReactElement, useState} from "react";
 import './browsePage-styling.css';
 import FrontDesignNoteBrowse from "@/app/compos/suggested-frontDesignNote/FrontDesignNote-browse";
 
@@ -11,7 +11,7 @@ export default function BrowsePage(): ReactElement {
 
 
     return (
-        <>
+        <Fragment>
 
             {searchValue.length > 0 ? (
                 <div className="browsePage-searching">
@@ -74,6 +74,6 @@ export default function BrowsePage(): ReactElement {
                     </div>
                 </div>
             )}
-        </>
+        </Fragment>
     );
 }

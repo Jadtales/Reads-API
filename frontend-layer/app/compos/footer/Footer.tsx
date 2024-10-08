@@ -3,7 +3,6 @@ import Image from "next/image";
 import './footerStyling.css'
 
 import availableIcon from '@/public/icons/checkbox-circle-fill.svg'
-import windowsIcon from '@/public/icons/microsoft-fill.svg'
 import appleIcon from '@/public/icons/apple-fill.svg'
 import androidIcon from '@/public/icons/android-fill.svg'
 import RNICON from '@/public/RN-icon.png'
@@ -36,9 +35,6 @@ export default function Footer(): ReactElement {
                 </div>
 
                 <div className="availabilityPlatforms-section">
-                    <button className="windowsPlatform">
-                        <Image src={windowsIcon} alt="windows availabiliy"/> Windows
-                    </button>
                     <button className="applePlatform">
                         <Image src={appleIcon} alt="apple availabiliy"/> Apple
                     </button>

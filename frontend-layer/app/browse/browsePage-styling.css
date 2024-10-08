@@ -1,3 +1,9 @@
+div.browsePage {
+    h1 {
+        color: var(--textColor_gray_dark);
+    }
+}
+
 div.browsePage,
 div.browsePage-searching{
     margin: 4% 10.5%;
@@ -6,6 +12,7 @@ div.browsePage-searching{
     flex-direction: column;
     gap: 50px;
 }
+
 
 div.popularNotes,
 div.popularByGenre,
@@ -17,7 +24,6 @@ div.searchedPeople-profiles{
     gap: var(--gapNotes);
     width: 83vw;
 
-    /*box-shadow: inset -20px 0 50px 0 white;*/
     overflow-x: scroll;
     scrollbar-width: none;
     border-radius: var(--borderRadiusNote);

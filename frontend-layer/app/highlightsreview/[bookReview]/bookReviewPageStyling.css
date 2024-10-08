@@ -1,0 +1,39 @@
+div.reviewingSectionContainer{
+    margin-left: 15%;
+
+    div.reviewingSection{
+        display: flex;
+
+        div.topLayer{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            img#switchToMemoModeIcon{
+                cursor: pointer;
+            }
+        }
+    }
+
+    h1#noteCardTitle{
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 3rem;
+    }
+
+    div.reviewingSection div.topLayer{
+        img#goBackToHomePageIcon{
+           filter: brightness(0) saturate(100%);
+            cursor: pointer;
+        }
+    }
+
+    div.noteCardsHighlightsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+}

@@ -3,7 +3,7 @@
 import { ReactElement, useState, useRef } from 'react';
 import './addNoteButtonComponentStyling.css';
 import UploadKindleHighlights from "@/app/compos/AddNoteButtonCompo/uploadKindleHighlights/UploadKindleHighlights";
-import {useRouter} from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 
 export default function AddNoteComponentButton(): ReactElement {
     const [isAddNoteButtonClicked, setIsAddNoteButtonClicked] = useState<boolean>(false);
@@ -20,7 +20,7 @@ export default function AddNoteComponentButton(): ReactElement {
         }
 
         if(isAddNoteButtonClicked){
-            router.push('')
+            router.push('/createnotes')
         }
     };
 

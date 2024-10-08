@@ -1,4 +1,4 @@
-div.shareModalBackground{
+div.shareModalBackground {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,42 +9,102 @@ div.shareModalBackground{
     z-index: 9999;
 
 
-    div.shareModalContainer{
+    div.shareModalContainer {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
 
         border-radius: 20px;
-        background-color: white;
+        background-color: var(--backgroundColor_frontnote);
         color: black;
 
 
         width: 40vw;
-        height: 40ch;
+        height: 60ch;
         padding: 20px;
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        div.shareIcon_shareModalClosingIcon{
+        div.shareIcon_shareModalClosingIcon {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
         }
 
-        div.copyLinkContainer{
+        div.shareOnSocials {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: start;
+            gap: .5rem;
+        }
 
-            background-color: var(--darkThemeBody);
-            color: var(--textColor);
-
-            padding: 10px;
+        div.contentToBeShared {
+            margin: 10px 0;
+            padding: 20px;
             border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            background-color: #d3d3d3;
+
+            div.topLayer{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            div.sharedContentContainer{
+                span.statsPeriod{
+                    font-size: 1.2rem;
+                    letter-spacing: 2px;
+                }
+                display: flex;
+                flex-direction: column;
+                font-size: 3rem;
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            img#reanotesIcon{
+                width: 30px;
+                height: 30px;
+
+                position: absolute;
+                right: 40px;
+                bottom: 145px;
+            }
+        }
+
+        div.copyLinkContainer {
+            div.socialLinks_headlight {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 5px;
+
+                h1 {
+                    font-size: 1.1rem;
+                }
+            }
+
+            div.copyLink {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                background-color: var(--darkThemeBody);
+                color: var(--textColor);
+
+                padding: 10px;
+                border-radius: 10px;
+            }
         }
     }
 }

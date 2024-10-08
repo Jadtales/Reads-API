@@ -1,10 +1,10 @@
-import {ReactElement} from "react";
-import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
+"use client";
+import styles from "../page.module.css";
 
-export default function Home(): ReactElement {
+export default function Home() {
     return (
-        <div style={{width: "100%"}}>
-            <FolderComponent/>
-        </div>
-    )
+        <main className={styles.main}>
+
+        </main>
+    );
 }

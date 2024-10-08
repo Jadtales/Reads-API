@@ -6,4 +6,24 @@ GET http://localhost:3002/users;
 GET http://localhost:3002/users/amjad
 
 ### Get a specific user by id
-GET http://localhost:3002/users/am201
+GET http://localhost:3002/users/2
+
+### GET user notes
+GET http://localhost:3002/users/2/aliens/?test=it'sbeentested
+
+// ---- posts requests
+
+### Post user credentials for user creation
+PATCH http://localhost:3002/users/2
+Content-Type: application/json
+
+{
+  "userUsername": "jadtales0",
+
+  "userFirstName": "amjad",
+  "userLastName": "massaoud",
+  "userAge": 21,
+
+  "userEmail": "amjadmassaoud@gmail.com",
+  "userPassword": "qwertYqwqqw55."
+}

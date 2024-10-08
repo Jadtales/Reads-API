@@ -32,7 +32,7 @@ export class UsersController {
     }
 
 
-    // Fetch notes for a user with a limit on the number of books
+    // Fetch createnotes for a user with a limit on the number of books
     @Get('/:userId/:userNotes?')
     public getUsersNotes(
         @Param('userId', ParseIntPipe) userid: number | undefined,

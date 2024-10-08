@@ -1,9 +1,9 @@
 "use client";
 
-import React, {ChangeEvent, ReactElement, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, Fragment, ReactElement, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import "./navbarStyling.css";
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
@@ -66,8 +66,13 @@ export default function Navbar(): ReactElement {
         };
     }, [isNotifications_reportActive]);
 
+    const handleGoingToUserProfile = (): void => {
+        router.push(`/profile/${document.getElementById('userUsername').innerText.toLowerCase()}`)
+        setIsUserProfileClicked(!isUserProfileClicked)
+    }
+
     return (
-        <>
+        <Fragment>
             <nav id="navbarContainer">
                 <div className="iconContainer">
                     <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={50} style={{cursor: 'pointer'}}
@@ -77,7 +82,7 @@ export default function Navbar(): ReactElement {
                         <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
                              onClick={handleUserProfileClicked}>
                             <Image src={RNICON} alt="userProfileImg" width={20} style={{borderRadius: '50%'}}/>
-                            <h1 id="userUsername">Jadtales</h1>
+                            <h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
 
                             <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
                                 <Link href={`/settings`}>Settings</Link>
@@ -147,6 +152,6 @@ export default function Navbar(): ReactElement {
                     <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
                 </div>) : (<div><ReportBugsComponent/></div>)}
             </div>
-        </>
+        </Fragment>
     );
 }

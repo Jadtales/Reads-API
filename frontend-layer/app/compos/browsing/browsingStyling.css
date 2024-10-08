@@ -8,7 +8,7 @@ div.navigationButtons {
 
     & a {
         text-decoration-line: none;
-        color: black;
+        color: var(--textColor);
         opacity: 40%;
         font-family: "Oswald", sans-serif;
         border: none;
@@ -25,7 +25,8 @@ div.navigationButtons {
         padding: 0 10px;
         border-radius: 10px;
         opacity: 100%;
-        background-color: black;
+        background-color: var(--darkTheme_componentsBackgroundColor);
+
 
         font-family: "Oswald", sans-serif;
         border: none;

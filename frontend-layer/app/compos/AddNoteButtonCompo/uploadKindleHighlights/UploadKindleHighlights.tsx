@@ -1,4 +1,4 @@
-import {ChangeEvent, ReactElement, useRef} from "react";
+import {ChangeEvent, Fragment, ReactElement, useRef} from "react";
 
 import importIcon from '@/public/icons/upload-cloud-line.svg'
 import Image from "next/image";
@@ -23,7 +23,7 @@ export default function UploadKindleHighlights(): ReactElement {
     };
 
     return (
-        <>
+        <Fragment>
             <button
                 className="addNoteButton-kindleFile"
                 onClick={handleFileInput}
@@ -40,6 +40,6 @@ export default function UploadKindleHighlights(): ReactElement {
                                          alt="importKindleHighlights"
                                          width={20}/>
             </button>
-        </>
+        </Fragment>
     )
 }

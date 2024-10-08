@@ -1,9 +1,8 @@
 div.suggestedNote {
     cursor: pointer;
     /*z-index: -1;*/
-    background-color: white;
+    background-color: var(--backgroundColor_frontnote);
     padding: var(--paddingNote);
-
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
@@ -22,8 +21,11 @@ div.suggestedNote {
         display: flex;
         flex-direction: column;
 
+
         & h1{
             font-size: 1.5rem;
+            color: var(--textColor);
+
         }
         & p#bookAuthorName{
             font-size: .8rem;
@@ -42,7 +44,7 @@ div.suggestedNote {
 }
 
 div.suggestedNote:hover {
-    background-color: #f8f8f8;
+    background-color: var(--backgroundColor_frontnote_hovered);
     transition: .2s ease;
 }
 

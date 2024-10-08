@@ -6,10 +6,10 @@ import './statsComponentsStyling.css'
 
 import LeftToIcon from '@/public/icons/leftTo.svg'
 import RightToIcon from '@/public/icons/rightTo.svg'
-import ShareStatsIcon from "@/app/compos/statsComponents/share-statsIcon-component/ShareStatsIcon";
+import ShareStatsModal from "@/app/compos/statsComponents/share-statsIcon-component/ShareStatsModal";
 
 type PeriodStatType = 'weekly' | 'monthly' | 'yearly';
-const periodStats: PeriodStatType[] = ['weekly', 'monthly', 'yearly'];
+const periodStatsArray: PeriodStatType[] = ['weekly', 'monthly', 'yearly'];
 
 interface overviewStatsProps_interface {
     typeOfStatsContent: string;
@@ -18,13 +18,13 @@ interface overviewStatsProps_interface {
 
 export default function OverviewStats({typeOfStatsContent, statsResult}: overviewStatsProps_interface): ReactElement {
     const [isStatAvailable, setIsStatAvailable] = useState<boolean>(true)
-    const [periodStat, setPeriodStat] = useState<PeriodStatType>(periodStats[0]);
+    const [periodStat, setPeriodStat] = useState<PeriodStatType>(periodStatsArray[0]);
 
     // Helper function to switch between period stats based on the index
     const handlePeriodSwitch = () => {
-        const currentIndex = periodStats.indexOf(periodStat);
-        const nextIndex = (currentIndex + 1) % periodStats.length; // Cycle back to 0 when reaching the end
-        setPeriodStat(periodStats[nextIndex]);
+        const currentIndex = periodStatsArray.indexOf(periodStat);
+        const nextIndex = (currentIndex + 1) % periodStatsArray.length; // Cycle back to 0 when reaching the end
+        setPeriodStat(periodStatsArray[nextIndex]);
     };
 
 
@@ -38,7 +38,10 @@ export default function OverviewStats({typeOfStatsContent, statsResult}: overvie
                 </button>
                 <span className="forwardTo"><Image src={RightToIcon} alt="goForwardsTo"/></span>
             </div>
-            <ShareStatsIcon/>
+            <ShareStatsModal statsPeriod={periodStat}
+                             sharedStatsContent={statsResult}
+                             sharedStatsTypeOfContent={typeOfStatsContent}
+                             whoSharedStats={"jadtales"}/>
         </div>
 
         {isStatAvailable ? <div className="typeOfStat_statResult">

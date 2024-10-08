@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, ReactElement, useState } from "react";
+import {ChangeEvent, Fragment, ReactElement, useState} from "react";
 import './createNotesPageStyling.css';
 
 import NotesCreationButtons from "@/app/compos/notesCreationComponents/topLayerComponents/NotesCreationButtons";
@@ -64,7 +64,7 @@ export default function Notes(): ReactElement {
     };
 
     return (
-        <>
+        <Fragment>
             <GoBackToComponent />
             <div className="createNotesComponent">
                 <NotesCreationButtons />
@@ -98,6 +98,6 @@ export default function Notes(): ReactElement {
             {noteCards.length === 4 && isSubModalOpen && (
                 <SubModalComponent onSubModalClose={closeSubModal} />
             )}
-        </>
+        </Fragment>
     );
 }

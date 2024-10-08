@@ -1,5 +1,5 @@
 'use client';
-import React, {ReactElement, useState} from 'react';
+import React, {Fragment, ReactElement, useState} from 'react';
 import {usePathname, useRouter} from 'next/navigation';
 import Link from 'next/link';
 import Image from "next/image";
@@ -31,7 +31,7 @@ export default function FolderComponent(): ReactElement {
     };
 
     return (
-        <>
+        <Fragment>
             <div className="folderContainer">
                 <div className="folders-section">
                     <ul>
@@ -61,7 +61,7 @@ export default function FolderComponent(): ReactElement {
             </div>
 
             <AddNoteComponentButton/>
-        </>
+        </Fragment>
     );
 }
     

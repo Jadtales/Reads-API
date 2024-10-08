@@ -1,0 +1,34 @@
+div.bookReviewerContainer{
+    margin: .6% 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1rem;
+
+
+    div.tableOfContent_otherSettings{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 95vh;
+        min-width: 300px;
+
+        position: fixed;
+        bottom: 3%;
+        left: 3%;
+
+        div.otherSettings{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            span.modeSwitcher{
+                display: flex;
+                align-items: center;
+                gap: .2rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

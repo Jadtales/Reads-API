@@ -10,7 +10,19 @@ import BookCover from '@/public/bookCovers/there there cover.jpg';
 
 import FrontNoteSettings from "@/app/compos/front design notes/frontNote-settingsOption/FrontNoteSettings";
 
-export default function FrontNoteComponent(): ReactElement {
+interface frontNoteComponentProps {
+    bookTitle: string;
+    bookAuthor: string;
+    bookId: number;
+    bookTags: string;
+}
+
+export default function FrontNoteComponent({
+                                               bookTitle,
+                                               bookAuthor,
+                                               bookId,
+                                               bookTags
+                                           }: frontNoteComponentProps): ReactElement {
     const [isNotecardSettingActive, setIsNotecardSettingActive] = useState<boolean>(false);
     const settingsRef = useRef<HTMLDivElement>(null);
 
@@ -61,12 +73,12 @@ export default function FrontNoteComponent(): ReactElement {
                     <Image src={BookCover} alt="there there" width={100}/>
 
                     <div className="bookInfos">
-                        <h2 id="bookTitle">There, there</h2>
-                        <p id="author-name">- Tommy Orange</p>
+                        <h2 id="bookTitle">{bookTitle}</h2>
+                        <p id="author-name">- {bookAuthor}</p>
 
                         <div className="bookTags">
                             <ul>
-                                <li>#Poetry</li>
+                                <li>#{bookTags}</li>
                             </ul>
                         </div>
                     </div>

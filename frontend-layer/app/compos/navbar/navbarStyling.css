@@ -45,6 +45,10 @@ div.iconContainer {
             cursor: pointer;
         }
 
+        h1#userUsername:hover {
+            text-decoration: underline white
+        }
+
         & div.userButtons a, button {
             display: none;
         }
@@ -82,6 +86,8 @@ div.iconContainer {
     align-items: center;
     gap: 10px;
 
+
+
     & a, button {
         padding: 6px 10px;
         font-size: 1rem;
@@ -92,6 +98,8 @@ div.iconContainer {
         outline: none;
         cursor: pointer;
     }
+
+
 }
 
 div.userInteractionButtons {
@@ -291,7 +299,7 @@ div.receivedNotifications-inactive {
     }
 }
 
-div.switchNotiCenterToReportBugsCenter{
+div.switchNotiCenterToReportBugsCenter {
     background-color: black;
     border-radius: 50px;
     padding: 4px;

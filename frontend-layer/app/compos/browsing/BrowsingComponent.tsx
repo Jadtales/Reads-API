@@ -6,7 +6,7 @@ import './browsingStyling.css';
 
 import {existedFolders} from "@/app/compos/foldersComponent/FolderComponent";
 
-export default function BrowsingComponent(): ReactElement {
+export default function BrowsingComponent(): React.ReactElement | undefined {
     const pathname = usePathname().split('/').filter((url: string) => url !== '')
 
     const browsingPages: string[] = ['home', 'browse', 'stats'];

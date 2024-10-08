@@ -86,8 +86,8 @@ export default function FilterComponent(): ReactElement {
 
                     <div className="isWithNotes">
                         <span
-                            className={activeSpans.includes("With notes") ? 'span-active' : ''}
-                            onClick={() => handleIsFilterOptionActive("With notes")}
+                            className={activeSpans.includes("With createnotes") ? 'span-active' : ''}
+                            onClick={() => handleIsFilterOptionActive("With createnotes")}
                         >
                             With notes
                         </span>

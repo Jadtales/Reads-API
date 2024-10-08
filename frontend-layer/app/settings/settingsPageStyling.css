@@ -1,5 +1,5 @@
 div.settingsPageContainer{
-    background-color: black;
+    background-color: var(--darkTheme_componentsBackgroundColor);
     color: white;
 
     margin: 2% 10%;
