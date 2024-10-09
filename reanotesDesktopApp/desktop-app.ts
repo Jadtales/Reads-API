@@ -6,7 +6,7 @@ import arrangeKindleNotes from "./data-extractor";
 
 // Global variables
 let kindleDrivePath = ''; // This will hold the path to the Kindle drive if found
-let kindleNotes = ''; // Path to Kindle notes if found
+let kindleNotes = ''; // Path to Kindle createnotes if found
 
 // detect all connected drivers
 async function detectKindleDrive(): Promise<string | null> {
@@ -39,7 +39,7 @@ async function detectKindleDrive(): Promise<string | null> {
 }
 
 
-// to find kindle notes
+// to find kindle createnotes
 async function findKindleNotes(kindleDirectory: string): Promise<string | null> {
     try {
         const filePath = path.join(kindleDirectory, 'My Clippings.txt')

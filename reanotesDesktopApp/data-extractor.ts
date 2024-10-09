@@ -64,14 +64,14 @@ export default function arrangeKindleNotes(clippings: string): bookNotes_interfa
         // Extract the highlight text itself
         const highlight = lines.slice(2).join('\n').trim();
 
-        // Construct the front design notes object
+        // Construct the front design createnotes object
         const note: highlights_interface = {
             highlight_location_page: highlightLocationPage,
             added_highlight_date: addedHighlightDate,
             highlight,
         };
 
-        // Find if the book is already in the notes array
+        // Find if the book is already in the createnotes array
         let book = notes.find(n => n.bookName === bookName && n.authorName === authorName);
 
         if (!book) {
@@ -85,7 +85,7 @@ export default function arrangeKindleNotes(clippings: string): bookNotes_interfa
             notes.push(book);
         }
 
-        // adding the front design notes to the book's notes array
+        // adding the front design createnotes to the book's createnotes array
         book.bookHighlights.push(note);
     }
 
