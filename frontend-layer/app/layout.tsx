@@ -25,6 +25,7 @@ export default function HomeLayout({children}) {
     )}
     {children}
     {!isHighlightsReviewPage && <Footer />}
+    <div id="modalsSection"></div>
     </body>
     </html>
 }

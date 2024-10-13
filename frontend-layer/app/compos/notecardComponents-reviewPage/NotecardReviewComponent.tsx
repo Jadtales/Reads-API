@@ -9,6 +9,7 @@ import StarIcon from '@/public/icons/staredIcon.svg'
 import FilledStaredIcon from '@/public/icons/filledStaredIcon.svg'
 import ArrowDownIcon from '@/public/icons/arrowDownIcon.svg'
 import SaveIcon from '@/public/icons/check-line.svg'
+import AiIcon from '@/public/icons/AiIcon.svg'
 
 interface NotecardReviewPageProps {
     noteCardContent: string;
@@ -58,6 +59,7 @@ export default function NoteCardReview({noteCardContent, noteCardTitle}: Notecar
             <div className="editingToolsLayer">
                 <Image src={isNoteCardStared ? FilledStaredIcon : StarIcon} alt="starNoteCard" id="starIcon"
                        onClick={handleStaringIcon}/>
+                <Image src={AiIcon} alt="useAi"/>
                 <Image
                     src={isEditModeActive ? SaveIcon : EditNoteCardIcon}
                     alt="editNoteCard"

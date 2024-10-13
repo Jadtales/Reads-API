@@ -3,12 +3,11 @@ div.noteCardReviewPageContainer{
     flex-direction: column;
     gap: 3rem;
 
-    background-color: white;
+    background-color: var(--backgroundColor_frontnote);
     width: 65%;
     padding: 30px;
     border-radius: var(--borderRadiusNote);
     /*box-shadow: 1px 1px 0 2px black;*/
-
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
 
     div.content_moreOptions{
@@ -19,10 +18,12 @@ div.noteCardReviewPageContainer{
         p#noteCardReviewContent{
             width: 100%;
             outline: none;
+            color: var(--textColor_gray_dark);
         }
 
         img#moreOptions{
             cursor: pointer;
+            filter: var(--imgColor_dark_gray);
         }
     }
 
@@ -35,6 +36,7 @@ div.noteCardReviewPageContainer{
 
         img{
             cursor: pointer;
+            filter: var(--imgColor_dark_gray);
         }
     }
 }
@@ -45,12 +47,12 @@ div.noteCardMemorizeContainer{
     justify-content: space-between;
     gap: 3rem;
 
-    background-color: white;
+    background-color: var(--backgroundColor_frontnote);
+    color: var(--textColor_gray_dark);
     width: 100%;
     height: 80vh;
     padding: 30px;
     border-radius: var(--borderRadiusNote);
-    /*box-shadow: 1px 1px 0 2px black;*/
 
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
 
@@ -66,14 +68,15 @@ div.noteCardMemorizeContainer{
         }
 
         span.duesCards{
-            background-color: #fffae7;
-            border: 1px solid #b28f00;
+            background-color: var(--button_backgroundColor_statsComponents);
+            border: 1px solid black;
+            color: var(--textColor_gray_dark);
 
         }
         span.newCards{
-            background-color: #ddffdd;
-            border: 1px solid #008000;
-
+            background-color: var(--button_backgroundColor_statsComponents);
+            border: 1px solid black;
+            color: var(--textColor_gray_dark);
         }
     }
 
@@ -84,15 +87,29 @@ div.noteCardMemorizeContainer{
         align-items: center;
         gap: 1rem;
 
+        p#cardTerm, p#cardDefinition{
+            text-align: justify;
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+
+        }
+
         img{
             cursor: pointer;
             padding: 20px;
             height: 50vh;
+            filter: var(--imgColor_dark_gray);
+
         }
 
         img:hover{
             background-color: #f8f8f8;
             border-radius: 10px;
+            filter: var(--imgColor_dark_gray);
+
         }
     }
 
@@ -100,26 +117,39 @@ div.noteCardMemorizeContainer{
         display: flex;
         justify-content: center;
         align-items: center;
+        img{
+            filter: var(--imgColor_dark_gray);
+        }
     }
 }
 
 div.difficultyLearningProcess{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 3rem;
-
-    background-color: white;
-    width: 100%;
-    padding: 30px;
+    background-color: var(--backgroundColor_frontnote);
+    width: 70vw;
+    padding: 10px;
 
     border-radius: var(--borderRadiusNote);
     /*box-shadow: 1px 1px 0 2px black;*/
 
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
 
-    span{
+    button{
         cursor: pointer;
+        padding: 10px 50px;
+        font-size: 1rem;
+        background-color: transparent;
+        border-radius: 10px;
+        outline: none;
+        color: var(--textColor_gray_dark);
+        border: none;
+    }
+
+    hr{
+        color: var(--darkThemeBody);
     }
 
 }

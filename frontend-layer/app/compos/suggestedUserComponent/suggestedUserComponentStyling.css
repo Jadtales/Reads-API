@@ -1,0 +1,71 @@
+div.suggestedUser {
+    div.container{
+        display: flex;
+        align-items: center;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+
+    div.userImg_username {
+        img {
+            border-radius: 100px;
+        }
+
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    div.userAchievements {
+        margin-left: 40px;
+
+        span.userGenres {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+
+            li{
+                list-style: none;
+                background-color: var(--backgroundColor_buttonInWhiteMode);
+                padding: 4px 10px;
+                border-radius: 10px;
+                cursor: default;
+                width: fit-content;
+            }
+        }
+    }
+
+    button#followUserButton {
+        background-color: var(--button_backgroundColor);
+        color: white;
+        padding: 8px 10px;
+        width: 80px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button#userFollowedButton{
+        background-color: transparent;
+        color: black;
+        padding: 8px 10px;
+        width: 80px;
+        border: 1px solid black;
+        outline: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: .2s ease;
+    }
+
+    button#followUserButton:hover {
+        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        transition: .2s ease;
+    }
+}

@@ -42,10 +42,10 @@ div.settingsPageContainer h3{
 
 select#themeAppearance, select#languagesSelection{
     padding: 6px 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
     outline: none;
-    background-color: #707070;
+    background-color: #282929FF;
     color: white;
 
     cursor: pointer;
@@ -58,11 +58,9 @@ select#themeAppearance, select#languagesSelection{
 }
 
 div.settingsTarget{
-    background-color: var(--backGroundColorHoveredButton);
+    background-color: #282929FF;
     padding: 1rem;
     border-radius: var(--borderRadiusNote);
-
-
 }
 
 .settingsAdjustments-generalSettings,
@@ -100,7 +98,7 @@ div.userProfileAdjustments .userCredentials{
             outline: none;
             border: none;
 
-            background-color: #696969;
+            background-color: #282929FF;
             color: white;
         }
 
@@ -112,12 +110,12 @@ div.userProfileAdjustments .userCredentials{
             display: flex;
             flex-direction: row;
             button{
-                background-color: var(--backGroundColorHoveredButton);
+                background-color: #282929FF;
                 color: white;
                 border: none;
                 outline: none;
                 cursor: pointer;
-                padding: 8px 15px;
+                padding: 8px 34px;
                 font-size: 1rem;
                 margin-right: 10px;
                 border-radius: var(--borderRadius);

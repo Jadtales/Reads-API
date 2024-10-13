@@ -1,39 +1,81 @@
-div.reviewingSectionContainer{
+div.reviewingSectionContainer {
     margin-left: 15%;
 
-    div.reviewingSection{
+    div.reviewingSection {
         display: flex;
 
-        div.topLayer{
+        div.topLayer {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            margin-bottom: 50px;
 
-            img#switchToMemoModeIcon{
+            h1#noteCardTitle{
+                color: var(--textColor_gray_dark);
+            }
+
+            img#switchToMemoModeIcon {
                 cursor: pointer;
+                filter: var(--imgColor_dark_gray);
             }
         }
     }
 
-    h1#noteCardTitle{
+    h1#noteCardTitle {
+        margin-top: 20px;
         text-align: center;
-        margin-bottom: 3rem;
-        font-size: 3rem;
+        /*margin-bottom: 3rem;*/
+        /*font-size: 3rem;*/
     }
 
-    div.reviewingSection div.topLayer{
-        img#goBackToHomePageIcon{
-           filter: brightness(0) saturate(100%);
+    div.reviewingSection div.topLayer {
+        img#goBackToHomePageIcon {
+            filter: var(--imgColor_dark_gray);
             cursor: pointer;
         }
     }
 
-    div.noteCardsHighlightsContainer{
+    div.noteCardsHighlightsContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 3rem;
     }
+}
+
+div.noteCardsMemoModeContainer {
+    background-color: var(--darkThemeBody);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    div.memoMode {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        div.quickTools {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-right: 25px;
+
+            img {
+
+                filter: var(--imgColor_dark_gray);
+
+                cursor: pointer;
+
+            }
+        }
+    }
+
+
+
 }

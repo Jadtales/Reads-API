@@ -30,7 +30,7 @@ button.addNoteButton,
 button.addNoteButton-twitter,
 button.addNoteButton-kindleFile{
     background-color: black;
-    border-radius: var(--borderRadius);
+    border-radius: 10px;
     border: none;
     color: white;
     padding: 20px;

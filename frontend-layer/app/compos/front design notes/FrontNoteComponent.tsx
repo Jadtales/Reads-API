@@ -55,7 +55,8 @@ export default function FrontNoteComponent({
     };
 
     // This function allows toggling between open and closed states.
-    const toggleSettings = () => {
+    const toggleSettings = (event: React.MouseEvent) => {
+        event.stopPropagation();
         if (isNotecardSettingActive) {
             closeSettings(); // If already open, close it
         } else {
@@ -70,6 +71,7 @@ export default function FrontNoteComponent({
         <div className="homeContainer">
             <div className="topLayer">
                 <div className="flashcardInfo">
+
                     <Image src={BookCover} alt="there there" width={100}/>
 
                     <div className="bookInfos">
@@ -98,6 +100,7 @@ export default function FrontNoteComponent({
                     )}
                 </div>
             </div>
+
         </div>
     );
 }

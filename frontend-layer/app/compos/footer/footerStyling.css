@@ -1,6 +1,6 @@
 footer {
-    margin: 10% 0% 0% 0%;
-    padding: 0% 10% 5% 10%;
+    margin: 10% 0 0 0;
+    padding: 0 10% 5% 10%;
     color: white;
     background-color: black;
 
@@ -23,7 +23,7 @@ div.reanotesGeneralInfos-subscribed {
     }
 
     button.tryReanotesButton {
-        background-color: black;
+        background-color: #282929FF;
         color: white;
         padding: 15px 30px;
         border-radius: var(--borderRadius);
@@ -51,7 +51,6 @@ div.bottomLayer {
         display: flex;
         flex-direction: row;
         align-items: center;
-
         gap: 10px;
     }
 
@@ -63,7 +62,9 @@ div.bottomLayer {
         padding: 5px 20px;
         border-radius: var(--borderRadius);
         border: var(--border);
+        background-color: var(--backgroundColor_buttonInWhiteMode);
         cursor: pointer;
+
     }
 }
 

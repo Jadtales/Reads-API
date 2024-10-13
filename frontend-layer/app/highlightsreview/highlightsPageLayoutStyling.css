@@ -12,6 +12,7 @@ div.bookReviewerContainer{
         justify-content: space-between;
         height: 95vh;
         min-width: 300px;
+        color: var(--textColor_gray_dark);
 
         position: fixed;
         bottom: 3%;
@@ -27,8 +28,19 @@ div.bookReviewerContainer{
                 align-items: center;
                 gap: .2rem;
                 cursor: pointer;
+
+                img{
+                    filter: var(--imgColor_dark_gray) ;
+                }
             }
         }
+    }
+
+    div.cardTitles{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        letter-spacing: 1px;
     }
 
 }

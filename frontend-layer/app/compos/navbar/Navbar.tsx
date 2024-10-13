@@ -75,7 +75,7 @@ export default function Navbar(): ReactElement {
         <Fragment>
             <nav id="navbarContainer">
                 <div className="iconContainer">
-                    <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={50} style={{cursor: 'pointer'}}
+                    <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={54} style={{cursor: 'pointer'}}
                            onClick={() => router.push('/home/unspecified')}/>
 
                     <div className="user-search_buttons">
@@ -107,8 +107,8 @@ export default function Navbar(): ReactElement {
 
                 <div className="userInteractionButtons">
                     <button id="getPremium" onClick={() => setShowModal(!showModal)}>
-                        {showModal && <SubModalComponent/>}
-                        Get premium
+                        {showModal && <SubModalComponent />}
+                        <p>Get premium</p>
                     </button>
 
                     <button id="notificationsButton" className="stdIconStyling"
