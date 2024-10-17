@@ -49,48 +49,62 @@ div.notesCreationFromExternalSources-layer {
 
     h1 {
         letter-spacing: 1px;
-        margin: 1% 0;
+        margin: .5% 0;
+        color: var(--textColor_gray_dark);
     }
 
-    button {
-        padding: 12px 20px;
-        border-radius: var(--borderRadius);
-        border: none;
-        outline: none;
+    div.importButtons{
+        h1{
+            color: var(--textColor_gray_dark);
+        }
+        display: flex;
+        button {
+            padding: 20px 20px;
+            border-radius: var(--borderRadius);
+            border: none;
+            outline: none;
 
-        margin-right: 20px;
+            margin-right: 20px;
 
-        color: white;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        background-color: black;
+            color: white;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            background-color: black;
 
-        cursor: pointer;
-    }
+            cursor: pointer;
 
-    button:hover {
-        background-color: var(--hoveredButtonWithBlackBackGroundColor);
-        transition: .2s ease;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            background-color: var(--hoveredButtonWithBlackBackGroundColor);
+            transition: .2s ease;
+        }
     }
 }
 
 /*--- styling notes description and tags*/
 div.NoteDescriptionAndTitleComponentContainer {
     div.noteTitle, div.noteDescription {
-        background-color: white;
+        background-color: var(--backgroundColor_frontnote);
         margin: 30px 0;
         padding: 20px;
         border-radius: var(--borderRadiusNote);
 
         h1 {
             margin: 15px 0;
+            color: var(--textColor_gray_dark);
         }
 
         input {
             width: 100%;
             font-size: 1.3rem;
             padding: 15px;
-            background-color: #eaeaea;
+            background-color: var(--input_backgroundColor_darkGray_lightGray);
+
             outline: none;
             border: none;
             border-radius: var(--borderRadiusNote);
@@ -119,12 +133,10 @@ div.noteCardContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: white;
+    background-color: var(--backgroundColor_frontnote);
     gap: 10px;
     margin-bottom: 2.5rem;
-
-    box-shadow: 1px 1px 0 2px black;
-
+    color: var(--textColor_gray_dark);
     height: 20vh;
 
     padding: 30px;
@@ -154,8 +166,10 @@ div.noteCardContainer {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                /*background-color: #efefef;*/
-                /*border-radius: 4px;*/
+
+                img{
+                    filter: var(--imgColor_dark_gray);
+                }
             }
 
             li:active {
@@ -165,7 +179,7 @@ div.noteCardContainer {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: #efefef;
+                background-color: var(--input_backgroundColor_darkGray_lightGray);
                 border-radius: 4px;
             }
 
@@ -181,7 +195,9 @@ div.noteCardContainer {
             li {
                 cursor: pointer;
                 padding: 2px 4px;
-
+                img{
+                    filter: var(--imgColor_dark_gray);
+                }
             }
 
             li.deleteButton:hover img {
@@ -252,7 +268,7 @@ div.cardFooterContainer {
     align-items: center;
     gap: 10px;
 
-    background-color: white;
+    background-color: var(--backgroundColor_frontnote);
     margin: 2% 0;
     border-radius: var(--borderRadiusNote);
     padding: 25px;
@@ -280,6 +296,8 @@ div.cardFooterContainer {
         outline: none;
         width: 6%;
         font-size: 1.6rem;
+        color: var(--textColor_gray_dark);
+        background-color: var(--input_backgroundColor_darkGray_lightGray);
     }
 }
 
@@ -336,4 +354,9 @@ div.createnotes-topLayer div.creationButton-layer-withNavbar {
         transition: .2s ease;
 
     }
+}
+
+div.lastSaveTime{
+    color: var(--textColor_gray_dark);
+    letter-spacing: 1px;
 }

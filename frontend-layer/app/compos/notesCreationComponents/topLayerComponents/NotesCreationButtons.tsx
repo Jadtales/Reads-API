@@ -7,6 +7,8 @@ import '../notesCreationCompoStyling.css'
 import OpenLockIcon from '@/public/icons/notesIcons/openLockIcon.svg'
 import LockIcon from '@/public/icons/notesIcons/lockIcon.svg'
 import ArrowUpIcon from '@/public/icons/arrow-up-line.svg'
+import ImportExternal_NotecardComponents
+    from "@/app/compos/notesCreationComponents/topLayerComponents/ImportExternal_NotecardComponent";
 
 export default function NotesCreationButtons(): ReactElement {
     const [isSharingButtonClicked, setIsSharingButtonClicked] = useState<boolean>(true);
@@ -69,12 +71,7 @@ export default function NotesCreationButtons(): ReactElement {
                 </div>
             </div>
 
-            <div className="notesCreationFromExternalSources-layer">
-                <h1>Import from</h1>
-
-                <button>Import highlights from your device</button>
-                <button>Import savings from X</button>
-            </div>
+            <ImportExternal_NotecardComponents/>
         </div>
     )
 }

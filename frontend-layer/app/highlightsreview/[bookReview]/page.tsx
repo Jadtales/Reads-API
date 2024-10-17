@@ -26,7 +26,7 @@ export default function BookReviewer(): ReactElement {
                     {/*<GoBackToComponent/>*/}
                     <Image src={GoBackToHomePageIcon}
                            alt="goBackToHomePage"
-                           width={50}
+                           width={35}
                            id="goBackToHomePageIcon"
                            onClick={() => router.back()}/>
                     <h1 id="noteCardTitle">{getNoteCardTitle}</h1>

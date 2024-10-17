@@ -1,0 +1,89 @@
+
+div.keyboardInstructions {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+
+    img {
+        z-index: 3;
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(303deg) brightness(104%) contrast(101%);
+    }
+}
+
+
+div.keyboardInstructionsBackground {
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    backdrop-filter: blur(1px); /* Blurs the background */
+    z-index: 9999; /* Below the modal but above everything else */
+
+    div.keyboardInstructionsContainer {
+        color: black;
+
+        background-color: var(--darkThemeBody);
+        border-radius: 10px;
+        padding: 30px;
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 5rem;
+
+        div.closeKeyboardInstructionsModal{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            img{
+                cursor: pointer;
+            }
+        }
+
+        div.difficultyLevelKeys,
+        div.nextPreviousCards,
+        div.switchTermDefinition {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5rem;
+
+            h1{
+                font-size: 1rem;
+            }
+
+            div.keys{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+
+                span{
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                    border-radius: 10px;
+                    background-color: var(--backgroundColor_buttonInWhiteMode);
+                }
+            }
+        }
+    }
+}

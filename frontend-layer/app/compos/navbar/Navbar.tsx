@@ -1,24 +1,22 @@
 "use client";
 
-import React, {ChangeEvent, Fragment, ReactElement, useEffect, useRef, useState} from "react";
+import React, {Fragment, ReactElement, useEffect, useRef, useState} from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from 'nextjs-toploader/app';
+import {useRouter} from 'nextjs-toploader/app';
 import "./navbarStyling.css";
 
-import RightArrowIcon from "@/public/icons/rightarrow.svg";
-import SearchIcon from "@/public/icons/search-2-line.svg";
+
 import NotificationsIcon from "@/public/icons/notification-line.svg";
 import ReportBugsIcon from "@/public/icons/error-warning-line.svg";
 import CollapseArrow from '@/public/icons/collapseArrow.svg';
-import RNICON from "@/public/RN-icon.png";
-import NotificationsComponent from "@/app/compos/navbar/notifications&reportBugsComponent/NotificationsComponent";
-import ReportBugsComponent from "@/app/compos/navbar/notifications&reportBugsComponent/ReportBugsComponent";
+import RNICON from "@/public/icons/RN-icon.png";
+import NotificationsComponent from "@/app/compos/navbar/notifications_reportBugs_Component/NotificationsComponent";
+import ReportBugsComponent from "@/app/compos/navbar/notifications_reportBugs_Component/ReportBugsComponent";
 import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
+import SearchInputFieldComponent from "@/app/compos/navbar/navbar_microComponents/SearchInputFieldComponent";
+import NavbarUserProfileComponent from "@/app/compos/navbar/navbar_microComponents/NavbarUserProfileComponent";
 
 export default function Navbar(): ReactElement {
-    const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
-    const [userSearchQuery, setUserSearchQuery] = useState<string>(''); // Initial value is an empty string
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
     const [clickedButton, setClickedButton] = useState<string>(''); // To track which button was clicked
     const [showModal, setShowModal] = useState<boolean>(false); // to close or open SubModal
@@ -26,17 +24,8 @@ export default function Navbar(): ReactElement {
     const router = useRouter();
     const notisCenterRef = useRef<HTMLDivElement>(null);
 
-    const handleUserProfileClicked = (): void => {
-        setIsUserProfileClicked(!isUserProfileClicked);
-    };
 
-    const handleOpenBrowsePage = (): void => {
-        router.push('/browse');
-    };
 
-    const handleUserSearching = (searchInputField: ChangeEvent<HTMLInputElement>): void => {
-        setUserSearchQuery(searchInputField.target.value); // Always keep this as a string
-    };
 
     const handleNotificationsToggles = (buttonName: string): void => {
         setIsNotifications_reportActive(!isNotifications_reportActive);
@@ -66,10 +55,7 @@ export default function Navbar(): ReactElement {
         };
     }, [isNotifications_reportActive]);
 
-    const handleGoingToUserProfile = (): void => {
-        router.push(`/profile/${document.getElementById('userUsername').innerText.toLowerCase()}`)
-        setIsUserProfileClicked(!isUserProfileClicked)
-    }
+
 
     return (
         <Fragment>
@@ -79,35 +65,15 @@ export default function Navbar(): ReactElement {
                            onClick={() => router.push('/home/unspecified')}/>
 
                     <div className="user-search_buttons">
-                        <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
-                             onClick={handleUserProfileClicked}>
-                            <Image src={RNICON} alt="userProfileImg" width={20} style={{borderRadius: '50%'}}/>
-                            <h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
-
-                            <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
-                                <Link href={`/settings`}>Settings</Link>
-                                <button>Log out</button>
-                            </div>
-
-                            <Image src={RightArrowIcon} alt="expendUserSettings"/>
-                        </div>
-
-                        <div className="searchButton-active">
-                            <Image src={SearchIcon} alt="expandProfileSettings"/>
-                            <input type="search"
-                                   placeholder="Search for highlights, people."
-                                   name={'searchBar'}
-                                   onClick={handleOpenBrowsePage}
-                                   value={userSearchQuery}
-                                   onChange={handleUserSearching}/>
-                        </div>
+                        <NavbarUserProfileComponent/>
+                        <SearchInputFieldComponent/>
                     </div>
                 </div>
 
 
                 <div className="userInteractionButtons">
-                    <button id="getPremium" onClick={() => setShowModal(!showModal)}>
-                        {showModal && <SubModalComponent />}
+                <button id="getPremium" onClick={() => setShowModal(!showModal)}>
+                        {showModal && <SubModalComponent/>}
                         <p>Get premium</p>
                     </button>
 
@@ -124,7 +90,8 @@ export default function Navbar(): ReactElement {
             </nav>
 
             {/* Notifications/report center */}
-            <div className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
+            <div
+                className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
                 ref={notisCenterRef}  // Use ref to reference the notifications center div
             >
                 <div className="collapseIcon_centerSwitchers_container">

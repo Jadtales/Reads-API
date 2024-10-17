@@ -2,9 +2,10 @@ div.navigationButtons {
     text-decoration: none;
     list-style: none;
 
-
     margin-top: 8vh;
-    margin-left: 10vw;
+    margin-left: 10.5vw;
+
+    display: flex;
 
     & a {
         text-decoration-line: none;
@@ -13,16 +14,18 @@ div.navigationButtons {
         font-family: "Oswald", sans-serif;
         border: none;
         outline: none;
-        font-size: 4rem;
+        font-size: 2rem;
         margin: 0 10px;
         cursor: pointer;
-        background-color: transparent;
+        /*background-color: var(--hoveredButtonTextColor);*/
+        border-radius: 10px;
+        padding: 3px 10px;
     }
 
     & a.active {
         text-decoration-line: none;
         color: white;
-        padding: 0 10px;
+        padding: 3px 10px;
         border-radius: 10px;
         opacity: 100%;
         background-color: var(--darkTheme_componentsBackgroundColor);
@@ -31,10 +34,17 @@ div.navigationButtons {
         font-family: "Oswald", sans-serif;
         border: none;
         outline: none;
-        font-size: 4rem;
+        font-size: 2rem;
         margin: 0 10px;
         cursor: pointer;
         /*background-color: transparent;*/
+    }
+
+    a:hover{
+        background-color: black;
+        transition: .2s ease-in-out;
+        border-radius: 10px;
+        color: white;
     }
 }
 

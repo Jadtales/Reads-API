@@ -16,11 +16,13 @@ export default function (): ReactElement {
             color: 'white',
             padding: '6px 15px',
             borderRadius: '8px',
-            margin: '50px 10%',
+            margin: '50px 12.3%',
             cursor: 'pointer'
         }}
              onClick={() => router.back()}>
-            <Image src={GoBackIcon} alt="goBackToThePreviousPage" style={{width: 'fit-content'}}/>Go back
+            <Image src={GoBackIcon}
+                   alt="goBackToThePreviousPage"
+                   style={{width: 'fit-content'}}/>Go back
         </div>
     )
 }
