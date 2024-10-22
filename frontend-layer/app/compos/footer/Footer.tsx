@@ -26,7 +26,7 @@ export default function Footer(): ReactElement {
                 </div>
             </div>
 
-            <hr style={{margin: '1% 0'}}/>
+            <hr style={{margin: '5% 0'}}/>
 
             <div className="bottomLayer">
                 <div className="availableOnAllPlatforms-section">

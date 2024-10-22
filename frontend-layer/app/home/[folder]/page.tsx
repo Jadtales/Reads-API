@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactElement} from "react";
+import {Fragment, ReactElement} from "react";
 import { useRouter } from 'nextjs-toploader/app';
 import './notesGrid.css'
 
@@ -27,7 +27,7 @@ export default function Folder(): ReactElement {
     }
 
     return (
-        <div>
+        <Fragment>
             <FolderComponent/>
 
             <div className="notes">
@@ -38,6 +38,6 @@ export default function Folder(): ReactElement {
                     </div>
                 ))}
             </div>
-        </div>
+        </Fragment>
     )
 }

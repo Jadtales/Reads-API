@@ -10,6 +10,7 @@ import GoBackToHomePageIcon from '@/public/icons/goBackIcon.svg'
 import {usePathname, useRouter} from "next/navigation";
 import NoteCardMemorize from "@/app/compos/notecardComponents-reviewPage/NoteCardMemorizationComponent";
 import KeyboardInstructionsModal from "@/app/compos/keyboard_instructions_component/KeyboardInstructionsModal";
+import ListOfContentComponent from "@/app/compos/notecardComponents-reviewPage/ListOfContentComponent";
 
 export default function BookReviewer(): ReactElement {
     const [isMemorizationModeActive, setIsMemorizationModeActive] = useState<boolean>(false)
@@ -21,22 +22,14 @@ export default function BookReviewer(): ReactElement {
 
     return (
         <div className="reviewingSectionContainer">
-            <div className="reviewingSection">
-                <div className="topLayer">
-                    {/*<GoBackToComponent/>*/}
-                    <Image src={GoBackToHomePageIcon}
-                           alt="goBackToHomePage"
-                           width={35}
-                           id="goBackToHomePageIcon"
-                           onClick={() => router.back()}/>
-                    <h1 id="noteCardTitle">{getNoteCardTitle}</h1>
+            <ListOfContentComponent
+                contentList={['lorem', 'maybe thats why', 'consectetur adipisicing elit', 'fuga illo illum iste']}/>
 
-                    <Image src={isMemorizationModeActive ? ReviewNoteCardsModeIcon : BrainIcon} alt="switchToMemoMode"
-                           width={25} id="switchToMemoModeIcon"
-                           onClick={() => setIsMemorizationModeActive(!isMemorizationModeActive)}/>
-                </div>
+            <div className={'test'}>
+                <span className="switchToMemoMode"
+                      onClick={() => setIsMemorizationModeActive(!isMemorizationModeActive)}>Switch to memorization mode</span>
+                <span className="advancedSettingsSpan">Advanced settings</span>
             </div>
-
 
             {isMemorizationModeActive ?
                 <div className="noteCardsMemoModeContainer">
@@ -59,6 +52,18 @@ export default function BookReviewer(): ReactElement {
                 </div>
 
                 : <div className="noteCardsHighlightsContainer">
+                    <div className="topLayer">
+                        <Image src={GoBackToHomePageIcon}
+                               alt="goBackToHomePage"
+                               width={35}
+                               id="goBackToHomePageIcon"
+                               onClick={() => router.back()}/>
+
+                        <h1 id="noteCardTitle">{getNoteCardTitle.slice(0, -2)}</h1>
+
+
+                    </div>
+
                     <NoteCardReview
                         noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
                             'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +

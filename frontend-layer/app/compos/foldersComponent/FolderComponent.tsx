@@ -42,7 +42,7 @@ export default function FolderComponent(): ReactElement {
                                 className={currentFolder === folder.replaceAll(' ', '_') ? 'active' : ''}
                                 key={index}
                             >
-                                {folder.charAt(0).toUpperCase() + folder.slice(1)}
+                                #{folder.charAt(0).toUpperCase() + folder.slice(1)}
                             </Link>
                         ))}
                         <li>

@@ -1,5 +1,5 @@
 div.filtering-section {
-    color: white;
+    color: black;
     margin: 1% 1.5%;
 
     display: flex;
@@ -11,14 +11,14 @@ div.filtering-section {
         font-size: 1.2rem;
         font-weight: lighter;
         margin: 15px 0;
-        color: #989898;
+        color: black;
 
     }
 }
 
 .filter-books-options select {
     background-color: #6b6b6b;
-    color: white;
+    color: black;
     border-radius: 10px;
     outline: none;
     padding: 2px 5px;
@@ -65,7 +65,7 @@ div.filtering-section span {
     padding: 8px 6px;
     font-weight: lighter;
     margin: 2px 0;
-    color: #d4d4d4;
+    color: #4d4d4d;
 }
 
 div.filtering-section input {
@@ -83,8 +83,10 @@ div.filtering-section input::placeholder {
 
 
 div.filtering-section .span-active {
-    background-color: var(--backGroundColorHoveredButton);
+    background-color: var(--backgroundColor_buttonInWhiteMode);
+    /*background-color: #dddddd;*/
     border-radius: 5px;
+    color: black;
     width: fit-content;
 }
 

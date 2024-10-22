@@ -1,9 +1,8 @@
 footer {
     margin: 10% 0 0 0;
     padding: 0 10% 5% 10%;
-    color: white;
-    background-color: black;
-
+    color: black;
+    background-color: var(--darkThemeBody-darkerGray_black);
 
     & div.topLayer {
         display: flex;
@@ -71,4 +70,78 @@ div.bottomLayer {
 
 img#reanotesIcon {
     border-radius: var(--borderRadiusRNICON);
+}
+
+@media screen and (width <= 700px){
+    footer {
+        padding: 5%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: black;
+
+
+        & div.topLayer {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            /*justify-content: space-between;*/
+            /*gap: 20rem;*/
+
+            height: 100%;
+
+            div.readnotes-logo-name{
+                display: flex;
+                justify-content: start;
+                align-items: start;
+            }
+
+            div.reanotesGeneralInfos-subscribed{
+                h1{
+                    text-align: start;
+                    margin: 3.5rem 0;
+                }
+
+                button.tryReanotesButton{
+                    width: 100%;
+                }
+            }
+        }
+
+
+        div.bottomLayer {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+
+            div.availableOnAllPlatforms-section{
+            }
+
+            div.availabilityPlatforms-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            div.availabilityPlatforms-section button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                width: 80vw;
+                padding: 10px 20px;
+                border-radius: var(--borderRadius);
+                border: var(--border);
+                background-color: var(--backgroundColor_buttonInWhiteMode);
+                cursor: pointer;
+
+            }
+        }
+
+    }
+
 }

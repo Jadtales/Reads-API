@@ -6,10 +6,12 @@ import './registrationPageStyling.css'
 // imported icons
 import ReadnotesIcon from '@/favicon.png'
 import GoogleIcon from '@/public/icons/google-fill.svg'
+import {TextEffect} from "@/animationStyling/TextEffect";
 
 export default function RegistrationComponentPage(): ReactElement {
     const [isUserRegistered, setIsUserRegistered] = useState<boolean>(false);
     const [getUserCredentials, setUserCredentials] = useState<string>('');
+    const [quoteData, setQuoteData] = useState<{ quote: string, author: string } | null>(null);
 
     const handleRegistrationMethodSwitching = (): void => {
         setIsUserRegistered(!isUserRegistered);
@@ -19,7 +21,8 @@ export default function RegistrationComponentPage(): ReactElement {
         setUserCredentials(event.target.value)
     }
 
-    return (<div className="registrationPageBackground">
+
+    return (
         <div className="registrationPageContainer">
             <div className="login_signup_container">
                 <div className="registrationHeadTitle">
@@ -28,7 +31,7 @@ export default function RegistrationComponentPage(): ReactElement {
 
                 {isUserRegistered ? <div className="registrationFormSwitch">
                         <span onClick={handleRegistrationMethodSwitching}>Sign up</span>
-                         , if you don't have an account.</div>
+                        , if you don't have an account.</div>
                     : <div className="registrationFormSwitch">
                         <span onClick={handleRegistrationMethodSwitching}>Log in</span>
                         , if you already have an account
@@ -39,9 +42,8 @@ export default function RegistrationComponentPage(): ReactElement {
                         <form action="">
                             <input type="email" placeholder={"Enter your email"}/>
                             <input type="password" placeholder={"Enter your password"}/>
-                            or, connect with google
+                            <span style={{textAlign: 'center', fontWeight: 'lighter'}}>or, connect with google</span>
                             <button type="submit"><Image src={GoogleIcon} alt="signupWithGoogle"/></button>
-
                         </form>
 
 
@@ -54,14 +56,15 @@ export default function RegistrationComponentPage(): ReactElement {
                             <input type="email" placeholder="Enter your email"/>
                             <input type="password" placeholder="Enter your password"/>
                             <button>Sign up</button>
-                            or, connect with google
+                            <span style={{textAlign: 'center', fontWeight: 'lighter'}}>or, connect with google</span>
                             <button><Image src={GoogleIcon} alt="signupWithGoogle"/></button>
                         </form>
                     </div>}
             </div>
-            <div className="webappShowOff">
-                dfsdfdfd
+            <div className="quotes">
+                <h1>“You can never get a cup of tea large enough or a book long enough to suit me.”</h1>
+                <span>― C.S. Lewis</span>
             </div>
         </div>
-    </div>)
+    )
 }

@@ -33,13 +33,12 @@ export default function NewRegisteredUsernamePage(): ReactElement {
     // Suggested people array for mapping
     const suggestedPeople = [
         { username: 'Jadtales', userCardsQuantity: 42, userGenresInterest: ['Fiction', 'History', 'Psychology'] },
-        { username: 'BookLover21', userCardsQuantity: 37, userGenresInterest: ['Romance', 'Self-help', 'Adventure'] },
+        { username: 'BookLover21', userCardsQuantity: 37, userGenresInterest: ['Romance', 'Investments', 'Adventure'] },
         { username: 'LiteraryGem', userCardsQuantity: 50, userGenresInterest: ['Philosophy', 'Science', 'Politics'] },
         // Add more if needed
     ];
 
     return (
-        <div className="NewRegisteredUsernamePageBackground">
             <div className="pageContainer">
                 <h1 className={"interestQuestions"}>
                     {registrationCompletionStage === 'interest' ? (
@@ -114,6 +113,5 @@ export default function NewRegisteredUsernamePage(): ReactElement {
                     <TextEffect>Skip</TextEffect>
                 </button>
             </div>
-        </div>
     );
 }

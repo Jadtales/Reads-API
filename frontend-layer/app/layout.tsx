@@ -10,7 +10,7 @@ import Footer from "@/app/compos/footer/Footer";
 export default function HomeLayout({children}) {
 
     const pathname = usePathname();
-    const isHighlightsReviewPage = pathname.startsWith('/highlightsreview')
+    const isHighlightsReviewPage = pathname.startsWith('/highlightsreview') || pathname.startsWith('/registration')
 
     return <html lang={"en"}>
     <body>
@@ -18,9 +18,9 @@ export default function HomeLayout({children}) {
         <>
             <NextTopLoader color={"#000000"} height={2} speed={600} showSpinner={false}/>
             <Navbar/>
-            <div className="navigationButtons">
-                <BrowsingComponent/>
-            </div>
+            {/*<div className="navigationButtons">*/}
+            {/*    <BrowsingComponent/>*/}
+            {/*</div>*/}
         </>
     )}
     {children}

@@ -3,8 +3,7 @@ nav#navbarContainer {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    margin: .5% 9.7%;
-    /*background-color: black;*/
+    margin: .5% 9.7% 5% 9.7%;
     padding: .5vh 1vw;
     /*padding-top: 1vh;*/
     border-radius: 10px;
@@ -75,7 +74,6 @@ div.iconContainer {
         transition: .2s ease;
     }
 }
-
 
 .user-search_buttons .userProfile-active div.userButtons {
     display: flex;
@@ -326,37 +324,6 @@ div.receivedNotifications-inactive {
     scrollbar-width: none;
 }
 
-
-/*---- responsive design*/
-@media screen and (width <= 1200px) {
-    nav#navbarContainer {
-        background-color: white;
-        border-bottom-right-radius: 30px;
-        border-bottom-left-radius: 30px;
-        margin: 0 0;
-
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-
-        & div.iconContainer {
-            margin: 0 4%;
-            display: flex;
-            /*justify-content: space-between;*/
-        }
-
-        & div.userInteractionButtons {
-
-            display: flex;
-            margin: 10px 0 10px 43%;
-
-            & button {
-                background-color: #e6e6e6;
-            }
-        }
-    }
-}
-
 div.switchNotiCenterToReportBugsCenter {
     background-color: var(--backgroundColor_componentsInsideComponent);
     border-radius: 6px;
@@ -371,6 +338,38 @@ div.switchNotiCenterToReportBugsCenter {
     }
 
 }
+
+
+/*---- responsive design*/
+/*@media screen and (width <= 1200px) {*/
+/*    nav#navbarContainer {*/
+/*        background-color: white;*/
+/*        border-bottom-right-radius: 30px;*/
+/*        border-bottom-left-radius: 30px;*/
+/*        margin: 0 0;*/
+
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        align-items: start;*/
+
+/*        & div.iconContainer {*/
+/*            margin: 0 4%;*/
+/*            display: flex;*/
+/*            !*justify-content: space-between;*!*/
+/*        }*/
+
+/*        & div.userInteractionButtons {*/
+
+/*            display: flex;*/
+/*            margin: 10px 0 10px 43%;*/
+
+/*            & button {*/
+/*                background-color: #e6e6e6;*/
+/*            }*/
+/*        }*/
+/*    }*/
+/*}*/
+
 
 @keyframes shine {
     0% {

@@ -52,7 +52,7 @@ export default function AddFolderComponent({
     return (
         <Fragment>
             {!isAddingNewFolder ? (
-                <span onClick={() => setIsAddingNewFolder(true)}>+</span>
+                <span onClick={() => setIsAddingNewFolder(true)} style={{color: 'black'}}>+</span>
             ) : (
                 <Fragment>
                     <input

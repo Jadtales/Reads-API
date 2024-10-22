@@ -100,7 +100,6 @@ export default function FrontNoteComponent({
                     )}
                 </div>
             </div>
-
         </div>
     );
 }

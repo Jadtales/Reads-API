@@ -2,9 +2,9 @@ div.navigationButtons {
     text-decoration: none;
     list-style: none;
 
-    margin-top: 8vh;
-    margin-left: 10.5vw;
-
+    /*margin-top: 8vh;*/
+    /*margin-left: 10.5vw;*/
+    margin: 8vh 10.5% 0;
     display: flex;
 
     & a {
@@ -49,3 +49,26 @@ div.navigationButtons {
 }
 
 
+div.browsingContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    a{
+        color: white;
+        background-color: black;
+        padding: 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: .2s ease;
+        border: 1px solid black;
+    }
+
+    a:hover{
+        background-color: var(--backgroundColor_buttonInWhiteMode);
+        /*background-color: transparent;*/
+        transition: .2s ease;
+        color: black;
+        border: 1px solid black;
+    }
+}

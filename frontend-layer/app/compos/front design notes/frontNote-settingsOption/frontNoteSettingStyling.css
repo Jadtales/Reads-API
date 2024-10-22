@@ -12,7 +12,8 @@
 }
 
 .frontNoteSettingContainer {
-    background-color: var(--backgroundColor_frontnote);
+    /*background-color: var(--backgroundColor_frontnote);*/
+    background-color: #f4f4f4;
     position: absolute;
     top: 0;
     left: 120%;

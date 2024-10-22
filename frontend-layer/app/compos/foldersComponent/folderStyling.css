@@ -1,6 +1,6 @@
 div.folderContainer {
     position: sticky;
-    top: 10px;
+    top: 0;
 
     display: flex;
     flex-direction: column;
@@ -8,12 +8,12 @@ div.folderContainer {
     justify-content: space-between;
 
     font-family: Arial, sans-serif;
-    width: 78vw;
-    margin: 40px 11%;
+    margin: 10px 10%;
     z-index: 1;
     border-radius: 10px;
-    background-color: var(--darkTheme_componentsBackgroundColor);
-
+    background-color: var(--darkThemeBody);
+    /*background-color: white;*/
+    color: black;
     cursor: default;
 
     div.folders-section{
@@ -27,8 +27,6 @@ div.filtering-section{
     color: white;
 }
 
-
-
 div.folderContainer ul {
 
     overflow-x: scroll;
@@ -37,29 +35,34 @@ div.folderContainer ul {
 
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: start;
     gap: 1rem;
 
     list-style: none;
     padding: 15px 25px;
-    cursor: pointer;
+    cursor: default;
     font-size: 1rem;
     font-weight: lighter;
 
     & a {
-        color: #ffffff;
+        color: black;
+        /*border: 1px solid black;*/
+        border-radius: 6px;
         padding: 5px 10px;
         text-decoration: none;
     }
 
     & a.active {
-        color: white;
         padding: 5px 10px;
         border-radius: 6px;
         /*border: 1px solid white;*/
-        background-color: var(--backGroundColorHoveredButton);
+        color: black;
+        /*background-color: var(--backGroundColorHoveredButton);*/
         /*font-weight: 900;*/
         transition: .2s ease;
-
+        /*border: 1px solid black;*/
+        background-color: var(--backgroundColor_buttonInWhiteMode);
     }
 }
 
@@ -82,8 +85,10 @@ div.filterIcon {
 
     img {
         margin: 17px 20px 0 0;
+        filter: brightness(0) saturate(100%)
     }
 }
+
 
 /*styling addFolderInputField*/
 input#addFolderInputField {

@@ -5,8 +5,8 @@ import ShareStatsModal from "@/app/compos/statsComponents/share-statsIcon-compon
 
 // imported icons
 import EditNoteCardIcon from '@/public/icons/pencil-line.svg'
-import StarIcon from '@/public/icons/staredIcon.svg'
-import FilledStaredIcon from '@/public/icons/filledStaredIcon.svg'
+import StarIcon from '@/public/icons/star-line.svg'
+import FilledStaredIcon from '@/public/icons/star-fill.svg'
 import ArrowDownIcon from '@/public/icons/arrowDownIcon.svg'
 import SaveIcon from '@/public/icons/check-line.svg'
 import AiIcon from '@/public/icons/AiIcon.svg'
@@ -53,7 +53,7 @@ export default function NoteCardReview({noteCardContent, noteCardTitle}: Notecar
                 >
                     {content}
                 </p>
-                <Image src={ArrowDownIcon} alt="moreOptions" id="moreOptions"/>
+                {/*<Image src={ArrowDownIcon} alt="moreOptions" id="moreOptions"/>*/}
             </div>
 
             <div className="editingToolsLayer">

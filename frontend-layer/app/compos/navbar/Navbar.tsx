@@ -15,6 +15,7 @@ import ReportBugsComponent from "@/app/compos/navbar/notifications_reportBugs_Co
 import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
 import SearchInputFieldComponent from "@/app/compos/navbar/navbar_microComponents/SearchInputFieldComponent";
 import NavbarUserProfileComponent from "@/app/compos/navbar/navbar_microComponents/NavbarUserProfileComponent";
+import BrowsingComponent from "@/app/compos/browsing/BrowsingComponent";
 
 export default function Navbar(): ReactElement {
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
@@ -66,6 +67,9 @@ export default function Navbar(): ReactElement {
 
                     <div className="user-search_buttons">
                         <NavbarUserProfileComponent/>
+                        {/*<div className="navigationButtons">*/}
+                            <BrowsingComponent/>
+                        {/*</div>*/}
                         <SearchInputFieldComponent/>
                     </div>
                 </div>
