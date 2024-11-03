@@ -83,8 +83,7 @@ div.filtering-section input::placeholder {
 
 
 div.filtering-section .span-active {
-    background-color: var(--backgroundColor_buttonInWhiteMode);
-    /*background-color: #dddddd;*/
+    background-color: #dddddd;
     border-radius: 5px;
     color: black;
     width: fit-content;
@@ -97,4 +96,68 @@ div.filtering-section .span-active {
     height: 20vh;
     width: fit-content;
     scrollbar-width: none;
+}
+
+@media screen and (width <= 1050px){
+    div.filtering-section {
+        color: black;
+        margin: 1% 1.5%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 1rem;
+        justify-content: center;
+
+        .filter-books,
+        .filter-notes,
+        .filter-timing,
+        .filter-typeOfContent {
+            hr{
+                /*display: none;*/
+                width: 50%;
+            }
+        }
+
+        h2 {
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            font-weight: lighter;
+            margin: 15px 0;
+            color: black;
+
+        }
+    }
+}
+
+@media screen and (width <= 500px){
+    div.filtering-section {
+        color: black;
+        margin: 1% 1.5%;
+
+        display: flex;
+        flex-direction: column;
+
+
+        .filter-books,
+        .filter-notes,
+        .filter-timing,
+        .filter-typeOfContent {
+            overflow-y: scroll;
+            hr{
+                /*display: none;*/
+                width: 50%;
+            }
+        }
+
+        h2 {
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            font-weight: lighter;
+            margin: 15px 0;
+            color: black;
+
+        }
+    }
+
 }

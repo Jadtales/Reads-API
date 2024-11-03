@@ -6,7 +6,7 @@ div.suggestedNote {
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
-
+    border: var(--border_tags);
     margin: 15px 0;
     min-width: fit-content;
 

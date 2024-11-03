@@ -12,7 +12,7 @@ import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent"
 interface NoteCardData {
     cardKey: number;
     cardTitle: string;
-    cardDescription: string;
+    cardDefinition: string;
 }
 
 export default function Notes(): ReactElement {
@@ -20,7 +20,7 @@ export default function Notes(): ReactElement {
         {
             cardKey: 1,
             cardTitle: 'Chapter number/name',
-            cardDescription: 'Your highlights/notes on the chapter',
+            cardDefinition: 'Your highlights/notes on the chapter',
         }
     ]);
 
@@ -36,7 +36,7 @@ export default function Notes(): ReactElement {
         const newCards = Array.from({ length: newCardsToAdd }, (_, index) => ({
             cardKey: noteCards.length + index + 1,
             cardTitle: `Chapter number/name`,
-            cardDescription: `Your highlights/notes on the chapter`,
+            cardDefinition: `Your highlights/notes on the chapter`,
         }));
 
         setNoteCards((prevCards) => [...prevCards, ...newCards]);
@@ -75,7 +75,7 @@ export default function Notes(): ReactElement {
                         key={card.cardKey}
                         cardKey={card.cardKey}
                         cardTitle={card.cardTitle}
-                        cardDescription={card.cardDescription}
+                        cardDefinition={card.cardDefinition}
                         onDelete={handleDeleteCard}
                     />
                 ))}

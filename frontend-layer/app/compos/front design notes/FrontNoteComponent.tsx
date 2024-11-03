@@ -21,8 +21,10 @@ export default function FrontNoteComponent({
                                                bookTitle,
                                                bookAuthor,
                                                bookId,
-                                               bookTags
+                                               bookTags,
+
                                            }: frontNoteComponentProps): ReactElement {
+
     const [isNotecardSettingActive, setIsNotecardSettingActive] = useState<boolean>(false);
     const settingsRef = useRef<HTMLDivElement>(null);
 
@@ -37,6 +39,7 @@ export default function FrontNoteComponent({
             closeSettings(); // Close settings on Escape press
         }
     };
+
 
     const openSettings = () => {
         setIsNotecardSettingActive(true);
@@ -76,7 +79,7 @@ export default function FrontNoteComponent({
 
                     <div className="bookInfos">
                         <h2 id="bookTitle">{bookTitle}</h2>
-                        <p id="author-name">- {bookAuthor}</p>
+                        <p id="author-name">{bookAuthor}</p>
 
                         <div className="bookTags">
                             <ul>
@@ -95,7 +98,7 @@ export default function FrontNoteComponent({
                     </div>
                     {isNotecardSettingActive && (
                         <div ref={settingsRef}>
-                            <FrontNoteSettings onClose={closeSettings}/>
+                            <FrontNoteSettings onClose={closeSettings} bookId={bookId} bookTitle={bookTitle}/>
                         </div>
                     )}
                 </div>

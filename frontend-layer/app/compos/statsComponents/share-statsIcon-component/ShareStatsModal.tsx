@@ -14,6 +14,7 @@ import ReanotesIcon from '@/favicon.png'
 
 // images to be shared with the shared stats
 import CoolImg from '@/public/shareContentImgs/Photo Manipulation.jpg'
+import {usePathname} from "next/navigation";
 
 
 interface ShareStatsProps {
@@ -24,16 +25,16 @@ interface ShareStatsProps {
 }
 
 export default function ShareStatsModal({
-                                           statsPeriod,
-                                           whoShared,
-                                           sharedTypeOfContent,
-                                           sharedContent
-                                       }: ShareStatsProps
+                                            statsPeriod,
+                                            whoShared,
+                                            sharedTypeOfContent,
+                                            sharedContent
+                                        }: ShareStatsProps
 ):
     ReactElement {
     const [showModal, setShowModal] = useState<boolean>(false);
 
-
+    const pathname = usePathname()
     return <Fragment>
         <div className="shareStatsIcon_container">
             <Image src={ShareContentIcon} alt={"shareThisStat"} id="shareStatsContentIcon"
@@ -55,10 +56,11 @@ export default function ShareStatsModal({
                     </div>
                     <div className="sharedContentContainer">
                         <span className="statsPeriod">{statsPeriod}</span>
-                        <span className="typeOfSharedContent">
-                            {sharedTypeOfContent}
-                        </span>
-                        <div className="sharedContent">
+                        {/*<span className="typeOfSharedContent">*/}
+                        {/*    {sharedTypeOfContent}*/}
+                        {/*</span>*/}
+                        <div className="sharedContent"
+                             style={{fontSize: '20px', width: '35vw', overflowY: 'scroll', height: '30vh'}}>
                             {sharedContent}
                         </div>
                     </div>
@@ -66,7 +68,7 @@ export default function ShareStatsModal({
                     <Image src={ReanotesIcon} alt="Reanotes" id="reanotesIcon"/>
                 </div>
 
-                <hr/>
+                <hr style={{margin: '1% 0'}}/>
                 <div className="copyLinkContainer">
                     <div className="socialLinks_headlight">
                         <h1>Stat Link</h1>
@@ -76,7 +78,7 @@ export default function ShareStatsModal({
                         </div>
                     </div>
                     <div className="copyLink">
-                        <p>https://remixicon.com/icon/links-line</p>
+                        <p>https://reanotes.io/{pathname}</p>
                         <Image src={CopyURLIcon} alt="copyLink"/>
                     </div>
                 </div>

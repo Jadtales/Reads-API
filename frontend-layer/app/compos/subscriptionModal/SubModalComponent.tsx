@@ -44,19 +44,19 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                     <div className="offeredFeatures">
                         <h3>FEATURES</h3>
                         <ul>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> 4 Note cards to set up.</li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Import 3 times from your kindle.
+                            <li>4 Note cards to set up.</li>
+                            <li>Import 3 times from your kindle.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Cannot import your Tweets.</li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Cannot Set your Notes to private.
+                            <li>Cannot import your Tweets.</li>
+                            <li>Cannot Set your Notes to private.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Cannot Add more than 2 Folders.
+                            <li>Cannot Add more than 2 Folders.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Cannot Edit your Note cards more
+                            <li>Cannot Edit your Note cards more
                                 than
                                 twice.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Limited Status.</li>
+                            <li>Limited Status.</li>
                         </ul>
                     </div>
                 </div>
@@ -78,17 +78,17 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                     <div className="offeredFeatures">
                         <h3>FEATURES</h3>
                         <ul>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Better memorizing outcome.</li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Unlimited Note cards to set up.
+                            <li>Better memorizing outcome.</li>
+                            <li>Unlimited Note cards to set up.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Unlimited kindle clippings import.
+                            <li>Unlimited kindle clippings import.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Unlimited Tweets import.</li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> You can set your Notes to private.
+                            <li>Unlimited Tweets import.</li>
+                            <li>You can set your Notes to private.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Unlimited number of Folders to add.
+                            <li>Unlimited number of Folders to add.
                             </li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Advanced Statistics to keep track
+                            <li>Advanced Statistics to keep track
                                 of
                                 your Memorization process.
                             </li>
@@ -117,8 +117,8 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                     <div className="offeredFeatures">
                         <h3>FEATURES</h3>
                         <ul>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> You can use AI to help you.</li>
-                            <li><Image src={CheckLineIcon} alt="whatsIncluded"/> Everything else in the Premium
+                            <li>You can use AI to help you.</li>
+                            <li>Everything else in the Premium
                                 plan.
                             </li>
                         </ul>

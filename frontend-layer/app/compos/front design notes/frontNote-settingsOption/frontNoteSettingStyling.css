@@ -13,14 +13,14 @@
 
 .frontNoteSettingContainer {
     /*background-color: var(--backgroundColor_frontnote);*/
-    background-color: #f4f4f4;
+    background-color: var(--darkThemeBody-darkerGray_black);
     position: absolute;
     top: 0;
     left: 120%;
     padding: 5px;
     width: 165px;
-    border-radius: 10px;
-    border: 1px solid black;
+    border-radius: 8px;
+    border: var(--border_tags);
     z-index: 10;
 
     ul li {
@@ -39,12 +39,12 @@
 
     ul li:hover {
         background-color: var(--backgroundColor_frontnote_hovered);
-        border-radius: 6px;
+        border-radius: 3px;
     }
 
     ul li:last-child {
         color: red;
-        border-radius: 6px;
+        border-radius: 8px;
     }
 
     ul li:last-child:hover {

@@ -8,8 +8,11 @@ import '../navbarStyling.css'
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import LeftArrowIcon from '@/public/icons/leftarrow.svg'
+import UserIcon from '@/public/icons/userIcon.svg'
 
 export default function NavbarUserProfileComponent(): ReactElement {
+    const [pageWidth, setPageWidth] = useState<number>(window.innerWidth);
+
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
 
     const router = useRouter()
@@ -23,24 +26,22 @@ export default function NavbarUserProfileComponent(): ReactElement {
         setIsUserProfileClicked(!isUserProfileClicked)
     }
 
-    return (
-        <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
-             onClick={handleUserProfileClicked}>
-            <Image src={RNICON}
-                   alt="userProfileImg"
-                   width={20}
-                   style={{borderRadius: '50%'}}/>
+    return <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
+                onClick={handleUserProfileClicked}>
+        <Image src={RNICON}
+               alt="userProfileImg"
+               width={20}
+               style={{borderRadius: '50%'}}/>
 
-            <h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
+        <h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
 
-            <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
-                <Link href={`/settings`}>Settings</Link>
-                <button>Log out</button>
-            </div>
-
-            <Image src={isUserProfileClicked ? LeftArrowIcon : RightArrowIcon}
-                   alt="expendUserSettings"
-                   id="expandUserProfile"/>
+        <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
+            <Link href={`/settings`}>Settings</Link>
+            <button>Log out</button>
         </div>
-    )
+
+        <Image src={isUserProfileClicked ? LeftArrowIcon : RightArrowIcon}
+               alt="expendUserSettings"
+               id="expandUserProfile"/>
+    </div>
 }

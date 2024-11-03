@@ -1,113 +1,129 @@
 div.folderContainer {
     position: sticky;
-    top: 0;
+    top: 5px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: space-between;
-
-    font-family: Arial, sans-serif;
-    margin: 10px 10%;
-    z-index: 1;
+    border: var(--border_tags);
     border-radius: 10px;
+
     background-color: var(--darkThemeBody);
-    /*background-color: white;*/
-    color: black;
-    cursor: default;
 
-    div.folders-section{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-}
 
-div.filtering-section{
-    color: white;
-}
+    margin: 10px 0;
 
-div.folderContainer ul {
-
-    overflow-x: scroll;
-    scrollbar-width: none;
-    width: 99.5vw;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    gap: 1rem;
+    z-index: 2;
 
     list-style: none;
-    padding: 15px 25px;
-    cursor: default;
     font-size: 1rem;
+    letter-spacing: 1px;
     font-weight: lighter;
-
-    & a {
-        color: black;
-        /*border: 1px solid black;*/
-        border-radius: 6px;
-        padding: 5px 10px;
-        text-decoration: none;
-    }
-
-    & a.active {
-        padding: 5px 10px;
-        border-radius: 6px;
-        /*border: 1px solid white;*/
-        color: black;
-        /*background-color: var(--backGroundColorHoveredButton);*/
-        /*font-weight: 900;*/
-        transition: .2s ease;
-        /*border: 1px solid black;*/
-        background-color: var(--backgroundColor_buttonInWhiteMode);
-    }
 }
 
-div.folderContainer ul {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    letter-spacing: 2px;
+div.folderContainer a {
+    color: var(--textColor_gray_dark);
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 3px 10px;
+    text-decoration: none;
 }
 
-div.folderContainer ul li:last-child span {
+div.folderContainer a.active {
+    transition: .2s ease;
+    background-color: var(--tag_backgroundColor);
+}
+
+div.folderContainer li:last-child span {
     color: white;
     cursor: pointer;
     font-size: 1.2rem;
 }
 
-/*---- filter icon styling */
-div.filterIcon {
-    cursor: pointer;
+div.folders-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-    img {
-        margin: 17px 20px 0 0;
-        filter: brightness(0) saturate(100%)
+    div.scrollableFoldersContainer{
+        overflow-x: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        padding: 10px 5px;
+
+        div.folders {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    div.foldersFunctionalities {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 15px;
+    }
+
+
+}
+
+
+div.folders-section button.goBackUpButton{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    img{
+        display: block;
     }
 }
 
+/*---- filter icon styling */
+div.filterIcon {
+    cursor: pointer;
+}
 
-/*styling addFolderInputField*/
-input#addFolderInputField {
+button.goBackUpButton img{
+}
+div.filterIcon img {
+    display: block;
+    margin: 0;
+    filter: brightness(0) saturate(100%)
+}
+
+div.filtering-section {
     color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    background-color: var(--backGroundColorHoveredButton);
+}
+
+/* Styling addFolderInputField */
+input#addFolderInputField {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: var(--backgroundColor_buttonInWhiteMode);
+    color: var(--textColor_gray_dark);
     border: none;
-    font-weight: 900;
-    transition: .2s ease;
-
+    font-weight: lighter;
     outline: none;
-    /*font-size: 1rem;*/
-    /*padding-top: 3px;*/
-    width: auto;
-
+    transition: .2s ease;
 }
 
 input#addFolderInputField::placeholder {
-    color: white;
+    color: var(--textColor_gray_dark);
     font-weight: lighter;
+}
+
+@media screen and (width <= 700px) {
+    div.folderContainer {
+        position: sticky;
+        top: 0;
+        border-radius: 10px;
+
+        margin: 10px 0;
+
+        z-index: 2;
+        list-style: none;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        font-weight: lighter;
+
+
+    }
 }

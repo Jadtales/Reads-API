@@ -1,5 +1,7 @@
-import React, {ReactElement, useState} from "react";
+import React, {Fragment, ReactElement, useState} from "react";
 import './filterCompoStyling.css';
+import Image from "next/image";
+import filterIcon from "@/public/icons/filter-3-line.svg";
 
 // list of genres
 const bookGenres: string[] = [
@@ -32,6 +34,7 @@ const bookGenres: string[] = [
 ]
 
 export default function FilterComponent(): ReactElement {
+
     // State to track multiple active spans
     const [activeSpans, setActiveSpans] = useState<string[]>([]);
 
@@ -46,8 +49,9 @@ export default function FilterComponent(): ReactElement {
         }
     };
 
-    return (
-        <div className="filtering-section">
+
+    return <div className="filtering-section">
+
             <div className="filter-books">
                 <h2>Filter Books</h2>
 
@@ -141,5 +145,4 @@ export default function FilterComponent(): ReactElement {
                 </div>
             </div>
         </div>
-    );
 }

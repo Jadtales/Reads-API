@@ -5,7 +5,7 @@ div.noteCardReviewPageContainer {
 
     /*background-color: var(--backgroundColor_frontnote);*/
     width: 100%;
-    padding: 30px;
+    padding: 15px;
     border-radius: var(--borderRadiusNote);
     border: 1px solid black;
 
@@ -209,10 +209,10 @@ div.listOfContentContainer {
     }
 }
 
-@media screen and (width <= 500px) {
+@media screen and (width <= 800px) {
     div.listOfContentContainer-smallSize {
         position: fixed;
-        top: 70px;
+        top: 80px;
 
 
         div.tableOfContent-phoneSize {

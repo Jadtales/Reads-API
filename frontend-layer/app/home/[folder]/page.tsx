@@ -1,11 +1,12 @@
 'use client'
 
-import {Fragment, ReactElement} from "react";
-import { useRouter } from 'nextjs-toploader/app';
+import {Fragment, ReactElement, useState} from "react";
+import {useRouter} from 'nextjs-toploader/app';
 import './notesGrid.css'
 
 import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
 import FrontNoteComponent from "@/app/compos/front design notes/FrontNoteComponent";
+import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 
 const noteData = [
     {bookAuthor: 'Tommy Orange', bookTitle: 'There, there', bookId: 1, bookTags: 'Poetry'},
@@ -20,24 +21,28 @@ const noteData = [
     {bookAuthor: 'George R.R. Martin', bookTitle: 'Game of Thrones', bookId: 10, bookTags: 'Fantasy'}
 ];
 
+export const existedFolders: string[] = ['unspecified', 'poetry', 'fiction'];
+
 export default function Folder(): ReactElement {
     const router = useRouter()
     const goToReviewMode = (bookTitle: string, bookId: number): void => {
-        router.push(`/highlightsreview/${bookTitle.replaceAll(' ', '_')}-${bookId}`)
+        router.push(`/highlightsreview/${bookTitle.toLowerCase().replaceAll(' ', '-')}-${bookId}`)
     }
 
     return (
-        <Fragment>
-            <FolderComponent/>
+        <FoldersStateManagerContext.Provider value={existedFolders}>
+            <div className={'homePageContainer'}>
+                <FolderComponent/>
 
-            <div className="notes">
-                {noteData.map((data, index: number) => (
-                    <div key={index} onClick={() => goToReviewMode(data.bookTitle, data.bookId)}>
-                        <FrontNoteComponent bookTitle={data.bookTitle} bookAuthor={data.bookAuthor}
-                                            bookId={data.bookId} bookTags={data.bookTags} key={index}/>
-                    </div>
-                ))}
+                <div className="notes">
+                    {noteData.map((data, index: number) => (
+                        <div key={index} onClick={() => goToReviewMode(data.bookTitle, data.bookId)}>
+                            <FrontNoteComponent bookTitle={data.bookTitle} bookAuthor={data.bookAuthor}
+                                                bookId={data.bookId} bookTags={data.bookTags} key={index}/>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </Fragment>
+        </FoldersStateManagerContext.Provider>
     )
 }

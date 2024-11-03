@@ -1,5 +1,5 @@
 'use client'
-import {ReactElement, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import './bookReviewPageStyling.css'
 
 import BrainIcon from '@/public/icons/brainIcon.svg'
@@ -14,22 +14,41 @@ import ListOfContentComponent from "@/app/compos/notecardComponents-reviewPage/L
 
 export default function BookReviewer(): ReactElement {
     const [isMemorizationModeActive, setIsMemorizationModeActive] = useState<boolean>(false)
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth);
 
     const router = useRouter()
     const pathname = usePathname()
 
-    const getNoteCardTitle = pathname.split("/").at(2).replaceAll('_', ' ')
+    const getNoteCardTitle = pathname.split("/").at(2)?.replaceAll('-', ' ')
+
+    useEffect(() => {
+        let debounceTimer: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(debounceTimer)
+
+            debounceTimer = setTimeout(() => {
+                setWindowInnerWidth(window.innerWidth)
+            }, 200)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, []);
 
     return (
         <div className="reviewingSectionContainer">
             <ListOfContentComponent
                 contentList={['lorem', 'maybe thats why', 'consectetur adipisicing elit', 'fuga illo illum iste']}/>
 
-            <div className={'test'}>
+
+            {windowInnerWidth > 800 && <div className={'test'}>
                 <span className="switchToMemoMode"
                       onClick={() => setIsMemorizationModeActive(!isMemorizationModeActive)}>Switch to memorization mode</span>
                 <span className="advancedSettingsSpan">Advanced settings</span>
-            </div>
+            </div>}
 
             {isMemorizationModeActive ?
                 <div className="noteCardsMemoModeContainer">

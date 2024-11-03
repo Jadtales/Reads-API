@@ -1,18 +1,28 @@
 import {useEffect, useState} from 'react';
-
+import ShrinkWindowIcon from '@/public/icons/collapse-diagonal-2-line.svg'
+import Image from "next/image";
 
 export default function ListOfContentComponent({contentList}: { contentList: string[] }) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
 
     useEffect(() => {
-        const handleResize = () => {
-            setInnerWidth(window.innerWidth)
+        let debouncingTimer: NodeJS.Timeout;
 
-            // close the table of contents if width exceeds 500 pixels
-            if (window.innerWidth > 500) {
-                setIsOpen(false);
-            }
+        const handleResize = () => {
+            clearTimeout(debouncingTimer)
+
+            debouncingTimer = setTimeout(() => {
+                setInnerWidth(window.innerWidth)
+
+                // close the table of contents if width exceeds 500 pixels
+                if (window.innerWidth > 750) {
+                    setIsOpen(false);
+                }
+
+            }, 300)
+
+
         };
 
         window.addEventListener('resize', handleResize);
@@ -22,23 +32,24 @@ export default function ListOfContentComponent({contentList}: { contentList: str
         };
     }, []);
 
+
     const toggleTableOfContent = () => {
-        if (innerWidth <= 500) {
+        if (innerWidth <= 750) {
             setIsOpen(!isOpen);
         }
     };
 
     return (
-        <div className={innerWidth > 500 ? 'listOfContentContainer-largeSize' : 'listOfContentContainer-smallSize'}>
-            {innerWidth <= 500 ? (
+        <div className={innerWidth >= 800 ? 'listOfContentContainer-largeSize' : 'listOfContentContainer-smallSize'}>
+            {innerWidth <= 800 ? (
                 <>
                     <div className="tableOfContent-phoneSize">
-                        <h1
+                        {isOpen ? <Image src={ShrinkWindowIcon} alt={'collapseTheWindow'} onClick={toggleTableOfContent}/> : <h1
                             className='viewListOfContentIcon-phoneSize'
                             onClick={toggleTableOfContent}
                         >
                             T
-                        </h1>
+                        </h1>}
                         {isOpen && (
                             <div className={`tableOfContent`}>
                                 <h1>Table of Content</h1>
@@ -61,6 +72,7 @@ export default function ListOfContentComponent({contentList}: { contentList: str
                             ))}
                         </div>
                     </div>
+
                 </>
             )}
         </div>
