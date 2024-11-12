@@ -8,12 +8,12 @@ div.notificationsComponent {
 
     h1#NotifierUsername {
         font-size: 1rem;
-        padding: 8px;
+        padding: 4px 8px;
         background-color: var(--darkTheme_componentsBackgroundColor);
         color: white;
         width: fit-content;
         cursor: pointer;
-        border-radius: 10px;
+        border-radius: 6px;
         margin: 10px 0;
     }
 

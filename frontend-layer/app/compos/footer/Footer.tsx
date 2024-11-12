@@ -18,7 +18,7 @@ export default function Footer(): ReactElement {
 
 
                 <div className="reanotesGeneralInfos-subscribed">
-                    <h1>Import, discover, share and memorize notes.</h1>
+                    <h1>Import, discover, share and memorize your book notes.</h1>
 
                     <button className="tryReanotesButton">
                         Try Reanotes

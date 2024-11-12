@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import './notificationsComponentStyling.css'
+import '../notificationsComponentStyling.css'
 import Link from "next/link";
 
 interface INotification {
