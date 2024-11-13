@@ -71,7 +71,7 @@ export default function NotificationsDurationFiltering({ NotificationsData }: Co
                     ))
                 ) : (
                     <p className="emptyNotificationsWarning">
-                        Notifications are deleted after 2 weeks have passed
+                        No notification have been received yet
                     </p>
                 )}
             </div>

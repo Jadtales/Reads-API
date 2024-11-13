@@ -1,7 +1,7 @@
 footer {
     margin: 10% 0 0 0;
     padding: 0 10% 5% 10%;
-    color: black;
+    color: var(--textColor_gray_dark);
     background-color: var(--darkThemeBody-darkerGray_black);
 
     & div.topLayer {
@@ -53,17 +53,16 @@ div.bottomLayer {
         gap: 10px;
     }
 
-    div.availabilityPlatforms-section button{
+    div.availabilityPlatforms-section button {
         display: flex;
         align-items: center;
         gap: 5px;
-
         padding: 5px 20px;
-        border-radius: var(--borderRadius);
+        border-radius: 6px;
         border: var(--border);
-        background-color: var(--backgroundColor_buttonInWhiteMode);
+        background-color: var(--tag_backgroundColor);
+        border: none;
         cursor: pointer;
-
     }
 }
 
@@ -72,7 +71,7 @@ img#reanotesIcon {
     border-radius: var(--borderRadiusRNICON);
 }
 
-@media screen and (width <= 700px){
+@media screen and (width <= 700px) {
     footer {
         padding: 5%;
         color: white;
@@ -91,19 +90,19 @@ img#reanotesIcon {
 
             height: 100%;
 
-            div.readnotes-logo-name{
+            div.readnotes-logo-name {
                 display: flex;
                 justify-content: start;
                 align-items: start;
             }
 
-            div.reanotesGeneralInfos-subscribed{
-                h1{
+            div.reanotesGeneralInfos-subscribed {
+                h1 {
                     text-align: start;
                     margin: 3.5rem 0;
                 }
 
-                button.tryReanotesButton{
+                button.tryReanotesButton {
                     width: 100%;
                 }
             }
@@ -117,7 +116,7 @@ img#reanotesIcon {
             justify-content: space-between;
             align-items: center;
 
-            div.availableOnAllPlatforms-section{
+            div.availableOnAllPlatforms-section {
             }
 
             div.availabilityPlatforms-section {
@@ -127,7 +126,7 @@ img#reanotesIcon {
                 gap: 10px;
             }
 
-            div.availabilityPlatforms-section button{
+            div.availabilityPlatforms-section button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -136,7 +135,6 @@ img#reanotesIcon {
                 padding: 10px 20px;
                 border-radius: var(--borderRadius);
                 border: var(--border);
-                background-color: var(--backgroundColor_buttonInWhiteMode);
                 cursor: pointer;
 
             }

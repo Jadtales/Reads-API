@@ -52,5 +52,5 @@ export default function KeyboardInstructionsModal() {
             </div> : <div className="keyboardInstructions" onClick={() => setIsKeyboardClicked(!isKeyboardClicked)}>
                 <Image src={KeyboardIcon} alt="keyboardInstruction" width={40}/>
             </div>
-    ), document.getElementById("modalsSection"));
+    ), document.getElementById("modalsSection") as HTMLDivElement);
 }

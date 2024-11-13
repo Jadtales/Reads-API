@@ -37,7 +37,7 @@ div.folderContainer li:last-child span {
     font-size: 1.2rem;
 }
 
-div.folders-section {
+div.folderContainer div.folders-section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -47,11 +47,12 @@ div.folders-section {
         overflow-x: scroll;
         scrollbar-width: none;
         width: 100%;
-        padding: 10px 5px;
+        padding: 0 5px;
 
         div.folders {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
         }
     }
 
@@ -95,9 +96,9 @@ div.filtering-section {
 
 /* Styling addFolderInputField */
 input#addFolderInputField {
-    padding: 6px 10px;
+    padding: 5px 10px;
     border-radius: 6px;
-    background-color: var(--backgroundColor_buttonInWhiteMode);
+    background-color: var(--tag_backgroundColor);
     color: var(--textColor_gray_dark);
     border: none;
     font-weight: lighter;

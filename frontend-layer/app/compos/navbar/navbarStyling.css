@@ -124,13 +124,18 @@ div.userInteractionButtons {
             animation: shine 20s infinite linear;
         }
     }
-
-
     button#getPremium:hover {
         background-color: var(--backgroundColor_frontnote_hovered);
         transition: .2s ease;
     }
 
+    button#notificationsButton{
+        h2.numberOfReceivedNotifications{
+            position: absolute;
+            font-size: 10px;
+            color: white;
+        }
+    }
 
 }
 
@@ -196,7 +201,9 @@ div.userProfile-active {
     display: flex;
     align-items: center;
     cursor: pointer;
-
+    background-color: var(--tag_backgroundColor);
+    border-radius: 10px;
+    padding: 8px;
 
     input {
         width: fit-content;
@@ -225,6 +232,8 @@ div.userProfile-active {
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: .2s ease;
+
 
     & img {
         transform: scale(1);
@@ -248,13 +257,10 @@ div.userProfile-active {
 }
 
 .searchButton-inactive:hover {
-    /*background-color: var(--hoveredButtonWithBlackBackGroundColor);*/
-    background-color: transparent;
+    background-color: var(--tag_backgroundColor);
+    padding: 4px;
+    border-radius: 10px;
     transition: .2s ease;
-
-    img {
-        /*filter: var(--imgColor_dark_gray);*/
-    }
 
 }
 
@@ -312,7 +318,7 @@ div.notificationsCenter-active {
 }
 
 div.duration {
-    margin: 0 5px;
+    margin: 10px 5px;
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -342,6 +348,11 @@ div.receivedNotifications-inactive {
     height: 85vh;
     overflow-y: scroll;
     scrollbar-width: none;
+
+    p.emptyNotificationsWarning{
+        font-size: .8rem;
+        margin-top: 20rem
+    }
 }
 
 div.switchNotiCenterToReportBugsCenter {
@@ -390,10 +401,55 @@ div.switchNotiCenterToReportBugsCenter {
 
 @media screen and (width <= 770px){
     nav#navbarContainer {
-        margin: .5% 5% 5% 5%;
+        margin: 2% 5% 5% 5%;
     }
 
     h1#reanotesIcon {
         display: none;
     }
+
+    .userProfile{
+        padding: 0 0;
+    }
+    .userProfile-active{
+        position: absolute;
+        z-index: 2;
+        padding: 0 0;
+    }
+
+    .searchButton-active {
+        display: flex;
+        position: absolute;
+        right: 23px;
+        z-index: 2;
+        align-items: center;
+        cursor: pointer;
+        width: 134px;
+        background-color: var(--tag_backgroundColor);
+        border-radius: 10px;
+        padding: 8px;
+
+        input {
+            overflow: hidden;
+            width: 97px;
+
+            padding: 0 5px;
+
+            background-color: transparent;
+
+            border: none;
+            outline: none;
+
+            transition: .2s ease-in-out;
+
+            font-size: 20px;
+            color: black;
+        }
+
+        input::placeholder {
+            color: black;
+            font-size: 1.1rem;
+        }
+    }
+
 }

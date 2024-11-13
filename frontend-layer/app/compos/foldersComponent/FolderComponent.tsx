@@ -13,8 +13,6 @@ import FilterComponent from "@/app/compos/FilterFunctionality/FilterComponent";
 
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 
-
-
 export default function FolderComponent(): ReactElement {
     const [isFilterActive, setFilter] = useState<boolean>(false);
     // --- folders
@@ -41,13 +39,12 @@ export default function FolderComponent(): ReactElement {
         })
     }
 
-
     return (
         <Fragment>
             <div className="folderContainer">
                 <div className="folders-section">
                     <div className="scrollableFoldersContainer">
-                        <div className="fodlers">
+                        <div className="folders">
                             {folders.map((folder: string, index: number) => (
                                 <Link
                                     href={`/home/${folder.replaceAll(' ', '_')}`}

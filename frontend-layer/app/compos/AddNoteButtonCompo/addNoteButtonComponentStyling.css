@@ -18,9 +18,10 @@ button.addNoteButton{
     font-size: 2rem;
     background-color: black;
     border-radius: var(--borderRadius);
+    outline: 1px solid darkgray;
     border: none;
     color: white;
-    width: 222px;
+    /*width: 222px;*/
     cursor: pointer;
     transition: var(--hoverEffectTrasition);
 }
@@ -33,6 +34,7 @@ button.addNoteButton-kindleFile{
     border-radius: 10px;
     border: none;
     color: white;
+    outline: none;
     padding: 20px;
     font-size: .9rem;
     width: 190px;

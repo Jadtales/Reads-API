@@ -1,128 +1,47 @@
 "use client";
-
-import React, {Fragment, ReactElement, useEffect, useRef, useState} from "react";
-import Image from "next/image";
+import React, { ReactElement, useState} from "react";
 import {useRouter} from 'nextjs-toploader/app';
 import "./navbarStyling.css";
 
-
-import NotificationsIcon from "@/public/icons/notification-line.svg";
-import ReportBugsIcon from "@/public/icons/error-warning-line.svg";
-import CollapseArrow from '@/public/icons/collapseArrow.svg';
-import RNICON from "@/public/icons/RN-icon.png";
-import NotificationsComponent from "@/app/compos/navbar/notifications_reportBugs_Component/NotificationsComponent";
-import ReportBugsComponent from "@/app/compos/navbar/notifications_reportBugs_Component/ReportBugsComponent";
 import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
 import SearchInputFieldComponent from "@/app/compos/navbar/navbar_microComponents/SearchInputFieldComponent";
 import NavbarUserProfileComponent from "@/app/compos/navbar/navbar_microComponents/NavbarUserProfileComponent";
 import BrowsingComponent from "@/app/compos/browsing/BrowsingComponent";
+import NotificationsCenterComponent
+    from "@/app/compos/navbar/notifications_reportBugs_Component/notificationsComponents/NotificationsCenterComponent";
 
 export default function Navbar(): ReactElement {
-    const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
-    const [clickedButton, setClickedButton] = useState<string>(''); // To track which button was clicked
-    const [showModal, setShowModal] = useState<boolean>(false); // to close or open SubModal
-
+    const [showModal, setShowModal] = useState<boolean>(false)
     const router = useRouter();
-    const notisCenterRef = useRef<HTMLDivElement>(null);
 
-
-
-
-    const handleNotificationsToggles = (buttonName: string): void => {
-        setIsNotifications_reportActive(!isNotifications_reportActive);
-        setClickedButton(buttonName); // To track which button was clicked
-    };
-
-    // Close the notifications center when the user clicks or scrolls outside of it
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent): void => {
-            if (notisCenterRef.current && !notisCenterRef.current.contains(event.target as Node)) {
-                setIsNotifications_reportActive(false);
-            }
-        };
-
-        const handleScrollOutside = (): void => {
-            setIsNotifications_reportActive(false); // Close the notifications center when scrolling
-        };
-
-        // Add the event listeners
-        document.addEventListener('mousedown', handleClickOutside);
-        document.addEventListener('scroll', handleScrollOutside);
-
-        // Cleanup event listeners when component unmounts or updates
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-            document.removeEventListener('scroll', handleScrollOutside);
-        };
-    }, [isNotifications_reportActive]);
-
-
+    const closeModal = (toClose: boolean): void => {
+        setShowModal(toClose)
+    }
 
     return (
-        <Fragment>
-            <nav id="navbarContainer">
-                <div className="iconContainer">
-                    <Image id="reanotesIcon" src={RNICON} alt="reanotes" width={54} style={{cursor: 'pointer'}}
-                           onClick={() => router.push('/home/unspecified')}/>
+        <nav id="navbarContainer">
+            <div className="iconContainer">
+                <h1 id="reanotesIcon" style={{cursor: 'pointer'}}
+                    onClick={() => router.push('/home/unspecified')}>
+                    Reanotes
+                </h1>
 
-                    <div className="user-search_buttons">
-                        <NavbarUserProfileComponent/>
-                        {/*<div className="navigationButtons">*/}
-                            <BrowsingComponent/>
-                        {/*</div>*/}
-                        <SearchInputFieldComponent/>
-                    </div>
+                <div className="user-search_buttons">
+                    <NavbarUserProfileComponent/>
+                    <BrowsingComponent/>
+                    <SearchInputFieldComponent/>
                 </div>
-
-
-                <div className="userInteractionButtons">
-                <button id="getPremium" onClick={() => setShowModal(!showModal)}>
-                        {showModal && <SubModalComponent/>}
-                        <p>Get premium</p>
-                    </button>
-
-                    <button id="notificationsButton" className="stdIconStyling"
-                            onClick={() => handleNotificationsToggles('notifications')}>
-                        <Image src={NotificationsIcon} alt="settingIcon"/>
-                    </button>
-
-                    <button id="reportButton" className="stdIconStyling"
-                            onClick={() => handleNotificationsToggles('report')}>
-                        <Image src={ReportBugsIcon} alt="ReportIcon"/>
-                    </button>
-                </div>
-            </nav>
-
-            {/* Notifications/report center */}
-            <div
-                className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
-                ref={notisCenterRef}  // Use ref to reference the notifications center div
-            >
-                <div className="collapseIcon_centerSwitchers_container">
-                    <div className="collapseNotificationsCenter"
-                         onClick={() => handleNotificationsToggles(clickedButton)}>
-                        <Image src={CollapseArrow} alt="collapseNotificationsCenter"/>
-                    </div>
-
-                    <div className="switchNotiCenterToReportBugsCenter"
-                         onClick={() => clickedButton === 'notifications' ?
-                             setClickedButton('report bugs') : setClickedButton('notifications')}>
-                        {clickedButton === "notifications" ?
-                            (<Image src={ReportBugsIcon} alt="ReportBugsIcon" width={19}/>)
-                            : <Image src={NotificationsIcon} alt="NotificationsIcon" width={19}/>}
-                    </div>
-                </div>
-                <p>{clickedButton === 'notifications' ? 'your notifications' : 'report bugs'}</p>
-                <hr style={{margin: "20px 10px"}}/>
-                {clickedButton === "notifications" ? (<div className="receivedNotifications-inactive">
-                    <NotificationsComponent username={"zuzanna"} purpose={"Updated"} targetChange={"Dark matter"}/>
-                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                    <NotificationsComponent username={"jadtales"} purpose={"Posted"} targetChange={"Dark matter"}/>
-                </div>) : (<div><ReportBugsComponent/></div>)}
             </div>
-        </Fragment>
+
+
+            <div className="userInteractionButtons">
+                <button id="getPremium" onClick={() => setShowModal(!showModal)}>
+                    {showModal && <SubModalComponent onCloseModal={closeModal}/>}
+                    <p>Get premium</p>
+                </button>
+
+                <NotificationsCenterComponent/>
+            </div>
+        </nav>
     );
 }

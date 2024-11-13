@@ -1,5 +1,6 @@
 import {ReactElement, useState, useRef, Fragment} from "react";
 import {useRouter} from "next/navigation";
+import '../folderStyling.css'
 
 interface AddFolderComponentProps {
     existedFolders: string[];
@@ -33,7 +34,7 @@ export default function AddFolderComponent({
             setNewFolder('');
             setIsAddingNewFolder(false);
             // Navigate to the newly created folder
-            router.push(`/home/${newFolder.trim().replaceAll(' ', '_')}`);
+            router.push(`/home/${newFolder.trim().replaceAll(' ', '-')}`);
 
         } else {
             setIsAddingNewFolder(false);
@@ -52,31 +53,29 @@ export default function AddFolderComponent({
     return (
         <Fragment>
             {!isAddingNewFolder ? (
-                <span onClick={() => setIsAddingNewFolder(true)} style={{color: 'black'}}>+</span>
+                <span onClick={() => setIsAddingNewFolder(true)}
+                      style={{color: 'black', margin: '0 12px', cursor: 'pointer'}}>+</span>
             ) : (
-                <Fragment>
-                    <input
-                        id="addFolderInputField"
-                        type="text"
-                        autoFocus
-                        value={newFolder}
-                        ref={inputRef}
-                        onChange={(e) => setNewFolder(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        onBlur={() => {
-                            if (newFolder.trim()) {
-                                handleAddingNewFolder()
-                            }
+                <input
+                    id="addFolderInputField"
+                    type="text"
+                    autoFocus
+                    value={newFolder}
+                    ref={inputRef}
+                    onChange={(e) => setNewFolder(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    onBlur={() => {
+                        if (newFolder.trim()) {
+                            handleAddingNewFolder()
+                        }
 
-                            !newFolder.trim() && setIsAddingNewFolder(false)
-                        }}
-                        placeholder="New folder name"
-                    />
+                        !newFolder.trim() && setIsAddingNewFolder(false)
+                    }}
+                    placeholder="New folder name"
+                />
 
-                </Fragment>
             )}
             {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
-
         </Fragment>
     );
 }

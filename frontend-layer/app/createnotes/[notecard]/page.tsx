@@ -44,8 +44,8 @@ export default function Notes(): ReactElement {
     };
 
     // Function to close the modal
-    const closeSubModal = (): void => {
-        setIsSubModalOpen(false); // Close modal
+    const closeSubModal = (toClose: boolean): void => {
+        setIsSubModalOpen(toClose); // Close modal
     };
 
     // Handle changes to how many cards to add
@@ -96,7 +96,7 @@ export default function Notes(): ReactElement {
 
             {/* Render the modal if the user tries to add more than 4 cards */}
             {noteCards.length === 4 && isSubModalOpen && (
-                <SubModalComponent onSubModalClose={closeSubModal} />
+                <SubModalComponent onCloseModal={closeSubModal}/>
             )}
         </Fragment>
     );

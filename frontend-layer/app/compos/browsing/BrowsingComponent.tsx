@@ -12,13 +12,15 @@ import {existedFolders} from '@/app/home/[folder]/page';
 import Image from 'next/image';
 
 export default function BrowsingComponent(): React.ReactElement | null {
-    const [pageWidth, setPageWidth] = useState<number>(window.innerWidth);
+    const [pageWidth, setPageWidth] = useState<number | null>(null);
     const pathname = usePathname();
 
     // Dynamically adjust the pages to show based on the width
-    const browsingPages: string[] = pageWidth >= 1420 ? ['home', 'browse', 'stats'] : ['home', 'stats'];
+    const browsingPages: string[] = pageWidth && pageWidth >= 1420 ? ["home", "browse", "stats"] : ["home", "stats"];
 
     useEffect(() => {
+        setPageWidth(window.innerWidth);
+
         let debounceTimer: NodeJS.Timeout;
         const handleResize = () => {
             clearTimeout(debounceTimer);
@@ -30,6 +32,8 @@ export default function BrowsingComponent(): React.ReactElement | null {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    if(pageWidth === null) return null
 
     return (
         <div className="browsingContainer">

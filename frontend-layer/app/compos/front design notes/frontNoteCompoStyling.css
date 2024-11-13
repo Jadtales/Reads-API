@@ -40,9 +40,6 @@ div.topLayer {
             width: 100%;
 
             h2#bookTitle{
-                /*font-size: 1.3rem;*/
-                /*!*width: fit-content;*!*/
-                /*width: 100%;*/
 
                 font-size: 1rem; /* Adjust the font size as needed */
                 /*white-space: nowrap; !* Prevents the text from wrapping to a new line *!*/

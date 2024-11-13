@@ -1,35 +1,36 @@
 'use client'
-import {ReactElement, useState} from "react";
+import React, {ReactElement, useState} from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
 import './subModalStyling.css'
 
-import CheckLineIcon from '@/public/icons/check-line.svg';
 import ClosingIcon from '@/public/icons/notesIcons/close-line.svg';
 
-interface SubModalComponent_interface {
-    onSubModalClose?: () => void;
+interface ComponentProps {
+    onCloseModal: (toClose: boolean) => void;
 }
 
-export default function SubModalComponent({onSubModalClose}: SubModalComponent_interface): ReactElement {
-    const [userBillingMethod, setUserBillingMethod] = useState<string>('annually');
+export default function SubModalComponent({onCloseModal}: ComponentProps): ReactElement | null {
+    const [userBillingMethod, setUserBillingMethod] = useState<string>('monthly');
 
-    return ReactDOM.createPortal((<div className="toBlurTheBackground">
-        <div className="subscriptionModalContainer">
+    const changeBillingMethod = (duration: string) => {
+        setUserBillingMethod(duration)
+    }
+
+    const content = <div className="toBlurTheBackground">
+        <div className="subscriptionModalContainer" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="subModal_topLayer">
                 <h1 id="subModalHeader">Get yourself unlimited Note Cards.</h1>
                 {/* Close Modal when the icon is clicked */}
-                <Image id="closingModalIcon" src={ClosingIcon} alt="closeSubModal" onClick={onSubModalClose}/>
+                <Image id="closingModalIcon" src={ClosingIcon} alt="closeSubModal" onClick={() => onCloseModal(false)}/>
             </div>
 
             <div className="monthlyAndAnnuallyButtons">
-                <button onClick={() => setUserBillingMethod('monthly')}
-                    // @ts-ignore
-                        className={userBillingMethod === 'monthly' && "userBillingMethodChoice"}>Monthly Billing
+                <button onClick={() => changeBillingMethod('monthly')}
+                        className={userBillingMethod === 'monthly' ? "userBillingMethodChoice" : ''}>Monthly Billing
                 </button>
-                <button onClick={() => setUserBillingMethod('annually')}
-                    // @ts-ignore
-                        className={userBillingMethod === "annually" && 'userBillingMethodChoice'}>Annually Billing
+                <button onClick={() => changeBillingMethod('annually')}
+                        className={userBillingMethod === "annually" ? 'userBillingMethodChoice' : ''}>Annually Billing
                 </button>
             </div>
 
@@ -67,7 +68,6 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                         {userBillingMethod === 'monthly' ? (
                                 <p id="planPrice">$1.99<span id="billingPeriod">per month.</span></p>) :
                             (<p id="planPrice">$19.99<span id="billingPeriod">annually.</span></p>)}
-                        <p id="priceMeaning">That's the price of a drink.</p>
                     </div>
 
                     <div className="userDecision">
@@ -105,7 +105,6 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                         {userBillingMethod === 'monthly' ? (
                                 <p id="planPrice">$4.99<span id="billingPeriod">per month.</span></p>) :
                             (<p id="planPrice">$49.99<span id="billingPeriod">annually.</span></p>)}
-                        <p id="priceMeaning">That's the price of Milk.</p>
                     </div>
 
 
@@ -126,5 +125,7 @@ export default function SubModalComponent({onSubModalClose}: SubModalComponent_i
                 </div>
             </div>
         </div>
-    </div>), document.getElementById('modalsSection'));
+    </div>
+
+    return ReactDOM.createPortal(content, document.getElementById('modalsSection') as HTMLDivElement);
 }

@@ -1,5 +1,4 @@
 'use client';
-
 import { ReactElement, useState, useRef } from 'react';
 import './addNoteButtonComponentStyling.css';
 import UploadKindleHighlights from "@/app/compos/AddNoteButtonCompo/uploadKindleHighlights/UploadKindleHighlights";
@@ -20,7 +19,7 @@ export default function AddNoteComponentButton(): ReactElement {
         }
 
         if(isAddNoteButtonClicked){
-            router.push('/createnotes')
+            router.push(`/createnotes/new-note-card`)
         }
     };
 

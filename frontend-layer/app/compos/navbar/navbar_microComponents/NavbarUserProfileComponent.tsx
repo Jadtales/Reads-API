@@ -8,11 +8,8 @@ import '../navbarStyling.css'
 
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import LeftArrowIcon from '@/public/icons/leftarrow.svg'
-import UserIcon from '@/public/icons/userIcon.svg'
 
 export default function NavbarUserProfileComponent(): ReactElement {
-    const [pageWidth, setPageWidth] = useState<number>(window.innerWidth);
-
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
 
     const router = useRouter()

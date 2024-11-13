@@ -1,12 +1,13 @@
 'use client'
 
-import {Fragment, ReactElement, useState} from "react";
+import {ReactElement} from "react";
 import {useRouter} from 'nextjs-toploader/app';
 import './notesGrid.css'
 
 import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
 import FrontNoteComponent from "@/app/compos/front design notes/FrontNoteComponent";
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
+import Welcoming from "@/app/compos/welcomingComponent/WelcomingComponent";
 
 const noteData = [
     {bookAuthor: 'Tommy Orange', bookTitle: 'There, there', bookId: 1, bookTags: 'Poetry'},
@@ -32,6 +33,9 @@ export default function Folder(): ReactElement {
     return (
         <FoldersStateManagerContext.Provider value={existedFolders}>
             <div className={'homePageContainer'}>
+
+                <Welcoming username={'Jadtales'}/>
+
                 <FolderComponent/>
 
                 <div className="notes">
