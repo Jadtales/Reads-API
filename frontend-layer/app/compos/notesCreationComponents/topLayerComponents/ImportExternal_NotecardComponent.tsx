@@ -13,6 +13,7 @@ export default function ImportExternal_NotecardComponents(): ReactElement {
             <button>Import highlights from your Kindle <Image src={KindleDeviceIcon} width={20} alt="kindle"/></button>
             <button>Import savings from <Image src={Twitter_X_Icon} width={20} alt="twitter"/></button>
             <button>Import your highlights from Readwise <Image src={ReadwiseIcon} width={20} alt="twitter"/></button>
+            <button>Import your highlights from Kobo <Image src={ReadwiseIcon} width={20} alt="twitter"/></button>
         </div>
     </div>
 }

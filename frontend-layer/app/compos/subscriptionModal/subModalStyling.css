@@ -1,12 +1,12 @@
 div.toBlurTheBackground {
-    position: fixed; /* Cover the entire screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
-    backdrop-filter: blur(1px); /* Blurs the background */
-    z-index: 9999; /* Below the modal but above everything else */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+    z-index: 9999;
 }
 
 div.subscriptionModalContainer {
@@ -31,7 +31,7 @@ div.subscriptionModalContainer {
     z-index: 10000;
 
 
-    div.subModal_topLayer{
+    div.subModal_topLayer {
         h1#subModalHeader {
             font-weight: normal;
             margin: 10px 0;
@@ -39,7 +39,7 @@ div.subscriptionModalContainer {
             text-align: center;
         }
 
-        img#closingModalIcon{
+        img#closingModalIcon {
             position: absolute;
             right: 20px;
             top: 32px;
@@ -48,8 +48,8 @@ div.subscriptionModalContainer {
             cursor: pointer;
         }
 
-        img#closingModalIcon:hover{
-            background-color: #f8f8f8;
+        img#closingModalIcon:hover {
+            background-color: #dfdfdf;
             border-radius: var(--borderRadius_forIcons);
         }
     }
@@ -156,7 +156,7 @@ div.subscriptionPlans {
             justify-content: space-between;
 
             h1#offerSecondaryHeader {
-                background-color: var(--mainColor);
+                background-color: #E1E1E1FF;
                 font-size: 1rem;
                 color: black;
                 padding: 2px 6px;
@@ -198,11 +198,13 @@ div.subscriptionPlans {
         h3 {
             margin: 10px 0;
             text-decoration: underline;
+            font-weight: lighter;
         }
 
-        ul li{
+        ul li {
             list-style: disc;
         }
+
         ul li {
             display: flex;
             flex-direction: row;
@@ -231,9 +233,77 @@ div.premiumPlan, div.UnlimitedPlan {
             }
         }
 
-        p#priceMeaning {
-            margin: 10px 0;
-        }
     }
 }
 
+@media screen and (width <= 1200px) {
+    div.subscriptionModalContainer {
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        color: black;
+        cursor: default;
+        flex-direction: column;
+
+        background-color: var(--darkThemeBody-darkerGray_black);
+        /*border-radius: 20px;*/
+        padding: 20px;
+
+
+        width: 950px;
+        height: fit-content;
+        z-index: 10000;
+    }
+}
+
+@media screen and (width <= 950px) {
+    div.subscriptionModalContainer {
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        color: black;
+        cursor: default;
+        flex-direction: column;
+
+        background-color: var(--darkThemeBody-darkerGray_black);
+        border-radius: 0;
+        padding: 20px;
+
+
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000;
+
+        div.subModal_topLayer {
+            h1#subModalHeader {
+                font-weight: normal;
+                margin-top: 50px;
+                font-size: 2.5rem;
+                text-align: center;
+            }
+        }
+    }
+
+    div.subscriptionPlans {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+        text-align: start;
+        height: 100vh;
+        overflow-y: scroll;
+        /*margin: 2rem 0;*/
+
+        div.freePlan{
+            display: none;
+        }
+    }
+
+}

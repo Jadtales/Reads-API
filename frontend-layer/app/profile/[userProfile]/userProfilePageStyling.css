@@ -1,124 +1,190 @@
 div.userProfilePageContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5rem;
 
     margin: 1% 10%;
     height: auto;
-    padding: 30px 50px;
 
-    border-radius: 20px;
     background-color: var(--darkThemeBody);
     color: var(--textColor_gray_dark);
 
 
-    div.userBriefIntro {
+    div.userIntroduction {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem;
 
-        img {
-            border-radius: 20px;
+        div.UserName_briefIntro {
+            h1.userName {
+                font-size: 4rem;
+                font-weight: lighter;
+                color: var(--secondPrimaryTextColor);
+            }
+
+            p {
+                font-size: .9rem;
+                font-weight: lighter;
+                letter-spacing: 1px;
+            }
         }
 
-        div.aboutUserSection {
+        div.userInterests {
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: .5rem;
+
+                li {
+                    list-style: none;
+                    background-color: var(--tag_backgroundColor);
+                    padding: 2px 4px;
+                    border-radius: var(--borderRadiusTags);
+                    border: var(--border_tags);
+                }
+            }
+        }
+
+        div.user_followers_followee {
             display: flex;
             flex-direction: row;
             gap: 2rem;
 
-            div.aboutUserHeadlight_followers_followee {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 2rem;
-
-                h1.aboutUserH1 {
-                    /*font-size: 1.5rem;*/
-                    margin-bottom: 5px;
-                    font-weight: bolder;
-                    text-decoration: none;
-                    width: fit-content;
-                }
-
-                div.user_followers_followee {
-                    display: flex;
-                    flex-direction: row;
-                    font-size: .5rem;
-                    gap: 2rem;
-                }
+            div.userFollowers h5, div.userFollowing h5 {
+                font-weight: normal;
             }
 
+            div.userFollowers span, .userFollowing span {
+                font-size: 1.3rem;
+                font-weight: lighter;
+            }
+        }
 
-            width: 60%;
+        div.aboutUserSection {
+            display: flex;
+            flex-direction: column;
+
+            span.userAboutMeText {
+                width: 50%;
+                font-weight: lighter;
+            }
+        }
+
+        div.userCardnotes {
+            div.userPopularNotecards {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: stretch;
+                gap: 0 1.5rem;
+
+                div.suggestedNote {
+                    width: 300px;
+                }
+            }
+        }
+
+
+        /*common shared styling*/
+
+        div.userInterests h1,
+        div.user_followers_followee,
+        div.aboutUserSection h1,
+        div.userCardnotes h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 5px;
         }
 
 
     }
 
-    div.otherInfos {
-        margin: 2% 0;
-
+    div.userSocials {
         display: flex;
         flex-direction: column;
-        gap: 5rem;
+        align-items: center;
+        gap: 1rem;
 
-        div.userAverageRating {
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 5px;
-                font-weight: bolder;
-                text-decoration: none;
-
+        div.userProfileImg_uploadImg{
+            img {
+                border-radius: 5px;
+                cursor: pointer;
+                transition: .1s ease;
             }
-            span.userRate {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                margin-top: 10px;
-                filter: var(--imgColor_dark_gray);
 
+            img:hover{
+                transform: scale(1.02);
+                transition: .2s ease;
             }
         }
 
-        div.userInterests {
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 5px;
-                font-weight: bolder;
-                text-decoration: none;
-            }
+        div.userSocialsLinks {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
 
-            ul {
+            a {
                 display: flex;
-                flex-direction: row;
-                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
 
-                li {
-                    list-style: none;
-                    padding: 5px 10px;
-                    background-color: var(--backgroundColor_buttonInWhiteMode);
-                    color: var(--textColor);
-                    border-radius: 5px;
+                text-decoration: none;
+
+                border: var(--border_tags);
+                border-radius: 4px;
+
+                color: var(--textColor_gray_dark);
+                padding: 4px 6px;
+                background-color: var(--darkThemeBody-darkerGray_black);
+            }
+        }
+    }
+}
+
+@media screen and (width <= 1305px) {
+    div.userProfilePageContainer div.userIntroduction {
+        div.userCardnotes {
+            div.userPopularNotecards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0 1.5rem;
+            }
+        }
+    }
+
+}
+
+@media screen and (width <= 950px) {
+    div.userProfilePageContainer {
+        div.userIntroduction {
+
+            div.userCardnotes {
+                div.userPopularNotecards {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0 1.5rem;
+
+                    div.suggestedNote {
+                        width: 300px;
+                    }
                 }
             }
         }
+    }
+}
 
-        div.userNoteCards {
-            h1 {
-                font-size: 1.5rem;
-                text-decoration: none;
-                margin-bottom: 5px;
-                font-weight: bolder;
-            }
+@media screen and (width <= 600px) {
+    div.userProfilePageContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: start;
+        gap: 2rem;
 
-            div.userPopularNotecards {
-                /*width: 100%;*/
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 1rem;
-                flex-wrap: wrap;
-
+        div.userIntroduction
+        div.aboutUserSection {
+            span.userAboutMeText {
+                width: 100%;
             }
         }
     }
