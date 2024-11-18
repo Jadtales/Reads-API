@@ -8,15 +8,17 @@ interface AddFolderComponentProps {
 
 // imported modules
 import {FoldersErrorHandling} from "@/utils/ErrorHandling/foldersErrorHandling";
+import useWarningNotification from "@/app/compos/warningNotificationComponent/WarningNotification";
 
 
 export default function AddFolderComponent({
                                                existedFolders,
                                            }: AddFolderComponentProps): ReactElement {
 
+    const {toggleElementActivation, warningFunction} = useWarningNotification()
+
     const [newFolder, setNewFolder] = useState<string>('');
     const [isAddingNewFolder, setIsAddingNewFolder] = useState<boolean>(false);
-    const [folderErrorMessage, setErrorMessage] = useState<string | null>(null);
 
     const router = useRouter();
     const inputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +27,7 @@ export default function AddFolderComponent({
     const handleAddingNewFolder = (): void => {
         const folderLongError = FoldersErrorHandling.isFolderLong(newFolder.trim())
         if (folderLongError) {
-            setErrorMessage(folderLongError)
+            toggleElementActivation(true)
             return
         }
 
@@ -75,7 +77,7 @@ export default function AddFolderComponent({
                 />
 
             )}
-            {newFolder.length > 20 && folderErrorMessage && (<p id="errorMessageStyling">{folderErrorMessage}</p>)}
+            {newFolder.length > 20 && warningFunction('Folder name must be under 20 characters')}
         </Fragment>
     );
 }

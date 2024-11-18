@@ -16,7 +16,7 @@ export default function (): ReactElement {
             color: 'white',
             padding: '6px 15px',
             borderRadius: '8px',
-            margin: '50px 12.3%',
+            margin: '30px 10%',
             cursor: 'pointer'
         }}
              onClick={() => router.back()}>

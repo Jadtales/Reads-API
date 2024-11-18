@@ -14,6 +14,8 @@ import WebsiteLinkIcon from '@/public/icons/copyUrlLink.svg'
 import UploadUserProfileImg from "@/app/compos/profileComponents/UploadUserProfileImg";
 
 export default function UserProfilePage(): ReactElement {
+
+
     return <Fragment>
         <GoBackToComponent/>
 
@@ -70,15 +72,16 @@ export default function UserProfilePage(): ReactElement {
             </div>
 
 
-
             <div className="userSocials">
                 <UploadUserProfileImg/>
                 <div className="userSocialsLinks">
                     <Link href={"/instagram"}>Twitter<Image src={TwitterIcon} alt={'goToTwitter'}/></Link>
                     <Link href={"/instagram"}>Instagram<Image src={InstagramIcon} alt={'goToInstagram'}/></Link>
-                    <Link href={"/instagram"}>Website<Image src={WebsiteLinkIcon} alt={'goToUserOfficialWebsite'}/></Link>
+                    <Link href={"/instagram"}>Website<Image src={WebsiteLinkIcon}
+                                                            alt={'goToUserOfficialWebsite'}/></Link>
                 </div>
             </div>
         </div>
+
     </Fragment>
 }

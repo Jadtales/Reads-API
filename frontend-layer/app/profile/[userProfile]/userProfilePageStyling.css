@@ -9,7 +9,6 @@ div.userProfilePageContainer {
     background-color: var(--darkThemeBody);
     color: var(--textColor_gray_dark);
 
-
     div.userIntroduction {
         display: flex;
         flex-direction: column;
@@ -105,14 +104,14 @@ div.userProfilePageContainer {
         align-items: center;
         gap: 1rem;
 
-        div.userProfileImg_uploadImg{
+        div.userProfileImg_uploadImg {
             img {
                 border-radius: 5px;
                 cursor: pointer;
                 transition: .1s ease;
             }
 
-            img:hover{
+            img:hover {
                 transform: scale(1.02);
                 transition: .2s ease;
             }
@@ -134,9 +133,16 @@ div.userProfilePageContainer {
                 border: var(--border_tags);
                 border-radius: 4px;
 
-                color: var(--textColor_gray_dark);
+                /*color: var(--textColor_gray_dark);*/
                 padding: 4px 6px;
-                background-color: var(--darkThemeBody-darkerGray_black);
+                /*background-color: var(--darkThemeBody-darkerGray_black);*/
+
+                background-color: black;
+                color: white;
+
+                img{
+                    filter: invert(100%);
+                }
             }
         }
     }

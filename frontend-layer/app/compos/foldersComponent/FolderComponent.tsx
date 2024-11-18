@@ -33,6 +33,10 @@ export default function FolderComponent(): ReactElement {
     }
 
     const handleGoingUpBack = () => {
+        if(window.scrollY === 0){
+            return;
+        }
+
         window.scrollTo({
             top: 0,
             behavior: 'smooth'

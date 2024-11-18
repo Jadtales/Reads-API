@@ -3,23 +3,25 @@ import Image from "next/image";
 import '../../profile/[userProfile]/userProfilePageStyling.css'
 
 import ReanotesIcon from "@/favicon.png";
-import WarningNotification from "@/app/compos/warningNotificationComponent/WarningNotification";
+import useWarningNotification from "@/app/compos/warningNotificationComponent/WarningNotification";
 
 export default function UploadUserProfileImg(): ReactElement {
+    const {toggleElementActivation, warningFunction} = useWarningNotification()
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleProfileChange = () => {
-        if(inputRef.current){
+        if (inputRef.current) {
             inputRef.current.click();
         }
     }
 
     const handleUploadedProfileImg = (event: ChangeEvent<HTMLInputElement>) => {
         const img = event.target.files?.[0]
-        const maxSizeInBytes: number = 10 * 1024 * 1024 // maxSizeInBytes is 10MB
+        const maxSizeInBytes: number = 2 * 1024 * 1024 // maxSizeInBytes is 10MB
 
-        if(img && img.size > maxSizeInBytes){
+        if (img && img.size > maxSizeInBytes) {
             event.target.value = ''
+            toggleElementActivation(true)
         }
     }
 
@@ -35,7 +37,6 @@ export default function UploadUserProfileImg(): ReactElement {
                    onChange={handleUploadedProfileImg}
             />
         </div>
-
-        <WarningNotification warningContext={'Image must be less than 10MB'}/>
+        {warningFunction('Image must be under 10MB')}
     </div>
 }
