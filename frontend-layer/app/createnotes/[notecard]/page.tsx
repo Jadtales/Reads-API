@@ -4,10 +4,13 @@ import {ChangeEvent, Fragment, ReactElement, useState} from "react";
 import './createNotesPageStyling.css';
 
 import NotesCreationButtons from "@/app/compos/notesCreationComponents/topLayerComponents/NotesCreationButtons";
-import NotesDescriptionAndTitleComponent from "@/app/compos/notesCreationComponents/topLayerComponents/NotesDescriptionAndTitleComponent";
+import NotesDescriptionAndTitleComponent
+    from "@/app/compos/notesCreationComponents/topLayerComponents/NotesDescriptionAndTitleComponent";
 import NoteCard from "@/app/compos/notesCreationComponents/topLayerComponents/NoteCard";
 import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
 import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
+import NoteDescriptionAndTitleComponent
+    from "@/app/compos/notesCreationComponents/topLayerComponents/NotesDescriptionAndTitleComponent";
 
 interface NoteCardData {
     cardKey: number;
@@ -16,6 +19,7 @@ interface NoteCardData {
 }
 
 export default function Notes(): ReactElement {
+    const {tagsElement, noteCardTags} = NoteDescriptionAndTitleComponent()
     const [noteCards, setNoteCards] = useState<NoteCardData[]>([
         {
             cardKey: 1,
@@ -23,6 +27,7 @@ export default function Notes(): ReactElement {
             cardDefinition: 'Your highlights/notes on the chapter',
         }
     ]);
+
 
     const [newCardsToAdd, setNewCardsToAdd] = useState<number>(1);
     const [isSubModalOpen, setIsSubModalOpen] = useState<boolean>(false);
@@ -33,7 +38,7 @@ export default function Notes(): ReactElement {
             return setIsSubModalOpen(true); // Open modal if user exceeds limit
         }
 
-        const newCards = Array.from({ length: newCardsToAdd }, (_, index) => ({
+        const newCards = Array.from({length: newCardsToAdd}, (_, index) => ({
             cardKey: noteCards.length + index + 1,
             cardTitle: `Chapter number/name`,
             cardDefinition: `Your highlights/notes on the chapter`,
@@ -65,10 +70,10 @@ export default function Notes(): ReactElement {
 
     return (
         <Fragment>
-            <GoBackToComponent />
+            <GoBackToComponent/>
             <div className="createNotesComponent">
-                <NotesCreationButtons />
-                <NotesDescriptionAndTitleComponent />
+                <NotesCreationButtons/>
+                {tagsElement}
 
                 {noteCards.map((card) => (
                     <NoteCard
