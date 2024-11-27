@@ -95,10 +95,10 @@ div.notesCreationFromExternalSources-layer {
 }
 
 /*--- styling notes description and tags*/
-div.NoteDescriptionAndTitleComponentContainer {
+div.noteDescriptionAndTitleComponentContainer {
     div.noteTitle, div.noteDescription {
         background-color: transparent;
-        border: var(--border);
+        border: var(--border_tags);
         margin: 30px 0;
         padding: 20px;
         border-radius: var(--borderRadiusNote);
@@ -125,15 +125,42 @@ div.NoteDescriptionAndTitleComponentContainer {
         }
     }
 
-    div.noteDescription div.noteTags button {
-        border: none;
-        outline: none;
-        background-color: var(--tag_backgroundColor);
-        color: var(--textColor_gray_dark);
-        font-size: 1rem;
-        padding: 8px 10px;
-        border-radius: var(--borderRadius);
+    div.noteDescription div.noteTags {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0 .5rem;
+        padding: 5px 0;
+
+        button {
+            border: none;
+            outline: none;
+            background-color: var(--tag_backgroundColor);
+            color: var(--textColor_gray_dark);
+            font-size: 1rem;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: var(--borderRadius);
+        }
+
+        input {
+            margin: 0 0;
+            border: none;
+            outline: none;
+            background-color: var(--tag_backgroundColor);
+            color: var(--textColor_gray_dark);
+            font-size: 1rem;
+            padding: 8px 10px;
+            width: 102px;
+            cursor: pointer;
+            border-radius: var(--borderRadius);
+        }
+
+        input::placeholder {
+            color: var(--textColor_gray_dark);
+        }
     }
+
 
 }
 
@@ -143,7 +170,7 @@ div.noteCardContainer {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--backgroundColor_frontnote);
-    border: var(--border);
+    border: var(--border_tags);
     gap: 10px;
     margin-bottom: 2.5rem;
     color: var(--textColor_gray_dark);
@@ -251,32 +278,28 @@ div.noteCardContainer {
                 font-weight: lighter;
 
                 border: none;
-                border-bottom: 3px solid #989898;
+                border-bottom: 2.5px solid #989898;
                 outline: none;
                 cursor: text;
                 width: 100%;
-                margin: 15px 0;
 
                 #termInputField, #definitionInputField {
                     width: 100%;
                     outline: none;
-                    line-height: 30px;
+                    line-height: 20px;
+                    margin: 0 0;
                     border: none;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     background-color: transparent;
-                    /*word-break: break-word;*/
-                    /*overflow-wrap: break-word;*/
-                    /*white-space: pre-wrap;*/
                 }
 
             }
 
             /*---- when term, definition are focused*/
+
             div.termTextarea-active, div.definitionTextarea-active {
                 border-bottom: 3px solid black;
                 cursor: text;
-                margin: 15px 0;
-                /*resize: none; !* Prevent manual resizing *!*/
                 white-space: pre-wrap; /* Allows wrapping */
                 word-break: break-word; /* Breaks long words */
                 box-sizing: border-box;
@@ -284,6 +307,8 @@ div.noteCardContainer {
                 #termInputField, #definitionInputField {
                     width: 100%;
                     letter-spacing: 1px;
+                    padding: 20px;
+                    margin: 15px 0;
                     outline: none;
                     border: none;
                     font-size: 1.2rem;
@@ -296,6 +321,7 @@ div.noteCardContainer {
 
             h1 {
                 font-size: 1rem;
+                margin: 10px 0;
             }
         }
     }
@@ -427,155 +453,6 @@ div.lastSaveTime {
         }
 
     }
-
-    div.noteCardContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: var(--backgroundColor_frontnote);
-        border: var(--border);
-        gap: 10px;
-        margin-bottom: 2.5rem;
-        color: var(--textColor_gray_dark);
-        height: fit-content;
-        width: 100%;
-
-        padding: 30px;
-
-        border-radius: var(--borderRadiusNote);
-
-        div.noteCardEditing {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-
-            span.cardKey {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            div.editingToolsContainer {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                div.cardEditingTools {
-                    margin-left: -10px;
-                }
-
-                div.cardEditingTools ul {
-                    list-style: none;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    gap: 10px;
-
-                    li {
-                        cursor: pointer;
-                        padding: 2px 4px;
-
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        img {
-                            filter: var(--imgColor_dark_gray);
-                        }
-                    }
-
-                    li:active {
-                        cursor: pointer;
-                        padding: 2px 4px;
-
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: var(--input_backgroundColor_darkGray_lightGray);
-                        border-radius: 4px;
-                    }
-
-                }
-
-                div.otherCardEditingOptions ul {
-                    list-style: none;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    gap: 10px;
-
-                    li {
-                        cursor: pointer;
-                        padding: 2px 4px;
-
-                        img {
-                            filter: var(--imgColor_dark_gray);
-                        }
-                    }
-
-                    li.deleteButton:hover img {
-                        background-color: rgba(255, 0, 0, 0.11);
-                        border-radius: 5px;
-
-                    }
-                }
-            }
-        }
-
-        div.term_description_layer {
-            display: flex;
-            flex-direction: column;
-            /*justify-content: space-between;*/
-            align-items: start;
-            gap: 1rem;
-            width: 100%;
-
-            div.term, div.description {
-                width: 100%;
-
-                div.termTextarea, div.definitionTextarea {
-                    font-size: 1.2rem;
-                    letter-spacing: 1px;
-                    font-weight: lighter;
-
-                    border: none;
-                    border-bottom: 3px solid #989898;
-                    outline: none;
-                    cursor: text;
-
-                    width: 100%;
-                    margin: 15px 0;
-                }
-
-                /*---- when term is focused*/
-
-                div.termTextarea-active {
-
-                    border-bottom: 3px solid black;
-                    cursor: text;
-                    margin: 15px 0;
-                }
-
-                input#termInputField, input#definitionInputField {
-                    color: var(--textColor_gray_dark);
-                    font-weight: lighter;
-                    letter-spacing: 1px;
-                    width: 100%;
-                    outline: none;
-                    border: none;
-                    font-size: 1.2rem;
-                    background-color: transparent;
-                }
-
-
-                h1 {
-                    font-size: 1.2rem;
-                }
-            }
-        }
-
-    }
-
 }
 
 @media screen and (width <= 600px) {
@@ -696,7 +573,7 @@ div.lastSaveTime {
                     margin: 15px 0;
                 }
 
-                input#termInputField, input#definitionInputField {
+                #termInputField, #definitionInputField {
                     color: var(--textColor_gray_dark);
                     font-weight: lighter;
                     letter-spacing: 1px;
