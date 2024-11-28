@@ -61,6 +61,8 @@ export default function AddFolderComponent({
                 <input
                     id="addFolderInputField"
                     type="text"
+                    maxLength={20}
+                    minLength={1}
                     autoFocus
                     value={newFolder}
                     ref={inputRef}
@@ -75,7 +77,6 @@ export default function AddFolderComponent({
                     }}
                     placeholder="New folder name"
                 />
-
             )}
             {newFolder.length > 20 && warningFunction('Folder name must be under 20 characters')}
         </Fragment>

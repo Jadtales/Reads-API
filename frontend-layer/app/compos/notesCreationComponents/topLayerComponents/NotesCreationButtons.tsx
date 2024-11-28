@@ -8,7 +8,7 @@ import OpenLockIcon from '@/public/icons/notesIcons/openLockIcon.svg'
 import LockIcon from '@/public/icons/notesIcons/lockIcon.svg'
 import ArrowUpIcon from '@/public/icons/arrow-up-line.svg'
 import ImportExternal_NotecardComponents
-    from "@/app/compos/notesCreationComponents/topLayerComponents/ImportExternal_NotecardComponent";
+    from "@/app/compos/notesCreationComponents/topLayerComponents/import-external-notes-components/ImportExternal_NotecardComponent";
 
 export default function NotesCreationButtons(): ReactElement {
     const [isSharingButtonClicked, setIsSharingButtonClicked] = useState<boolean>(true);

@@ -37,7 +37,7 @@ export default function NoteDescriptionAndTitleComponent(): { tagsElement: React
                 <div className="noteTags">
                     {noteCardTags.map((tag: string, index: number) => (
                         <button key={index} className="tagButton">
-                            #{tag}
+                            #{tag.at(0)?.toUpperCase()+ tag.substring(1)}
                             <span
                                 className="removeTag"
                                 onClick={() => handleRemoveTag(index)}

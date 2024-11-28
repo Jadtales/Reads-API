@@ -1,0 +1,9 @@
+div.createNotesComponent {
+    margin: 2% 10%;
+
+    div.cardFooterContainer {
+        div.addNewCardButton:hover {
+            background-color: var(--tag_backgroundColor);
+        }
+    }
+}

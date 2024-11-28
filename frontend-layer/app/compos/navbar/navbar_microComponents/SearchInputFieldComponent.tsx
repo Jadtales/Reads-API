@@ -1,20 +1,23 @@
-import React, {ChangeEvent, ReactElement, useEffect, useState} from "react";
+import React, {ChangeEvent, ReactElement, useEffect, useState, createContext, useContext} from "react";
 import Image from "next/image";
 import SearchIcon from "@/public/icons/search-2-line.svg";
 import {usePathname} from "next/navigation";
 import {useRouter} from 'nextjs-toploader/app';
 
 import '../navbarStyling.css'
+import {useSearchContext} from "@/utils/providers/searchInputFieldProvider";
+
 
 export default function SearchInputFieldComponent(): ReactElement {
+
     const [isSearchInputBarOpen, setIsSearchInputBarOpen] = useState<boolean>(false);
-    const [userSearchQuery, setUserSearchQuery] = useState<string>(''); // Initial value is an empty string
+    const {userSearchedText, setUserSearchedText} = useSearchContext()
 
     const pathname = usePathname()
     const router = useRouter()
 
     const handleUserSearching = (searchInputField: ChangeEvent<HTMLInputElement>): void => {
-        setUserSearchQuery(searchInputField.target.value); // Always keep this as a string
+        setUserSearchedText(searchInputField.target.value); // Always keep this as a string
     };
 
     useEffect(() => {
@@ -30,13 +33,15 @@ export default function SearchInputFieldComponent(): ReactElement {
     return (
         <div className={isSearchInputBarOpen ? 'searchButton-active' : 'searchButton-inactive'}
              onClick={() => router.push('/browse')}>
+
             <Image src={SearchIcon} alt="expandProfileSettings"/>
             <input type="search"
-                   placeholder="Search for highlights, people."
+                   placeholder="Search for notecards, people."
                    autoFocus
                    name={'searchBar'}
-                   value={userSearchQuery}
+                   value={userSearchedText}
                    onChange={handleUserSearching}/>
         </div>
     )
+
 }

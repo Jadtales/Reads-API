@@ -1,39 +1,38 @@
 'use client';
 
-import {Fragment, ReactElement, useState} from "react";
+import {Fragment, ReactElement, useContext, useState} from "react";
 import './browsePage-styling.css';
 import FrontDesignNoteBrowse from "@/app/compos/suggested-frontDesignNote/FrontDesignNote-browse";
-
+import {useSearchContext} from "@/utils/providers/searchInputFieldProvider";
 
 export default function BrowsePage(): ReactElement {
 
-    const [searchValue, setSearchValue] = useState<string>("");
-
+    const {userSearchedText} = useSearchContext()
 
     return (
         <Fragment>
+            {userSearchedText.length > 0 ? (
 
-            {searchValue.length > 0 ? (
                 <div className="browsePage-searching">
                     <div className="searchedHighlights">
-                        <h1>Searched highlights.</h1>
+                        <h2>Searched highlights.</h2>
                         <div className="searchedHighlights-components">
-
+                            {userSearchedText}
                         </div>
                     </div>
 
                     <div className="searchedPeople">
-                        <h1>Searched people.</h1>
+                        <h2>Searched people.</h2>
 
                         <div className="searchedPeople-profiles">
-
+                            {userSearchedText}
                         </div>
                     </div>
                 </div>
             ) : (
                 <div className="browsePage">
                     <div className="recommendationsBasedOnFlavour-section">
-                        <h1>Daily recommendations based on your flavour.</h1>
+                        <h2>Daily recommendations based on your flavour.</h2>
                         <div className="recommendationsBasedOnFlavour">
                             <FrontDesignNoteBrowse
                                 bookTitle={'There there'}
@@ -46,7 +45,7 @@ export default function BrowsePage(): ReactElement {
                     </div>
 
                     <div className="popularNotes-section">
-                        <h1>Weekly Popular notes.</h1>
+                        <h2>Weekly Popular notes.</h2>
                         <div className="popularNotes">
                             <FrontDesignNoteBrowse
                                 bookTitle={'There there'}
@@ -58,7 +57,7 @@ export default function BrowsePage(): ReactElement {
                     </div>
 
                     <div className="popularByGenre-section">
-                        <h1>Popular notes by genre.</h1>
+                        <h2>Popular notes by genre.</h2>
                         <div className="popularByGenre">
                             <FrontDesignNoteBrowse
                                 bookTitle={'There there'}
@@ -70,7 +69,7 @@ export default function BrowsePage(): ReactElement {
                     </div>
 
                     <div className="goodreadsAnnouncement-section">
-                        <h1>Goodreads Announcements.</h1>
+                        <h2>Goodreads Announcements.</h2>
                     </div>
                 </div>
             )}

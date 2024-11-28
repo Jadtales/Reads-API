@@ -1,11 +1,9 @@
 'use client'
 
-import {ChangeEvent, Fragment, ReactElement, useState} from "react";
+import {ChangeEvent, Fragment, ReactElement, useEffect, useState} from "react";
 import './createNotesPageStyling.css';
 
 import NotesCreationButtons from "@/app/compos/notesCreationComponents/topLayerComponents/NotesCreationButtons";
-import NotesDescriptionAndTitleComponent
-    from "@/app/compos/notesCreationComponents/topLayerComponents/NotesDescriptionAndTitleComponent";
 import NoteCard from "@/app/compos/notesCreationComponents/topLayerComponents/NoteCard";
 import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
 import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
@@ -15,7 +13,11 @@ import NoteDescriptionAndTitleComponent
 interface NoteCardData {
     cardKey: number;
     cardTitle: string;
-    cardDefinition: string;
+    cardDescription: string;
+}
+
+interface insertedNoteCardsDb extends NoteCardData {
+
 }
 
 export default function Notes(): ReactElement {
@@ -24,7 +26,7 @@ export default function Notes(): ReactElement {
         {
             cardKey: 1,
             cardTitle: 'Chapter number/name',
-            cardDefinition: 'Your highlights/notes on the chapter',
+            cardDescription: 'Your highlights/notes on the chapter',
         }
     ]);
 
@@ -34,14 +36,14 @@ export default function Notes(): ReactElement {
 
     // Function to handle adding new cards
     const addNewCards = (): void => {
-        if (noteCards.length + newCardsToAdd > 4) {
+        if (noteCards.length + newCardsToAdd > 10) {
             return setIsSubModalOpen(true); // Open modal if user exceeds limit
         }
 
         const newCards = Array.from({length: newCardsToAdd}, (_, index) => ({
             cardKey: noteCards.length + index + 1,
             cardTitle: `Chapter number/name`,
-            cardDefinition: `Your highlights/notes on the chapter`,
+            cardDescription: `Your highlights/notes on the chapter`,
         }));
 
         setNoteCards((prevCards) => [...prevCards, ...newCards]);
@@ -60,13 +62,30 @@ export default function Notes(): ReactElement {
     };
 
     const handleDeleteCard = (key: number): void => {
-        const updatedCards = noteCards.filter((card) => card.cardKey !== key);
-        const reorderedCards = updatedCards.map((card, index) => ({
-            ...card,
-            cardKey: index + 1
-        }));
-        setNoteCards(reorderedCards);
+        if (noteCards.length >= 5) {
+            const updatedCards = noteCards.filter((card) => card.cardKey !== key);
+            const reorderedCards = updatedCards.map((card, index) => ({
+                ...card,
+                cardKey: index + 1
+            }));
+            setNoteCards(reorderedCards);
+        }
     };
+
+    // to prevent triggering browser default functionalities
+    useEffect(() => {
+        const handlePrinting = (event: KeyboardEvent) => {
+            if (event.ctrlKey && event.key === 'p') {
+                event.preventDefault();
+            }
+        };
+
+        document.addEventListener('keydown', handlePrinting);
+
+        return () => {
+            document.removeEventListener('keydown', handlePrinting);
+        };
+    }, []);
 
     return (
         <Fragment>
@@ -80,7 +99,7 @@ export default function Notes(): ReactElement {
                         key={card.cardKey}
                         cardKey={card.cardKey}
                         cardTitle={card.cardTitle}
-                        cardDefinition={card.cardDefinition}
+                        cardDescription={card.cardDescription}
                         onDelete={handleDeleteCard}
                     />
                 ))}
@@ -92,15 +111,15 @@ export default function Notes(): ReactElement {
                     <input
                         type="number"
                         defaultValue={1}
-                        max={4}
-                        min={1}
+                        max={10}
+                        min={4}
                         onChange={handleInputChange}
                     />
                 </div>
             </div>
 
             {/* Render the modal if the user tries to add more than 4 cards */}
-            {noteCards.length === 4 && isSubModalOpen && (
+            {noteCards.length === 10 && isSubModalOpen && (
                 <SubModalComponent onCloseModal={closeSubModal}/>
             )}
         </Fragment>
