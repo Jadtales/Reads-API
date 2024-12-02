@@ -65,13 +65,14 @@ div.notesCreationFromExternalSources-layer {
         button {
             padding: 20px 10px;
             border-radius: var(--borderRadius);
-            border: var(--border);
+            border: var(--border_tags);
             outline: none;
 
             /*margin-right: 20px;*/
 
             color: var(--textColor_gray_dark);
             font-size: 1rem;
+            font-weight: lighter;
             letter-spacing: 1px;
             background-color: transparent;
 
@@ -293,6 +294,13 @@ div.noteCardContainer {
                     background-color: transparent;
                 }
 
+                #termInputField[data-placeholder]:empty::before,
+                #definitionInputField[data-placeholder]:empty::before{
+                    content: attr(data-placeholder);
+                    color: black;
+                    pointer-events: none;
+                }
+
             }
 
             /*---- when term, definition are focused*/
@@ -427,6 +435,12 @@ div.createnotes-topLayer div.creationButton-layer-withNavbar {
 }
 
 div.lastSaveTime {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    width: 100%;
     color: var(--textColor_gray_dark);
     letter-spacing: 1px;
 }

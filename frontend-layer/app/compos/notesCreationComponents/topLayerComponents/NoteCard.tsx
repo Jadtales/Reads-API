@@ -1,6 +1,6 @@
 'use client'
 
-import {ChangeEvent, ReactElement, useEffect, useRef, useState} from "react";
+import {ChangeEvent, ReactElement, useRef, useState} from "react";
 import Image from "next/image";
 import '../notesCreationCompoStyling.css'
 
@@ -11,8 +11,8 @@ import DeleteCardIcon from '@/public/icons/notesIcons/close-line.svg'
 
 interface cardProps {
     cardKey: number;
-    cardTitle: string;
-    cardDescription: string;
+    cardTitle?: string;
+    cardDescription?: string;
     onDelete: (key: number) => void;
 }
 
@@ -27,7 +27,17 @@ const editingTools = [
 
 export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}: cardProps): ReactElement {
     // ---- NoteCard editing tools work section
-    const [isEditingToolActive, setIsEditingToolActive] = useState<string[]>([])
+    const [isEditingToolActive, setIsEditingToolActive] = useState<string[]>([]);
+    const [cardInputFields, setInputFieldValues] = useState<{ term: string, definition: string }>(
+        {
+            term: '',
+            definition: ''
+        }
+    )
+
+    const termDivRef = useRef<HTMLDivElement>(null);
+    const definitionDivRef = useRef<HTMLDivElement>(null);
+
     const handleEditingToolActivityCheck = (toolName: string): void => {
         if (isEditingToolActive?.includes(toolName)) {
             setIsEditingToolActive(isEditingToolActive.filter((tool) => {
@@ -38,49 +48,15 @@ export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}
         }
     }
 
-    const [cardInputFields, setInputFieldValues] = useState<{ term: string, definition: string }>(
-        {
-            term: '',
-            definition: ''
-        }
-    )
 
-    const filledInputs = (event: ChangeEvent<HTMLInputElement>, whichInputField: 'term' | 'definition'): void => {
+    const handleInputsChange = (event: ChangeEvent<HTMLDivElement>, whichInputField: 'term' | 'definition'): void => {
+        const content: string = event.currentTarget.innerText;
+
         setInputFieldValues((prevState) => ({
             ...prevState,
-            [whichInputField]: event.target.value, // Dynamically set the field
+            [whichInputField]: content,
         }));
     }
-
-    const termDivRef = useRef<HTMLDivElement>(null);
-    const handleTermInputFieldOnFocus = () => {
-        if (termDivRef.current?.innerText === 'Chapter number/name') {
-            termDivRef.current.innerText = ''
-        }
-    }
-
-    const definitionDivRef = useRef<HTMLDivElement>(null);
-    const handleDefinitionInputFieldOnFocus = () => {
-        if(definitionDivRef.current?.innerText === 'Your highlights/notes on the chapter'){
-            definitionDivRef.current.innerText = ''
-        }
-    }
-
-    const handleTermInputFieldOnBlur = () => {
-        if(cardInputFields.term === ''){
-            setInputFieldValues({
-                ...cardInputFields,
-                term: 'Chapter number/name'
-            })
-        }
-        if (cardInputFields.term && termDivRef.current.innerText.length > 0) {
-            setInputFieldValues({
-                ...cardInputFields,
-                term: termDivRef.current?.innerText,
-            })
-        }
-    }
-
 
     return (
         <div className="noteCardContainer">
@@ -119,14 +95,14 @@ export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}
                     <div className={'termTextarea'}>
                         <div id="termInputField"
                              ref={termDivRef}
-                             onFocus={handleTermInputFieldOnFocus}
-                             onBlur={handleTermInputFieldOnBlur}
+                            // onFocus={handleTermInputFieldOnFocus}
                              autoFocus
+                             data-placeholder={'Chapter number/name'}
                              contentEditable={true}
                              suppressContentEditableWarning={true} // Suppress React warning for contentEditable
-                             onInput={(event) => filledInputs(event, 'term')}>
+                             onBlur={(event) => handleInputsChange(event, 'term')}>
 
-                            {cardInputFields.term?.length > 0 ? cardInputFields.term : cardTitle}
+                            {cardInputFields.term}
                         </div>
                     </div>
                     <h1>Term</h1>
@@ -137,13 +113,13 @@ export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}
                         <div
                             id="definitionInputField"
                             ref={definitionDivRef}
-                            onFocus={handleDefinitionInputFieldOnFocus}
                             contentEditable
                             autoFocus
+                            data-placeholder={'Your highlights/notes on the chapter'}
                             suppressContentEditableWarning={true} // Suppress React warning for contentEditable
-                            onInput={(event) => filledInputs(event, 'definition')}
+                            onBlur={(event) => handleInputsChange(event, 'definition')}
                         >
-                            {cardInputFields.definition?.length > 0 ? cardInputFields.definition : cardDescription}
+                            {cardInputFields.definition}
                         </div>
                     </div>
                     <h1>Description</h1>
