@@ -3,11 +3,11 @@ div.noteCardReviewPageContainer {
     flex-direction: column;
     gap: 3rem;
 
-    /*background-color: var(--backgroundColor_frontnote);*/
+    /*background-color: var(--tag_backgroundColor);*/
     width: 100%;
     padding: 15px;
     border-radius: var(--borderRadiusNote);
-    border: 1px solid black;
+    border: var(--border_tags);
 
     div.content_moreOptions {
         display: flex;

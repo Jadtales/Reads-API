@@ -1,35 +1,38 @@
-div.toBlurTheBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
-    z-index: 9999;
+button.getPremiumButton{
+    background-color: transparent;
+    border: 1px solid black;
+    box-shadow: 1px 1px black;
+    padding: 4px 10px;
+    margin: 0 10px;
+    border-radius: 4px;
+    color: var(--textColor_gray_dark);
+    cursor: pointer;
+    font-size: .8rem;
+    transition: .2s ease;
 }
 
-div.subscriptionModalContainer {
+button.getPremiumButton:hover{
+    border: 1px solid black;
+    box-shadow: 0 0 black;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: .2s ease;
+}
+
+dialog.subscriptionModalContainer {
 
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 
-    display: flex;
-    color: black;
-    cursor: default;
-    flex-direction: column;
 
     background-color: var(--darkThemeBody-darkerGray_black);
     border-radius: 20px;
     padding: 20px;
 
-
     width: 1200px;
     height: fit-content;
-    z-index: 10000;
-
 
     div.subModal_topLayer {
         h1#subModalHeader {

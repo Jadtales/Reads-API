@@ -2,6 +2,11 @@ div.homePageContainer {
     margin: 0 10%;
 }
 
+/*div.homePageContainer div.welcomingContentContainer{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
 div.notes {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Default 4 cards in a row */

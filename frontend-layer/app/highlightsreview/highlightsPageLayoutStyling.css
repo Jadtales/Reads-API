@@ -50,7 +50,7 @@ div.bookReviewerContainer {
 
 }
 
-@media screen and (width <= 500px){
+@media screen and (width <= 750px){
     div.bookReviewerContainer{
         margin: 0 0;
     }

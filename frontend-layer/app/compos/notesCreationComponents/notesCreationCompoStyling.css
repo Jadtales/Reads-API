@@ -65,7 +65,8 @@ div.notesCreationFromExternalSources-layer {
         button {
             padding: 20px 10px;
             border-radius: var(--borderRadius);
-            border: var(--border_tags);
+            border: 1px solid black;
+            box-shadow: 2px 2px black;
             outline: none;
 
             /*margin-right: 20px;*/
@@ -146,9 +147,9 @@ div.noteDescriptionAndTitleComponentContainer {
 
         input {
             margin: 0 0;
-            border: none;
+            border: var(--border_frontNote);
             outline: none;
-            background-color: var(--tag_backgroundColor);
+            background-color: var(--backgroundColor_frontnote);
             color: var(--textColor_gray_dark);
             font-size: 1rem;
             padding: 8px 10px;
@@ -171,7 +172,7 @@ div.noteCardContainer {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--backgroundColor_frontnote);
-    border: var(--border_tags);
+    border: var(--border_frontNote);
     gap: 10px;
     margin-bottom: 2.5rem;
     color: var(--textColor_gray_dark);
@@ -297,7 +298,7 @@ div.noteCardContainer {
                 #termInputField[data-placeholder]:empty::before,
                 #definitionInputField[data-placeholder]:empty::before{
                     content: attr(data-placeholder);
-                    color: black;
+                    color: var(--textColor_gray_dark);
                     pointer-events: none;
                 }
 
@@ -352,8 +353,8 @@ div.cardFooterContainer {
 
     div.addNewCardButton {
         background-color: transparent;
-        color: black;
-        border: 1px solid black;
+        color: var(--textColor_gray_dark);
+        border: var(--border_tags);
         padding: 8px 15px;
         border-radius: 10px;
         cursor: pointer;

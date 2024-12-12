@@ -30,10 +30,11 @@ button.addNoteButton{
 button.addNoteButton,
 button.addNoteButton-twitter,
 button.addNoteButton-kindleFile{
-    background-color: black;
+    background-color: #eeeeee;
     border-radius: 10px;
-    border: none;
-    color: white;
+    border: 2px solid black;
+    box-shadow: 1px 1px black;
+    color: black;
     outline: none;
     padding: 20px;
     font-size: .9rem;
@@ -59,7 +60,8 @@ button.addNoteButton-kindleFile{
 button.addNoteButton:hover,
 button.addNoteButton-twitter:hover,
 button.addNoteButton-kindleFile:hover {
-    background-color: var(--hoveredButtonWithBlackBackGroundColor);
+    /*background-color: var(--hoveredButtonWithBlackBackGroundColor);*/
+    box-shadow: 3px 3px black;
     transition: var(--hoverEffectTrasition);
 }
 
