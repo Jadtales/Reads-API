@@ -4,9 +4,8 @@ import {ChangeEvent, Fragment, ReactElement, useEffect, useState} from "react";
 import './createNotesPageStyling.css';
 
 import NotesCreationButtons from "@/app/compos/notesCreationComponents/topLayerComponents/NotesCreationButtons";
-import NoteCard from "@/app/compos/notesCreationComponents/topLayerComponents/NoteCard";
-import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
-import SubModalComponent from "@/app/compos/subscriptionModal/SubModalComponent";
+import NoteCard from "@/app/compos/notesCreationComponents/NoteCard";
+import SubModalComponent from "@/app/compos/modals/subscriptionModal/SubModalComponent";
 import NoteDescriptionAndTitleComponent
     from "@/app/compos/notesCreationComponents/topLayerComponents/NotesDescriptionAndTitleComponent";
 
@@ -16,19 +15,15 @@ interface NoteCardData {
     cardDescription: string;
 }
 
-interface insertedNoteCardsDb extends NoteCardData {
-
-}
-
 export default function Notes(): ReactElement {
     const {tagsElement, noteCardTags} = NoteDescriptionAndTitleComponent()
-    const [noteCards, setNoteCards] = useState<NoteCardData[]>([
-        {
-            cardKey: 1,
+    const [noteCards, setNoteCards] = useState<NoteCardData[]>(
+        Array.from({length: 4}, (_, index) => ({
+            cardKey: index + 1,
             cardTitle: 'Chapter number/name',
-            cardDescription: 'Your highlights/notes on the chapter',
-        }
-    ]);
+            cardDescription: 'Your highlights/notes on the chapter'
+        }))
+    );
 
 
     const [newCardsToAdd, setNewCardsToAdd] = useState<number>(1);
@@ -89,7 +84,6 @@ export default function Notes(): ReactElement {
 
     return (
         <Fragment>
-            <GoBackToComponent/>
             <div className="createNotesComponent">
                 <NotesCreationButtons/>
                 {tagsElement}
@@ -120,7 +114,7 @@ export default function Notes(): ReactElement {
 
             {/* Render the modal if the user tries to add more than 4 cards */}
             {noteCards.length === 10 && isSubModalOpen && (
-                <SubModalComponent onCloseModal={closeSubModal}/>
+                <SubModalComponent/>
             )}
         </Fragment>
     );

@@ -46,6 +46,10 @@ button.addNoteButton-kindleFile{
 button.addNoteButton-twitter,
 button.addNoteButton-kindleFile{
     font-size: .8rem;
+
+    img{
+        filter: var(--imgColor_dark_gray);
+    }
 }
 
 button.addNoteButton-kindleFile{

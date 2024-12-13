@@ -16,7 +16,7 @@ export default function SettingsPage(): ReactElement {
     return (
 
         <Fragment>
-            <GoBackToComponent/>
+            <GoBackToComponent margin={'30px 10%'}/>
             <div className="settingsPageContainer">
                 <div className="settingsTarget">
                     <h3>Account settings</h3>
@@ -40,7 +40,7 @@ export default function SettingsPage(): ReactElement {
                                 #jadtales
                             </h2>
 
-                            <form action="toChangeCredentials">
+                            <form action="/toChangeCredentials">
                                 <input type="email"
                                        defaultValue={"amjadmassaoudw@gmail.com"}
                                        placeholder="your email."/>

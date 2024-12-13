@@ -74,21 +74,16 @@ div.folders-section button.goBackUpButton{
     cursor: pointer;
     img{
         display: block;
+        filter: var(--imgColor_dark_gray);
     }
 }
 
-/*---- filter icon styling */
-div.filterIcon {
+div.foldersFunctionalities div.filterIcon img {
+    display: block;
+    filter: var(--imgColor_dark_gray);
     cursor: pointer;
 }
 
-button.goBackUpButton img{
-}
-div.filterIcon img {
-    display: block;
-    margin: 0;
-    filter: brightness(0) saturate(100%)
-}
 
 div.filtering-section {
     color: white;
@@ -110,6 +105,7 @@ input#addFolderInputField::placeholder {
     color: var(--textColor_gray_dark);
     font-weight: lighter;
 }
+
 
 @media screen and (width <= 700px) {
     div.folderContainer {

@@ -21,6 +21,10 @@ div.notificationsComponent {
         text-decoration: underline white;
     }
 
+    div.whatChanged{
+        color: var(--textColor_gray_dark);
+    }
+
     A.actionOfChange {
         text-decoration: underline black;
         color: var(--textColor);

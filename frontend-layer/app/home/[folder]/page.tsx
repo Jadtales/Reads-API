@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactElement} from "react";
+import React, {ReactElement, Suspense} from "react";
 import {useRouter} from 'nextjs-toploader/app';
 import './notesGrid.css'
 
@@ -8,6 +8,7 @@ import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
 import FrontNoteComponent from "@/app/compos/front design notes/FrontNoteComponent";
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 import Welcoming from "@/app/compos/welcomingComponent/WelcomingComponent";
+import PageLoader from "@/app/compos/page-loader/PageLoader";
 
 const noteData = [
     {bookAuthor: 'Tommy Orange', bookTitle: 'There, there', bookId: 1, bookTags: 'Poetry'},
@@ -31,22 +32,24 @@ export default function Folder(): ReactElement {
     }
 
     return (
-        <FoldersStateManagerContext.Provider value={existedFolders}>
-            <div className={'homePageContainer'}>
+        <Suspense fallback={<PageLoader/>}>
+            <FoldersStateManagerContext.Provider value={existedFolders}>
+                <div className={'homePageContainer'}>
 
-                <Welcoming username={'Jadtales'}/>
+                    <Welcoming username={'Jadtales'}/>
 
-                <FolderComponent/>
+                    <FolderComponent/>
 
-                <div className="notes">
-                    {noteData.map((data, index: number) => (
-                        <div key={index} onClick={() => goToReviewMode(data.bookTitle, data.bookId)}>
-                            <FrontNoteComponent bookTitle={data.bookTitle} bookAuthor={data.bookAuthor}
-                                                bookId={data.bookId} bookTags={data.bookTags} key={index}/>
-                        </div>
-                    ))}
+                    <div className="notes">
+                        {noteData.map((data, index: number) => (
+                            <div key={index} onClick={() => goToReviewMode(data.bookTitle, data.bookId)}>
+                                <FrontNoteComponent bookTitle={data.bookTitle} bookAuthor={data.bookAuthor}
+                                                    bookId={data.bookId} bookTags={data.bookTags} key={index}/>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </FoldersStateManagerContext.Provider>
+            </FoldersStateManagerContext.Provider>
+        </Suspense>
     )
 }

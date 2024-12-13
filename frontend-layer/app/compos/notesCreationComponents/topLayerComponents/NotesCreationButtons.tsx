@@ -9,6 +9,7 @@ import LockIcon from '@/public/icons/notesIcons/lockIcon.svg'
 import ArrowUpIcon from '@/public/icons/arrow-up-line.svg'
 import ImportExternal_NotecardComponents
     from "@/app/compos/notesCreationComponents/topLayerComponents/import-external-notes-components/ImportExternal_NotecardComponent";
+import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
 
 export default function NotesCreationButtons(): ReactElement {
     const [isSharingButtonClicked, setIsSharingButtonClicked] = useState<boolean>(true);
@@ -20,7 +21,7 @@ export default function NotesCreationButtons(): ReactElement {
 
     useEffect(() => {
         const getScrollHeight = (): void => {
-            setPageHeight(window.scrollY);
+            setPageHeight(window?.scrollY);
         };
 
         // Debounce scroll event handler for performance
@@ -49,6 +50,7 @@ export default function NotesCreationButtons(): ReactElement {
             <div
                 className={pageHeight > window.innerHeight ? 'creationButton-layer-withNavbar' : 'creationButton-layer'}>
                 <div className="lastSaveTime">
+                    <GoBackToComponent/> -
                     Last saved, 3 seconds ago.
                 </div>
 

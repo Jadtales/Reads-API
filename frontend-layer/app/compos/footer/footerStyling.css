@@ -11,18 +11,25 @@ footer {
         justify-content: space-between;
 
         height: 20vh;
+
+        div.readnotes-logo-name{
+            p{
+                font-weight: lighter;
+                width: 70%;
+            }
+        }
     }
 }
 
 div.reanotesGeneralInfos-subscribed {
     h1 {
         font-size: 2rem;
-        /*width: 70%;*/
+        width: 40vw;
         margin: 15px 0;
     }
 
     button.tryReanotesButton {
-        background-color: #282929FF;
+        background-color: #000000;
         color: white;
         padding: 15px 30px;
         border-radius: var(--borderRadius);
@@ -31,10 +38,11 @@ div.reanotesGeneralInfos-subscribed {
         border: none;
         outline: none;
         cursor: pointer;
+        transition: .2s ease;
     }
 
     button.tryReanotesButton:hover {
-        background-color: var(--hoveredButtonWithBlackBackGroundColor);
+        background-color: #303030;
         transition: .2s ease;
     }
 }
@@ -45,12 +53,23 @@ div.bottomLayer {
     justify-content: space-between;
     align-items: center;
 
+    div.availableOnAllPlatforms-section img{
+        filter: var(--imgColor_dark_gray);
+    }
     div.availableOnAllPlatforms-section,
     div.availabilityPlatforms-section {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 10px;
+
+        button.applePlatform, button.androidPlatform{
+            img{
+                filter: var(--imgColor_dark_gray);
+            }
+            color: var(--textColor_gray_dark);
+            background-color: var(--tag_backgroundColor);
+        }
     }
 
     div.availabilityPlatforms-section button {
@@ -94,6 +113,10 @@ img#reanotesIcon {
                 display: flex;
                 justify-content: start;
                 align-items: start;
+
+                p{
+                    font-weight: lighter;
+                }
             }
 
             div.reanotesGeneralInfos-subscribed {

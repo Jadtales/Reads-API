@@ -8,7 +8,7 @@ interface AddFolderComponentProps {
 
 // imported modules
 import {FoldersErrorHandling} from "@/utils/ErrorHandling/foldersErrorHandling";
-import useWarningNotification from "@/app/compos/warningNotificationComponent/WarningNotification";
+import useWarningNotification from "@/app/compos/modals/warningNotificationModal/WarningNotification";
 
 
 export default function AddFolderComponent({

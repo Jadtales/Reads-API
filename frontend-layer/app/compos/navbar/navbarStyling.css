@@ -7,6 +7,9 @@ nav#navbarContainer {
     padding: 4px 10px;
     border-radius: 10px;
     border: var(--border_tags);
+    /*border: 1px solid #444444;*/
+
+    color: var(--textColor_gray_dark);
     background-color: transparent;
 }
 
@@ -14,10 +17,6 @@ div.iconContainer {
     display: flex;
     align-items: center;
     gap: 1rem;
-
-    & img#reanotesIcon {
-        border-radius: var(--borderRadiusRNICON);
-    }
 
     .user-search_buttons {
         display: flex;
@@ -34,7 +33,7 @@ div.iconContainer {
 
             /*background-color: var(--darkTheme_componentsBackgroundColor);*/
             color: var(--textColor_gray_dark);
-            padding: 8px;
+            padding: 5px 6px;
             border-radius: 10px;
 
 
@@ -56,7 +55,7 @@ div.iconContainer {
             img#expandUserProfile {
                 transition: .2s ease;
                 transform: scale(1.2);
-                /*filter: brightness(0) saturate(100%) invert(100%) sepia(35%) saturate(2%) hue-rotate(211deg) brightness(116%) contrast(100%);*/
+                filter: var(--imgColor_dark_gray);
             }
         }
 
@@ -107,7 +106,7 @@ div.userInteractionButtons {
     button#getPremium {
         font-size: 1.1rem;
         background: transparent;
-        color: black;
+        color: var(--textColor_gray_dark);
         padding: 6px;
         margin: 0 4px;
         border-radius: 4px;
@@ -117,20 +116,21 @@ div.userInteractionButtons {
 
         p {
             text-decoration: none;
-            color: black;
+            color: var(--textColor_gray_dark);
             background: linear-gradient(to right, hsl(0, 0%, 0%) 0, hsl(0, 0%, 71%) 10%, hsl(0, 0%, 0%) 20%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 20s infinite linear;
         }
     }
+
     button#getPremium:hover {
         background-color: var(--backgroundColor_frontnote_hovered);
         transition: .2s ease;
     }
 
-    button#notificationsButton{
-        h2.numberOfReceivedNotifications{
+    button#notificationsButton {
+        h2.numberOfReceivedNotifications {
             position: absolute;
             font-size: 10px;
             color: white;
@@ -154,7 +154,7 @@ div.userProfile-active {
 
     border-radius: 10px;
     cursor: pointer;
-    padding: 8px;
+    padding: 5px 6px;
 
     & h1#userUsername {
         font-size: 1rem;
@@ -170,7 +170,7 @@ div.userProfile-active {
     & div.userButtons-active a, button {
         background-color: var(--hoveredButtonTextColor);
         transition: .2s ease;
-        color: black;
+        color: var(--textColor_gray_dark);
         border-radius: 4px;
         font-size: .7rem;
         text-decoration: none;
@@ -182,11 +182,12 @@ div.userProfile-active {
     }
 
     & div.userButtons-active button:hover {
-        background-color: #cbcbcb;
+        background-color: var(--backgroundColor_frontnote_hovered);
     }
 
     & div.userButtons-active a:hover {
-        background-color: #cbcbcb;
+        background-color: var(--backgroundColor_frontnote_hovered);
+
     }
 
     img#expandUserProfile {
@@ -203,7 +204,11 @@ div.userProfile-active {
     cursor: pointer;
     background-color: var(--tag_backgroundColor);
     border-radius: 10px;
-    padding: 8px;
+    padding: 5px 7px;
+
+    img {
+        filter: var(--imgColor_dark_gray);
+    }
 
     input {
         width: fit-content;
@@ -222,7 +227,7 @@ div.userProfile-active {
 
     input::placeholder {
         width: fit-content;
-        color: black;
+        color: var(--textColor_gray_dark);
         font-size: 1.1rem;
     }
 }
@@ -237,6 +242,7 @@ div.userProfile-active {
 
     & img {
         transform: scale(1);
+        filter: var(--imgColor_dark_gray)
     }
 
     input {
@@ -298,6 +304,10 @@ div.notificationsCenter-active {
             margin: 20px 0;
             cursor: pointer;
             width: fit-content;
+
+            img{
+                filter: var(--imgColor_dark_gray);
+            }
         }
     }
 
@@ -329,17 +339,15 @@ div.duration {
         border-radius: 4px;
         border: 1px solid #f1f1f1;
         outline: none;
-        background-color: var(--tag_backgroundColor);
-
+        background-color: black;
+        color: var(--textColor_opposite);
+        border: var(--border_frontNote);
         cursor: pointer;
-
         transition: .2s ease;
     }
 
     button:hover {
-        border: 1px solid #9f9f9f;
-        background-color: #d4d4d4;
-
+        background-color: var(--backgroundColor_frontnote_hovered);
         transition: .2s ease;
     }
 }
@@ -349,7 +357,7 @@ div.receivedNotifications-inactive {
     overflow-y: scroll;
     scrollbar-width: none;
 
-    p.emptyNotificationsWarning{
+    p.emptyNotificationsWarning {
         font-size: .8rem;
         margin-top: 20rem
     }
@@ -365,7 +373,7 @@ div.switchNotiCenterToReportBugsCenter {
     cursor: pointer;
 
     img {
-        /*color: white;*/
+        filter: var(--imgColor_dark_gray);
     }
 
 }
@@ -395,11 +403,11 @@ div.switchNotiCenterToReportBugsCenter {
     }
 }
 
-@media screen and (width <= 1100px){
+@media screen and (width <= 1100px) {
 
 }
 
-@media screen and (width <= 770px){
+@media screen and (width <= 770px) {
     nav#navbarContainer {
         margin: 2% 5% 5% 5%;
     }
@@ -408,10 +416,11 @@ div.switchNotiCenterToReportBugsCenter {
         display: none;
     }
 
-    .userProfile{
+    .userProfile {
         padding: 0 0;
     }
-    .userProfile-active{
+
+    .userProfile-active {
         position: absolute;
         z-index: 2;
         padding: 0 0;
@@ -429,6 +438,7 @@ div.switchNotiCenterToReportBugsCenter {
         border-radius: 10px;
         padding: 8px;
 
+
         input {
             overflow: hidden;
             width: 97px;
@@ -443,11 +453,16 @@ div.switchNotiCenterToReportBugsCenter {
             transition: .2s ease-in-out;
 
             font-size: 20px;
-            color: black;
+            color: var(--textColor_gray_dark);
+        }
+
+        input[type='search']::-webkit-search-cancel-button {
+            appearance: none;
+            -webkit-appearance: none;
         }
 
         input::placeholder {
-            color: black;
+            color: var(--textColor_gray_dark);
             font-size: 1.1rem;
         }
     }

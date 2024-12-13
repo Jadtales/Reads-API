@@ -17,7 +17,7 @@ export default function UserProfilePage(): ReactElement {
 
 
     return <Fragment>
-        <GoBackToComponent/>
+        <GoBackToComponent margin={'30px 10%'}/>
 
         <div className="userProfilePageContainer">
 

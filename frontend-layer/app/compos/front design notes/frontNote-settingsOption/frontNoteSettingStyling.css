@@ -12,16 +12,17 @@
 }
 
 .frontNoteSettingContainer {
-    /*background-color: var(--backgroundColor_frontnote);*/
     background-color: var(--darkThemeBody-darkerGray_black);
     position: absolute;
     top: 0;
-    left: 120%;
+    /*left: calc(100% + -50px);*/
     padding: 5px;
     width: 165px;
-    border-radius: 8px;
-    border: var(--border_tags);
+    border-radius: 6px;
+    border: 1px solid #444444;
     z-index: 10;
+    transform: none;
+    box-shadow: 2px 2px black;
 
     ul li {
         padding: 10px;
@@ -31,9 +32,10 @@
         align-items: center;
         gap: 5px;
 
-        img{
+        img {
             filter: var(--imgColor_dark_gray);
         }
+
         color: var(--textColor_gray_dark);
     }
 

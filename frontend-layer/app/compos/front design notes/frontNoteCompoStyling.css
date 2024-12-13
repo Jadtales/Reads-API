@@ -1,6 +1,6 @@
 div.homeContainer {
     color: var(--textColor_gray_dark);
-    border: var(--border_tags);
+    border: var(--border_frontNote);
     height: 185px;
     padding: var(--paddingNote);
     border-radius: var(--borderRadiusNote);

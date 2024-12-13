@@ -4,11 +4,11 @@ import GoBackIcon from '@/public/icons/goBackIcon.svg'
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 
-export default function (): ReactElement {
+export default function ({margin}: {margin?: any}): ReactElement {
     const router = useRouter()
 
     return (
-        <div style={{
+        <div className={'goBackToButton'} style={{
             display: 'flex',
             alignItems: 'center',
             backgroundColor: 'var(--darkTheme_componentsBackgroundColor)',
@@ -16,7 +16,7 @@ export default function (): ReactElement {
             color: 'white',
             padding: '6px 15px',
             borderRadius: '8px',
-            margin: '30px 10%',
+            margin: `${margin}`,
             cursor: 'pointer'
         }}
              onClick={() => router.back()}>

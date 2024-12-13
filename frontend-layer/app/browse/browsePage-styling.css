@@ -1,24 +1,32 @@
 div.browsePage {
-    h1 {
+    h2 {
         color: var(--textColor_gray_dark);
+        font-weight: normal;
     }
 }
 
 div.browsePage,
 div.browsePage-searching{
     margin: 4% 10.5%;
-
+    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 50px;
+
+    h2{
+        font-weight: normal;
+    }
+
+
 }
+
+
+
 
 
 div.popularNotes,
 div.popularByGenre,
-div.recommendationsBasedOnFlavour,
-div.searchedHighlights-components,
-div.searchedPeople-profiles{
+div.recommendationsBasedOnFlavour{
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
