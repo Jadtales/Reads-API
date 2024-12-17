@@ -1,6 +1,6 @@
 'use client';
 
-import {Fragment, ReactElement, useContext, useState} from "react";
+import {Fragment, ReactElement} from "react";
 import './browsePage-styling.css';
 import FrontDesignNoteBrowse from "@/app/compos/suggested-frontDesignNote/FrontDesignNote-browse";
 import {useSearchContext} from "@/utils/providers/searchInputFieldProvider";
@@ -16,6 +16,7 @@ export default function BrowsePage(): ReactElement {
                 <div className="browsePage-searching">
                     <div className="searchedHighlights">
                         <h2>Searched highlights.</h2>
+
                         <div className="searchedHighlights-components">
                             {userSearchedText}
                         </div>

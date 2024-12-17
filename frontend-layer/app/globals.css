@@ -1,7 +1,7 @@
 :root {
     /*reanotes icon*/
     --borderRadiusRNICON: 10px;
-    --darkThemeBody: rgb(238, 238, 238);
+    --darkThemeBody: rgb(241 241 241);
     --darkThemeBody-darkerGray_black: #eaeaea;
     --darkTheme_componentsBackgroundColor: black;
 
@@ -39,6 +39,7 @@
     --border: 1px solid black;
     --borderFrontNoteCardSettings: 1px solid black;
     --border_tags: 1px solid #a8a8a8;
+    --border_gray_dark: #dddddd;
     --border_frontNote: 1px solid #a8a8a8;
 
     --borderRadiusTags: 4px;
@@ -108,13 +109,14 @@
 
     --border: 1px solid #3d3d3d;
     --border_tags: 1px solid #3d3d3d;
+    --border_gray_dark: #3d3d3d;
     --border_frontNote: none;
     --borderFrontNoteCardSettings: 1px solid white;
     --backGroundColorHoveredButton: #4d4d4d;
     --mainColor: #93c1c1;
     --mainColor2: #ebe9dc;
 
-    --mainBoxShadow: 0px 2px #b92b00;
+    --mainBoxShadow: 0px 2px #3d3d3d;
 
     --hoveredButtonColor: #b2b2b2;
     --hoveredButtonTextColor: rgb(32, 32, 32);

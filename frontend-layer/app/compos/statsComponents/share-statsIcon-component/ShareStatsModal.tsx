@@ -1,4 +1,4 @@
-import {Fragment, ReactElement, useState} from "react";
+import {Fragment, ReactElement, useRef} from "react";
 import Image from "next/image";
 
 import './shareModalStyling.css'
@@ -13,7 +13,6 @@ import InstagramIcon from '@/public/icons/socialsIcons/instagram-line.svg'
 import ReanotesIcon from '@/favicon.png'
 
 // images to be shared with the shared stats
-import CoolImg from '@/public/shareContentImgs/Photo Manipulation.jpg'
 import {usePathname} from "next/navigation";
 
 
@@ -32,22 +31,34 @@ export default function ShareStatsModal({
                                         }: ShareStatsProps
 ):
     ReactElement {
-    const [showModal, setShowModal] = useState<boolean>(false);
+
 
     const pathname = usePathname()
-    return <Fragment>
-        <div className="shareStatsIcon_container">
-            <Image src={ShareContentIcon} alt={"shareThisStat"} id="shareStatsContentIcon"
-                   onClick={() => setShowModal(!showModal)}/>
-        </div>
+    const shareModalDialogRef = useRef<HTMLDialogElement | null>(null);
 
-        {showModal && (<div className="shareModalBackground">
+    const handleDialogOpening = (): void => {
+        const shareModalDialog = shareModalDialogRef.current as HTMLDialogElement;
+
+        if(!shareModalDialog.open){
+            shareModalDialog.showModal();
+        }else{
+            shareModalDialog.close();
+        }
+    }
+
+    return <Fragment>
+        <button className={'shareButtonIcon'}>
+            <Image src={ShareContentIcon} alt={"shareThisStat"} id="shareStatsContentIcon"
+                   onClick={handleDialogOpening}/>
+        </button>
+
+        <dialog className="shareModalDialog" ref={shareModalDialogRef}>
             <div className="shareModalContainer">
 
                 <div className="shareIcon_shareModalClosingIcon">
                     <Image src={ShareContentIcon} alt="shareModalIcon"/>
 
-                    <Image src={ClosingIcon} alt="closeShareModalIcon" onClick={() => setShowModal(!showModal)}/>
+                    <Image src={ClosingIcon} className={'closeModalIcon'} alt="closeShareModalIcon" onClick={handleDialogOpening}/>
                 </div>
 
                 <div className="contentToBeShared">
@@ -83,7 +94,7 @@ export default function ShareStatsModal({
                     </div>
                 </div>
             </div>
-        </div>)}
+        </dialog>
     </Fragment>
 
 

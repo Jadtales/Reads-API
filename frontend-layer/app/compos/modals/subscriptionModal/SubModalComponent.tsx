@@ -1,5 +1,5 @@
 'use client'
-import React, {ReactElement, useRef, useState} from "react";
+import React, {Fragment, ReactElement, useRef, useState} from "react";
 import Image from "next/image";
 import './subModalStyling.css'
 
@@ -24,9 +24,8 @@ export default function SubModalComponent(): ReactElement | null {
     }
 
 
-    return <>
+    return <Fragment>
         <button onClick={handleDialogOpening} className={'getPremiumButton'}>Get Premium</button>
-
 
             <dialog className="subscriptionModalContainer" ref={modalRef} >
                 <div className="subModal_topLayer">
@@ -137,7 +136,7 @@ export default function SubModalComponent(): ReactElement | null {
                     </div>
                 </div>
             </dialog>
-    </>
+    </Fragment>
 
     // return ReactDOM.createPortal(content, document.getElementById('modalsSection') as HTMLDivElement);
 }
