@@ -1,74 +1,81 @@
 import {
-    Controller,
-    Get,
-    Post,
-    Patch,
-    Param,
-    Query,
-    Body,
-    ParseIntPipe,
-    DefaultValuePipe,
-    ValidationPipe
-} from '@nestjs/common'
+  Body, ClassSerializerInterceptor,
+  Controller,
+  DefaultValuePipe,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  ParseUUIDPipe,
+  Post,
+  Put,
+  Query, UseInterceptors,
+} from '@nestjs/common';
 
-import {PostUserCreation_dto} from "./dtos/users.ceeation.dto";
-import {PatchUserCreation_dto} from "./dtos/users.ceeation.dto";
+// imported DTOs
+import FollowFollowingRelationDTO from './dtos/follow.dto';
+import { UpdateUser_dto, UserCreation_dto } from './dtos/user.dtos';
+
+// imported Providers
+import { UsersService } from './providers/users.service';
+import { FollowFollowingRelationServices } from './providers/follow_following_relation_service';
+import { UsersStatsService } from './providers/users.stats.services';
+import { AuthAccessType } from '../auth/decorators/auth-access.type';
+import { AuthTypeEnum } from '../auth/enums/auth-type.enum';
 
 @Controller('users')
 export class UsersController {
-    // ---- GET functionalities implementation
+  constructor(
+    private readonly usersService: UsersService,
+  ) {}
 
-    // to retrieve the user id
-    @Get('/:userId')
-    public getUser(@Param('userId', ParseIntPipe) userid: number | undefined, @Query() queries: any): string {
+  // --- User CRUD operations Section
+  @Get('get-user-credentials/:id')
+  public getUserCredentialsById(@Param('id', new ParseUUIDPipe()) id: string) {
+    return this.usersService.getUserCredentialsById(id);
+  }
 
+  @Post('create-user')
+  @UseInterceptors(ClassSerializerInterceptor)
+  @AuthAccessType(AuthTypeEnum.None)
+  public createUser(@Body() requestUserCreation: UserCreation_dto) {
+    return this.usersService.create_user(requestUserCreation);
+  }
 
-        if (userid === 2) {
-            return 'massaoud';
-        }
+  @Put('update-user/:id')
+  // @AuthAccessType(AuthTypeEnum.None)
+  public updateUser(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateUser: UpdateUser_dto,
+  ) {
+    return this.usersService.updateUser(id, updateUser);
+  }
 
-        // after checking the user id in the db, return the user id
-        return 'no';
-    }
+  @Delete('delete-user/:id')
+  public deleteUser(@Param('id', new ParseUUIDPipe()) id: string) {
+    return this.usersService.deleteUser(id);
+  }
 
-
-    // Fetch createnotes for a user with a limit on the number of books
-    @Get('/:userId/:userNotes?')
-    public getUsersNotes(
-        @Param('userId', ParseIntPipe) userid: number | undefined,
-        @Param('userNotes', new DefaultValuePipe(10)) userNotes: string | undefined):
-        Record<string, string | number> | string {
-
-        if (userid === 2 && userNotes === 'aliens') {
-            return {
-                whoRequested: userid,
-                userNotes: 'Alien lives'
-            }
-        }
-        ``
-
-        return 'not found'
-    }
-
-
-    // ---- POST functionalities implementation
-
-    @Post()
-    public createUsers(@Body() postedUserCreation_dto: PostUserCreation_dto): string {
-
-
-        return 'User credentials aren\'t detected';
-    }
+  @Get()
+  public getUsers(
+    @Query('usersQuantity', new DefaultValuePipe(1), ParseIntPipe)
+    usersQuantity: number,
+    @Query('cardsQuantity', new DefaultValuePipe(10), ParseIntPipe)
+    cardsQuantity: number,
+  ) {
+    return this.usersService.getUsers(usersQuantity, cardsQuantity);
+  }
 
 
-    // ---- PATCH functionalities implementation
 
-    // change user credentials as requested by the user
-    @Patch('/:userId')
-    public updateUserCredentials(
-        @Param('userId', ParseIntPipe) userId: string | undefined,
-        @Body() patchedUserCreation_dto: PatchUserCreation_dto,
-    ) {
-        return patchedUserCreation_dto
-    }
+  // @Post(':id/upload-avatar')
+  // @UseInterceptors(FileInterceptor('file'))
+  // public uploadAvatar(
+  //     @Param('id', new ParseUUIDPipe()) id: string,
+  //     @UploadedFile() file: Express.Multer.File
+  // ) {
+  //     return this.usersService.uploadAvatar(id, file);
+  // }
+
+
 }

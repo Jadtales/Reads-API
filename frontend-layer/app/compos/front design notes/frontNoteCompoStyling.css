@@ -6,7 +6,9 @@ div.homeContainer {
     border-radius: var(--borderRadiusNote);
     transition: .2s ease;
     cursor: pointer;
-    background-color: var(--backgroundColor_frontnote);
+    background-color: var(--darkThemeBody-darkerGray_black);
+    box-shadow: var(--shadowing);
+
 }
 
 div.homeContainer:hover {
@@ -78,7 +80,7 @@ div.topLayer {
         display: flex;
         align-items: center;
         height: fit-content;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 3px 5px;
         cursor: pointer;
         transition: .2s ease-out;

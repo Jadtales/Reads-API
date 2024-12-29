@@ -6,7 +6,7 @@ import Link from "next/link";
 interface ComponentProps{
     creator: string
 }
-export default function TodaysChosenNotecard({creator}: ComponentProps): ReactElement {
+export default function TodaysChosenNotecard({creator}: ComponentProps): ReactElement<any> {
 
     return <div className="chosenNotecardContainer">
         <div className="header">

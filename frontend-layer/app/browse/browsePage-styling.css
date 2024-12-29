@@ -6,27 +6,28 @@ div.browsePage {
 }
 
 div.browsePage,
-div.browsePage-searching{
+div.browsePage-searching {
     margin: 4% 10.5%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 50px;
 
-    h2{
+    h2 {
         font-weight: normal;
+        color: var(--textColor_gray_dark);
     }
 
-
+    div.searchedHighlights-components, div.searchedPeople-profiles{
+        color: var(--textColor_gray_dark);
+        margin: 1% 0;
+    }
 }
-
-
-
 
 
 div.popularNotes,
 div.popularByGenre,
-div.recommendationsBasedOnFlavour{
+div.recommendationsBasedOnFlavour {
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
@@ -35,5 +36,4 @@ div.recommendationsBasedOnFlavour{
     overflow-x: scroll;
     scrollbar-width: none;
     border-radius: var(--borderRadiusNote);
-
 }

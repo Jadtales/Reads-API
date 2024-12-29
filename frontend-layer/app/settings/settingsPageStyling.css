@@ -1,6 +1,6 @@
 div.settingsPageContainer {
     background-color: var(--darkTheme_componentsBackgroundColor);
-    color: white;
+    color: var(--textColor_in_dark_mode);
 
     margin: 2% 10%;
     padding: 1rem;
@@ -129,7 +129,7 @@ div.userProfileAdjustments .userCredentials {
 
 
 .settingsTargetLi-active {
-    background-color: white;
+    background-color: var(--thirdPrimaryTextColor);
     color: black;
     border-radius: 10px;
     width: fit-content;

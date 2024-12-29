@@ -8,7 +8,7 @@ interface INotification {
     targetChange: string;
 }
 
-export default function NotificationsComponent({username, purpose, targetChange}: INotification): ReactElement {
+export default function NotificationsComponent({username, purpose, targetChange}: INotification): ReactElement<any> {
     return (
         <div className="notificationsComponent">
             <h1 id="NotifierUsername">@{username}</h1>

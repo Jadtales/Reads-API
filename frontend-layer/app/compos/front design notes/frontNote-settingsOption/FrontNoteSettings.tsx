@@ -19,7 +19,7 @@ interface FrontNoteSettingsProps {
     // tagsForModal: string[];
 }
 
-export default function FrontNoteSettings({onClose, bookId, bookTitle}: FrontNoteSettingsProps): ReactElement {
+export default function FrontNoteSettings({onClose, bookId, bookTitle}: FrontNoteSettingsProps): ReactElement<any> {
     const settingsRef = useRef<HTMLDivElement>(null);
 
     const router = useRouter()

@@ -11,7 +11,7 @@ import StatsIcon from '@/public/icons/statsIcon.svg';
 import {existedFolders} from '@/app/home/[folder]/page';
 import Image from 'next/image';
 
-export default function BrowsingComponent(): React.ReactElement | null {
+export default function BrowsingComponent(): React.ReactElement<any> | null {
     const [pageWidth, setPageWidth] = useState<number | null>(null);
     const pathname = usePathname();
 
@@ -36,31 +36,31 @@ export default function BrowsingComponent(): React.ReactElement | null {
     if(pageWidth === null) return null
 
     return (
-        <div className="browsingContainer">
+        (<div className="browsingContainer">
             {browsingPages.map((navi: string, index: number) => {
                 const isActive = pathname.split('/').filter(Boolean)[0] === navi;
 
                 return (
-                    <Link
+                    (<Link
                         href={navi === 'home' ? `/home/${existedFolders[0]}` : `/${navi}`}
                         className={isActive ? 'active' : ''}
                         key={index}
                     >
                         {pageWidth >= 1420 ? (
                             // Full text label when the width is greater than 1420px
-                            navi.charAt(0).toUpperCase() + navi.slice(1)
+                            (navi.charAt(0).toUpperCase() + navi.slice(1))
                         ) : (
                             // Icons when the width is less than or equal to 1420px
-                            <Image
+                            (<Image
                                 style={{ marginTop: '5px' }}
                                 width={22}
                                 src={navi === 'home' ? HomeIcon : StatsIcon}
                                 alt={`goTo${navi.charAt(0).toUpperCase() + navi.slice(1)}Page`}
-                            />
+                            />)
                         )}
-                    </Link>
+                    </Link>)
                 );
             })}
-        </div>
+        </div>)
     );
 }

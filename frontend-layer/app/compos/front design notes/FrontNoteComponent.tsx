@@ -23,7 +23,7 @@ export default function FrontNoteComponent({
                                                bookId,
                                                bookTags,
 
-                                           }: frontNoteComponentProps): ReactElement {
+                                           }: frontNoteComponentProps): ReactElement<any> {
 
     const [isNotecardSettingActive, setIsNotecardSettingActive] = useState<boolean>(false);
     const settingsRef = useRef<HTMLDivElement>(null);

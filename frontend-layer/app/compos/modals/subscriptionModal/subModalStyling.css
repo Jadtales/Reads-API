@@ -1,7 +1,7 @@
 button.getPremiumButton{
     background-color: transparent;
-    border: 1px solid var(--border_gray_dark);
-    box-shadow: 1px 1px var(--border_gray_dark);
+    border: 2px solid var(--border_gray_dark);
+    box-shadow: 1px 2px var(--border_gray_dark);
     padding: 4px 10px;
     margin: 0 10px;
     border-radius: 4px;
@@ -13,7 +13,7 @@ button.getPremiumButton{
 
 button.getPremiumButton:hover{
     border: 1px solid var(--textColor_gray_dark);
-    box-shadow: 0 0 var(--textColor_gray_dark);
+    box-shadow: 1px 1px var(--textColor_gray_dark);
     padding: 4px 10px;
     border-radius: 4px;
     transition: .2s ease;
@@ -85,7 +85,7 @@ div.monthlyAndAnnuallyButtons {
 
     button.userBillingMethodChoice {
         padding: 12px 8px;
-        background-color: var(--hoveredBackgroundColor_frontNote);
+        background-color: #ceccc5;
         border: none;
         outline: none;
         color: var(--textColor_gray_dark);
@@ -102,7 +102,7 @@ div.subscriptionPlans {
     margin: 2rem 0;
 
     div.freePlan, div.premiumPlan {
-        background-color: var(--tag_backgroundColor);
+        background-color: var(--darkThemeBody);
         border: var(--border_tags);
         border-radius: 10px;
         padding: 10px;
@@ -126,9 +126,9 @@ div.subscriptionPlans {
                 cursor: pointer;
                 border: var(--border_tags);
                 outline: none;
-                background-color: var(--tag_backgroundColor);
+                background-color: var(--thirdPrimaryTextColor);
                 border-radius: 8px;
-                color: var(--textColor_gray_dark);
+                color: var(--textColor_in_dark_mode);
                 font-size: 1rem;
             }
 
@@ -157,7 +157,7 @@ div.subscriptionPlans {
         flex-direction: column;
 
         background-color: black;
-        color: white;
+        color: var(--textColor_in_dark_mode);
         text-align: start;
 
         div.UnlimitedPlanOfferHeaders {
@@ -166,10 +166,10 @@ div.subscriptionPlans {
             justify-content: space-between;
 
             h1#offerSecondaryHeader {
-                background-color: #E1E1E1FF;
-                font-size: 1rem;
+                background-color: var(--textColor_in_dark_mode);
+                font-size: .9rem;
                 color: black;
-                padding: 2px 6px;
+                padding: 2px 8px;
                 border-radius: 10px;
             }
         }

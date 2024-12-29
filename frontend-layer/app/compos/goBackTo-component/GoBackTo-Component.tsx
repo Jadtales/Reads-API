@@ -4,8 +4,17 @@ import GoBackIcon from '@/public/icons/goBackIcon.svg'
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 
-export default function ({margin}: {margin?: any}): ReactElement {
-    const router = useRouter()
+interface ComponentProps {
+    margin?: string;
+    iconSize?: string | null;
+    withText: boolean;
+}
+
+export default function ({margin, withText, iconSize}: ComponentProps): ReactElement<any> {
+    const router = useRouter();
+
+    const addPadding = document.createAttribute('withPadding');
+
 
     return (
         <div className={'goBackToButton'} style={{
@@ -14,7 +23,7 @@ export default function ({margin}: {margin?: any}): ReactElement {
             backgroundColor: 'var(--darkTheme_componentsBackgroundColor)',
             width: 'fit-content',
             color: 'white',
-            padding: '6px 15px',
+            padding: withText ? '6px 15px' : '0 0',
             borderRadius: '8px',
             margin: `${margin}`,
             cursor: 'pointer'
@@ -22,7 +31,11 @@ export default function ({margin}: {margin?: any}): ReactElement {
              onClick={() => router.back()}>
             <Image src={GoBackIcon}
                    alt="goBackToThePreviousPage"
-                   style={{width: 'fit-content'}}/>Go back
+                   style={{
+                       width: iconSize ? `${iconSize}` : 'fit-content',
+                       height: iconSize ? `${iconSize}` : 'fit-content'
+                   }}/>
+            {withText && 'Go back'}
         </div>
     )
 }

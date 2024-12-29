@@ -6,7 +6,7 @@ div.userProfilePageContainer {
     margin: 1% 10%;
     height: auto;
 
-    background-color: var(--darkThemeBody);
+    background-color: var(--darkThemeBody-darkerGray_black);
     color: var(--textColor_gray_dark);
 
     div.userIntroduction {
@@ -79,6 +79,8 @@ div.userProfilePageContainer {
 
                 div.suggestedNote {
                     width: 300px;
+                    box-shadow: var(--shadowing);
+                    background-color: transparent;
                 }
             }
         }

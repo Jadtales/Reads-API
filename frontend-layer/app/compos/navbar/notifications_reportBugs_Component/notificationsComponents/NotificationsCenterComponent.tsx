@@ -33,7 +33,7 @@ const notificationsData = [
 ];
 
 
-export default function NotificationsCenterComponent(): ReactElement {
+export default function NotificationsCenterComponent(): ReactElement<any> {
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
     const [clickedButton, setClickedButton] = useState<string>('');
 

@@ -5,7 +5,7 @@ div.folderContainer {
     border: var(--border_tags);
     border-radius: 10px;
 
-    background-color: var(--darkThemeBody);
+    background-color: var(--darkThemeBody-darkerGray_black);
 
 
     margin: 10px 0;

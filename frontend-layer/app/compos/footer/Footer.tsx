@@ -6,7 +6,7 @@ import availableIcon from '@/public/icons/checkbox-circle-fill.svg'
 import appleIcon from '@/public/icons/apple-fill.svg'
 import androidIcon from '@/public/icons/android-fill.svg'
 
-export default function Footer(): ReactElement {
+export default function Footer(): ReactElement<any> {
     return (
         <footer>
             <div className="topLayer">

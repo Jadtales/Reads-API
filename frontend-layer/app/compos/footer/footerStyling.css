@@ -1,8 +1,8 @@
 footer {
     margin: 10% 0 0 0;
     padding: 0 10% 5% 10%;
-    color: var(--textColor_gray_dark);
-    background-color: var(--darkThemeBody-darkerGray_black);
+    color: #ceccc5;
+    background-color: black;
 
     & div.topLayer {
         display: flex;
@@ -12,8 +12,8 @@ footer {
 
         height: 20vh;
 
-        div.readnotes-logo-name{
-            p{
+        div.readnotes-logo-name {
+            p {
                 font-weight: lighter;
                 width: 70%;
             }
@@ -29,13 +29,13 @@ div.reanotesGeneralInfos-subscribed {
     }
 
     button.tryReanotesButton {
-        background-color: #000000;
-        color: white;
+        background-color: #151414;
+        color: #ceccc5;
         padding: 15px 30px;
         border-radius: var(--borderRadius);
         letter-spacing: 3px;
         font-size: 1rem;
-        border: none;
+        border: 1px solid #5e5d59;
         outline: none;
         cursor: pointer;
         transition: .2s ease;
@@ -53,9 +53,10 @@ div.bottomLayer {
     justify-content: space-between;
     align-items: center;
 
-    div.availableOnAllPlatforms-section img{
+    div.availableOnAllPlatforms-section img {
         filter: var(--imgColor_dark_gray);
     }
+
     div.availableOnAllPlatforms-section,
     div.availabilityPlatforms-section {
         display: flex;
@@ -63,12 +64,13 @@ div.bottomLayer {
         align-items: center;
         gap: 10px;
 
-        button.applePlatform, button.androidPlatform{
-            img{
-                filter: var(--imgColor_dark_gray);
+        button.applePlatform, button.androidPlatform {
+            img {
+                filter: brightness(0) saturate(100%) invert(92%) sepia(4%) saturate(308%) hue-rotate(9deg) brightness(91%) contrast(87%);
             }
-            color: var(--textColor_gray_dark);
-            background-color: var(--tag_backgroundColor);
+
+            color: #ceccc5;
+            background-color: #ae5630;
         }
     }
 
@@ -114,7 +116,7 @@ img#reanotesIcon {
                 justify-content: start;
                 align-items: start;
 
-                p{
+                p {
                     font-weight: lighter;
                 }
             }

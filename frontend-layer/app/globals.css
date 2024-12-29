@@ -1,28 +1,33 @@
 :root {
     /*reanotes icon*/
     --borderRadiusRNICON: 10px;
-    --darkThemeBody: rgb(241 241 241);
-    --darkThemeBody-darkerGray_black: #eaeaea;
+    --darkThemeBody: #faf9f5;
+    --darkThemeBody-darkerGray_black: #f4f2ec;
     --darkTheme_componentsBackgroundColor: black;
 
     --mainBoxShadow: 0 2px black;
 
     --backgroundColor_componentsInsideComponent: black;
     --backgroundColor_notificationComponent: #e6e6e6;
+    --backgroundColor_mostViewedNotecard: #e1e1e16b;
 
 
-    --tag_backgroundColor: #e1e1e1;
+    --tag_backgroundColor: #e1e1e16b;
 
     --secondPrimaryTextColor: #b92b00;
+    --thirdPrimaryTextColor: #ae5630;
+
+    --shadowing: 0 4px 24px 0 #00000004,0 4px 32px 0 #00000004,0 2px 64px 0 #00000003,0 16px 32px 0 #00000003;
+
 
     /*---- front notes design only*/
-    --backgroundColor_frontnote: rgb(238, 238, 238);
-    --backgroundColor_recentVisitedNoteCard: #e1e1e1;
-    --backgroundColor_frontnote_hovered: #e2e2e2;
+    --backgroundColor_frontnote: #faf9f5;
+    --backgroundColor_recentVisitedNoteCard: #e8e7de;
+    --backgroundColor_frontnote_hovered: #f4f3f0;
 
     --imgColor_dark_gray: invert(0%) sepia(7%) saturate(0%) hue-rotate(165deg) brightness(90%) contrast(108%);
     --imgColor_white: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7478%) hue-rotate(3deg) brightness(93%) contrast(85%);
-
+    --ImgColor_completeWhite: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5049%) hue-rotate(297deg) brightness(116%) contrast(100%);
 
     --input_backgroundColor: white;
     --input_backgroundColor_darkGray_lightGray: #e1e1e1;
@@ -32,6 +37,8 @@
 
 
     --textColor: black;
+    --textColor_in_dark_mode: #ceccc5;
+    --textColor_In_white_mode: #29261b;
     --textColor_gray_dark: dark;
     --textColor_opposite: white;
 
@@ -39,7 +46,7 @@
     --border: 1px solid black;
     --borderFrontNoteCardSettings: 1px solid black;
     --border_tags: 1px solid #a8a8a8;
-    --border_gray_dark: #dddddd;
+    --border_gray_dark: #d4d4d4;
     --border_frontNote: 1px solid #a8a8a8;
 
     --borderRadiusTags: 4px;
@@ -88,6 +95,7 @@
     /*--darkTheme_componentsBackgroundColor: #2e2e2e;*/
     --backgroundColor_componentsInsideComponent: black;
     --backgroundColor_notificationComponent: #2e2e2e;
+    --backgroundColor_mostViewedNotecard: #21201f;
 
     --input_backgroundColor: rgb(29, 29, 29);
     --input_backgroundColor_darkGray_lightGray: #1b1b1b;
@@ -135,7 +143,7 @@
 }
 
 body {
-    background-color: var(--darkThemeBody);
+    background-color: var(--darkThemeBody-darkerGray_black);
     min-height: 100vh;
 }
 
@@ -172,13 +180,13 @@ p#errorMessageStyling {
     cursor: default;
 }
 
-@media screen and (width <= 1200px) {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Merriweather, serif;
-    scroll-behavior: smooth;
-}
+/*@media screen and (width <= 1200px) {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*    font-family: Merriweather, serif;*/
+/*    scroll-behavior: smooth;*/
+/*}*/
 
 @media screen and (width <= 500px) {
     body {

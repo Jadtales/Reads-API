@@ -14,7 +14,7 @@ export default function FrontDesignNoteBrowse({
                                                   bookTitle,
                                                   bookAuthor,
                                                   notedByUsername
-                                              }: suggestedNote_interface): ReactElement {
+                                              }: suggestedNote_interface): ReactElement<any> {
     return (
         <div className="suggestedNote">
             <Image src={BookCover} alt="BookCover" width={80}/>
