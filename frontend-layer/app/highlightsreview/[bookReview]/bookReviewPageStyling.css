@@ -1,13 +1,11 @@
 div.reviewingSectionContainer {
-    margin: 1% 20% 1% 25%;
-    /*margin: 1% 0 0 15%;*/
+    margin: 1% 20% 1% 35%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /*gap: 18rem;*/
     gap: 2rem;
 
-    div.test{
+    div.test {
         display: flex;
         flex-direction: column;
         gap: .5rem;
@@ -15,35 +13,38 @@ div.reviewingSectionContainer {
         bottom: 2%;
         left: 1%;
 
-        span{
+        span {
             cursor: pointer;
+            color: var(--textColor_gray_dark);
         }
     }
 
-    div.listOfContentContainer-largeSize{
+    div.listOfContentContainer-largeSize {
         position: fixed;
         top: 15px;
         left: 20px;
 
 
-
-        div.tableOfContent-largeSize{
+        div.tableOfContent-largeSize {
             display: flex;
             flex-direction: column;
             /*gap: 1rem;*/
 
-            h1{
+            h1 {
                 font-weight: lighter;
                 margin-bottom: 50px;
+                color: var(--textColor_gray_dark);
             }
 
-            div.contentList{
+            div.contentList {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
-                span{
+
+                span {
                     font-weight: lighter;
-                    cursor: pointer ;
+                    cursor: pointer;
+                    color: var(--textColor_gray_dark);
                 }
             }
 
@@ -54,8 +55,6 @@ div.reviewingSectionContainer {
     h1#noteCardTitle {
         text-align: center;
         font-weight: lighter;
-        /*margin-bottom: 3rem;*/
-        /*font-size: 3rem;*/
     }
 
     div.noteCardsHighlightsContainer {
@@ -68,9 +67,10 @@ div.reviewingSectionContainer {
             width: 100%;
 
             h1#noteCardTitle {
-                color: var(--textColor_gray_dark);
+                color: var(--secondPrimaryTextColor);
                 text-align: center;
                 width: 100%;
+                font-size: clamp(25px, 2.5vw, 100px);
             }
 
             img#switchToMemoModeIcon {
@@ -82,9 +82,10 @@ div.reviewingSectionContainer {
                 filter: var(--imgColor_dark_gray);
                 cursor: pointer;
                 background-color: black;
-                border-radius: 10px;
+                border-radius: 4px;
             }
         }
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -100,6 +101,8 @@ div.noteCardsMemoModeContainer {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: var(--shadowing);
+
 
     div.memoMode {
         position: fixed;
@@ -121,7 +124,26 @@ div.noteCardsMemoModeContainer {
     }
 }
 
-@media screen and (width <= 500px) {
+@media screen and (width <= 1200px) {
+    div.reviewingSectionContainer {
+        margin: 1% 10% 1% 35%;
+        /*margin: 1% 0 0 15%;*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+
+
+        div.listOfContentContainer-largeSize {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+    }
+
+}
+
+@media screen and (width <= 800px) {
     div.reviewingSectionContainer {
         margin: 5% 5%;
 

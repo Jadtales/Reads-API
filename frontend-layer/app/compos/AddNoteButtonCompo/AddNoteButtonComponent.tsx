@@ -4,7 +4,7 @@ import './addNoteButtonComponentStyling.css';
 import UploadKindleHighlights from "@/app/compos/AddNoteButtonCompo/uploadKindleHighlights/UploadKindleHighlights";
 import { useRouter } from 'nextjs-toploader/app';
 
-export default function AddNoteComponentButton(): ReactElement {
+export default function AddNoteComponentButton(): ReactElement<any> {
     const [isAddNoteButtonClicked, setIsAddNoteButtonClicked] = useState<boolean>(false);
     const buttonRef = useRef<HTMLDivElement>(null);
 

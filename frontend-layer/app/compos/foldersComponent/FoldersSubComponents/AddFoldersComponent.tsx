@@ -13,7 +13,7 @@ import useWarningNotification from "@/app/compos/modals/warningNotificationModal
 
 export default function AddFolderComponent({
                                                existedFolders,
-                                           }: AddFolderComponentProps): ReactElement {
+                                           }: AddFolderComponentProps): ReactElement<any> {
 
     const {toggleElementActivation, warningFunction} = useWarningNotification()
 

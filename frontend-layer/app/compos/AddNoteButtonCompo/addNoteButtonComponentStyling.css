@@ -13,32 +13,18 @@
 
 }
 
-button.addNoteButton{
-    padding: 20px;
-    font-size: 2rem;
-    background-color: black;
-    border-radius: var(--borderRadius);
-    outline: 1px solid darkgray;
-    border: none;
-    color: white;
-    /*width: 222px;*/
-    cursor: pointer;
-    transition: var(--hoverEffectTrasition);
-}
-
 
 button.addNoteButton,
 button.addNoteButton-twitter,
 button.addNoteButton-kindleFile{
-    background-color: #eeeeee;
-    border-radius: 10px;
-    border: 2px solid black;
-    box-shadow: 1px 1px black;
-    color: black;
+    padding: 16px;
+    background-color: var(--backgroundColor_componentsInsideComponent);
+    border-radius: 5px;
+    border: 1px solid #3d3d3d;
+    color: var(--textColor_in_dark_mode);
     outline: none;
-    padding: 20px;
-    font-size: .9rem;
-    width: 190px;
+    font-size: 1rem;
+    width: 150px;
     cursor: pointer;
     transition: var(--hoverEffectTrasition);
 }
@@ -48,7 +34,7 @@ button.addNoteButton-kindleFile{
     font-size: .8rem;
 
     img{
-        filter: var(--imgColor_dark_gray);
+        filter: var(--imgColor_white);
     }
 }
 
@@ -64,7 +50,7 @@ button.addNoteButton-kindleFile{
 button.addNoteButton:hover,
 button.addNoteButton-twitter:hover,
 button.addNoteButton-kindleFile:hover {
-    /*background-color: var(--hoveredButtonWithBlackBackGroundColor);*/
+    background-color: #303030;
     box-shadow: 3px 3px black;
     transition: var(--hoverEffectTrasition);
 }
