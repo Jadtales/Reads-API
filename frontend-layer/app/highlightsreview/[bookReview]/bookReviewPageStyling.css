@@ -93,36 +93,6 @@ div.reviewingSectionContainer {
     }
 }
 
-div.noteCardsMemoModeContainer {
-    background-color: var(--darkThemeBody);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: var(--shadowing);
-
-
-    div.memoMode {
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-
-        div.quickTools {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-right: 25px;
-
-            img {
-                filter: var(--imgColor_dark_gray);
-                cursor: pointer;
-            }
-        }
-    }
-}
 
 @media screen and (width <= 1200px) {
     div.reviewingSectionContainer {

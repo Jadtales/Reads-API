@@ -6,7 +6,6 @@ import './noteCardReviewComponentStyling.css'
 import ArrowLeftIcon from '@/public/icons/leftTo.svg'
 import ArrowRightIcon from '@/public/icons/rightTo.svg'
 import LeftQuantityCardsIcon from '@/public/icons/leftQuantityCardsIcon.svg'
-import {Simulate} from "react-dom/test-utils";
 
 interface NoteCardMemorizationProps {
     duesCards: number;
@@ -14,10 +13,10 @@ interface NoteCardMemorizationProps {
     cards: { term: string, definition: string }[];
 }
 
-export default function NoteCardMemorize(): ReactElement {
+export default function NoteCardMemorizationComponent(): ReactElement<any> {
     const [showDefinition, setShowDefinition] = useState<boolean>(false);
 
-    const handleShowDefinition = (event: KeyboardEvent) => {
+    const handleShowDefinition = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' || event.key === ' ') {
             setShowDefinition(!showDefinition);
         }
@@ -77,17 +76,16 @@ export default function NoteCardMemorize(): ReactElement {
                     <Image src={LeftQuantityCardsIcon} alt="leftQuantityCards"/>3/8
                 </div>
 
+                <div className="difficultyLearningProcess">
+                    <button className="difficultyLevel_again">Again</button>
+                    <hr/>
+                    <button className="difficultyLevel_hard">Hard</button>
+                    <hr/>
+                    <button className="difficultyLevel_good">Good</button>
+                    <hr/>
+                    <button className="difficultyLevel_easy">Easy</button>
+                </div>
             </div>
-            <br/>
 
-            <div className="difficultyLearningProcess">
-                <button className="difficultyLevel_again">Again</button>
-                <hr/>
-                <button className="difficultyLevel_hard">Hard</button>
-                <hr/>
-                <button className="difficultyLevel_good">Good</button>
-                <hr/>
-                <button className="difficultyLevel_easy">Easy</button>
-            </div>
         </Fragment>)
 }

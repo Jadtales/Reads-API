@@ -1,25 +1,24 @@
 'use client'
 import {ReactElement, useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
+import Image from "next/image";
 import './bookReviewPageStyling.css'
 
-import BrainIcon from '@/public/icons/brainIcon.svg'
-import ReviewNoteCardsModeIcon from '@/public/icons/reviewNotecardsMode.svg'
-import Image from "next/image";
-import NoteCardReview from "@/app/compos/notecardComponents-reviewPage/NotecardReviewComponent";
-import GoBackToHomePageIcon from '@/public/icons/goBackIcon.svg'
-import {usePathname, useRouter} from "next/navigation";
-import NoteCardMemorize from "@/app/compos/notecardComponents-reviewPage/NoteCardMemorizationComponent";
-import KeyboardInstructionsModal from "@/app/compos/keyboard_instructions_component/KeyboardInstructionsModal";
-import ListOfContentComponent from "@/app/compos/notecardComponents-reviewPage/ListOfContentComponent";
+import NoteCardReview from "@/app/compos/notecard-components-review-page/NotecardReviewComponent";
+import ListOfContentComponent from "@/app/compos/notecard-components-review-page/ListOfContentComponent";
+import AdvancedSettingsModal from "@/app/compos/modals/advanced-settings-modal/AdvancedSettingsModal";
 
-export default function BookReviewer(): ReactElement {
-    const [isMemorizationModeActive, setIsMemorizationModeActive] = useState<boolean>(false)
+import GoBackToHomePageIcon from '@/public/icons/goBackIcon.svg'
+import ScrollingFuncs from "@/app/compos/notecard-components-review-page/ScrollingFuncs";
+import Link from "next/link";
+
+export default function BookReviewer(): ReactElement<any> {
     const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth);
 
     const router = useRouter()
     const pathname = usePathname()
 
-    const getNoteCardTitle = pathname.split("/").at(2)?.replaceAll('-', ' ')
+    const getNoteCardTitle = pathname.split("/").at(2)?.replaceAll('-', ' ').slice(0, -2)
 
     useEffect(() => {
         let debounceTimer: NodeJS.Timeout;
@@ -45,112 +44,98 @@ export default function BookReviewer(): ReactElement {
 
 
             {windowInnerWidth > 800 && <div className={'test'}>
-                <span className="switchToMemoMode"
-                      onClick={() => setIsMemorizationModeActive(!isMemorizationModeActive)}>Switch to memorization mode</span>
-                <span className="advancedSettingsSpan">Advanced settings</span>
+                <Link href={`/highlightsreview/${getNoteCardTitle}/learn`} className={'switchToMemoMode'}
+                      style={{color: 'black', textDecoration: 'none'}}>Switch to memoriation mode</Link>
+
+                <AdvancedSettingsModal inReviewMode={false}/>
             </div>}
 
-            {isMemorizationModeActive ?
-                <div className="noteCardsMemoModeContainer">
-                    <div className="memoMode">
-                        <div className="quickTools">
-                            <Image src={GoBackToHomePageIcon}
-                                   alt="goBackToHomePage"
-                                   width={50}
-                                   id="goBackToHomePageIcon"
-                                   onClick={() => router.back()}/>
+            <div className="noteCardsHighlightsContainer">
+                <ScrollingFuncs/>
+                <div className="topLayer">
+                    <Image src={GoBackToHomePageIcon}
+                           alt="goBackToHomePage"
+                           width={35}
+                           id="goBackToHomePageIcon"
+                           onClick={() => router.back()}/>
 
-                            <Image src={isMemorizationModeActive ? ReviewNoteCardsModeIcon : BrainIcon}
-                                   alt="switchToMemoMode"
-                                   width={25} id="switchToMemoModeIcon"
-                                   onClick={() => setIsMemorizationModeActive(!isMemorizationModeActive)}/>
-                        </div>
-                        <NoteCardMemorize key={2}/>
-                    </div>
-                    <KeyboardInstructionsModal/>
+                    <h1 id="noteCardTitle">{getNoteCardTitle}</h1>
+
+
                 </div>
 
-                : <div className="noteCardsHighlightsContainer">
-                    <div className="topLayer">
-                        <Image src={GoBackToHomePageIcon}
-                               alt="goBackToHomePage"
-                               width={35}
-                               id="goBackToHomePageIcon"
-                               onClick={() => router.back()}/>
 
-                        <h1 id="noteCardTitle">{getNoteCardTitle.slice(0, -2)}</h1>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
 
 
-                    </div>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
 
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
+                <NoteCardReview
+                    noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
+                        'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
+                        'recusandae soluta.\n'}/>
+            </div>
 
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
-                    <NoteCardReview
-                        noteCardContent={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae solutaLorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                            'Ab aliquam aut cupiditate exercitationem illum iusto minus perspiciatis ' +
-                            'placeat, quam quasi? Aspernatur beatae debitis et, fuga illo illum iste ' +
-                            'recusandae soluta.\n'}/>
-                </div>}
         </div>
     )
 }
