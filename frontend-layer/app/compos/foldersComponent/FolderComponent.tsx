@@ -13,7 +13,7 @@ import FilterComponent from "@/app/compos/FilterFunctionality/FilterComponent";
 
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 
-export default function FolderComponent(): ReactElement {
+export default function FolderComponent(): ReactElement<any> {
     const [isFilterActive, setFilter] = useState<boolean>(false);
     // --- folders
     const folders = useContext(FoldersStateManagerContext)

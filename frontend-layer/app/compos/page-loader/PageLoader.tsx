@@ -5,7 +5,7 @@ export default function PageLoader(): ReactElement<any> {
                 style={{
                     height: '100%',
                     width: '100%',
-                    backgroundColor: 'var(--darkThemeBody)',
+                    backgroundColor: 'var(--darkThemeBody-darkerGray_black)',
                     position: 'absolute',
                     top: '0',
                     left: '0',

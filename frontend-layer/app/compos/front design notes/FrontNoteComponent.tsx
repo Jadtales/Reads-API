@@ -8,21 +8,20 @@ import './frontNoteCompoStyling.css';
 import MoreIcon from '@/public/icons/more-line.svg';
 import BookCover from '@/public/bookCovers/there there cover.jpg';
 
-import FrontNoteSettings from "@/app/compos/front design notes/frontNote-settingsOption/FrontNoteSettings";
 
 interface frontNoteComponentProps {
     bookTitle: string;
     bookAuthor: string;
     bookId: number;
     bookTags: string;
+    notecardSettingsComponent: ReactElement;
 }
 
 export default function FrontNoteComponent({
                                                bookTitle,
                                                bookAuthor,
-                                               bookId,
                                                bookTags,
-
+                                               notecardSettingsComponent,
                                            }: frontNoteComponentProps): ReactElement<any> {
 
     const [isNotecardSettingActive, setIsNotecardSettingActive] = useState<boolean>(false);
@@ -98,7 +97,7 @@ export default function FrontNoteComponent({
                     </div>
                     {isNotecardSettingActive && (
                         <div ref={settingsRef}>
-                            <FrontNoteSettings onClose={closeSettings} bookId={bookId} bookTitle={bookTitle}/>
+                            {notecardSettingsComponent}
                         </div>
                     )}
                 </div>
