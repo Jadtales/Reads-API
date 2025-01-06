@@ -75,25 +75,6 @@ div.topLayer {
 
         }
     }
-
-    & div.flashcardSettings {
-        display: flex;
-        align-items: center;
-        height: fit-content;
-        border-radius: 5px;
-        padding: 3px 5px;
-        cursor: pointer;
-        transition: .2s ease-out;
-
-        img {
-            filter: var(--imgColor_dark_gray)
-        }
-    }
-
-    & div.flashcardSettings:hover {
-        background-color: var(--hoveredButtonTextColor);
-        transition: .2s ease-in;
-    }
 }
 
 @media screen and (width <= 700px){
