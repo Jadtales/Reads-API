@@ -1,25 +1,23 @@
-import {Fragment, MouseEvent as ReactMouseEvent, ReactElement} from "react";
+import {Fragment, MouseEvent as ReactMouseEvent, ReactElement, useRef} from "react";
 import './deleteNoteCardModalStyling.css'
+
 interface ComponentProps {
-    deleteIsClicked: (event: ReactMouseEvent, modalRef: any) => void;
-    modalRefProp: any;
+    deleteIsClicked: (event: ReactMouseEvent, toCloseModalRef: any) => void;
 }
 
-export default function DeleteNotecardModal({deleteIsClicked, modalRefProp}: ComponentProps): ReactElement {
-    const modalRef = modalRefProp;
-
-
+export default function DeleteNotecardModal({deleteIsClicked}: ComponentProps): ReactElement {
+    const dialogRef = useRef<HTMLDialogElement>(null);
     const handleModalToggling = (): void => {
-        if (!modalRef.current?.open) {
-            modalRef.current?.showModal();
+        if (!dialogRef.current?.open) {
+            dialogRef.current?.showModal();
         } else {
-            modalRef.current.close();
+            dialogRef.current?.close();
         }
     };
 
     const handleNotecardDeletion = (event: ReactMouseEvent): void => {
-        if (modalRef.current?.open) {
-            deleteIsClicked(event, modalRef);
+        if (event) {
+            deleteIsClicked(event, dialogRef);
         }
     };
 
@@ -27,7 +25,7 @@ export default function DeleteNotecardModal({deleteIsClicked, modalRefProp}: Com
     return <Fragment>
         <li onClick={handleModalToggling}>Delete</li>
 
-        <dialog ref={modalRefProp} className={'noteCardDeletionDialog'}>
+        <dialog ref={dialogRef} className={'noteCardDeletionDialog'} >
             <div style={{marginBottom: '2rem', fontSize: '1.2rem'}}>Are you sure about deleting your Notecard?</div>
             <div className="chosenButtons" style={{display: 'flex', gap: '5px', justifyContent: 'end'}}>
                 <button onClick={handleNotecardDeletion} style={{

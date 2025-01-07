@@ -16,16 +16,14 @@ import MoreIcon from "@/public/icons/more-line.svg";
 
 interface FrontNoteSettingsProps {
     bookTitle?: string;
-    bookId?: number;
-    modalRefProp?: any;
-    deleteThisNotecardById?: (bookId: number, modalRef?: any) => void;
+    bookId: number;
+    deleteThisNotecardById: (bookId: number, toCloseModalRef: any) => void;
     // tagsForModal: string[];
 }
 
 export default function FrontNoteSettings({
                                               bookId,
                                               bookTitle,
-                                              modalRefProp,
                                               deleteThisNotecardById
                                           }: FrontNoteSettingsProps): ReactElement<any> {
     const settingsRef = useRef<HTMLDialogElement>(null);
@@ -33,12 +31,13 @@ export default function FrontNoteSettings({
     const router = useRouter()
 
     const handleSettingsToggling = (event: ReactMouseEvent): void => {
+        event.stopPropagation()
         if(!settingsRef.current?.open) {
             settingsRef.current?.show();
-            event.stopPropagation()
         }
     }
 
+    // to prevent propagation during the interaction with settings modal
     const handleSettingsModalClosing = (event: ReactMouseEvent): void => {
         if(settingsRef.current?.open) {
             event.stopPropagation();
@@ -50,9 +49,9 @@ export default function FrontNoteSettings({
         router.push(`/createnotes/${bookTitle?.replaceAll(' ', '-')}-${bookId}`)
     };
 
-    const handleDeleteNotecard = (event: ReactMouseEvent) => {
+    const handleDeleteNotecard = (event: ReactMouseEvent, toCloseModalRef: any) => {
         if (event) {
-            deleteThisNotecardById!(bookId!)
+            deleteThisNotecardById(bookId, toCloseModalRef)
         }
     };
 
@@ -96,7 +95,7 @@ export default function FrontNoteSettings({
                     <MoveToComponent/>
                     <li><Image src={DownloadIcon} width={20} alt="exportNote"/>Export</li>
                     <hr style={{margin: '5px 0'}}/>
-                    <DeleteNotecardModal deleteIsClicked={handleDeleteNotecard} modalRefProp={modalRefProp}/>
+                    <DeleteNotecardModal deleteIsClicked={handleDeleteNotecard}/>
                 </ul>
             </dialog>
         </Fragment>

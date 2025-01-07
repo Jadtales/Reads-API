@@ -14,12 +14,15 @@ interface frontNoteComponentProps {
     bookAuthor: string;
     bookId: number;
     bookTags: string;
+    notecardDeletion: (bookId: number, toCloseModalRef: any) => void;
 }
 
 export default function FrontNoteComponent({
                                                bookTitle,
                                                bookAuthor,
+                                               bookId,
                                                bookTags,
+                                               notecardDeletion
                                            }: frontNoteComponentProps): ReactElement<any> {
 
     return (
@@ -42,7 +45,7 @@ export default function FrontNoteComponent({
                 </div>
 
                 <div className="flashcardSettingsContainer">
-                    <FrontNoteSettings/>
+                    <FrontNoteSettings bookId={bookId} deleteThisNotecardById={notecardDeletion}/>
                 </div>
             </div>
         </div>

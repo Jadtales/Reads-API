@@ -8,7 +8,6 @@ import FolderComponent from "@/app/compos/foldersComponent/FolderComponent";
 import FrontNoteComponent from "@/app/compos/front design notes/FrontNoteComponent";
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 import Welcoming from "@/app/compos/welcomingComponent/WelcomingComponent";
-import FrontNoteSettings from "@/app/compos/front design notes/frontNote-settingsOption/FrontNoteSettings";
 import NoteCardInterface from "@/utils/interfaces/NoteCardInterace";
 
 let noteData = [
@@ -26,8 +25,6 @@ let noteData = [
 
 export const existedFolders: string[] = ['unspecified', 'poetry', 'fiction'];
 
-
-
 export default function NoteCardsContainerHomePage(): ReactElement {
     const [noteCards, setNoteCards] = useState<NoteCardInterface[]>(noteData);
 
@@ -36,13 +33,12 @@ export default function NoteCardsContainerHomePage(): ReactElement {
         router.push(`/highlightsreview/${bookTitle.toLowerCase().replaceAll(' ', '-')}-${bookId}`);
     }
 
-    const handleNotecardDeletion = (bookId: number, modalRef: any): void => {
+    const handleNotecardDeletion = (bookId: number, toCloseModalRef: any): void => {
         if (bookId && noteData.some(notecard => notecard.bookId === bookId)) {
             setNoteCards(noteCards.filter(noteCard => noteCard.bookId !== bookId));
-            modalRef.current?.close();
+            toCloseModalRef.current?.close()
         }
     };
-
 
 
     return (
@@ -62,12 +58,7 @@ export default function NoteCardsContainerHomePage(): ReactElement {
                                                 bookId={data.bookId}
                                                 bookTags={data.bookTags}
                                                 key={index}
-                                                notecardSettingsComponent={
-                                                    <FrontNoteSettings
-                                                        bookTitle={data.bookTitle}
-                                                        bookId={data.bookId}
-                                                        deleteThisNotecardById={handleNotecardDeletion}/>
-                                                }
+                                                notecardDeletion={handleNotecardDeletion}
                             />
                         </div>
                     ))}
