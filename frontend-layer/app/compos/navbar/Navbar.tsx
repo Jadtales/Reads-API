@@ -10,7 +10,7 @@ import BrowsingComponent from "@/app/compos/browsing/BrowsingComponent";
 import NotificationsCenterComponent
     from "@/app/compos/navbar/notifications_reportBugs_Component/notificationsComponents/NotificationsCenterComponent";
 
-export default function Navbar(): ReactElement {
+export default function Navbar(): ReactElement<HTMLDivElement> {
     const router = useRouter();
 
     return (
@@ -22,7 +22,7 @@ export default function Navbar(): ReactElement {
                 </h1>
 
                 <div className="user-search_buttons">
-                    <NavbarUserProfileComponent/>
+                    <NavbarUserProfileComponent phoneScreenSize={false}/>
                     <BrowsingComponent/>
                     <SearchInputFieldComponent/>
                 </div>

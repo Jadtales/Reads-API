@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from "react";
+import React, {Fragment, ReactElement, useState} from "react";
 import Image from "next/image";
 import RNICON from "@/public/RN-icon.png";
 import Link from "next/link";
@@ -9,7 +9,10 @@ import '../navbarStyling.css'
 import RightArrowIcon from "@/public/icons/rightarrow.svg";
 import LeftArrowIcon from '@/public/icons/leftarrow.svg'
 
-export default function NavbarUserProfileComponent(): ReactElement {
+export default function NavbarUserProfileComponent({phoneScreenSize = true, userProfileWidth}: {
+    phoneScreenSize?: boolean,
+    userProfileWidth?: number
+}): ReactElement<any> {
     const [isUserProfileClicked, setIsUserProfileClicked] = useState<boolean>(false);
 
     const router = useRouter()
@@ -23,22 +26,22 @@ export default function NavbarUserProfileComponent(): ReactElement {
         setIsUserProfileClicked(!isUserProfileClicked)
     }
 
-    return <div className={isUserProfileClicked ? 'userProfile-active' : 'userProfile'}
+    return <div className={isUserProfileClicked && !phoneScreenSize ? 'userProfile-active' : 'userProfile'}
                 onClick={handleUserProfileClicked}>
         <Image src={RNICON}
                alt="userProfileImg"
-               width={20}
-               style={{borderRadius: '50%'}}/>
+               width={userProfileWidth ? userProfileWidth : 20}
+               style={{borderRadius: '3px', display: 'flex'}}/>
 
-        <h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
+        {!phoneScreenSize && <Fragment><h1 id="userUsername" onClick={handleGoingToUserProfile}>Jadtales</h1>
 
-        <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
-            <Link href={`/settings`}>Settings</Link>
-            <button>Log out</button>
-        </div>
+            <div className={isUserProfileClicked ? 'userButtons-active' : 'userButtons'}>
+                <Link href={`/settings`}>Settings</Link>
+                <button>Log out</button>
+            </div>
 
-        <Image src={isUserProfileClicked ? LeftArrowIcon : RightArrowIcon}
-               alt="expendUserSettings"
-               id="expandUserProfile"/>
+            <Image src={isUserProfileClicked ? LeftArrowIcon : RightArrowIcon}
+                   alt="expendUserSettings"
+                   id="expandUserProfile"/></Fragment>}
     </div>
 }

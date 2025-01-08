@@ -4,8 +4,8 @@ nav#navbarContainer {
     align-items: center;
     gap: 20px;
     margin: .5% 9.7% 5% 9.7%;
-    padding: 4px 10px;
-    border-radius: 10px;
+    padding: 6px;
+    border-radius: 6px;
     border: var(--border_tags);
     /*border: 1px solid #444444;*/
 
@@ -34,7 +34,7 @@ div.iconContainer {
             /*background-color: var(--darkTheme_componentsBackgroundColor);*/
             color: var(--textColor_gray_dark);
             padding: 5px 6px;
-            border-radius: 10px;
+            border-radius: 5px;
 
 
             cursor: pointer;
@@ -102,38 +102,21 @@ div.iconContainer {
 div.userInteractionButtons {
     display: flex;
     align-items: center;
+    gap: 0 6px;
 
-    button#getPremium {
-        font-size: 1.1rem;
-        background: transparent;
-        color: var(--textColor_gray_dark);
-        padding: 6px;
-        margin: 0 4px;
-        border-radius: 4px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-
-        p {
-            text-decoration: none;
-            color: var(--textColor_gray_dark);
-            background: linear-gradient(to right, hsl(0, 0%, 0%) 0, hsl(0, 0%, 71%) 10%, hsl(0, 0%, 0%) 20%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 20s infinite linear;
-        }
-    }
-
-    button#getPremium:hover {
-        background-color: var(--backgroundColor_frontnote_hovered);
-        transition: .2s ease;
+    button#reportButton{
+        background-color: black;
+        border: var(--border);
     }
 
     button#notificationsButton {
+        background-color: black;
+        border: var(--border);
+
         h2.numberOfReceivedNotifications {
             position: absolute;
             font-size: 10px;
-            color: white;
+            color: black;
         }
     }
 
@@ -152,7 +135,7 @@ div.userProfile-active {
 
     color: var(--textColor_gray_dark);
 
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     padding: 5px 6px;
 
@@ -193,7 +176,6 @@ div.userProfile-active {
     img#expandUserProfile {
         transition: .2s ease;
         transform: scale(1.2);
-        /*filter: brightness(0) saturate(100%) invert(100%) sepia(35%) saturate(2%) hue-rotate(211deg) brightness(116%) contrast(100%);*/
     }
 }
 
@@ -222,7 +204,7 @@ div.userProfile-active {
         transition: .2s ease-in-out;
 
         font-size: 20px;
-        color: black;
+        color: var(--textColor_gray_dark);
     }
 
     input::placeholder {
@@ -281,13 +263,12 @@ div.notificationsCenter-active {
     right: 0;
     top: 0;
     width: 300px;
-    height: 100vh;
+    height: 125.1vh;
     padding: 0 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 15px;
     z-index: 3;
-    color: var(--textColor);
-    background-color: var(--darkThemeBody);
+    color: var(--textColor_in_dark_mode);
+    background-color: #21201f;
     animation: comeOut 0.3s ease;
 
     div.collapseIcon_centerSwitchers_container {
@@ -297,7 +278,7 @@ div.notificationsCenter-active {
 
         img {
             cursor: pointer;
-            /*filter: var(--imgColor_dark_gray)*/
+            filter: brightness(0) saturate(100%) invert(92%) sepia(4%) saturate(308%) hue-rotate(9deg) brightness(91%) contrast(87%);
         }
 
         div.collapseNotificationsCenter {
@@ -306,7 +287,7 @@ div.notificationsCenter-active {
             width: fit-content;
 
             img{
-                filter: var(--imgColor_dark_gray);
+                filter: brightness(0) saturate(100%) invert(92%) sepia(4%) saturate(308%) hue-rotate(9deg) brightness(91%) contrast(87%);
             }
         }
     }
@@ -335,13 +316,12 @@ div.duration {
     justify-content: start;
 
     button {
-        padding: 2px 4px;
+        padding: 3px 9px;
         border-radius: 4px;
-        border: 1px solid #f1f1f1;
+        border: none;
         outline: none;
-        background-color: black;
-        color: var(--textColor_opposite);
-        border: var(--border_frontNote);
+        background-color: var(--thirdPrimaryTextColor);
+        color: var(--border_tags);
         cursor: pointer;
         transition: .2s ease;
     }
@@ -409,22 +389,34 @@ div.switchNotiCenterToReportBugsCenter {
 
 @media screen and (width <= 770px) {
     nav#navbarContainer {
-        margin: 2% 5% 5% 5%;
+        margin: 2% 5% 2% 5%;
+        position: fixed;
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+        bottom: 0;
+        z-index: 2;
     }
+
 
     h1#reanotesIcon {
         display: none;
     }
 
-    .userProfile {
-        padding: 0 0;
-    }
+    /*.userProfile {*/
+    /*    padding: 0 0;*/
+    /*    display: flex;*/
+    /*    flex-direction: row;*/
+    /*    background-color: black;*/
+    /*    width: fit-content;*/
+    /*    color: white;*/
+    /*}*/
 
-    .userProfile-active {
-        position: absolute;
-        z-index: 2;
-        padding: 0 0;
-    }
+    /*.userProfile-active {*/
+    /*    position: absolute;*/
+    /*    z-index: 2;*/
+    /*    padding: 0 0;*/
+    /*}*/
 
     .searchButton-active {
         display: flex;
