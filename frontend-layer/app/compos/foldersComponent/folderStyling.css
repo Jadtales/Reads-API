@@ -28,7 +28,9 @@ div.folderContainer a {
 
 div.folderContainer a.active {
     transition: .2s ease;
-    background-color: var(--tag_backgroundColor);
+    color: var(--textColor_in_dark_mode);
+    background-color: black;
+    padding: 6px;
 }
 
 div.folderContainer li:last-child span {
@@ -110,7 +112,7 @@ input#addFolderInputField::placeholder {
 @media screen and (width <= 700px) {
     div.folderContainer {
         position: sticky;
-        top: 0;
+        top: 10px;
         border-radius: 10px;
 
         margin: 10px 0;

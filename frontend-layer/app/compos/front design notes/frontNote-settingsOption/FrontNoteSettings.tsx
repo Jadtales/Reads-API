@@ -5,14 +5,16 @@ import Image from "next/image";
 import './frontNoteSettingStyling.css';
 
 // imported icons
-import DownloadIcon from '@/public/icons/frontNoteSetting-icons/download-line.svg';
 import EditNoteIcon from '@/public/icons/frontNoteSetting-icons/pencil-line.svg';
 import PinNoteIcon from '@/public/icons/frontNoteSetting-icons/pushpin-2-line.svg';
 import MoveToComponent
     from "@/app/compos/front design notes/frontNote-settingsOption/settingsComponents/MoveToComponent";
 import {useRouter} from "nextjs-toploader/app";
-import DeleteNotecardModal from "@/app/compos/modals/delete-notecard-modal/DeleteNotecardModal";
+import DeleteNotecardModal from "@/app/compos/modals/notecard-settings-modals/delete-notecard-modal/DeleteNotecardModal";
 import MoreIcon from "@/public/icons/more-line.svg";
+import {useMediaQuery} from "react-responsive";
+import ExportNotecardModal
+    from "@/app/compos/modals/notecard-settings-modals/export-notecard-modal/ExportNotecardModal";
 
 interface FrontNoteSettingsProps {
     bookTitle?: string;
@@ -26,20 +28,22 @@ export default function FrontNoteSettings({
                                               bookTitle,
                                               deleteThisNotecardById
                                           }: FrontNoteSettingsProps): ReactElement<any> {
+    const isInPhoneSize = useMediaQuery({query: '(width <= 700px)'});
+
     const settingsRef = useRef<HTMLDialogElement>(null);
 
     const router = useRouter()
 
     const handleSettingsToggling = (event: ReactMouseEvent): void => {
         event.stopPropagation()
-        if(!settingsRef.current?.open) {
+        if (!settingsRef.current?.open) {
             settingsRef.current?.show();
         }
     }
 
     // to prevent propagation during the interaction with settings modal
     const handleSettingsModalClosing = (event: ReactMouseEvent): void => {
-        if(settingsRef.current?.open) {
+        if (settingsRef.current?.open) {
             event.stopPropagation();
         }
     }
@@ -60,13 +64,13 @@ export default function FrontNoteSettings({
         const dialog = settingsRef.current;
 
         const handleClickOutside = (event: MouseEvent): void => {
-            if(dialog && !dialog.contains(event.target as Node)){
+            if (dialog && !dialog.contains(event.target as Node)) {
                 dialog.close();
             }
         }
 
         const handleEscapeKey = (event: KeyboardEvent): void => {
-            if(event.key === 'Escape'){
+            if (event.key === 'Escape') {
                 dialog?.close();
             }
         }
@@ -84,18 +88,22 @@ export default function FrontNoteSettings({
 
     return (
         <Fragment>
-            <button className={'settingsButton'} onClick={handleSettingsToggling}><Image src={MoreIcon} alt="MoreIcon"/></button>
-            <dialog className="frontNoteSettingContainer" ref={settingsRef} onClick={handleSettingsModalClosing}>
+            <button className={'settingsButton'}
+                    onClick={handleSettingsToggling}>
+                <Image src={MoreIcon} alt="MoreIcon"/>
+            </button>
+            <dialog className={!isInPhoneSize ? 'frontNoteSettingContainer' : 'frontNoteSettingContainer-phoneSize'}
+                    ref={settingsRef}
+                    onClick={handleSettingsModalClosing}>
                 <ul>
-                    <li><Image src={PinNoteIcon} width={20} alt="pinNote"/>Pin</li>
-                    <li onClick={handleForwardToReviewPage}><Image src={EditNoteIcon} width={20} alt="editNote"/>Edit
-                        this
-                        Note
+                    <li><Image src={PinNoteIcon} width={20} alt="pinNote"/>{!isInPhoneSize && 'Pin'}</li>
+                    <li onClick={handleForwardToReviewPage}><Image src={EditNoteIcon} width={20} alt="editNote"/>
+                        {!isInPhoneSize && 'Edit Notecard'}
                     </li>
-                    <MoveToComponent/>
-                    <li><Image src={DownloadIcon} width={20} alt="exportNote"/>Export</li>
+                    <MoveToComponent isPhoneSize={isInPhoneSize}/>
+                    <ExportNotecardModal isPhoneSize={isInPhoneSize}/>
                     <hr style={{margin: '5px 0'}}/>
-                    <DeleteNotecardModal deleteIsClicked={handleDeleteNotecard}/>
+                    <DeleteNotecardModal deleteIsClicked={handleDeleteNotecard} isPhoneSize={isInPhoneSize}/>
                 </ul>
             </dialog>
         </Fragment>

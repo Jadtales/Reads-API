@@ -5,7 +5,7 @@ import './settingsPageStyling.css'
 import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
 import GeneralSettingPageComponents from "@/app/compos/settingPageComponents/GeneralSettings";
 
-export default function SettingsPage(): ReactElement {
+export default function SettingsPage(): ReactElement<any> {
     const [chosenSettings, setChosenSettings] = useState<string>('general')
 
     const handleChosenSettings = (setting: string): void => {
@@ -16,15 +16,15 @@ export default function SettingsPage(): ReactElement {
     return (
 
         <Fragment>
-            <GoBackToComponent margin={'30px 10%'}/>
+            <GoBackToComponent margin={'30px 10%'} withText={true} iconSize={'25px'}/>
             <div className="settingsPageContainer">
                 <div className="settingsTarget">
                     <h3>Account settings</h3>
                     <ul>
-                        <li className={chosenSettings === 'general' && "settingsTargetLi-active"}
+                        <li className={chosenSettings === 'general' ? "settingsTargetLi-active" : ''}
                             onClick={() => handleChosenSettings('general')}>General
                         </li>
-                        <li className={chosenSettings === 'myProfile' && "settingsTargetLi-active"}
+                        <li className={chosenSettings === 'myProfile' ? "settingsTargetLi-active" : ''}
                             onClick={() => handleChosenSettings('myProfile')}>My Profile
                         </li>
                     </ul>
@@ -37,7 +37,7 @@ export default function SettingsPage(): ReactElement {
                         <div className="userCredentials">
                             <h3>User credentials</h3>
                             <h2 className="userUsername">
-                                #jadtales
+                                @jadtales
                             </h2>
 
                             <form action="/toChangeCredentials">

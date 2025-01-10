@@ -1,15 +1,14 @@
 div.suggestedNote {
     cursor: pointer;
     /*z-index: -1;*/
-    background-color: var(--backgroundColor_frontnote);
     padding: var(--paddingNote);
     display: flex;
     flex-direction: row;
     gap: var(--gapNotes);
     border: var(--border_tags);
     margin: 15px 0;
+    box-shadow: var(--shadowing);
     min-width: fit-content;
-
 
     border-radius: var(--borderRadiusNote);
 

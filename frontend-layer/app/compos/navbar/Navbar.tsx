@@ -17,7 +17,7 @@ export default function Navbar(): ReactElement<HTMLDivElement> {
         <nav id="navbarContainer">
             <div className="iconContainer">
                 <h1 id="reanotesIcon" style={{cursor: 'pointer'}}
-                    onClick={() => router.push('/home/unspecified')}>
+                    onClick={() => router.push('/home/all')}>
                     Reanotes
                 </h1>
 

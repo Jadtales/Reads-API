@@ -1,0 +1,31 @@
+import {
+  Controller,
+  DefaultValuePipe,
+  Get,
+  Param,
+  ParseIntPipe,
+  ParseUUIDPipe,
+  Query,
+} from '@nestjs/common';
+
+import { CardsStatsService } from './providers/cards.stats.service';
+import { CardsQueryDTO } from './DTOs/cards.params-queries.dto';
+
+@Controller('cardsStats')
+export class CardsStatsController {
+  constructor(private readonly cardStatsServices: CardsStatsService) {}
+
+  @Get(':getUserCardStats:userId/:')
+  getUserCardsStats(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+    @Query('cardsQuantity', new DefaultValuePipe(10), ParseIntPipe)
+    cardsQuantity: number,
+    @Query('typeOfStat') typeOfStat: CardsQueryDTO,
+  ) {
+    return this.cardStatsServices.getTotalCards(
+      userId,
+      cardsQuantity,
+      typeOfStat,
+    );
+  }
+}

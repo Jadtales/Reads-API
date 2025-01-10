@@ -8,7 +8,7 @@ import Image from "next/image";
 import FoldersStateManagerContext from "@/app/wideStateManagement/FoldersState";
 import FolderTransferIcon from "@/public/icons/frontNoteSetting-icons/folder-transfer-line.svg";
 
-export default function MoveToComponent(): ReactElement | null {
+export default function MoveToComponent({isPhoneSize = false}: {isPhoneSize: boolean}): ReactElement<any> | null {
     const moveToButtonRef = useRef<HTMLDialogElement>(null);
 
     const cntx = useContext(FoldersStateManagerContext);
@@ -25,7 +25,9 @@ export default function MoveToComponent(): ReactElement | null {
 
     return (
         <Fragment>
-            <li onClick={handleDialogOpening}><Image src={FolderTransferIcon} width={20} alt="moveNote"/>Move to</li>
+            <li onClick={handleDialogOpening}><Image src={FolderTransferIcon} width={20} alt="moveNote"/>
+                {!isPhoneSize && 'Move to'}
+            </li>
 
             <dialog ref={moveToButtonRef} className="MoveToContainer" onClick={(e) => e.stopPropagation()}>
                 <div className="dialogContainer">

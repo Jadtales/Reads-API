@@ -33,7 +33,7 @@ const bookGenres: string[] = [
     "Literary Fiction"
 ]
 
-export default function FilterComponent(): ReactElement {
+export default function FilterComponent(): ReactElement<any> {
 
     // State to track multiple active spans
     const [activeSpans, setActiveSpans] = useState<string[]>([]);

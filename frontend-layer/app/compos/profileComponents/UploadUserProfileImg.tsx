@@ -3,9 +3,9 @@ import Image from "next/image";
 import '../../profile/[userProfile]/userProfilePageStyling.css'
 
 import ReanotesIcon from "@/favicon.png";
-import useWarningNotification from "@/app/compos/warningNotificationComponent/WarningNotification";
+import useWarningNotification from "@/app/compos/modals/warningNotificationModal/WarningNotification";
 
-export default function UploadUserProfileImg(): ReactElement {
+export default function UploadUserProfileImg(): ReactElement<any> {
     const {toggleElementActivation, warningFunction} = useWarningNotification()
     const inputRef = useRef<HTMLInputElement>(null);
 

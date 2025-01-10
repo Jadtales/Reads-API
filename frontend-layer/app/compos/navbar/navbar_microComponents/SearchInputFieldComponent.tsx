@@ -8,7 +8,7 @@ import '../navbarStyling.css'
 import {useSearchContext} from "@/utils/providers/searchInputFieldProvider";
 
 
-export default function SearchInputFieldComponent(): ReactElement {
+export default function SearchInputFieldComponent(): ReactElement<any> {
 
     const [isSearchInputBarOpen, setIsSearchInputBarOpen] = useState<boolean>(false);
     const {userSearchedText, setUserSearchedText} = useSearchContext()

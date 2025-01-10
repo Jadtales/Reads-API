@@ -30,7 +30,7 @@ export default function ShareStatsModal({
                                             sharedContent
                                         }: ShareStatsProps
 ):
-    ReactElement {
+    ReactElement<any> {
 
 
     const pathname = usePathname()

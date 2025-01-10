@@ -47,7 +47,7 @@ export default function BookReviewer(): ReactElement<any> {
                 <Link href={`/highlightsreview/${getNoteCardTitle}/learn`} className={'switchToMemoMode'}
                       style={{color: 'black', textDecoration: 'none'}}>Switch to memoriation mode</Link>
 
-                <AdvancedSettingsModal inReviewMode={false}/>
+                <AdvancedSettingsModal/>
             </div>}
 
             <div className="noteCardsHighlightsContainer">

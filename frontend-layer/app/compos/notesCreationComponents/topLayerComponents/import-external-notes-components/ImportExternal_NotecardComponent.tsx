@@ -8,7 +8,7 @@ import Image from "next/image";
 import KindleHighlightsSelectionComponent
     from "@/app/compos/notesCreationComponents/topLayerComponents/import-external-notes-components/kindle/kindleHighlightsComponents/KindleHighlightsSelectionComponent";
 
-export default function ImportExternal_NotecardComponents(): ReactElement {
+export default function ImportExternal_NotecardComponents(): ReactElement<any> {
 
 
     return <div className="notesCreationFromExternalSources-layer">
@@ -16,10 +16,10 @@ export default function ImportExternal_NotecardComponents(): ReactElement {
 
         <div className="importButtons">
             <KindleHighlightsSelectionComponent/>
-            <button>Import threads from <Image src={Twitter_X_Icon} width={20} alt="twitter"/></button>
-            <button>Import highlights from Readwise <Image src={ReadwiseIcon} width={20} alt="twitter"/></button>
-            <button>Import highlights from Notion <Image src={NotionIcon} width={25} alt="twitter"/></button>
-            <button>Import highlights from Kobo <Image src={KoboIcon} width={30} alt="twitter"/></button>
+            <button><Image src={KoboIcon} width={33} alt="twitter"/> Kobo</button>
+            <button><Image src={ReadwiseIcon} width={20} alt="twitter"/> Readwise</button>
+            <button><Image src={Twitter_X_Icon} width={20} alt="twitter"/> X </button>
+            <button><Image src={NotionIcon} width={25} alt="twitter"/> Notion</button>
         </div>
     </div>
 }

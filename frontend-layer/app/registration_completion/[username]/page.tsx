@@ -5,7 +5,7 @@ import {TextEffect} from "@/animationStyling/TextEffect";
 import SuggestedUserComponent from "@/app/compos/suggestedUserComponent/SuggestedUserComponent";
 import {useRouter} from "nextjs-toploader/app";
 
-export default function NewRegisteredUsernamePage(): ReactElement {
+export default function NewRegisteredUsernamePage(): ReactElement<any> {
     // State to handle showing more genres
     const [showMoreGenres, setShowMoreGenres] = useState<boolean>(false);
     const [registrationCompletionStage, setRegiCompletionStage] =

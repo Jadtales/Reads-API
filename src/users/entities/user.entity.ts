@@ -4,6 +4,7 @@ import {Exclude} from 'class-transformer'
 import { Cards } from '../../cards-management/entities/cards.entity';
 import { Notification } from '../../notifications/entities/notification.entity';
 import { Follow } from './follow.entity';
+import UploadKindleFile from "../../clippings-files-upload/entities/uploadFile.entity";
 
 @Entity()
 export class Users {
@@ -35,6 +36,9 @@ export class Users {
 
   @OneToMany(() => Cards, (cards) => cards.cardCreatorId, { lazy: true })
   userCards?: Cards[] | null;
+
+  @OneToMany(() => UploadKindleFile, (UKFColumn) => UKFColumn.userId)
+  userKindleFileUploads: UploadKindleFile;
 
   // User following others
   @OneToMany(() => Follow, (follow) => follow.follower, { cascade: true })

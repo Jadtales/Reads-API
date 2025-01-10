@@ -53,10 +53,13 @@ div.notesCreationFromExternalSources-layer {
     }
 
     div.importButtons {
+        flex: 2;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 2rem;
+        /*width: fit-content;*/
+        width: 100%;
 
         h1 {
             color: var(--textColor_gray_dark);
@@ -66,8 +69,9 @@ div.notesCreationFromExternalSources-layer {
             padding: 20px 10px;
             border-radius: var(--borderRadius);
             border: 1px solid black;
-            box-shadow: 2px 2px black;
+            box-shadow: var(--shadowing);
             outline: none;
+            width: 100%;
 
             /*margin-right: 20px;*/
 
@@ -104,6 +108,7 @@ div.noteDescriptionAndTitleComponentContainer {
         margin: 30px 0;
         padding: 20px;
         border-radius: var(--borderRadiusNote);
+        box-shadow: var(--shadowing);
 
         h1 {
             margin: 15px 0;
@@ -137,7 +142,7 @@ div.noteDescriptionAndTitleComponentContainer {
         button {
             border: none;
             outline: none;
-            background-color: var(--tag_backgroundColor);
+            background-color: var(--backgroundColor_frontnote);
             color: var(--textColor_gray_dark);
             font-size: 1rem;
             padding: 8px 10px;
@@ -171,7 +176,9 @@ div.noteCardContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--backgroundColor_frontnote);
+    /*background-color: var(--backgroundColor_frontnote);*/
+    background-color: transparent;
+    box-shadow: var(--shadowing);
     border: var(--border_frontNote);
     gap: 10px;
     margin-bottom: 2.5rem;

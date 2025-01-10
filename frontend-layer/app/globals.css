@@ -12,7 +12,7 @@
     --backgroundColor_mostViewedNotecard: #e1e1e16b;
 
 
-    --tag_backgroundColor: #e1e1e16b;
+    --tag_backgroundColor: #e8e7de;
 
     --secondPrimaryTextColor: #b92b00;
     --thirdPrimaryTextColor: #ae5630;
@@ -22,7 +22,7 @@
 
     /*---- front notes design only*/
     --backgroundColor_frontnote: #faf9f5;
-    --backgroundColor_recentVisitedNoteCard: #e8e7de;
+    --backgroundColor_recentVisitedNoteCard: rgba(232, 231, 222, 0.56);
     --backgroundColor_frontnote_hovered: #f4f3f0;
 
     --imgColor_dark_gray: invert(0%) sepia(7%) saturate(0%) hue-rotate(165deg) brightness(90%) contrast(108%);
@@ -30,7 +30,7 @@
     --ImgColor_completeWhite: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5049%) hue-rotate(297deg) brightness(116%) contrast(100%);
 
     --input_backgroundColor: white;
-    --input_backgroundColor_darkGray_lightGray: #e1e1e1;
+    --input_backgroundColor_darkGray_lightGray: #eeece6;
 
     --button_backgroundColor: black;
     --button_backgroundColor_statsComponents: #f4f4f4;
@@ -42,7 +42,7 @@
     --textColor_gray_dark: dark;
     --textColor_opposite: white;
 
-    --borderRadius: 10px;
+    --borderRadius: 4px;
     --border: 1px solid black;
     --borderFrontNoteCardSettings: 1px solid black;
     --border_tags: 1px solid #a8a8a8;
@@ -50,8 +50,8 @@
     --border_frontNote: 1px solid #a8a8a8;
 
     --borderRadiusTags: 4px;
-    --borderRadiusNote: 10px;
-    --borderRadiusImg: 8px;
+    --borderRadiusNote: 8px;
+    --borderRadiusImg: 4px;
     --borderRadius_forIcons: 5px;
 
     /*--- background colors*/
@@ -69,7 +69,7 @@
 
     /* ---- hover effects*/
     --hoveredButtonColor: #b2b2b2;
-    --hoveredButtonTextColor: #d8d8d8;
+    --hoveredButtonTextColor: #edebe6;
     --hoveredButtonWithBlackBackGroundColor: rgb(37, 37, 37);
     --hoverEffectTrasition: .3s ease-in-out;
     /*hovered effects in dark mode*/
@@ -150,7 +150,7 @@ body {
 
 /* ----global standard styling ----*/
 button.stdIconStyling {
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: transparent;
     outline: none;
 
@@ -163,12 +163,11 @@ button.stdIconStyling {
 
     img {
         transform: scale(1);
-        filter: var(--imgColor_dark_gray);
+        filter: var(--imgColor_white);
     }
-
 }
 
-p#errorMessageStyling {
+li#errorMessageStyling {
     background-color: #f6dddd;
     border: 1px solid #ff3333;
     padding: 5px;
@@ -178,6 +177,17 @@ p#errorMessageStyling {
     font-weight: lighter;
     font-family: Arial, sans-serif;
     cursor: default;
+}
+
+button#notificationsButton {
+    background-color: black;
+    border: var(--border);
+
+    h2.numberOfReceivedNotifications {
+        position: absolute;
+        font-size: 10px;
+        color: black;
+    }
 }
 
 /*@media screen and (width <= 1200px) {*/

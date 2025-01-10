@@ -1,0 +1,13 @@
+### Post a follow following relation
+POST http://localhost:3002/users/unfollow
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlN2E0ZDY5MS1lOTc3LTQ2YjYtYmE4MS1lYzU3MzhhMGM3ZGQiLCJ1c2VyRW1haWwiOiJ6dXppYTEyM0BnbWFpbC5jb20iLCJpYXQiOjE3MzQ2ODU3OTEsImV4cCI6MTczNDY4OTM5MSwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.t6LiUFb2n8xHhpuM7-SL0i-H7F5pqVzgj_eCZ-H5_HQ
+Content-Type: application/json
+
+{
+  "followerId": "d692f3ec-5031-4ce0-b200-8aab9bd29c82",
+  "followingId": "7193ac6d-4139-4966-9ab8-7ec4373e95f6"
+}
+
+### Get user followers
+GET http://localhost:3002/users/get-user-followers/d692f3ec-5031-4ce0-b200-8aab9bd29c82
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlN2E0ZDY5MS1lOTc3LTQ2YjYtYmE4MS1lYzU3MzhhMGM3ZGQiLCJ1c2VyRW1haWwiOiJ6dXppYTEyM0BnbWFpbC5jb20iLCJpYXQiOjE3MzQ2ODU3OTEsImV4cCI6MTczNDY4OTM5MSwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.t6LiUFb2n8xHhpuM7-SL0i-H7F5pqVzgj_eCZ-H5_HQ

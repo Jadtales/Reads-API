@@ -7,10 +7,9 @@ import CloseModalIcon from '@/public/icons/notesIcons/close-line.svg'
 import Switcher from "@/app/compos/shadcn-components/Switcher";
 
 interface componentProps {
-    inReviewMode: boolean;
 }
 
-export default function AdvancedSettingsModal({inReviewMode}: componentProps): ReactElement<any> {
+export default function AdvancedSettingsModal({}: componentProps): ReactElement<any> {
     const advancedSettingsDialogRef = useRef<HTMLDialogElement>(null);
 
     const handleModalOpening = (): void => {
@@ -29,7 +28,7 @@ export default function AdvancedSettingsModal({inReviewMode}: componentProps): R
 
         <dialog className={'advancedSettingsDialogContainer'} ref={advancedSettingsDialogRef}>
             <div className="header">
-                <h1>{inReviewMode ? 'Review Options' : 'Learn Options'}</h1>
+                <h1>Review/Learn options</h1>
                 <button onClick={handleModalOpening}><Image src={CloseModalIcon} alt={'close-dialog'}/></button>
             </div>
 
@@ -51,7 +50,7 @@ export default function AdvancedSettingsModal({inReviewMode}: componentProps): R
 
                 <hr/>
 
-                {!inReviewMode && <div className="settingQuestionTypes">
+                 <div className="settingQuestionTypes">
                     <h2>Question format</h2>
 
                     <div className="settingsSection">
@@ -64,7 +63,7 @@ export default function AdvancedSettingsModal({inReviewMode}: componentProps): R
                             <Switcher/>
                         </div>
                     </div>
-                </div>}
+                </div>
 
                 <hr/>
 
@@ -73,17 +72,17 @@ export default function AdvancedSettingsModal({inReviewMode}: componentProps): R
 
                     <div className="settingsSection">
                         <div className="setting-one">
-                            <h4>Study starred Notecards only</h4>
+                            <h4>Study/Review starred Notecards only</h4>
                             <Switcher/>
                         </div>
                         <div className="setting-two">
-                            <h4>Study un-starred Notecards only</h4>
+                            <h4>Study/Review un-starred Notecards only</h4>
                             <Switcher/>
                         </div>
-                        {!inReviewMode && <div className="setting-three">
+                        <div className="setting-three">
                             <h4>Length of rounds</h4>
                             <input type="number" defaultValue={4} max={20}/>
-                        </div>}
+                        </div>
                     </div>
                 </div>
             </div>

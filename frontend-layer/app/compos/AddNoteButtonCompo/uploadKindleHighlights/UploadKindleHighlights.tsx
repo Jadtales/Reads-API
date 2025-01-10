@@ -3,9 +3,11 @@ import {ChangeEvent, Fragment, ReactElement, useRef} from "react";
 import importIcon from '@/public/icons/upload-cloud-line.svg'
 import Image from "next/image";
 import '../addNoteButtonComponentStyling.css'
+import KindleHighlightsSelectionComponent
+    from "@/app/compos/notesCreationComponents/topLayerComponents/import-external-notes-components/kindle/kindleHighlightsComponents/KindleHighlightsSelectionComponent";
 
 
-export default function UploadKindleHighlights(): ReactElement {
+export default function UploadKindleHighlights(): ReactElement<any> {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleFileInput = (): void => {
@@ -40,6 +42,14 @@ export default function UploadKindleHighlights(): ReactElement {
                                          alt="importKindleHighlights"
                                          width={20}/>
             </button>
+
+            <KindleHighlightsSelectionComponent buttonBackGroundColor={'#000000'}
+                                                buttonPadding={'16px'}
+                                                buttonTextColor={'var(--textColor_in_dark_mode)'}
+                                                buttonBorder={'none'}
+                                                buttonBorderRadius={'5px'}/>
+
+
         </Fragment>
     )
 }

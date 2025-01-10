@@ -13,7 +13,7 @@ interface frontNoteComponentProps {
     bookTitle: string;
     bookAuthor: string;
     bookId: number;
-    bookTags: string;
+    bookTags: string[] | string;
     notecardDeletion: (bookId: number, toCloseModalRef: any) => void;
 }
 
@@ -27,7 +27,9 @@ export default function FrontNoteComponent({
 
     return (
         <div className="homeContainer">
+
             <div className="topLayer">
+
                 <div className="flashcardInfo">
 
                     <Image src={BookCover} alt="there there" width={100}/>
@@ -38,13 +40,17 @@ export default function FrontNoteComponent({
 
                         <div className="bookTags">
                             <ul>
-                                <li>#{bookTags}</li>
+                                {Array.isArray(bookTags) ?
+                                   (bookTags.map((tag, index) => <li key={index}>#{tag}</li>))
+                                    :
+                                   (typeof bookTags === 'string' && <li>#{bookTags}</li>)}
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className="flashcardSettingsContainer">
+
                     <FrontNoteSettings bookId={bookId} deleteThisNotecardById={notecardDeletion}/>
                 </div>
             </div>

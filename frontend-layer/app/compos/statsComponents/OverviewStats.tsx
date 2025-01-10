@@ -16,7 +16,7 @@ interface overviewStatsProps_interface {
     statsResult: number
 }
 
-export default function OverviewStats({typeOfStatsContent, statsResult}: overviewStatsProps_interface): ReactElement {
+export default function OverviewStats({typeOfStatsContent, statsResult}: overviewStatsProps_interface): ReactElement<any> {
     const [isStatAvailable, setIsStatAvailable] = useState<boolean>(true)
     const [periodStat, setPeriodStat] = useState<PeriodStatType>(periodStatsArray[0]);
 

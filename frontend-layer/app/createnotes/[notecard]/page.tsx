@@ -15,7 +15,7 @@ interface NoteCardData {
     cardDescription: string;
 }
 
-export default function Notes(): ReactElement {
+export default function Notes(): ReactElement<any> {
     const {tagsElement, noteCardTags} = NoteDescriptionAndTitleComponent()
     const [noteCards, setNoteCards] = useState<NoteCardData[]>(
         Array.from({length: 4}, (_, index) => ({

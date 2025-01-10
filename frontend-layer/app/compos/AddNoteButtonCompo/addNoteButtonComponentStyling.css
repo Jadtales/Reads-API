@@ -38,12 +38,6 @@ button.addNoteButton-kindleFile{
     }
 }
 
-button.addNoteButton-kindleFile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
 
 
 
@@ -55,3 +49,11 @@ button.addNoteButton-kindleFile:hover {
     transition: var(--hoverEffectTrasition);
 }
 
+
+@media screen and (width <= 700px){
+    button.addNoteButton,
+    button.addNoteButton-twitter,
+    button.addNoteButton-kindleFile{
+        display: none;
+    }
+}

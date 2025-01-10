@@ -1,0 +1,8 @@
+### POST test user's authentication
+POST http://localhost:3002/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "zuzia123@gmail.com",
+  "password": "Zuzia123suska."
+}

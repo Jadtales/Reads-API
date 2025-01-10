@@ -20,12 +20,15 @@ button.keyboardInstructions {
 
 
 dialog.keyboardInstructionsContainer {
+
+    animation: fadeIn .5s;
     color: black;
 
     background-color: var(--darkThemeBody);
     border-radius: 5px;
     padding: 30px;
     border: none;
+    outline: none;
 
     position: fixed;
     top: 50%;
@@ -54,7 +57,7 @@ dialog.keyboardInstructionsContainer {
         gap: 5rem;
 
         h1 {
-            font-size: .8rem;
+            font-size: .9rem;
             font-weight: normal;
         }
 
@@ -71,5 +74,15 @@ dialog.keyboardInstructionsContainer {
                 border-radius: 10px;
             }
         }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
     }
 }

@@ -13,7 +13,7 @@ import InstagramIcon from '@/public/icons/socialsIcons/instagram-line.svg'
 import WebsiteLinkIcon from '@/public/icons/copyUrlLink.svg'
 import UploadUserProfileImg from "@/app/compos/profileComponents/UploadUserProfileImg";
 
-export default function UserProfilePage(): ReactElement {
+export default function UserProfilePage(): ReactElement<any> {
 
 
     return <Fragment>

@@ -24,10 +24,10 @@ const editingTools = [
     {name: 'Underline', icon: '/icons/notesIcons/underline.svg'},
     {name: 'BulletPoints', icon: '/icons/notesIcons/list-unordered.svg'},
     {name: 'NumberedListIcon', icon: '/icons/notesIcons/list-ordered.svg'},
-    {name: 'HighlighterIcon', icon: '/icons/notesIcons/quill-pen-fill.svg'},
+    {name: 'HighlighterIcon', icon: '/icons/notesIcons/mark-pen-line.svg'},
 ];
 
-export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}: cardProps): ReactElement {
+export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}: cardProps): ReactElement<any> {
     // ---- NoteCard editing tools work section
     const [isEditingToolActive, setIsEditingToolActive] = useState<string[]>([]);
     const handleEditingToolActivityCheck = (toolName: string): void => {

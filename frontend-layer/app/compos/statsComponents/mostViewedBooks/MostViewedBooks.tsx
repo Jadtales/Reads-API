@@ -6,7 +6,7 @@ interface ComponentInterface {
     bookTitle: string;
 }
 
-export default function MostViewedBooks({imgUrl, bookTitle}: ComponentInterface): ReactElement {
+export default function MostViewedBooks({imgUrl, bookTitle}: ComponentInterface): ReactElement<any> {
     return <div className={'mostViewedBooksContainer'}>
         <Image src={imgUrl} alt={'book'} width={100}/>
         <h4>{bookTitle}</h4>

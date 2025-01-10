@@ -10,53 +10,34 @@ import ArrowUpIcon from '@/public/icons/arrow-up-line.svg'
 import ImportExternal_NotecardComponents
     from "@/app/compos/notesCreationComponents/topLayerComponents/import-external-notes-components/ImportExternal_NotecardComponent";
 import GoBackToComponent from "@/app/compos/goBackTo-component/GoBackTo-Component";
+import {useMediaQuery} from "react-responsive";
 
-export default function NotesCreationButtons(): ReactElement {
+export default function NotesCreationButtons(): ReactElement<any> {
     const [isSharingButtonClicked, setIsSharingButtonClicked] = useState<boolean>(true);
-    const [pageHeight, setPageHeight] = useState<number>(0);
-
-    const switchSharingOption = (): void => {
-        setIsSharingButtonClicked(!isSharingButtonClicked);
-    }
-
-    useEffect(() => {
-        const getScrollHeight = (): void => {
-            setPageHeight(window?.scrollY);
-        };
-
-        // Debounce scroll event handler for performance
-        const debounceScroll = (): () => void => {
-            let timer: NodeJS.Timeout;
-            return (): void => {
-                clearTimeout(timer);
-                timer = setTimeout(getScrollHeight, 100);  // Call after 100ms of no scroll event
-            };
-        };
-
-        const handleDebouncedScroll = debounceScroll();
-        window.addEventListener('scroll', handleDebouncedScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleDebouncedScroll);
-        };
-    }, []);
+    const pageHeight = useMediaQuery({height: '(height >= 300px)'});
 
     const handleGoBackToTop = () => {
         window.scrollTo({top: 900, behavior: 'smooth'});
     }
 
+
+    const switchSharingOption = (): void => {
+        setIsSharingButtonClicked(!isSharingButtonClicked);
+    }
+
+
     return (
         <div className="createnotes-topLayer">
             <div
-                className={pageHeight > window.innerHeight ? 'creationButton-layer-withNavbar' : 'creationButton-layer'}>
+                className={pageHeight  ? 'creationButton-layer-withNavbar' : 'creationButton-layer'}>
                 <div className="lastSaveTime">
-                    <GoBackToComponent/> -
+                    <GoBackToComponent withText={true} iconSize={'25px'}/> -
                     Last saved, 3 seconds ago.
                 </div>
 
                 <div className="creationButtons">
 
-                    {pageHeight > window.innerHeight && <Image src={ArrowUpIcon}
+                    {pageHeight  && <Image src={ArrowUpIcon}
                                                                id="arrowUpIcon"
                                                                alt="goUp"
                                                                style={{cursor: 'pointer'}}

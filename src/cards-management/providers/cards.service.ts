@@ -28,8 +28,6 @@ import {NotificationsService} from "../../notifications/providers/notifications.
 @Injectable()
 export class CardServices {
     constructor(
-        @Inject(() => NotificationsService)
-        private readonly notificationsService: NotificationsService,
         @Inject(forwardRef(() => UsersService))
         private readonly UserServices: UsersService,
         @InjectRepository(Cards)
@@ -51,7 +49,7 @@ export class CardServices {
     async createNoteCard(
         createNoteCard: CardCreationDTO,
         userPermission: ActiveUserInterface,
-    ) {
+    ): Promise<string> {
 
         // check if user exists first
         let userExists = undefined;
@@ -71,12 +69,11 @@ export class CardServices {
             });
 
             await this.cardsRepository.save(noteCard);
+
+            return `${userExists.userUsername} Created a new card`
         }catch (err){
             throw new InternalServerErrorException('Notecard isn\'t created', err);
         }
-
-        await this.notificationsService.createNotification(userPermission.userId)
-
     }
 
     async getCards(

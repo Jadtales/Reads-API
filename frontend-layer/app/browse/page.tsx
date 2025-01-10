@@ -5,7 +5,7 @@ import './browsePage-styling.css';
 import FrontDesignNoteBrowse from "@/app/compos/suggested-frontDesignNote/FrontDesignNote-browse";
 import {useSearchContext} from "@/utils/providers/searchInputFieldProvider";
 
-export default function BrowsePage(): ReactElement {
+export default function BrowsePage(): ReactElement<any> {
 
     const {userSearchedText} = useSearchContext()
 

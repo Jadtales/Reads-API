@@ -54,7 +54,7 @@ div.bottomLayer {
     align-items: center;
 
     div.availableOnAllPlatforms-section img {
-        filter: var(--imgColor_dark_gray);
+        filter: var(--imgColor_white);
     }
 
     div.availableOnAllPlatforms-section,

@@ -24,7 +24,7 @@ import {JwtModule} from '@nestjs/jwt';
 import {APP_GUARD} from '@nestjs/core';
 import {AccessTokenGuard} from './auth/guards/access.token.guard';
 import {AuthenticationGuard} from './auth/guards/authentication.guard';
-import { NotificationsGateway } from './notifications/providers/notifications.gateway';
+import { NotificationsGateway } from './notifications/notifications.gateway';
 
 const env = process.env.NODE_ENV;
 

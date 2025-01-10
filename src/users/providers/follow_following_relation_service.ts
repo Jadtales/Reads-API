@@ -69,6 +69,7 @@ export class FollowFollowingRelationServices {
         const existingFollow = await this.followRepository.findOne({
             where: {follower: follower, following: following},
         });
+
         if (existingFollow) {
             throw new ConflictException('You are already following this user.');
         }
@@ -79,11 +80,17 @@ export class FollowFollowingRelationServices {
             await this.followRepository.save(follow);
 
             // emit a notification
-            await this.notificationsService.createNotification(follower.id, following.id, {
-                createdAt: Date.now(),
-                notificationType: 'followed',
-                notificationContent: `${follower.userUsername} has followed you.`
-            });
+            // await this.notificationsService.createNotification(follower.id, following.id, {
+            //     createdAt: Date.now(),
+            //     notificationType: 'followed',
+            //     notificationContent: `${follower.userUsername} has followed you.`
+            // });
+
+            await this.notificationsService.createNotification({
+                notificationSenderId: follower.id,
+                notificationRecipientId: following.id,
+                notifications: follow
+            })
 
             return `${follower.userUsername} follows ${following.userUsername}`
         } catch (err) {

@@ -1,7 +1,7 @@
 import '../notesCreationCompoStyling.css'
 import React, {ReactElement, useRef, useState} from 'react';
 
-export default function NoteDescriptionAndTitleComponent(): { tagsElement: ReactElement, noteCardTags: string[] } {
+export default function NoteDescriptionAndTitleComponent(): { tagsElement: ReactElement<any>, noteCardTags: string[] } {
     const [noteCardTags, setNoteCardTags] = useState<string[]>([]);
     const [newTag, setNewTag] = useState<string>('');
     const noteTagsRef = useRef<HTMLInputElement>(null);

@@ -1,0 +1,8 @@
+### Post request to follow
+POST localhost:3002/users/follow/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlN2E0ZDY5MS1lOTc3LTQ2YjYtYmE4MS1lYzU3MzhhMGM3ZGQiLCJ1c2VyRW1haWwiOiJ6dXppYTEyM0BnbWFpbC5jb20iLCJpYXQiOjE3MzQ2MDY1NzIsImV4cCI6MTczNDYxMDE3MiwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.XYEQcRVmbQyM5c-M9BCBBqKzg651I-kRCcnHkBT4_xs
+Content-Type: application/json
+
+{
+
+}

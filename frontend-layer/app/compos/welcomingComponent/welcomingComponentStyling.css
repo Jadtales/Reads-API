@@ -30,7 +30,7 @@ div#welcomingCompoContainer {
 
             padding: 10px;
             width: 350px;
-            height: 220px;
+            height: 230px;
 
             overflow-y: scroll;
             scrollbar-width: none;
@@ -44,14 +44,14 @@ div#recentViewedNoteCardContainer {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 0 4rem;
 
-    background-color: var(--tag_backgroundColor);
+    background-color: var(--backgroundColor_recentVisitedNoteCard);
 
     padding: 6px 8px;
     border-radius: 8px;
     border: var(--border_tags);
-    width: 320px;
+    width: 100%;
+
 
     h4 {
         text-overflow: ellipsis;
@@ -69,7 +69,7 @@ div#recentViewedNoteCardContainer {
 
     a {
         text-decoration: none;
-        color: black;
+        color: var(--textColor_gray_dark);
         transition: .2s ease;
 
         border-radius: 4px;

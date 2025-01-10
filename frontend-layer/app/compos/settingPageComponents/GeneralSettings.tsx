@@ -1,6 +1,6 @@
 import {ChangeEvent, ReactElement, useEffect, useState} from "react";
 
-export default function GeneralSettingPageComponents(): ReactElement {
+export default function GeneralSettingPageComponents(): ReactElement<any> {
     const [selectedSettings, setSelectedSettings] = useState<string[]>([])
     const [themeMode, setThemeMode] = useState<string>('system')
 

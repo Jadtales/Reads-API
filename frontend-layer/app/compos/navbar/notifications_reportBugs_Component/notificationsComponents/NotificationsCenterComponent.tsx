@@ -33,7 +33,7 @@ const notificationsData = [
 ];
 
 
-export default function NotificationsCenterComponent(): ReactElement<any> {
+export default function NotificationsCenterComponent({usedForPhoneSize = true}: {usedForPhoneSize?: boolean}): ReactElement<any> {
     const [isNotifications_reportActive, setIsNotifications_reportActive] = useState<boolean>(false);
     const [clickedButton, setClickedButton] = useState<string>('');
 
@@ -75,10 +75,11 @@ export default function NotificationsCenterComponent(): ReactElement<any> {
             <h2 className={'numberOfReceivedNotifications'}>{notificationsData.length >= 99 ? '99..' : notificationsData.length}</h2>
         </button>
 
-        <button id="reportButton" className="stdIconStyling"
-                onClick={() => handleNotificationsToggles('report')}>
+        {usedForPhoneSize && <button id="reportButton" className="stdIconStyling"
+                                     onClick={() => handleNotificationsToggles('report')}>
             <Image src={ReportBugsIcon} alt="ReportIcon"/>
-        </button>
+        </button>}
+
         <div
             className={isNotifications_reportActive ? "notificationsCenter-active" : "notificationsCenter-inactive"}
             ref={notisCenterRef}  // Use ref to reference the notifications center div

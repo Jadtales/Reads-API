@@ -63,6 +63,8 @@ div.topLayer {
                     list-style: none;
                     background-color: var(--tag_backgroundColor);
                     padding: 2px 6px;
+                    margin-bottom: 5px;
+                    width: fit-content;
                     font-size: .8rem;
                     border-radius: var(--borderRadiusTags);
                 }

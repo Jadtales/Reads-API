@@ -8,7 +8,7 @@ interface WelcomingComponentProps {
 }
 
 
-export default function Welcoming({username}: WelcomingComponentProps): ReactElement {
+export default function Welcoming({username}: WelcomingComponentProps): ReactElement<any> {
 
     const greetingTimeVerb: string = new Date().getHours() >= 12 || new Date().getHours() <= 23 ? 'Evening' : 'Morning';
 

@@ -15,7 +15,7 @@ export default function SuggestedUserComponent({
                                                    username,
                                                    userCardsQuantity,
                                                    userGenresInterest
-                                               }: SuggestedUserComponentProps): ReactElement {
+                                               }: SuggestedUserComponentProps): ReactElement<any> {
     const [isUserFollowed, setIsUserFollowed] = useState<boolean>(false);
 
     return (

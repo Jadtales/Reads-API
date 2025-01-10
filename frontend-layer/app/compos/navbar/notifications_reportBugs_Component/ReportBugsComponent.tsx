@@ -1,12 +1,12 @@
 import {ReactElement, useState} from "react";
 import './notificationsComponentStyling.css'
 
-export default function ReportBugsComponent(): ReactElement {
-    const [activePriority, setActivePriority] = useState<string>('');
-
-    const chosenPriorityOption = (): void => {
-
-    }
+export default function ReportBugsComponent(): ReactElement<any> {
+    // const [activePriority, setActivePriority] = useState<string>('');
+    //
+    // const chosenPriorityOption = (): void => {
+    //
+    // }
 
     return (
         <div className="reportBugsContainer">
@@ -19,8 +19,11 @@ export default function ReportBugsComponent(): ReactElement {
 
             <h1>Issue description</h1>
             <form action="/toReportedIssuesStack" id="formElement">
-                <textarea name="textarea" id="issueDescription" cols="30"
-                          rows="30">Write your issue description</textarea>
+                <textarea name="textarea"
+                          id="issueDescription"
+                          cols={30}
+                          rows={30}
+                          defaultValue={'Write your issue description'}></textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>

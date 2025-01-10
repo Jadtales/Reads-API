@@ -1,4 +1,6 @@
-import {Fragment, ReactElement, useState} from "react";
+'use client'
+
+import {Fragment, ReactElement, KeyboardEvent as ReactKeyboardEvent, useEffect, useState, useRef} from "react";
 import Image from "next/image";
 import './noteCardReviewComponentStyling.css'
 
@@ -6,6 +8,7 @@ import './noteCardReviewComponentStyling.css'
 import ArrowLeftIcon from '@/public/icons/leftTo.svg'
 import ArrowRightIcon from '@/public/icons/rightTo.svg'
 import LeftQuantityCardsIcon from '@/public/icons/leftQuantityCardsIcon.svg'
+import DifficulyProgressChoice from "@/app/compos/memorization-mode/DifficulyProgressChoice";
 
 interface NoteCardMemorizationProps {
     duesCards: number;
@@ -15,24 +18,58 @@ interface NoteCardMemorizationProps {
 
 export default function NoteCardMemorizationComponent(): ReactElement<any> {
     const [showDefinition, setShowDefinition] = useState<boolean>(false);
+    const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
-    const handleShowDefinition = (event: KeyboardEvent): void => {
+    const handleShowDefinition = (event: ReactKeyboardEvent): void => {
         if (event.key === 'Enter' || event.key === ' ') {
             setShowDefinition(!showDefinition);
         }
     };
 
-    const handleNextPreviousCardsChange = (event: KeyboardEvent): void => {
+    const handleNextPreviousCardsChange = (event: ReactKeyboardEvent): void => {
         if (event.key === 'arrowLeft') {
 
         }
     }
 
-    const handleCardMemorizationDifficulty = (event: KeyboardEvent): void => {
-        if(event.key === '1' || event.key === 'a') {
+    const handleCardMemorizationDifficulty = (event: ReactKeyboardEvent): void => {
+        if (event.key === '1' || event.key === 'a') {
 
         }
     }
+
+    useEffect(() => {
+        const handleDifficultyLearningSubmission = (event: KeyboardEvent): void => {
+            const anyButtonIsFocused = buttonsRef.current.some(button => {
+                return button?.classList?.contains('chosenDifficultyLevel');
+            });
+
+            if (event.key === 'f' || event.key === '1') {
+                if (anyButtonIsFocused) return;
+                buttonsRef.current[0]?.classList.add('chosenDifficultyLevel')
+            } else if (event.key === 'u' || event.key === '2') {
+                if (anyButtonIsFocused) return;
+
+                buttonsRef.current[1]?.classList.add('chosenDifficultyLevel')
+            } else if (event.key === 'g' || event.key === '3') {
+                if (anyButtonIsFocused) return;
+                buttonsRef.current[2]?.classList.add('chosenDifficultyLevel')
+            } else if (event.key === 'p' || event.key === '4') {
+                if (anyButtonIsFocused) return;
+                buttonsRef.current[3]?.classList.add('chosenDifficultyLevel')
+            }
+        }
+
+        if (typeof document !== 'undefined') {
+            document.addEventListener('keydown', handleDifficultyLearningSubmission);
+        }
+
+        return () => {
+            if (typeof document !== 'undefined') {
+                document.removeEventListener('keydown', handleDifficultyLearningSubmission);
+            }
+        }
+    })
 
     return (
         <Fragment>
@@ -76,15 +113,7 @@ export default function NoteCardMemorizationComponent(): ReactElement<any> {
                     <Image src={LeftQuantityCardsIcon} alt="leftQuantityCards"/>3/8
                 </div>
 
-                <div className="difficultyLearningProcess">
-                    <button className="difficultyLevel_again">Again</button>
-                    <hr/>
-                    <button className="difficultyLevel_hard">Hard</button>
-                    <hr/>
-                    <button className="difficultyLevel_good">Good</button>
-                    <hr/>
-                    <button className="difficultyLevel_easy">Easy</button>
-                </div>
+                <DifficulyProgressChoice buttonsRef={buttonsRef}/>
             </div>
 
         </Fragment>)

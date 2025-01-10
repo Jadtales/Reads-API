@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 
 interface ComponentProps {
     margin?: string;
-    iconSize?: string | null;
+    iconSize: string | null;
     withText: boolean;
 }
 
@@ -24,7 +24,7 @@ export default function ({margin, withText, iconSize}: ComponentProps): ReactEle
             width: 'fit-content',
             color: 'white',
             padding: withText ? '6px 15px' : '0 0',
-            borderRadius: '8px',
+            borderRadius: '4px',
             margin: `${margin}`,
             cursor: 'pointer'
         }}

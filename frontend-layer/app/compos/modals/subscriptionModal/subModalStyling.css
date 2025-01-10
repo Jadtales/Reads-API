@@ -1,38 +1,34 @@
 button.getPremiumButton{
-    background-color: transparent;
-    border: 2px solid var(--border_gray_dark);
-    box-shadow: 1px 2px var(--border_gray_dark);
-    padding: 4px 10px;
-    margin: 0 10px;
+    background-color: black;
+    border: none;
+    /*box-shadow: 1px 2px var(--border_gray_dark);*/
+    padding: 8px 10px;
     border-radius: 4px;
-    color: var(--textColor_gray_dark);
+    color: var(--textColor_in_dark_mode);
     cursor: pointer;
-    font-size: .8rem;
+    font-size: .9rem;
     transition: .2s ease;
 }
 
 button.getPremiumButton:hover{
-    border: 1px solid var(--textColor_gray_dark);
-    box-shadow: 1px 1px var(--textColor_gray_dark);
-    padding: 4px 10px;
-    border-radius: 4px;
-    transition: .2s ease;
+    background-color: #303030;
+    box-shadow: 2px 2px black;
+    transition: var(--hoverEffectTrasition);
+    padding: 8px 10px;
 }
 
 dialog.subscriptionModalContainer {
-
-    position: absolute;
+    animation: fadeIn .5s;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 
 
     background-color: var(--darkThemeBody-darkerGray_black);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
-
-    box-shadow: 2px 2px var(--mainBoxShadow);
-
+    border: var(--border_tags);
     width: 1200px;
     height: fit-content;
 
@@ -56,7 +52,7 @@ dialog.subscriptionModalContainer {
         }
 
         img#closingModalIcon:hover {
-            background-color: #dfdfdf;
+            background-color: var(--backgroundColor_frontnote_hovered);
             border-radius: var(--borderRadius_forIcons);
         }
     }
@@ -102,10 +98,11 @@ div.subscriptionPlans {
     margin: 2rem 0;
 
     div.freePlan, div.premiumPlan {
-        background-color: var(--darkThemeBody);
+        background-color: black;
         border: var(--border_tags);
         border-radius: 10px;
         padding: 10px;
+        color: var(--textColor_in_dark_mode);
         width: 100%;
         height: 61vh;
 
@@ -151,7 +148,6 @@ div.subscriptionPlans {
         padding: 10px;
         height: 61vh;
         width: 100%;
-
 
         display: flex;
         flex-direction: column;
@@ -241,6 +237,19 @@ div.premiumPlan, div.UnlimitedPlan {
                 font-size: .7rem;
             }
         }
+
+    }
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 60%);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(-50%, 60%);
 
     }
 }

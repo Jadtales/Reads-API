@@ -44,6 +44,8 @@ dialog.frontNoteSettingContainer {
     transform: none;
     outline: none;
 
+    animation: fadeIn .1s;
+
     ul li {
         padding: 10px;
         list-style: none;
@@ -76,5 +78,53 @@ dialog.frontNoteSettingContainer {
 
     ul li:last-child:hover {
         background-color: #ffe9e9;
+    }
+}
+
+dialog.frontNoteSettingContainer-phoneSize {
+    position: absolute;
+    z-index: 9;
+    top: -15px;
+    border: none;
+    height: 184.24px;
+    padding: 10px 5px;
+    width: 3.09rem;
+    border-radius: 8px;
+    background-color: #edebe6;
+
+    animation: fadeInPhoneSize .5s;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        left: 0;
+
+        li {
+            list-style: none;
+        }
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeInPhoneSize {
+    from {
+        opacity: 0;
+        transform: translate(20%, 0);
+    }
+
+    to {
+        opacity: 1;
     }
 }
