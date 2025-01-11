@@ -44,7 +44,7 @@ dialog.frontNoteSettingContainer {
     transform: none;
     outline: none;
 
-    animation: fadeIn .1s;
+    animation: fadeIn .2s;
 
     ul li {
         padding: 10px;

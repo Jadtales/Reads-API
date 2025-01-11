@@ -1,19 +1,22 @@
 'use client';
 
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import Image from "next/image";
 import './frontNoteCompoStyling.css';
 
 // imported icons
 import BookCover from '@/public/bookCovers/there there cover.jpg';
-import FrontNoteSettings from "@/app/compos/front design notes/frontNote-settingsOption/FrontNoteSettings";
 
+import FrontNoteSettings from "@/app/compos/front design notes/frontNote-settingsOption/FrontNoteSettings";
+import PinnedNotecardComponent
+    from "@/app/compos/front design notes/utility-components/pinned-li-element-component/PinnedNotecardComponent";
 
 interface frontNoteComponentProps {
     bookTitle: string;
     bookAuthor: string;
     bookId: number;
     bookTags: string[] | string;
+    isNotecardToPin: (toPin: boolean, bookId: number) => void;
     notecardDeletion: (bookId: number, toCloseModalRef: any) => void;
 }
 
@@ -22,8 +25,13 @@ export default function FrontNoteComponent({
                                                bookAuthor,
                                                bookId,
                                                bookTags,
-                                               notecardDeletion
+                                               notecardDeletion,
+                                               isNotecardToPin,
                                            }: frontNoteComponentProps): ReactElement<any> {
+
+    const [isNotecardPinned, setIsNotecardPinned] = useState<boolean>(false);
+
+    isNotecardToPin(isNotecardPinned, bookId);
 
     return (
         <div className="homeContainer">
@@ -41,17 +49,19 @@ export default function FrontNoteComponent({
                         <div className="bookTags">
                             <ul>
                                 {Array.isArray(bookTags) ?
-                                   (bookTags.map((tag, index) => <li key={index}>#{tag}</li>))
+                                    (bookTags.map((tag, index) => <li key={index}>#{tag}</li>))
                                     :
-                                   (typeof bookTags === 'string' && <li>#{bookTags}</li>)}
+                                    (typeof bookTags === 'string' && <li>#{bookTags}</li>)}
+                                {isNotecardPinned && <PinnedNotecardComponent/>}
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className="flashcardSettingsContainer">
-
-                    <FrontNoteSettings bookId={bookId} deleteThisNotecardById={notecardDeletion}/>
+                    <FrontNoteSettings bookId={bookId}
+                                       deleteThisNotecardById={notecardDeletion}
+                                       checkIsNotecardPinned={setIsNotecardPinned}/>
                 </div>
             </div>
         </div>

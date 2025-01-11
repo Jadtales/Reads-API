@@ -27,7 +27,8 @@ const editingTools = [
     {name: 'HighlighterIcon', icon: '/icons/notesIcons/mark-pen-line.svg'},
 ];
 
-export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}: cardProps): ReactElement<any> {
+export default function NoteCard({cardKey, cardTitle, cardDescription, onDelete}: cardProps): ReactElement<HTMLDivElement> {
+
     // ---- NoteCard editing tools work section
     const [isEditingToolActive, setIsEditingToolActive] = useState<string[]>([]);
     const handleEditingToolActivityCheck = (toolName: string): void => {
