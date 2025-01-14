@@ -1,4 +1,4 @@
-import {Fragment, ReactElement, useRef} from "react";
+import {Fragment, ReactElement, useRef, useState} from "react";
 import Image from "next/image";
 
 import './shareModalStyling.css'
@@ -32,19 +32,30 @@ export default function ShareStatsModal({
 ):
     ReactElement<any> {
 
-
+    const [isURLCopied, setIsURLCopied] = useState<boolean>(false);
     const pathname = usePathname()
     const shareModalDialogRef = useRef<HTMLDialogElement | null>(null);
 
     const handleDialogOpening = (): void => {
         const shareModalDialog = shareModalDialogRef.current as HTMLDialogElement;
 
-        if(!shareModalDialog.open){
+        if (!shareModalDialog.open) {
             shareModalDialog.showModal();
-        }else{
+        } else {
             shareModalDialog.close();
         }
     }
+
+    // copy shared content URL
+    const handleURLCopying = (): void => {
+        const textToBeCopied: string = `https://reanotes.io${pathname}`;
+        navigator.clipboard.writeText(textToBeCopied)
+            .then(() => setIsURLCopied(true))
+            .catch(() => setIsURLCopied(false));
+
+        setTimeout(() => {setIsURLCopied(false)}, 1000)
+    }
+
 
     return <Fragment>
         <button className={'shareButtonIcon'}>
@@ -58,38 +69,44 @@ export default function ShareStatsModal({
                 <div className="shareIcon_shareModalClosingIcon">
                     <Image src={ShareContentIcon} alt="shareModalIcon"/>
 
-                    <Image src={ClosingIcon} className={'closeModalIcon'} alt="closeShareModalIcon" onClick={handleDialogOpening}/>
+                    <Image src={ClosingIcon} className={'closeModalIcon'} alt="closeShareModalIcon"
+                           onClick={handleDialogOpening}/>
                 </div>
 
                 <div className="contentToBeShared">
-                    <div className="topLayer">
-                        <span className="username">{whoShared}</span>
-                    </div>
+
                     <div className="sharedContentContainer">
-                        <span className="statsPeriod">{statsPeriod}</span>
+                        {/*<span className="statsPeriod">{statsPeriod}</span>*/}
                         {/*<span className="typeOfSharedContent">*/}
                         {/*    {sharedTypeOfContent}*/}
                         {/*</span>*/}
-                        <div className="sharedContent"
-                             style={{fontSize: '20px', width: '35vw', overflowY: 'scroll', height: '30vh'}}>
+                        <div className="sharedContent">
+                            {pathname.startsWith('/stats') && statsPeriod}
                             {sharedContent}
                         </div>
+                        {/*For Notecarsd content sharing only*/}
+                        {!pathname.startsWith('/stats') && <div className="cites">
+                            <cite>Noted by {whoShared}</cite>
+                            <cite>-There, there by Tommy Orange</cite>
+                        </div>}
                     </div>
 
-                    <Image src={ReanotesIcon} alt="Reanotes" id="reanotesIcon"/>
+                    {/*<Image src={ReanotesIcon} alt="Reanotes" id="reanotesIcon"/>*/}
                 </div>
 
                 <hr style={{margin: '1% 0'}}/>
                 <div className="copyLinkContainer">
-                    <div className="socialLinks_headlight">
-                        <h1>Stat Link</h1>
-                        <div className="shareOnSocials">
-                            <Image src={InstagramIcon} alt="insagram"/>
-                            <Image src={TwitterIcon} alt="twitter"/>
-                        </div>
-                    </div>
-                    <div className="copyLink">
-                        <p>https://reanotes.io/{pathname}</p>
+                    {/*TODO: to start working on social media content sharing*/}
+                    {/*<div className="socialLinks_headlight">*/}
+                    {/*    <h1>Stat Link</h1>*/}
+                    {/*    <div className="shareOnSocials">*/}
+                    {/*        <Image src={InstagramIcon} alt="insagram"/>*/}
+                    {/*        <Image src={TwitterIcon} alt="twitter"/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+                    <div className="copyLink" onClick={handleURLCopying}>
+                        <p>{isURLCopied ? 'Copied' : `https://reanotes.io${pathname}`}</p>
                         <Image src={CopyURLIcon} alt="copyLink"/>
                     </div>
                 </div>
