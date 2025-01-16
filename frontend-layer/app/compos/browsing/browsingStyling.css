@@ -13,16 +13,14 @@ div.browsingContainer{
         transition: .2s ease;
         font-weight: normal;
         letter-spacing: -1.5px;
+
+        img{
+            filter: var(--imgColor_dark_gray)
+        }
     }
 
     a:hover{
-        /*background-color: var(--hoveredButtonWithBlackBackGroundColor);*/
+        background-color: var(--tag_backgroundColor);
         transition: .2s ease;
-        color: #5d5d5d;
-        /*border: 1px solid black;*/
     }
-}
-
-@media screen and (width <= 1420){
-
 }
