@@ -1,14 +1,15 @@
-import {ChangeEvent, ReactElement, useEffect, useState} from "react";
+import {ChangeEvent, ReactElement, useContext, useState} from "react";
+import {themeContext} from "@/app/wideStateManagement/AppThemeContext";
 
 export default function GeneralSettingPageComponents(): ReactElement<any> {
     const [selectedSettings, setSelectedSettings] = useState<string[]>([])
-    const [themeMode, setThemeMode] = useState<string>('system')
 
-    // Set the use theme preference
+    const {themeMode, setThemeMode} = useContext(themeContext)
+
+    // set user theme preference
     const handleUserThemePrefrence = (event: ChangeEvent<HTMLSelectElement>): void => {
-        setThemeMode(event.target.value)
+        setThemeMode(event.target.value);
     }
-
 
     const handleIsFilterOptionActive = (spanText: string): void => {
         if (selectedSettings.includes(spanText)) {
@@ -19,38 +20,6 @@ export default function GeneralSettingPageComponents(): ReactElement<any> {
             setSelectedSettings([...selectedSettings, spanText]);
         }
     };
-
-    // Apply theme based on user's choice or system preference
-    useEffect(() => {
-        const applyTheme = (mode: string) => {
-            if (mode === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else if (mode === 'light') {
-                document.documentElement.removeAttribute('data-theme'); // Remove any theme attribute for light mode
-            }
-        };
-
-        const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-
-        if (themeMode === 'system') {
-            // Apply system preference
-            applyTheme(systemDarkMode.matches ? 'dark' : 'light');
-
-            // Listen for changes in system theme
-            const systemThemeListener = (e: MediaQueryListEvent) => {
-                applyTheme(e.matches ? 'dark' : 'light');
-            };
-            systemDarkMode.addEventListener('change', systemThemeListener);
-
-            // Clean up event listener on unmount
-            return () => {
-                systemDarkMode.removeEventListener('change', systemThemeListener);
-            };
-        } else {
-            // Apply user-defined theme ('light' or 'dark')
-            applyTheme(themeMode);
-        }
-    }, [themeMode]);
 
     return (
         (<div className="settingsAdjustments-generalSettings">

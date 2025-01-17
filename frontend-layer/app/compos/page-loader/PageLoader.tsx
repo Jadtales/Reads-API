@@ -1,6 +1,8 @@
+'use server'
+
 import {ReactElement} from "react";
 
-export default function PageLoader(): ReactElement<any> {
+export default async function PageLoader(): Promise<ReactElement<HTMLDivElement>> {
     return <div className="pageLoader"
                 style={{
                     height: '100%',

@@ -32,7 +32,8 @@ export default function AddFolderComponent({
         }
 
         if (newFolder.trim() && !existedFolders.includes(newFolder)) {
-            existedFolders.push(newFolder);
+            const capitalizedFolderName = newFolder.at(0)?.toUpperCase() + newFolder.substring(1);
+            existedFolders.push(capitalizedFolderName);
             setNewFolder('');
             setIsAddingNewFolder(false);
             // Navigate to the newly created folder
@@ -56,7 +57,7 @@ export default function AddFolderComponent({
         <Fragment>
             {!isAddingNewFolder ? (
                 <span onClick={() => setIsAddingNewFolder(true)}
-                      style={{color: 'black', margin: '0 12px', cursor: 'pointer'}}>+</span>
+                      style={{color: 'black', margin: '0 12px', cursor: 'pointer', color: 'var(--textColor_gray_dark)'}}>+</span>
             ) : (
                 <input
                     id="addFolderInputField"
