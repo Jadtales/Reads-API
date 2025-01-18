@@ -3,11 +3,12 @@ dialog.MoveToContainer {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: default;
     outline: none;
     animation: fadeIn .5s;
     border: var(--border_tags);
+
     div.dialogContainer {
         display: flex;
         flex-direction: column;
@@ -39,6 +40,8 @@ dialog.MoveToContainer {
 
             p {
                 color: var(--textColor_gray_dark);
+                font-weight: lighter;
+                font-size: .8rem;
             }
         }
 
@@ -71,10 +74,15 @@ dialog.MoveToContainer {
                 }
 
                 li:hover {
-                    background-color: var(--hoveredButtonTextColor);
+                    background-color: black;
                     transition: .2s ease;
-                    border: 1px solid #9b9b9b;
+                    color: var(--textColor_in_dark_mode)
+                }
 
+                li.inFolder{
+                    background-color: black;
+                    transition: .2s ease;
+                    color: var(--textColor_in_dark_mode)
                 }
             }
         }
@@ -84,7 +92,6 @@ dialog.MoveToContainer {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translate(-50%, -50%);
     }
 
     to{
