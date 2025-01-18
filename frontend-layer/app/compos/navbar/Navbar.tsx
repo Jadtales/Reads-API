@@ -9,10 +9,16 @@ import NavbarUserProfileComponent from "@/app/compos/navbar/navbar_microComponen
 import BrowsingComponent from "@/app/compos/browsing/BrowsingComponent";
 import NotificationsCenterComponent
     from "@/app/compos/navbar/notifications_reportBugs_Component/notificationsComponents/NotificationsCenterComponent";
+import {useMediaQuery} from "react-responsive";
 
-export default function Navbar(): ReactElement<HTMLDivElement> {
+export default function Navbar(): ReactElement<HTMLDivElement> | undefined {
     const router = useRouter();
 
+    const isPhoneSize = useMediaQuery({query: '(width >= 700px)'});
+
+    if(!isPhoneSize) {
+        return undefined;
+    }
     return (
         <nav id="navbarContainer">
             <div className="iconContainer">
@@ -24,7 +30,7 @@ export default function Navbar(): ReactElement<HTMLDivElement> {
                 <div className="user-search_buttons">
                     <NavbarUserProfileComponent phoneScreenSize={false}/>
                     <BrowsingComponent/>
-                    <SearchInputFieldComponent/>
+                    {isPhoneSize && <SearchInputFieldComponent/>}
                 </div>
             </div>
 

@@ -23,7 +23,7 @@ div.suggestedNote {
 
         & h1{
             font-size: 1.5rem;
-            color: var(--textColor);
+            color: var(--textColor_gray_dark);
 
         }
         & p#bookAuthorName{
@@ -32,9 +32,10 @@ div.suggestedNote {
         }
 
         & p#notedByWho{
-            background-color: #fff5cd;
+            background-color: var(--tag_backgroundColor);
             width: fit-content;
             padding: 5px;
+            color: var(--textColor_gray_dark);
             border-radius: 5px;
             margin-top: 5px;
             font-size: .8rem;

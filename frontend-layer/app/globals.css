@@ -1,18 +1,21 @@
 :root {
     /*reanotes icon*/
     --borderRadiusRNICON: 10px;
-    --darkThemeBody: #faf9f5;
+    --darkThemeBody: #f2f0eb;
     --darkThemeBody-darkerGray_black: #f4f2ec;
     --darkTheme_componentsBackgroundColor: black;
 
     --mainBoxShadow: 0 2px black;
 
     --backgroundColor_componentsInsideComponent: black;
+    --backgroundColor_slight_dark: #0f0e0e;
     --backgroundColor_notificationComponent: #e6e6e6;
     --backgroundColor_mostViewedNotecard: #e1e1e16b;
 
 
     --tag_backgroundColor: #e8e7de;
+
+    --activeFoldersBackgroundColor: black;
 
     --secondPrimaryTextColor: #b92b00;
     --thirdPrimaryTextColor: #ae5630;
@@ -21,7 +24,7 @@
 
 
     /*---- front notes design only*/
-    --backgroundColor_frontnote: #faf9f5;
+    --backgroundColor_frontnote: transparent;
     --backgroundColor_recentVisitedNoteCard: rgba(232, 231, 222, 0.56);
     --backgroundColor_frontnote_hovered: #f4f3f0;
 
@@ -39,6 +42,7 @@
     --textColor: black;
     --textColor_in_dark_mode: #ceccc5;
     --textColor_In_white_mode: #29261b;
+    --textCollor_darkMode_lightMode: #29261b;
     --textColor_gray_dark: dark;
     --textColor_opposite: white;
 
@@ -88,14 +92,18 @@
     --textColor: white;
     --textColor_opposite: black;
     --textColor_gray_dark: #ababab;
+    --textCollor_darkMode_lightMode: #ababab;
 
-    --darkThemeBody: #1d1d1d;
-    --darkThemeBody-darkerGray_black: #1d1d1d;
+
+    --darkThemeBody: #181716;
+    --darkThemeBody-darkerGray_black: #232221;
 
     /*--darkTheme_componentsBackgroundColor: #2e2e2e;*/
     --backgroundColor_componentsInsideComponent: black;
     --backgroundColor_notificationComponent: #2e2e2e;
     --backgroundColor_mostViewedNotecard: #21201f;
+
+    --activeFoldersBackgroundColor: #af5732;
 
     --input_backgroundColor: rgb(29, 29, 29);
     --input_backgroundColor_darkGray_lightGray: #1b1b1b;
@@ -110,8 +118,8 @@
     --hoveredTag_backgroundColor: #bfbfbf;
 
     /*---- front notes design only*/
-    --backgroundColor_frontnote: #242424;
-    --backgroundColor_recentVisitedNoteCard: #242424;
+    --backgroundColor_frontnote: #232221;
+    --backgroundColor_recentVisitedNoteCard: #232221;
     --backgroundColor_frontnote_hovered: #2d2d2d;
 
 
@@ -143,7 +151,7 @@
 }
 
 body {
-    background-color: var(--darkThemeBody-darkerGray_black);
+    background-color: var(--darkThemeBody);
     min-height: 100vh;
 }
 
@@ -163,7 +171,7 @@ button.stdIconStyling {
 
     img {
         transform: scale(1);
-        filter: var(--imgColor_white);
+        filter: var(--imgColor_dark_gray);
     }
 }
 
@@ -180,23 +188,15 @@ li#errorMessageStyling {
 }
 
 button#notificationsButton {
-    background-color: black;
-    border: var(--border);
+    /*background-color: black;*/
+    /*border: var(--border);*/
 
     h2.numberOfReceivedNotifications {
         position: absolute;
         font-size: 10px;
-        color: black;
+        color: blue;
     }
 }
-
-/*@media screen and (width <= 1200px) {*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*    box-sizing: border-box;*/
-/*    font-family: Merriweather, serif;*/
-/*    scroll-behavior: smooth;*/
-/*}*/
 
 @media screen and (width <= 500px) {
     body {

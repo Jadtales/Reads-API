@@ -9,7 +9,7 @@ import AddNoteComponentButton from '@/app/compos/AddNoteButtonCompo/AddNoteButto
 import AddFolderComponent from '@/app/compos/foldersComponent/FoldersSubComponents/AddFoldersComponent';
 import filterIcon from '@/public/icons/filter-3-line.svg';
 import GoUpIcon from '@/public/icons/notesIcons/arrow-up-line.svg';
-import FilterComponent from '@/app/compos/FilterFunctionality/FilterComponent';
+import FilterNotecardsComponent from '@/app/compos/FilterFunctionality/FilterNotecardsComponent';
 
 import FoldersStateManagerContext from '@/app/wideStateManagement/FoldersState';
 
@@ -24,7 +24,6 @@ export default function FolderComponent(): ReactElement<any> {
     const currentFolder = pathname.split('/').filter((url: string) => url !== '' && url !== 'home')[0] || folders[0];
 
     const handleCurrentOpenFolder = (folder: string): void => {
-        // Update the URL when a folder is clicked
         router.push(`/home/${folder.replaceAll(' ', '-')}`);
     };
 
@@ -87,7 +86,7 @@ export default function FolderComponent(): ReactElement<any> {
                                 <Link
                                     href={`/home/${folder.replaceAll(' ', '_')}`}
                                     onClick={() => handleCurrentOpenFolder(folder)}
-                                    className={currentFolder === folder.replaceAll(' ', '_') ? 'active' : ''}
+                                    className={currentFolder === folder.toLowerCase().replaceAll(' ', '_') ? 'active' : ''}
                                     key={index}
                                 >
                                     #{folder.charAt(0).toUpperCase() + folder.slice(1)}
@@ -107,7 +106,7 @@ export default function FolderComponent(): ReactElement<any> {
                     </div>
                 </div>
                 {isFilterActive && <hr style={{ margin: '20px 0' }} />}
-                {isFilterActive && <FilterComponent />}
+                {isFilterActive && <FilterNotecardsComponent />}
             </div>
 
         </Fragment>

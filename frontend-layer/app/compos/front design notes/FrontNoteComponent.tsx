@@ -12,24 +12,30 @@ import PinnedNotecardComponent
     from "@/app/compos/front design notes/utility-components/pinned-li-element-component/PinnedNotecardComponent";
 
 interface frontNoteComponentProps {
-    bookTitle: string;
-    bookAuthor: string;
-    bookId: number;
-    bookTags: string[] | string;
+    bookCredentials: {
+        bookTitle: string;
+        bookAuthor: string;
+        bookId: number;
+        bookCover?: string;
+        bookTags: string[] | string;
+        bookHighlights?: {highlightKey: number, highlightText: string}[];
+    };
     isNotecardToPin: (toPin: boolean, bookId: number) => void;
     notecardDeletion: (bookId: number, toCloseModalRef: any) => void;
 }
 
 export default function FrontNoteComponent({
-                                               bookTitle,
-                                               bookAuthor,
-                                               bookId,
-                                               bookTags,
+                                               bookCredentials,
                                                notecardDeletion,
                                                isNotecardToPin,
                                            }: frontNoteComponentProps): ReactElement<any> {
 
     const [isNotecardPinned, setIsNotecardPinned] = useState<boolean>(false);
+    const {bookTitle,
+        bookAuthor,
+        bookId,
+        bookCover,
+        bookTags,} = bookCredentials;
 
     isNotecardToPin(isNotecardPinned, bookId);
 
@@ -40,7 +46,7 @@ export default function FrontNoteComponent({
 
                 <div className="flashcardInfo">
 
-                    <Image src={BookCover} alt="there there" width={100}/>
+                    <Image src={bookCover || BookCover} alt="there there" width={100} height={151}/>
 
                     <div className="bookInfos">
                         <h2 id="bookTitle">{bookTitle}</h2>
@@ -59,7 +65,7 @@ export default function FrontNoteComponent({
                 </div>
 
                 <div className="flashcardSettingsContainer">
-                    <FrontNoteSettings bookId={bookId}
+                    <FrontNoteSettings notecardCredentials={{bookId, bookTags, bookTitle}}
                                        deleteThisNotecardById={notecardDeletion}
                                        checkIsNotecardPinned={setIsNotecardPinned}/>
                 </div>

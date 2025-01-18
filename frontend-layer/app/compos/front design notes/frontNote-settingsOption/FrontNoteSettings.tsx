@@ -7,7 +7,7 @@ import './frontNoteSettingStyling.css';
 // imported icons
 import EditNoteIcon from '@/public/icons/frontNoteSetting-icons/pencil-line.svg';
 import MoveToComponent
-    from "@/app/compos/front design notes/frontNote-settingsOption/settingsComponents/MoveToComponent";
+    from "@/app/compos/modals/notecard-settings-modals/move-notecard-modal/MoveToComponent";
 import {useRouter} from "nextjs-toploader/app";
 import DeleteNotecardModal
     from "@/app/compos/modals/notecard-settings-modals/delete-notecard-modal/DeleteNotecardModal";
@@ -19,27 +19,32 @@ import PinNotecardComponent
     from "@/app/compos/front design notes/frontNote-settingsOption/settingsComponents/PinNotecardComponent";
 
 interface FrontNoteSettingsProps {
-    bookTitle?: string;
-    bookId: number;
+    notecardCredentials: {
+        bookTitle?: string;
+        bookId: number;
+        bookTags: string[] | string;
+
+    };
     deleteThisNotecardById: (bookId: number, toCloseModalRef: any) => void;
     checkIsNotecardPinned: (checkIsNotecardPinned: boolean) => void;
-    // tagsForModal: string[];
 }
 
 export default function FrontNoteSettings({
-                                              bookId,
-                                              bookTitle,
+                                              notecardCredentials,
                                               deleteThisNotecardById,
                                               checkIsNotecardPinned,
                                           }: FrontNoteSettingsProps): ReactElement<any> {
     const isInPhoneSize = useMediaQuery({query: '(width <= 700px)'});
 
+    const {bookId, bookTitle, bookTags} = notecardCredentials;
+
     const settingsRef = useRef<HTMLDialogElement>(null);
+
 
     const router = useRouter()
 
     // check if a notecard is pinned
-    const {isPinned, pinElement} = PinNotecardComponent({isInPhoneSize, checkIsNotecardPinned});
+    const {pinElement} = PinNotecardComponent({isInPhoneSize, checkIsNotecardPinned});
 
     const handleSettingsToggling = (event: ReactMouseEvent): void => {
         event.stopPropagation()
@@ -99,6 +104,7 @@ export default function FrontNoteSettings({
                     onClick={handleSettingsToggling}>
                 <Image src={MoreIcon} alt="MoreIcon"/>
             </button>
+
             <dialog className={!isInPhoneSize ? 'frontNoteSettingContainer' : 'frontNoteSettingContainer-phoneSize'}
                     ref={settingsRef}
                     onClick={handleSettingsModalClosing}>
@@ -107,7 +113,7 @@ export default function FrontNoteSettings({
                     <li onClick={handleForwardToReviewPage}><Image src={EditNoteIcon} width={20} alt="editNote"/>
                         {!isInPhoneSize && 'Edit Notecard'}
                     </li>
-                    <MoveToComponent isPhoneSize={isInPhoneSize}/>
+                    <MoveToComponent isPhoneSize={isInPhoneSize} notecardCredentials={{bookId, bookTags}}/>
                     <ExportNotecardModal isPhoneSize={isInPhoneSize}/>
                     <hr style={{margin: '5px 0'}}/>
                     <DeleteNotecardModal deleteIsClicked={handleDeleteNotecard} isPhoneSize={isInPhoneSize}/>

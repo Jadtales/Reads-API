@@ -1,4 +1,4 @@
-import React, {Fragment, ReactElement, useRef, useState} from "react";
+import React, {Fragment, ReactElement, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import "./selectedNoteCards-highlightsModal-Styling.css";
 
@@ -26,130 +26,189 @@ export default function KindleHighlightsSelectionComponent({
                                                                buttonBorderRadius,
                                                                buttonTextColor,
                                                                buttonBorder,
-                                                               newSelectedKindleHighlights
+                                                               newSelectedKindleHighlights,
                                                            }: ComponentProps): ReactElement<any> {
-
-    const [highlights, setHighlights] = useState<NoteCardInterface[]>(); // Adjust type to match your use case
+    const [highlights, setHighlights] = useState<NoteCardInterface[] | null>(null);
     const [selectedHighlights, setSelectedHighlights] = useState<Set<NoteCardInterface>>(new Set());
+    const [fileError, setFileError] = useState<string | null>(null);
 
     const modalRef = useRef<HTMLDialogElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
-
-    const handleDialogDisplaying = (): void => {
+    // Toggle dialog display
+    const handleDialogDisplaying = (resetSelection: boolean = true): void => {
         const modal = modalRef.current;
 
         if (!modal?.open) {
             modal?.showModal();
         } else {
-            setSelectedHighlights(new Set());
+            if (resetSelection) setSelectedHighlights(new Set());
             modal?.close();
         }
-    }
+    };
 
+    // Handle file input and process highlights
     const handleFileFiltering = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
         if (event.target.files) {
             const selectedFile = event.target.files[0];
 
-            const fileText = await selectedFile.text();
+            try {
+                const fileText = await selectedFile.text();
+                const parsedHighlights = arrangeKindleNotes(fileText);
 
-            const parsedHighlights = arrangeKindleNotes(fileText);
-
-            if (parsedHighlights) {
-                handleDialogDisplaying();
-                setHighlights(parsedHighlights);
+                if (parsedHighlights && parsedHighlights.length > 0) {
+                    setFileError(null); // Clear previous errors
+                    setHighlights(parsedHighlights);
+                    handleDialogDisplaying();
+                } else {
+                    setFileError("No valid highlights found in the file.");
+                }
+            } catch (error) {
+                setFileError("Failed to parse the file. Please upload a valid file.");
+                console.error("Error processing the file:", error);
+            } finally {
+                event.target.value = ''; // Clear input field
             }
         }
-        event.target.value = '';
     };
 
+    // Open the file input
     const initInputOpen = (): void => {
-        inputRef.current?.click(); // Trigger file input click
+        inputRef.current?.click();
     };
 
-    // get selected highlights
-    const handleSelectedHighlights = (highlights: NoteCardInterface): void => {
-        setSelectedHighlights(prev => {
+    // Handle selection of individual highlights
+    const handleSelectedHighlights = (highlight: NoteCardInterface): void => {
+        setSelectedHighlights((prev) => {
             const newSelected = new Set(prev);
-            const doesHighlightExist = newSelected.has(highlights)
+            const doesHighlightExist = newSelected.has(highlight);
 
             if (doesHighlightExist) {
-                newSelected.delete(highlights);
+                newSelected.delete(highlight);
             } else {
-                newSelected.add(highlights);
+                newSelected.add(highlight);
             }
 
             return newSelected;
         });
-    }
+    };
 
-    // import selected highlights
+    // Handle importing selected highlights
     const handleNotecardsImport = (): void => {
-        newSelectedKindleHighlights(selectedHighlights)
-
+        newSelectedKindleHighlights(selectedHighlights);
         handleDialogDisplaying();
-    }
+    };
 
-    return <>
-        <button onClick={initInputOpen} className={'importKindleHighlightsButton'} style={{
-            backgroundColor: buttonBackGroundColor ? buttonBackGroundColor : 'black',
-            padding: buttonPadding,
-            borderRadius: buttonBorderRadius,
-            border: buttonBorder,
-            color: buttonTextColor,
-            display: 'flex',
-            cursor: 'pointer',
-            outline: 'none',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '5px'
-        }}>
-            <Image src={KindleDeviceIcon} width={20} alt="kindle"/> Kindle
-        </button>
+    // Fetch book covers based on selected highlights
+    useEffect(() => {
+        const fetchBookCovers = async () => {
+            if (selectedHighlights.size === 0) return;
 
-        <input
-            type="file"
-            ref={inputRef}
-            onChange={handleFileFiltering}
-            style={{display: "none"}}
-        />
+            const [chosenHighlight] = Array.from(selectedHighlights);
 
-        <dialog className="KindleHighlightsSelectionContainer" ref={modalRef}>
-            <div className="dialogContent">
-                <div className="topCompoLayer">
-                    <div className="typeOfSelection">
-                        <button>Select All</button>
-                        <button>Cancel</button>
-                    </div>
-                    <Image src={CloseIcon} alt="closeModal" onClick={handleDialogDisplaying}/>
-                </div>
+            if (!chosenHighlight || !chosenHighlight.bookTitle || !chosenHighlight.bookAuthor) return;
 
-                <hr style={{width: "100%"}}/>
+            const bookTitle = encodeURIComponent(chosenHighlight.bookTitle);
+            const bookAuthor = encodeURIComponent(chosenHighlight.bookAuthor);
 
-                <button className="FinalImportButton" onClick={handleNotecardsImport}>Import</button>
+            console.log(bookTitle, bookAuthor)
+            const query = `book_title=${bookTitle}&author_name=${bookAuthor}`;
 
-                {highlights?.length === 0 ? (
-                    <p className="filesLoader">No highlights found in the file.</p>
-                ) : (
+            try {
+                const response = await fetch(`https://bookcover.longitood.com/bookcover?${query}`);
+                if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
 
-                    <Fragment>
-                        <h2>Select your highlights to be imported</h2>
+                const result = await response.json();
 
-                        <div className="noteCards">
-                            {highlights?.map((highlightObj, index) => (
-                                <SelectedNotecardComponent
-                                    key={index}
-                                    bookTitle={highlightObj.bookTitle}
-                                    bookAuthor={highlightObj.bookAuthor}
-                                    highlightsQuantity={highlightObj.highlights.length}
-                                    onSelect={() => handleSelectedHighlights(highlightObj)}
-                                    isNotecardSelected={selectedHighlights.has(highlightObj)}
-                                />
-                            ))}
+                // Update state immutably
+                setSelectedHighlights((prevState) => {
+                    return new Set(
+                        Array.from(prevState).map((notecard) => {
+                            if (
+                                notecard.bookTitle === chosenHighlight.bookTitle &&
+                                notecard.bookAuthor === chosenHighlight.bookAuthor
+                            ) {
+                                return {...notecard, bookCover: result.url};
+                            }
+                            return notecard;
+                        })
+                    );
+                });
+            } catch (error) {
+                console.error("Error fetching book cover:", error);
+            }
+        };
+
+        fetchBookCovers();
+    }, [selectedHighlights.size]); // Only fetch when the size changes
+
+    console.log(selectedHighlights)
+    return (
+        <>
+            <button
+                onClick={initInputOpen}
+                className="importKindleHighlightsButton"
+                style={{
+                    backgroundColor: buttonBackGroundColor || "black",
+                    padding: buttonPadding,
+                    borderRadius: buttonBorderRadius,
+                    border: buttonBorder,
+                    color: buttonTextColor,
+                    display: "flex",
+                    cursor: "pointer",
+                    outline: "none",
+                    alignItems: "center",
+                    marginBottom: '5px',
+                    width: '100%',
+                    justifyContent: "center",
+                    gap: "5px",
+                }}
+            >
+                <Image src={KindleDeviceIcon} width={20} alt="kindle"/> Kindle
+            </button>
+
+            <input type="file" ref={inputRef} onChange={handleFileFiltering} style={{display: "none"}}/>
+
+            <dialog className="KindleHighlightsSelectionContainer" ref={modalRef}>
+                <div className="dialogContent">
+                    <div className="topCompoLayer">
+                        <div className="typeOfSelection">
+                            <button>Select All</button>
+                            <button>Cancel</button>
                         </div>
-                    </Fragment>
-                )}
-            </div>
-        </dialog>
-    </>
+                        <Image src={CloseIcon} alt="closeModal" onClick={() => handleDialogDisplaying(false)}/>
+                    </div>
+
+                    <hr style={{width: "100%"}}/>
+
+                    <button className="FinalImportButton" onClick={handleNotecardsImport}>
+                        Import
+                    </button>
+
+                    {fileError && <p className="error">{fileError}</p>}
+
+                    {highlights?.length === 0 ? (
+                        <p className="filesLoader">No highlights found in the file.</p>
+                    ) : (
+                        <Fragment>
+                            <h2>Select your highlights to be imported</h2>
+
+                            <div className="noteCards">
+                                {highlights?.map((highlightObj, index) => (
+                                    <SelectedNotecardComponent
+                                        key={index}
+                                        bookTitle={highlightObj.bookTitle}
+                                        bookAuthor={highlightObj.bookAuthor}
+                                        highlightsQuantity={highlightObj.highlights.length}
+                                        onSelect={() => handleSelectedHighlights(highlightObj)}
+                                        isNotecardSelected={selectedHighlights.has(highlightObj)}
+                                    />
+                                ))}
+                            </div>
+                        </Fragment>
+                    )}
+                </div>
+            </dialog>
+        </>
+    );
 }

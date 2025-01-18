@@ -100,6 +100,7 @@ img#reanotesIcon {
         flex-direction: column;
         justify-content: space-between;
         background-color: black;
+        color: var(--textColor_in_dark_mode);
 
 
         & div.topLayer {
@@ -115,6 +116,7 @@ img#reanotesIcon {
                 display: flex;
                 justify-content: start;
                 align-items: start;
+                flex-direction: column;
 
                 p {
                     font-weight: lighter;
@@ -122,9 +124,12 @@ img#reanotesIcon {
             }
 
             div.reanotesGeneralInfos-subscribed {
+                width: 100%;
                 h1 {
                     text-align: start;
                     margin: 3.5rem 0;
+                    width: 100%;
+
                 }
 
                 button.tryReanotesButton {

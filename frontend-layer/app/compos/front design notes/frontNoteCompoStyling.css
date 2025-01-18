@@ -6,7 +6,7 @@ div.homeContainer {
     border-radius: var(--borderRadiusNote);
     transition: .2s ease;
     cursor: pointer;
-    background-color: var(--darkThemeBody-darkerGray_black);
+    background-color: var(--backgroundColor_frontnote);
     box-shadow: var(--shadowing);
 
 }
@@ -31,7 +31,6 @@ div.topLayer {
 
         & img {
             border-radius: var(--borderRadiusImg);
-            border: 2px solid black;
         }
 
         & div.bookInfos {
@@ -41,7 +40,7 @@ div.topLayer {
             align-items: start;
             width: 100%;
 
-            h2#bookTitle{
+            h2#bookTitle {
 
                 font-size: 1rem; /* Adjust the font size as needed */
                 /*white-space: nowrap; !* Prevents the text from wrapping to a new line *!*/
@@ -59,14 +58,22 @@ div.topLayer {
             & div.bookTags {
                 margin: 10px 0;
 
-                & ul li {
-                    list-style: none;
-                    background-color: var(--tag_backgroundColor);
-                    padding: 2px 6px;
-                    margin-bottom: 5px;
-                    width: fit-content;
-                    font-size: .8rem;
-                    border-radius: var(--borderRadiusTags);
+                & ul {
+                    display: flex;
+                    flex-direction: column;
+                    overflow-y: scroll;
+                    scrollbar-width: none;
+                    height: 80px;
+
+                    li {
+                        list-style: none;
+                        background-color: var(--tag_backgroundColor);
+                        padding: 2px 6px;
+                        margin-bottom: 5px;
+                        width: fit-content;
+                        font-size: .8rem;
+                        border-radius: var(--borderRadiusTags);
+                    }
                 }
 
                 li:hover {
@@ -79,9 +86,9 @@ div.topLayer {
     }
 }
 
-@media screen and (width <= 700px){
+@media screen and (width <= 700px) {
     div.homeContainer {
-        color: var(--textColor);
+        color: var(--textColor_gray_dark);
         width: 90vw;
         height: 185px;
         padding: var(--paddingNote);
@@ -89,13 +96,13 @@ div.topLayer {
         transition: .2s ease;
         cursor: pointer;
 
-        div.topLayer div.flashcardInfo div.bookInfos h2#bookTitle{
+        div.topLayer div.flashcardInfo div.bookInfos h2#bookTitle {
             font-size: 15px;
         }
     }
 }
 
-@media screen and (width <= 355px){
+@media screen and (width <= 355px) {
     div.homeContainer {
         color: var(--textColor);
         height: 185px;
