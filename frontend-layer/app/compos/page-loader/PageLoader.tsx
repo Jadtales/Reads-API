@@ -19,7 +19,7 @@ export default async function PageLoader(): Promise<ReactElement<HTMLDivElement>
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
-            fontSize: '5rem',
+            fontSize: '3rem',
             letterSpacing: '10px',
             animation: 'ease',
             color: 'var(--textColor_gray_dark)'

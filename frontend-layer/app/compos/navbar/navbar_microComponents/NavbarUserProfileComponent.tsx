@@ -30,6 +30,7 @@ export default function NavbarUserProfileComponent({phoneScreenSize = true, user
                 onClick={handleUserProfileClicked}>
         <Image src={RNICON}
                alt="userProfileImg"
+               onClick={() => phoneScreenSize && handleGoingToUserProfile()}
                width={userProfileWidth ? userProfileWidth : 20}
                style={{borderRadius: '3px', display: 'flex'}}/>
 
