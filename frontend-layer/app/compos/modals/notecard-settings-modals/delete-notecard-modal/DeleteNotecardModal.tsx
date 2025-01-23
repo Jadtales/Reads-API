@@ -11,6 +11,7 @@ interface ComponentProps {
 
 export default function DeleteNotecardModal({deleteIsClicked, isPhoneSize = false}: ComponentProps): ReactElement {
     const dialogRef = useRef<HTMLDialogElement>(null);
+
     const handleModalToggling = (): void => {
         if (!dialogRef.current?.open) {
             dialogRef.current?.showModal();

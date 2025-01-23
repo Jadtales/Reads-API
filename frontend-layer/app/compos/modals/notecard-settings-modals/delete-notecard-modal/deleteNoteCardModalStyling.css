@@ -8,6 +8,7 @@ dialog.noteCardDeletionDialog {
     cursor: default;
     background-color: var(--darkThemeBody-darkerGray_black);
     border: var(--border_tags);
+    color: var(--textColor_gray_dark);
 }
 
 dialog.noteCardDeletionDialog[open] {
