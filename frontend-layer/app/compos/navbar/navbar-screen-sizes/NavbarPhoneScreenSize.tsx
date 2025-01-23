@@ -62,8 +62,10 @@ export default function NavbarPhoneScreenSize() {
                     className={currentPage.startsWith('/stats') ? 'current-page' : ''}><Image src={StatsIcon}
                                                                                               alt={'statsPage'}/>
             </button>
-            <button className={'addNoteButton-navbarPhoneScreenSize'}
-                    onClick={() => router.push('/createnotes/new-notecard')}>+
+            <button
+                style={{color: currentPage.startsWith('/createnotes') ? 'var(--secondPrimaryTextColor)' : 'var(--textColor_in_dark_mode)'}}
+                className={'addNoteButton-navbarPhoneScreenSize'}
+                onClick={() => router.push('/createnotes/new-notecard')}>+
             </button>
         </nav>
     )
