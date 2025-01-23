@@ -17,7 +17,7 @@ export default function NotFoundPage(): ReactElement<any> {
         }, 1000)
 
         const timeoutId = setTimeout(() => {
-            router.push("/home/unspecified");
+            router.push("/home/all");
         }, 3500)
 
         return () => {
