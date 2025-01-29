@@ -1,20 +1,10 @@
-interface highlightsInterface {
-    bookAuthor: string;
-    bookTitle: string;
-    pageLocation?: string;
-    addedDate?: string;
-    highlights: {
-        highlightKey: number;
-        highlightText: string;
-    }[];
-}
+import HighlightsInterface from "../interfaces/highlights-interface";
 
-export function arrangeKindleNotes(content: string): highlightsInterface[] {
+export function arrangeKindleNotes(content: string): HighlightsInterface[] {
     const notesSeparator = "=========="; // The expected separator
     const normalizedContent = content.replace(/\s*={10,}\s*/g, notesSeparator); // Normalize separators
     const noteCardsArray = normalizedContent.split(notesSeparator); // Split by the separator
-    const notes: highlightsInterface[] = [];
-
+    const notes: HighlightsInterface[] = [];
 
     for (const highlight of noteCardsArray) {
         if (!highlight.trim()) {
@@ -30,7 +20,9 @@ export function arrangeKindleNotes(content: string): highlightsInterface[] {
 
         // Extract book title and author
         const bookInfo = lines[0].trim();
-        const bookNameMatch = bookInfo.match(/^(.+?) \(([^)]+)\)$/) || bookInfo.match(/^(.+?) (?:by ([^(]+))? \(([^)]+)\)$/i); // Match title and author
+        const bookNameMatch =
+            bookInfo.match(/^(.+?) \(([^)]+)\)$/) ||
+            bookInfo.match(/^(.+?) (?:by ([^(]+))? \(([^)]+)\)$/i); // Match title and author
         if (!bookNameMatch) {
             console.warn("Skipped due to unmatched book info:", bookInfo);
             continue; // Skip if the title and author pattern doesn't match
@@ -64,9 +56,18 @@ export function arrangeKindleNotes(content: string): highlightsInterface[] {
 
         if (!book) {
             book = {
+                bookId: Date.now(), // Use a timestamp for the unique book ID
                 bookTitle,
                 bookAuthor,
                 highlights: [],
+                timing_viewed_filter: [],
+                content_source_filter: ["Kindle"],
+                learning_process_filter: ["Not started"],
+                genres: [],
+                lastVisited: 0,
+                pageLocation, // Assign the page location to the book object
+                addedDate,
+                isPinned: false,
             };
             notes.push(book);
         }
@@ -74,7 +75,8 @@ export function arrangeKindleNotes(content: string): highlightsInterface[] {
         // Add highlight
         book.highlights.push({
             highlightKey: book.highlights.length + 1, // Unique key
-            highlightText,
+            highlight: highlightText, // Store only the highlight text
+            highlightIndex: "",
         });
     }
 
