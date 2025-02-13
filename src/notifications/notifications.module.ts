@@ -5,14 +5,14 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {Notification} from './entities/notification.entity';
 import {UsersModule} from '../users/users.module';
 import {NotificationsGateway} from './notifications.gateway';
-import {CardsModule} from "../cards-management/cards.module";
+import {NotecardsModule} from "../notecards/notecards.module";
 
 @Module({
     controllers: [],
     providers: [NotificationsService, NotificationsGateway],
     imports: [
         forwardRef(() => UsersModule),
-        forwardRef(() => CardsModule),
+        forwardRef(() => NotecardsModule),
         TypeOrmModule.forFeature([Notification]),
     ],
     exports: [NotificationsService],

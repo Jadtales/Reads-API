@@ -1,7 +1,7 @@
 import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, OneToOne, JoinColumn, PrimaryColumn} from 'typeorm';
-import {NotificationData_dto, Notifications_dto} from '../DTOs/notifications_dto';
+import {NotificationData_dto, Notifications_dto} from '../dtos/notifications_dto';
 import {NotificationUnionType} from '../types/notifications.type'
-import {Users} from "../../users/entities/user.entity";
+import {Users} from "../../users/entities/users.entity";
 
 @Entity()
 export class Notification {

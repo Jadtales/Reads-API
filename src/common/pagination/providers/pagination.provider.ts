@@ -6,7 +6,7 @@ import {Request} from 'express';
 import {REQUEST} from '@nestjs/core';
 import {PaginationInterface} from '../../interfaces/pagination.interface';
 import {meta} from '@typescript-eslint/eslint-plugin';
-import {Cards} from '../../../cards-management/entities/cards.entity';
+import {Notecards} from '../../../notecards/entities/notecards';
 
 @Injectable()
 export class PaginationProvider {

@@ -1,4 +1,4 @@
-import { CardDto } from '../../cards-management/DTOs/cards.credentials.dto';
+import { CardDto } from '../../notecards/dtos/cards.credentials.dto';
 import { Type } from 'class-transformer';
 import {
   IsString,

@@ -9,8 +9,8 @@ import {
     RequestTimeoutException,
 } from '@nestjs/common';
 
-import {CardServices} from '../../cards-management/providers/cards.service';
-import {Users} from '../entities/user.entity';
+import {CardServices} from '../../notecards/providers/notecards.service';
+import {Users} from '../entities/users.entity';
 
 import {Repository, DataSource} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';

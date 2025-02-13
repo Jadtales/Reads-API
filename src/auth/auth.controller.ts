@@ -26,6 +26,4 @@ export class AuthController {
     public signInWithRefreshToken(@Body() refreshTokenDTO: RefreshTokenDto) {
         return this.authService.signIn_refreshToken(refreshTokenDTO)
     }
-
-
 }

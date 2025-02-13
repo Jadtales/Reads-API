@@ -1,25 +1,23 @@
 import {
     Body, ClassSerializerInterceptor,
     Controller,
-    DefaultValuePipe,
     Delete,
     Get,
     Param,
-    ParseIntPipe,
     ParseUUIDPipe,
     Post,
     Put,
-    Query, UseInterceptors,
+    UseInterceptors,
 } from '@nestjs/common';
 
-// imported DTOs
-import FollowFollowingRelationDTO from './dtos/follow.dto';
+// imported dtos
+import UserRelationsDTO from './dtos/user-relations.dto';
 import {UpdateUser_dto, UserCreation_dto} from './dtos/user.dtos';
 
 // imported Providers
 import {UsersService} from './providers/users.service';
-import {FollowFollowingRelationServices} from './providers/follow_following_relation_service';
-import {UsersStatsService} from './providers/users.stats.services';
+import {UserRelationsServices} from './providers/user-relations.service';
+import {UsersStatsService} from './providers/user-stats.services';
 import {AuthAccessType} from '../auth/decorators/auth-access.type';
 import {AuthTypeEnum} from '../auth/enums/auth-type.enum';
 
@@ -44,7 +42,7 @@ export class UsersController {
     }
 
     @Put('update-user/:id')
-    // @AuthAccessType(AuthTypeEnum.None)
+    @AuthAccessType(AuthTypeEnum.Bearer)
     public updateUser(
         @Param('id', ParseUUIDPipe) id: string,
         @Body() updateUser: UpdateUser_dto,

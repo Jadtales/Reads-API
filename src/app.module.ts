@@ -14,11 +14,11 @@ import databaseConfig from './config/app.database.config';
 // imported modules
 import {UsersModule} from './users/users.module';
 import {AuthModule} from './auth/auth.module';
-import {CardsModule} from './cards-management/cards.module';
+import {NotecardsModule} from './notecards/notecards.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {NotificationsModule} from './notifications/notifications.module';
 import {EventEmitterModule} from "@nestjs/event-emitter";
-import {ClippingsFilesUploadModule} from './clippings-files-upload/clippings-files-upload.module';
+import {FilesUploadModule} from './files-upload/files-upload.module';
 import jwtConfig from './auth/config/jwt.config';
 import {JwtModule} from '@nestjs/jwt';
 import {APP_GUARD} from '@nestjs/core';
@@ -39,9 +39,9 @@ const env = process.env.NODE_ENV;
 
         UsersModule,
         AuthModule,
-        CardsModule,
+        NotecardsModule,
         NotificationsModule,
-        ClippingsFilesUploadModule,
+        FilesUploadModule,
 
         EventEmitterModule.forRoot(),
 

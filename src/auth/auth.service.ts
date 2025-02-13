@@ -53,6 +53,7 @@ export class AuthService {
         const [accessToken, refreshToken] = await this.generateTokensProvider.generateToken(user)
 
         return {
+            userId: user.id,
             accessToken,
             refreshToken,
         }

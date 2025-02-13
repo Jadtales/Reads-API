@@ -8,10 +8,10 @@ import {
 import {Repository, Equal} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';
 import {Notification} from '../entities/notification.entity';
-import {NotificationData_dto, Notifications_dto} from '../DTOs/notifications_dto';
+import {NotificationData_dto, Notifications_dto} from '../dtos/notifications_dto';
 import {UsersService} from '../../users/providers/users.service';
 import {NotificationsGateway} from "../notifications.gateway";
-import {FollowFollowingRelationServices} from "../../users/providers/follow_following_relation_service";
+import {UserRelationsServices} from "../../users/providers/user-relations.service";
 
 @Injectable()
 export class NotificationsService {
@@ -23,8 +23,8 @@ export class NotificationsService {
         @Inject(forwardRef(() => UsersService))
         private readonly usersService: UsersService,
 
-        @Inject(forwardRef(() => FollowFollowingRelationServices))
-        private readonly followFollowingRelationServices: FollowFollowingRelationServices,
+        @Inject(forwardRef(() => UserRelationsServices))
+        private readonly followFollowingRelationServices: UserRelationsServices,
     ) {
     }
 
