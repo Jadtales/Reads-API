@@ -5,10 +5,8 @@ import {
   IsOptional,
   IsArray,
   IsNumber,
-  IsDate,
   ValidateNested,
   IsNotEmpty,
-  IsJSON,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 

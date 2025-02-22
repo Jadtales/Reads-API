@@ -1,4 +1,4 @@
-import { UserCreation_dto } from '../../users/dtos/user.dtos';
+import { UserCreation_dto } from '../../../app-essentials/users/dtos/user.dtos';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class SignInAuthDto {

@@ -33,25 +33,25 @@ export class CardsQueryDTO {
 
   @IsOptional()
   @IsString()
-  filterByTag?: string; // Option to filter results based on a specific tag
+  filterByTag?: string;
 
   @IsOptional()
   @IsNumber()
-  minLikes?: number; // Filter for cards with a minimum number of likes
+  minLikes?: number;
 
   @IsOptional()
   @IsNumber()
-  minRating?: number; // Filter for cards with a minimum average rating
+  minRating?: number;
 
   @IsOptional()
   @IsDate()
-  fromDate?: Date; // Option to filter statistics from a specific starting date
+  fromDate?: Date;
 
   @IsOptional()
   @IsDate()
-  toDate?: Date; // Option to filter statistics until a specific end date
+  toDate?: Date;
 
   @IsOptional()
   @IsString()
-  sortBy?: 'likes' | 'views' | 'creationDate'; // Option to sort the statistics based on a specific attribute
+  sortBy?: 'likes' | 'views' | 'creationDate';
 }
