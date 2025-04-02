@@ -24,7 +24,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard } from './app-security/auth/guards/access.token.guard';
 import { AuthenticationGuard } from './app-security/auth/guards/authentication.guard';
-import { NotificationsGateway } from './app-features/notifications/notifications.gateway';
+import { NotificationsGateway } from './app-features/notifications/gateways/notifications.gateway';
 import { CacheModule } from '@nestjs/cache-manager';
 import { NotesModule } from './app-features/notes/notes.module';
 
