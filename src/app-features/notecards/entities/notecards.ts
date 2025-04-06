@@ -7,28 +7,29 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-import { Users } from '../../users/entities/users.entity';
+import { User } from '../../../app-essentials/users/entities/users.entity';
 
 @Entity()
 export class Notecards {
   @PrimaryGeneratedColumn('increment')
-  cardId?: number;
+  notecardId?: number;
 
-  @ManyToOne(() => Users, (user) => user.userCards)
-  cardCreatorId?: Users;
+  @ManyToOne(() => User, (user) => user.userCards)
+  notecardCreatorId?: User;
 
   @CreateDateColumn()
-  cardCreationDate?: Date;
+  notecardCreationDate?: Date;
 
   @Column({ type: 'varchar', unique: true, nullable: false })
-  cardTitle: string;
+  notecardTitle: string;
 
   @Column({ type: 'varchar', unique: true, nullable: true })
-  cardDescription: string;
+  notecardDescription: string;
 
   @Column({ type: 'json', nullable: true })
-  cardData: {
+  notecardData: {
     data: {
+      id: number;
       term: string | null;
       definition: string | null;
       isStared: boolean;
@@ -36,20 +37,20 @@ export class Notecards {
   };
 
   @Column('simple-array', { nullable: true })
-  cardTags: string[];
+  notecardTags: string[];
 
   @UpdateDateColumn()
   lastUpdatedDate: Date;
 
   @Column({ type: 'int', default: 0 })
-  cardLikes: number; // Number of likes
+  notecardLikes: number;
 
   @Column({ type: 'float', default: 0 })
-  cardRating: number; // Average rating (e.g., out of 5)
+  notecardRating: number;
 
   @Column({ type: 'int', default: 0 })
-  viewCount: number; // To tracks how many times the card has been viewed
+  viewCount: number;
 
   @Column({ type: 'boolean', default: true })
-  isPublished: boolean; // True if the card is published
+  isPublished: boolean;
 }

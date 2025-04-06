@@ -62,7 +62,7 @@ export class CardServices {
     try {
       const noteCard = this.cardsRepository.create({
         ...createNoteCard,
-        cardCreatorId: userExists,
+        notecardCreatorId: userExists,
       });
 
       await this.cardsRepository.save(noteCard);
@@ -72,14 +72,15 @@ export class CardServices {
         new NotecardCreationEvent(
           userExists.id,
           userExists.userUsername,
-          noteCard.cardId,
-          noteCard.cardTitle,
+          noteCard.notecardId,
+          noteCard.notecardTitle,
         ),
       );
 
       console.log('is emitted true', isEmitted);
 
-      if (isEmitted) return `${noteCard.cardId}`;
+       return `${noteCard.notecardId}`;
+
     } catch (err) {
       throw new InternalServerErrorException("Notecard isn't created", err);
     }
@@ -161,16 +162,16 @@ export class CardServices {
 
   async updateNoteCard(notecard: UpdateNotecard): Promise<string> {
     const userExists = await this.UserServices.findUserById(
-      notecard.cardCreatorId,
+      notecard.notecardCreatorId,
     );
     const userNotecard = await this.cardsRepository.findOne({
       where: {
-        cardId: notecard.cardId,
-        cardCreatorId: userExists,
+        notecardId: notecard.notecardId,
+        notecardCreatorId: userExists,
       },
     });
 
-    const { cardCreatorId, ...updateFields } = notecard;
+    const { notecardCreatorId, ...updateFields } = notecard;
 
     let updatedNotecard = undefined;
     try {
@@ -198,7 +199,7 @@ export class CardServices {
     try {
       if (userExists) {
         await this.cardsRepository.delete({
-          cardId: notecardId,
+          notecardId: notecardId,
         });
       }
 

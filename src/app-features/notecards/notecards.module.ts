@@ -23,6 +23,6 @@ import { EventEmitterModule } from "@nestjs/event-emitter";
     EventEmitterModule.forRoot()
   ],
   providers: [CardServices, NotecardsStatsService],
-  exports: [CardServices],
+  exports: [CardServices, TypeOrmModule],
 })
 export class NotecardsModule {}
