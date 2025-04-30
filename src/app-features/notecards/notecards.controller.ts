@@ -27,11 +27,12 @@ export class NotecardsController {
     return this.cardServices.getCards(userId, cardsQuery);
   }
 
-  @Post('createNotecard')
+  @Post('create-notecard')
   createCard(
     @ActiveUser() user: ActiveUserInterface,
     @Body() noteCardCredentials: CardCreationDTO,
   ) {
+    console.log('reached controller');
     return this.cardServices.createNoteCard(noteCardCredentials, user);
   }
 
@@ -43,8 +44,8 @@ export class NotecardsController {
     );
   }
 
-  @Post('update-notecard')
-  updateNotecard(@Body() notecard: UpdateNotecard) {
-    return this.cardServices.updateNoteCard(notecard);
-  }
+  // @Post('update-notecard')
+  // updateNotecard(@Body() notecard: UpdateNotecard) {
+  //   // return this.cardServices.updateNoteCard(notecard);
+  // }
 }

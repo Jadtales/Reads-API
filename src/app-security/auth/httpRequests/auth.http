@@ -1,0 +1,18 @@
+### POST test user's authentication
+POST http://localhost:3002/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "matchalover@gmail.com",
+  "password": "iDrinkMatchaFrom9To10."
+}
+
+### sign up
+POST http://localhost:3002/users/create-user
+Content-Type: application/json
+
+{
+  "userUsername": "matchalover",
+  "userEmail": "matchalover@gmail.com",
+  "userPassword": "iDrinkMatchaFrom9To10."
+}

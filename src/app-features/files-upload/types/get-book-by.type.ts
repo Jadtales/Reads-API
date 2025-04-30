@@ -1,0 +1,1 @@
+type GetBookBy = 'bookTitle' | 'bookAuthor' | 'bookId';

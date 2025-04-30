@@ -1,0 +1,16 @@
+### Post kindle file
+POST http://localhost:3002/upload/kindle-file/06b7f31b-e01b-4883-a84c-2d5f024db5e9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNmI3ZjMxYi1lMDFiLTQ4ODMtYTg0Yy0yZDVmMDI0ZGI1ZTkiLCJ1c2VyRW1haWwiOiJ0ZWFMb3ZlckBnbWFpbC5jb20iLCJpYXQiOjE3NDM5MzgxOTUsImV4cCI6MTc0Mzk0MTc5NSwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.wturzUKXJJCypUpDgA3gGoZvCaYsVQUM4L6XwEHGnWw
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="file"; filename="My Clippings.txt"
+Content-Type: text/plain
+
+< C:/Users/ethen/Desktop/My Clippings.txt
+--boundary123
+
+
+### Get user files
+GET http://localhost:3002/upload/fetch-user-files/e7a4d691-e977-46b6-ba81-ec5738a0c7dd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlN2E0ZDY5MS1lOTc3LTQ2YjYtYmE4MS1lYzU3MzhhMGM3ZGQiLCJ1c2VyRW1haWwiOiJ6dXppYTEyM0BnbWFpbC5jb20iLCJpYXQiOjE3Mzk3ODcwOTEsImV4cCI6MTczOTc5MDY5MSwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.4EhVVOrz3rqbJUGMaYpJMIJRGc-D_HYHuagSiUye6Jg

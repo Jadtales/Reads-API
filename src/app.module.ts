@@ -25,8 +25,12 @@ import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard } from './app-security/auth/guards/access.token.guard';
 import { AuthenticationGuard } from './app-security/auth/guards/authentication.guard';
 import { NotificationsGateway } from './app-features/notifications/gateways/notifications.gateway';
-import { CacheModule } from '@nestjs/cache-manager';
 import { NotesModule } from './app-features/notes/notes.module';
+import { SharedContentModule } from './app-features/shared-content/shared-content.module';
+
+// caching
+import { CacheModule } from '@nestjs/cache-manager';
+import * as redisStore from 'cache-manager-redis-store';
 
 const env = process.env.NODE_ENV;
 
@@ -44,6 +48,7 @@ const env = process.env.NODE_ENV;
     NotecardsModule,
     NotificationsModule,
     FilesUploadModule,
+    SharedContentModule,
 
     EventEmitterModule.forRoot(),
 
@@ -64,7 +69,20 @@ const env = process.env.NODE_ENV;
     }),
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
-    CacheModule.register({ isGlobal: true, ttl: 600000 }),
+
+    CacheModule.register({
+      store: redisStore,
+      host: 'localhost',
+      port: 3002,
+      isGlobal: true,
+      /*
+        TODO Determines how long the cached data will persist in Redis before
+         it is evicted; adjust this based on the nature
+          of the data and the frequency of updates
+      */
+      ttl: 5000, // 1 minute
+      max: 100,
+    }),
     NotesModule,
   ],
   controllers: [AppController],

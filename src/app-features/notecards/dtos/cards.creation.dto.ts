@@ -10,14 +10,18 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class CardDataDto {
-  @IsString()
+export class notecardDataDto {
+  @IsInt()
   @IsOptional()
-  term: string;
+  id?: number;
 
   @IsString()
   @IsOptional()
-  definition: string;
+  term?: string;
+
+  @IsString()
+  @IsOptional()
+  definition?: string;
 
   @IsBoolean()
   @IsOptional()
@@ -27,41 +31,73 @@ export class CardDataDto {
 export class CardCreationDTO {
   @IsInt()
   @IsOptional()
-  cardId?: number;
-
-  @IsString()
-  @IsNotEmpty()
-  cardCreatorId: string;
-
-  @IsString()
-  @IsNotEmpty()
-  cardTitle: string;
+  notecardId?: number;
 
   @IsString()
   @IsOptional()
-  cardDescription?: string;
+  notecardCreatorId?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  notecardTitle: string;
+
+  @IsString()
+  @IsOptional()
+  notecardDescription?: string;
 
   @IsOptional()
   @ValidateNested({ each: true })
-  @Type(() => CardDataDto)
-  cardData?: { data: CardDataDto[] };
+  @Type(() => notecardDataDto)
+  notecardData?: notecardDataDto[];
 
   @IsOptional()
   @IsArray()
   @IsString({ each: true })
-  cardTags?: string[];
+  notecardTags?: string[];
 
   @IsInt()
   @IsOptional()
-  cardLikes?: number;
+  notecardLikes?: number;
 
   @IsNumber()
   @IsOptional()
-  cardRating?: number;
+  notecardRating?: number;
 
   @IsInt()
   @IsOptional()
   viewCount?: number;
+
+  @IsBoolean()
+  @IsOptional()
+  isPublished?: boolean;
+}
+
+export class UpdateNotecard {
+  @IsInt()
+  @IsNotEmpty()
+  notecardId: number;
+
+  @IsString()
+  @IsNotEmpty()
+  notecardCreatorId: string;
+
+  @IsString()
+  @IsOptional()
+  notecardTitle?: string;
+
+  @IsString()
+  @IsOptional()
+  notecardDescription?: string;
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => notecardDataDto)
+  notecardData?: { data: notecardDataDto[] };
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  notecardTags?: string[];
 
   @IsBoolean()
   @IsOptional()

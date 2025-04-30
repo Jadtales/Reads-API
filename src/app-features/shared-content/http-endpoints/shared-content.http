@@ -1,0 +1,2 @@
+### GET shared content
+GET http://localhost:3002/shared-content?username=matchalover&content-id=1

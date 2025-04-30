@@ -20,23 +20,27 @@ export class Notecards {
   @CreateDateColumn()
   notecardCreationDate?: Date;
 
-  @Column({ type: 'varchar', unique: true, nullable: false })
+  @Column({ type: 'varchar', nullable: false })
   notecardTitle: string;
 
-  @Column({ type: 'varchar', unique: true, nullable: true })
-  notecardDescription: string;
+  @Column({ type: 'varchar', nullable: true })
+  notecardDescription?: string;
 
-  @Column({ type: 'json', nullable: true })
+  @Column({ type: 'jsonb', nullable: true })
   notecardData: {
-    data: {
-      id: number;
-      term: string | null;
-      definition: string | null;
-      isStared: boolean;
-    }[];
+    id?: number;
+    term: string;
+    definition?: string;
+    isStared?: boolean;
+  }[];
+
+  @Column('jsonb', { nullable: true })
+  bookBased: {
+    bookTitle?: string;
+    bookAuthor?: string;
   };
 
-  @Column('simple-array', { nullable: true })
+  @Column({ type: 'text', array: true, nullable: true })
   notecardTags: string[];
 
   @UpdateDateColumn()

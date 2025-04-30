@@ -1,0 +1,28 @@
+### Post user note
+POST http://localhost:3002/notes/post-note
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MzM1OWViMS05YWE5LTQwNDEtYTZkYy03MGY1ZDdjZjVjMGEiLCJ1c2VyRW1haWwiOiJjb2ZmZWVMb3ZlckBnbWFpbC5jb20iLCJpYXQiOjE3NDAwODMzMTMsImV4cCI6MTc0MDA4NjkxMywiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.3IRj3sB4HzIWLY1pds_8mZm9egQKdvTs4zZjQM-cGcU
+Content-Type: application/json
+
+{
+  "userId": "53359eb1-9aa9-4041-a6dc-70f5d7cf5c0a",
+  "noteContent": "hey guys, i enjoy reading and drinking coffee",
+  "mentionedUsers": ["d692f3ec-5031-4ce0-b200-8aab9bd29c82", "f872bee2-1750-4d1d-9b93-aacebcda85b7"]
+}
+
+### Get note infos
+GET http://localhost:3002/notes/note-info/b9dbb49d-3651-4176-a7a2-5f3c0282569e
+
+
+### Post, like a note
+POST http://localhost:3002/notes/like-note
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNmI3ZjMxYi1lMDFiLTQ4ODMtYTg0Yy0yZDVmMDI0ZGI1ZTkiLCJ1c2VyRW1haWwiOiJ0ZWFMb3ZlckBnbWFpbC5jb20iLCJpYXQiOjE3NDAyMDY0MjAsImV4cCI6MTc0MDIxMDAyMCwiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.eeoxenHwukHsSdA8QsyaEBcZCwulP2UwFgqnEx79A_M
+Content-Type: application/json
+
+{
+  "noteId": "b9dbb49d-3651-4176-a7a2-5f3c0282569e",
+  "likedByUserId": "06b7f31b-e01b-4883-a84c-2d5f024db5e9"
+}
+
+
+### GET user posts
+GET http://localhost:3002/notes/user-notes/53359eb1-9aa9-4041-a6dc-70f5d7cf5c0a

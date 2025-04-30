@@ -11,10 +11,7 @@ import { UsersService } from '../../../app-essentials/users/providers/users.serv
 import { Notecards } from '../entities/notecards';
 
 // imported dtos
-import {
-  CardCreationDTO,
-  UpdateNotecard,
-} from '../dtos/cards.creation.dto';
+import { CardCreationDTO, UpdateNotecard } from '../dtos/cards.creation.dto';
 import { CardsQueryDTO } from '../dtos/cards.params-queries.dto';
 
 import { Repository } from 'typeorm';
@@ -53,6 +50,7 @@ export class CardServices {
   ): Promise<string> {
     // check if user exists first
     let userExists = undefined;
+
     try {
       userExists = await this.UserServices.findUserById(userPermission.userId);
     } catch (err) {
@@ -60,6 +58,10 @@ export class CardServices {
     }
 
     try {
+      createNoteCard.notecardData.forEach((notecard, index) => {
+        notecard.id = index + 1;
+      });
+
       const noteCard = this.cardsRepository.create({
         ...createNoteCard,
         notecardCreatorId: userExists,
@@ -77,10 +79,9 @@ export class CardServices {
         ),
       );
 
-      console.log('is emitted true', isEmitted);
-
-       return `${noteCard.notecardId}`;
-
+      if (isEmitted) {
+        return `${noteCard.notecardId}`;
+      }
     } catch (err) {
       throw new InternalServerErrorException("Notecard isn't created", err);
     }
@@ -160,38 +161,38 @@ export class CardServices {
     }
   }
 
-  async updateNoteCard(notecard: UpdateNotecard): Promise<string> {
-    const userExists = await this.UserServices.findUserById(
-      notecard.notecardCreatorId,
-    );
-    const userNotecard = await this.cardsRepository.findOne({
-      where: {
-        notecardId: notecard.notecardId,
-        notecardCreatorId: userExists,
-      },
-    });
-
-    const { notecardCreatorId, ...updateFields } = notecard;
-
-    let updatedNotecard = undefined;
-    try {
-      if (userExists && userNotecard) {
-        updatedNotecard = await this.cardsRepository.merge(
-          userNotecard,
-          updateFields,
-        );
-      }
-
-      await this.cardsRepository.save(updatedNotecard);
-
-      return updatedNotecard;
-    } catch (error) {
-      throw new InternalServerErrorException(
-        'An error occurred while updating notecard',
-        error,
-      );
-    }
-  }
+  // async updateNoteCard(notecard: UpdateNotecard): Promise<string> {
+  //   const userExists = await this.UserServices.findUserById(
+  //     notecard.notecardCreatorId,
+  //   );
+  //   const userNotecard = await this.cardsRepository.findOne({
+  //     where: {
+  //       notecardId: notecard.notecardId,
+  //       notecardCreatorId: userExists,
+  //     },
+  //   });
+  //
+  //   const { notecardCreatorId, ...updateFields } = notecard;
+  //
+  //   let updatedNotecard = undefined;
+  //   try {
+  //     if (userExists && userNotecard) {
+  //       updatedNotecard = await this.cardsRepository.merge(
+  //         userNotecard,
+  //         updateFields,
+  //       );
+  //     }
+  //
+  //     await this.cardsRepository.save(updatedNotecard);
+  //
+  //     return updatedNotecard;
+  //   } catch (error) {
+  //     throw new InternalServerErrorException(
+  //       'An error occurred while updating notecard',
+  //       error,
+  //     );
+  //   }
+  // }
 
   async deleteNotecard(userId: string, notecardId: number): Promise<string> {
     const userExists = await this.UserServices.findUserById(userId);

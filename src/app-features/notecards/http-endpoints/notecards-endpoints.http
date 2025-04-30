@@ -1,0 +1,16 @@
+POST http://localhost:3002/notecards/create-notecard
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjZmYjc0Ny0yMjg4LTRkMWItOGNhMi1hYzgxMzU1YTk5YTgiLCJ1c2VyRW1haWwiOiJtYXRjaGFsb3ZlckBnbWFpbC5jb20iLCJpYXQiOjE3NDQwMjYzNjMsImV4cCI6MTc0NDAyOTk2MywiYXVkIjoibG9jYWxob3N0OjMwMDIiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMiJ9.whxS1kGqFAgLwo6zWjAeR5Y6cvtwGSiZAvciQ3flYIk
+
+
+{
+  "notecardTitle": "Alien Lives",
+  "notecardDescription": "the chapter suggest that there might be life in kupers",
+  "notecardData": [
+    {
+      "term": "Kupers",
+      "definition": "A series of similar earth planets",
+      "isStared": true
+    }
+  ]
+}

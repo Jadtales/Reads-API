@@ -1,14 +1,20 @@
 import { UserCreation_dto } from '../../../app-essentials/users/dtos/user.dtos';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  IsStrongPassword,
+} from 'class-validator';
 
 export class SignInAuthDto {
   @IsEmail()
-  @IsNotEmpty()
   @IsString()
+  @IsNotEmpty()
   email: string;
 
   @IsString()
-  @IsNotEmpty()
+  // @IsNotEmpty()
+  // @IsStrongPassword()
   password: string;
 }
 
